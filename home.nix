@@ -13,7 +13,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ lens kubectl kubectx k9s lutris gnome.adwaita-icon-theme fluxcd vault ];
+  home.packages = with pkgs; [ lens kubectl kubectx k9s lutris gnome.adwaita-icon-theme fluxcd vault kustomize ];
   programs.google-chrome.enable = true;
   programs.vscode.enable = true;
   programs.fzf.enable = true;
