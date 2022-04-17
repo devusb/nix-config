@@ -35,6 +35,13 @@
     shellAliases = {
       kb = "kubectl";
     };
+    initExtra = ''
+      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    '';
+  };
+
+  home.sessionVariables = {
+    VAULT_ADDR = "https://vault.gaia.devusb.us";
   };
   
 }
