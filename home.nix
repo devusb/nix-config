@@ -7,6 +7,7 @@
     # inputs.nix-colors.homeManagerModule
 
     # Feel free to split up your configuration and import pieces of it here.
+    "${fetchTarball { url="https://github.com/msteen/nixos-vscode-server/tarball/master"; sha256="1cszfjwshj6imkwip270ln4l1j328aw2zh9vm26wv3asnqlhdrak";}}/modules/vscode-server/home.nix"
   ];
 
   # Comment out if you wish to disable unfree packages for your system
@@ -43,5 +44,7 @@
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.gaia.devusb.us";
   };
-  
+
+  # enable vscode-server
+  services.vscode-server.enable = true;  
 }
