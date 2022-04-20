@@ -3,21 +3,8 @@
 
 { inputs, lib, config, pkgs, ... }: {
   imports = [
-    # If you want to use modules from other flakes (such as nixos-hardware), use something like:
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-    # It's strongly recommended you take a look at
-    # https://github.com/nixos/nixos-hardware
-    # and import modules relevant to your hardware.
-
-    # Import your generated hardware configuration
-    ./hardware-configuration.nix
-
-    # Feel free to split up your configuration and import pieces of it here.
   ];
 
-  # TODO: Set your hostname
-  networking.hostName = "tomservo";
 
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
   boot.loader.systemd-boot.enable = true;
@@ -37,24 +24,11 @@
     };
   };
 
-  # This setups SSH for the system (with SSH keys ONLY). Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = true;
-    permitRootLogin = "no";
-  };
-
   # Set your time zone.
   time.timeZone = "US/Central";
 
   # enable syslog
   services.syslogd.enable = true;
-
-  networking.useDHCP = false;
-  networking.interfaces.enp31s0.useDHCP = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -63,8 +37,6 @@
   ];
 
   system.stateVersion = "21.11"; # Did you read the comment?
-
-  networking.firewall.enable = false;
   
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
@@ -93,19 +65,4 @@
   nix.registry = lib.mapAttrs' (n: v:
     lib.nameValuePair (n) ({ flake = v; })
   ) inputs;
-
-  # add GUI and nvidia drivers
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
- # hardware.opengl.driSupport32Bit = true;
-  
-  # install some programs globally
-  programs.steam.enable = true;
-  programs.thefuck = {
-    enable = true;
-    alias = "fuck";
-  };
 }
