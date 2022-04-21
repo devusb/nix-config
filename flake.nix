@@ -36,6 +36,11 @@
           system = "x86_64-linux";
           users = ["mhelton"];
         };
+        superintendent-vm = lib.mkSystem {
+          hostname = "superintendent-vm";
+          system = "aarch64-linux";
+          users = ["mhelton"];
+        };
       };
 
       homeConfigurations = {
@@ -43,7 +48,11 @@
           username = "mhelton";
           system = "x86_64-linux";
           hostname = "tomservo";
-          
+        };
+        "mhelton@superintendent-vm" = lib.mkHome {
+          username = "mhelton";
+          system = "aarch64-linux";
+          hostname = "superintendent-vm";
         };
       };
   }
