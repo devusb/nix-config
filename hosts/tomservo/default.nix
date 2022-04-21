@@ -2,8 +2,17 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../common/steam.nix
   ];
   
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  system.stateVersion = "21.11"; 
+
+  # enable syslog
+  services.syslogd.enable = true;
+
   services.openssh = {
     enable = true;
     passwordAuthentication = true;
@@ -23,11 +32,5 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
-
-  # install some programs globally
-  programs.steam.enable = true;
-  programs.thefuck = {
-    enable = true;
-    alias = "fuck";
-  };
+  
 }

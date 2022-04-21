@@ -5,18 +5,8 @@
   imports = [
   ];
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # TODO: Configure your system-wide user settings (stuff on the user
-  # environment should instead go to home.nix)
-
   # Set your time zone.
   time.timeZone = "US/Central";
-
-  # enable syslog
-  services.syslogd.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -24,8 +14,6 @@
     git
   ];
 
-  system.stateVersion = "21.11"; # Did you read the comment?
-  
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
@@ -53,4 +41,10 @@
   nix.registry = lib.mapAttrs' (n: v:
     lib.nameValuePair (n) ({ flake = v; })
   ) inputs;
+
+  # install some programs globally
+  programs.thefuck = {
+    enable = true;
+    alias = "fuck";
+  };
 }
