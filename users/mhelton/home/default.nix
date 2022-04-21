@@ -8,16 +8,14 @@
 
     # Feel free to split up your configuration and import pieces of it here.
     "${fetchTarball { url="https://github.com/msteen/nixos-vscode-server/tarball/master"; sha256="1cszfjwshj6imkwip270ln4l1j328aw2zh9vm26wv3asnqlhdrak";}}/modules/vscode-server/home.nix"
-  ];
+  ]
+  ++ (if hostname == "tomservo" then [ ./gui ] else []);
 
   # Comment out if you wish to disable unfree packages for your system
   nixpkgs.config.allowUnfree = true;
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ lens kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm]
-    ++ (if hostname == "tomservo" then [./gui] else []);
-  programs.google-chrome.enable = true;
-  programs.vscode.enable = true;
+  home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ];
   programs.fzf.enable = true;
 
   # Enable home-manager and git
