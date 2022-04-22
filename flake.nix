@@ -41,6 +41,11 @@
           system = "aarch64-linux";
           users = ["mhelton"];
         };
+        imubit-morgan = lib.mkSystem {
+          hostname = "imubit-morgan";
+          system = "x86_64-linux";
+          users = ["mhelton"];
+        };
       };
 
       homeConfigurations = {
@@ -53,6 +58,11 @@
           username = "mhelton";
           system = "aarch64-linux";
           hostname = "superintendent-vm";
+        };
+        "mhelton@imubit-morgan" = lib.mkHome {
+          username = "mhelton";
+          system = "x86_64-linux";
+          hostname = "imubit-morgan";
         };
       };
   }
