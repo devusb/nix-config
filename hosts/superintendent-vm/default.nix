@@ -25,4 +25,33 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
+  # setup windowing environment
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    dpi = 220;
+
+    desktopManager = {
+      xterm.enable = false;
+      wallpaper.mode = "scale";
+    };
+
+    displayManager = {
+      defaultSession = "none+i3";
+      lightdm.enable = true;
+
+      # AARCH64: For now, on Apple Silicon, we must manually set the
+      # display resolution. This is a known issue with VMware Fusion.
+      sessionCommands = ''
+        ${pkgs.xlibs.xset}/bin/xset r rate 200 40
+      '' + (if currentSystem == "aarch64-linux" then ''
+        ${pkgs.xorg.xrandr}/bin/xrandr -s '2880x1800'
+      '' else "");
+    };
+
+    windowManager = {
+      i3.enable = true;
+    };
+  };
+
 }
