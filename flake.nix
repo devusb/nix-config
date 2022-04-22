@@ -12,87 +12,65 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Extra community flakes
-    # Add any cool flakes you need
-    # nur.url = "github:nix-community/NUR"; # User contributed pkgs and modules
-    # impermanence.url = "github:riscadoa/impermanence"; # Utilities for opt-in persistance
-    # nix-colors.url = "github:misterio77/nix-colors"; # Color schemes for usage with home-manager
   };
 
-  outputs = { self, nixpkgs, home-manager, utils, ... }@inputs: {
-    # Overlayed packages
-    overlay = (import ./overlays);
+  outputs = inputs: 
+    let
+      overlay = import ./overlays;
+      overlays = with inputs; [
+        overlay
+      ];
+      lib = import ./lib { inherit inputs overlays; };
+    in
+    {
+      inherit overlay overlays;
 
-    # This repo's overlay plus any other overlays you use
-    # If you want to use packages from flakes that are not nixpkgs (such as NUR), add their overlays here.
-    overlays = [
-      self.overlay
-      # nur.overlay
-    ];
+      #nixosModules = lib.importAttrset ./modules/nixos;
+      #homeManagerModules = lib.importAttrset ./modules/home-manager;
 
-    # System configurations
-    # Accessible via 'nixos-rebuild --flake'
-    nixosConfigurations = {
-      # TODO: Replace with your hostname
-      tomservo = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-          ./configuration.nix
-          # Adds your overlay and packages to nixpkgs
-          { nixpkgs.overlays = self.overlays; }
-          # Adds your custom nixos modules
-          ./modules/nixos
-
-        ];
-        # Pass our flake inputs into the config
-        specialArgs = { inherit inputs; };
+      # System configurations
+      # Accessible via 'nixos-rebuild --flake'
+      nixosConfigurations = {
+        tomservo = lib.mkSystem {
+          hostname = "tomservo";
+          system = "x86_64-linux";
+          users = ["mhelton"];
+        };
+        superintendent-vm = lib.mkSystem {
+          hostname = "superintendent-vm";
+          system = "aarch64-linux";
+          users = ["mhelton"];
+        };
       };
-    };
 
-    # Home configurations
-    # Accessible via 'home-manager --flake'
-    homeConfigurations = {
-      # TODO: Replace with your username@hostname
-      "mhelton@tomservo" = home-manager.lib.homeManagerConfiguration rec {
-        # TODO: Replace with your username
-        username = "mhelton";
-        homeDirectory = "/home/${username}";
-        system = "x86_64-linux";
-
-        configuration = ./home.nix;
-        extraModules = [
-          # Adds your overlay and packages to nixpkgs
-          { nixpkgs.overlays = self.overlays; }
-          # Adds your custom home-manager modules
-          ./modules/home-manager
-        ];
-        # Pass our flake inputs into the config
-        extraSpecialArgs = { inherit inputs; };
+      homeConfigurations = {
+        "mhelton@tomservo" = lib.mkHome {
+          username = "mhelton";
+          system = "x86_64-linux";
+          hostname = "tomservo";
+        };
+        "mhelton@superintendent-vm" = lib.mkHome {
+          username = "mhelton";
+          system = "aarch64-linux";
+          hostname = "superintendent-vm";
+        };
       };
-    };
   }
 
-  // utils.lib.eachDefaultSystem (system:
+  // inputs.utils.lib.eachDefaultSystem (system:
     let
-      pkgs = import nixpkgs { inherit system; overlays = self.overlays; };
-      nix = pkgs.writeShellScriptBin "nix" ''
-        exec ${pkgs.nixFlakes}/bin/nix --experimental-features "nix-command flakes" "$@"
-      '';
-      hm = home-manager.defaultPackage."${system}";
+      pkgs = import inputs.nixpkgs { inherit system overlays; };
     in
     {
       # Your custom packages, plus nixpkgs and overlayed stuff
       # Accessible via 'nix build .#example' or 'nix build .#nixpkgs.example'
-      packages = {
-        nixpkgs = pkgs;
-      } // (import ./pkgs { inherit pkgs; });
+      packages = pkgs;
 
       # Devshell for bootstrapping plus editor utilities (fmt and LSP)
       # Accessible via 'nix develop'
-      devShell = pkgs.mkShell {
-        buildInputs = with pkgs; [ nix nixfmt rnix-lsp hm ];
-      };
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [ home-manager git ];
+          NIX_CONFIG = "experimental-features = nix-command flakes";
+        };
     });
 }
