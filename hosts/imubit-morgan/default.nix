@@ -7,7 +7,7 @@ in
 {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
-
+    ../common
     nixos-wsl.nixosModules.wsl
   ];
 
