@@ -25,4 +25,23 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
+  # add GUI and nvidia drivers
+  #services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    dpi = 180;
+
+    displayManager = {
+      gdm.enable = true;
+      autoLogin = {
+        user = "mhelton";
+        enable = true;
+      };
+    };
+    windowManager.i3.enable = true;
+
+  };
+
 }
