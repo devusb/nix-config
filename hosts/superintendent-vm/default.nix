@@ -25,25 +25,4 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
-  # setup windowing environment
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    dpi = 220;
-
-    desktopManager = {
-      xterm.enable = false;
-      wallpaper.mode = "scale";
-    };
-
-    displayManager = {
-      defaultSession = "none+i3";
-      lightdm.enable = true;
-    };
-
-    windowManager = {
-      i3.enable = true;
-    };
-  };
-
 }
