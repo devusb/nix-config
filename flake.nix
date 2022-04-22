@@ -6,7 +6,7 @@
     utils.url = "github:numtide/flake-utils";
 
     # Core nix flakes
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
     hardware.url = "github:nixos/nixos-hardware";
 
     # Home manager flake
