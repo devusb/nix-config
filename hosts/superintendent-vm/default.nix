@@ -25,8 +25,7 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
-  # add GUI and nvidia drivers
-  #services.xserver.desktopManager.gnome.enable = true;
+  # add GUI
 
   services.xserver = {
     enable = true;
