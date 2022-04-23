@@ -3,6 +3,7 @@
 
 { inputs, lib, config, pkgs, ... }: {
   imports = [
+    inputs.sops-nix.nixosModules.sops
   ];
 
   # Set your time zone.
@@ -12,6 +13,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    age
   ];
 
   # enable passwordless sudo

@@ -12,6 +12,9 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # sops-nix
+    sops-nix.url = github:Mic92/sops-nix;
   };
 
   outputs = inputs: 
