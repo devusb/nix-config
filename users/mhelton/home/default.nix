@@ -18,7 +18,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ];
+  home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible
+   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip];
   programs.fzf.enable = true;
 
   # Enable home-manager and git
