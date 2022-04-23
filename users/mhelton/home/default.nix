@@ -19,7 +19,7 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible
-   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip];
+   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli];
   programs.fzf.enable = true;
 
   # Enable home-manager and git
