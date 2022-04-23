@@ -7,4 +7,8 @@
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.admin.imubit.in";
   };
+
+  # Add stuff for your user as you see fit:
+  home.packages = with pkgs; [ terraform ];
+  
 }
