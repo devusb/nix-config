@@ -1,0 +1,7 @@
+keys:
+  - &superintendent-vm age1y3y5cw7z56629ffszpa7w6dj9tlvlj2yw0f87cxm98e487v60v2s87u0vn
+creation_rules:
+  - path_regex: secrets/home/[^/]+\.yaml$
+    key_groups:
+      - age:
+        -  *superintendent-vm
