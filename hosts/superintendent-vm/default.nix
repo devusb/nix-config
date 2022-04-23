@@ -26,21 +26,32 @@
   services.spice-vdagentd.enable = true;
 
   # add GUI
-
+  environment.pathsToLink = [ "/libexec" ];
   services.xserver = {
     enable = true;
     layout = "us";
-    dpi = 180;
 
-    displayManager = {
-      gdm.enable = true;
-      autoLogin = {
-        user = "mhelton";
-        enable = true;
-      };
+    desktopManager = {
+      xterm.enable = false;
     };
-    windowManager.i3.enable = true;
 
+    displayManager= {
+      defaultSession = "none+i3";
+       autoLogin = {
+         user = "mhelton";
+         enable = true;
+       };
+    };
+    
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu 
+        i3status 
+        i3lock 
+     ];
+      extraSessionCommands = "spice-vdagent";
+    };
   };
 
 }

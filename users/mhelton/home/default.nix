@@ -27,6 +27,13 @@
     userEmail = "mhelton@gmail.com";
   };
 
+  programs.terminator = {
+    enable = true;
+    config = {
+      profiles.default.use_system_font = false;
+    };
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   
@@ -45,5 +52,6 @@
   };
 
   # enable vscode-server
-  services.vscode-server.enable = true;  
+  services.vscode-server.enable = true;
+  
 }
