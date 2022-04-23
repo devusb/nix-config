@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../common/aarch64-vm.nix
   ];
   
   boot.loader.systemd-boot.enable = true;
@@ -21,37 +22,5 @@
   networking.useDHCP = false;
   networking.interfaces.enp0s10.useDHCP = true;
   networking.firewall.enable = false;
-  
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
-
-  # add GUI
-  environment.pathsToLink = [ "/libexec" ];
-  services.xserver = {
-    enable = true;
-    layout = "us";
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    displayManager= {
-      defaultSession = "none+i3";
-       autoLogin = {
-         user = "mhelton";
-         enable = true;
-       };
-    };
-    
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu 
-        i3status 
-        i3lock 
-     ];
-      extraSessionCommands = "spice-vdagent";
-    };
-  };
 
 }
