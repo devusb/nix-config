@@ -43,8 +43,7 @@
   ) inputs;
 
   # install some programs globally
-  programs.thefuck = {
-    enable = true;
-    alias = "fuck";
-  };
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  programs.thefuck.enable = true;
 }
