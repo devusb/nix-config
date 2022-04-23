@@ -7,5 +7,7 @@
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.gaia.devusb.us";
   };
+
+  home.packages = with pkgs; [ _1password ];
   
 }
