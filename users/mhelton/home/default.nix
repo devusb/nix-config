@@ -44,6 +44,7 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch --flake /dotfiles/";
+      update-home = "home-manager switch --flake /dotfiles/";
       kb = "kubectl";
     };
     history = {
