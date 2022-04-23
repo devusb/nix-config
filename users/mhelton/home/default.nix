@@ -38,33 +38,23 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   
-  # programs.bash = {
-  #   enable = true;
-  #   shellAliases = {
-  #     kb = "kubectl";
-  #   };
-  #   initExtra = ''
-  #     . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-  #   '';
-  # };
-
-programs.zsh = {
-  enable = true;
-  shellAliases = {
-    ll = "ls -l";
-    update = "sudo nixos-rebuild switch --flake /dotfiles/";
-    kb = "kubectl";
-  };
-  history = {
-    size = 10000;
-    path = "${config.xdg.dataHome}/zsh/history";
-  };
-  oh-my-zsh = {
+  programs.zsh = {
     enable = true;
-    plugins = [ "git" "thefuck" ];
-    theme = "robbyrussell";
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch --flake /dotfiles/";
+      kb = "kubectl";
+    };
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "robbyrussell";
+    };
   };
-};
 
   # enable vscode-server
   services.vscode-server.enable = true;
