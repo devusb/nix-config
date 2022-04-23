@@ -6,12 +6,11 @@
     { hostname
     , system
     , users ? [ ]
-    , persistence ? true
     }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
-        inherit inputs system hostname persistence;
+        inherit inputs system hostname;
       };
       modules = builtins.attrValues (import ../modules/nixos) ++ [
         ../hosts/${hostname}
@@ -37,16 +36,14 @@
     { username
     , system
     , hostname
-    , persistence ? true
     , graphical ? false
-    , trusted ? false
-    , colorscheme ? "nord"
-    , wallpaper ? null
+    , gaming ? false
+    , work ? false
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit username system;
       extraSpecialArgs = {
-        inherit system hostname persistence graphical trusted colorscheme wallpaper inputs;
+        inherit system hostname graphical gaming work inputs;
       };
       homeDirectory = "/home/${username}";
       configuration = ../users/${username}/home;

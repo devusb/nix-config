@@ -53,6 +53,8 @@
           username = "mhelton";
           system = "x86_64-linux";
           hostname = "tomservo";
+          graphical = true;
+          gaming = true;
         };
         "mhelton@superintendent-vm" = lib.mkHome {
           username = "mhelton";
@@ -63,6 +65,7 @@
           username = "mhelton";
           system = "x86_64-linux";
           hostname = "imubit-morgan";
+          work = true;
         };
       };
   }
