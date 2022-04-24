@@ -49,5 +49,7 @@
       GDK_DPI_SCALE = "0.5";
       _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
     };
+    hardware.video.hidpi.enable = true;
+    boot.loader.systemd-boot.consoleMode = "0";
 
 }
