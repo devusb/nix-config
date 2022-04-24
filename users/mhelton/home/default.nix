@@ -38,6 +38,14 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+    };
+  };
   
   programs.zsh = {
     enable = true;
@@ -51,12 +59,9 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" "fzf" ];
-      theme = "robbyrussell";
-    };
   };
+
+
 
   # enable vscode-server
   services.vscode-server.enable = true;

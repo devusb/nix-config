@@ -45,5 +45,4 @@
   # install some programs globally
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  programs.thefuck.enable = true;
 }
