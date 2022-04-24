@@ -54,7 +54,7 @@
     enable = true;
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch --flake /dotfiles/";
+      update = "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
       update-home = "home-manager switch --flake /dotfiles/";
       kb = "kubectl";
     };
