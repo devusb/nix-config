@@ -22,5 +22,4 @@
   networking.useDHCP = false;
   networking.interfaces.enp0s10.useDHCP = true;
   networking.firewall.enable = false;
-
 }
