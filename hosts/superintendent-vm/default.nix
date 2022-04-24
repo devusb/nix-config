@@ -10,15 +10,6 @@
 
   system.stateVersion = "21.11"; 
 
-  # enable syslog
-  services.syslogd.enable = true;
-
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = true;
-    permitRootLogin = "yes";
-  };
-
   networking.useDHCP = false;
   networking.interfaces.enp0s10.useDHCP = true;
   networking.firewall.enable = false;

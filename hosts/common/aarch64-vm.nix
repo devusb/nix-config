@@ -5,6 +5,15 @@
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = mkSure true;
 
+    # enable syslog
+    services.syslogd.enable = true;
+
+    services.openssh = {
+      enable = true;
+      passwordAuthentication = true;
+      permitRootLogin = "yes";
+    };
+
     # add GUI
     environment.pathsToLink = [ "/libexec" ];
     services.xserver = {
