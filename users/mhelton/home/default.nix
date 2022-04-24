@@ -19,7 +19,9 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible
-   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli dig];
+   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli dig
+   (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })];
+  fonts.fontconfig.enable = true;
   programs.fzf.enable = true;
 
   # Enable home-manager and git
@@ -38,6 +40,14 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+    };
+  };
   
   programs.zsh = {
     enable = true;
@@ -51,12 +61,9 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" "fzf" ];
-      theme = "robbyrussell";
-    };
   };
+
+
 
   # enable vscode-server
   services.vscode-server.enable = true;
