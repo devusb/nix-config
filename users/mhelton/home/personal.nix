@@ -10,4 +10,6 @@
 
   home.packages = with pkgs; [ _1password ];
   
+  programs.keychain.keys = [ "id_rsa" ];
+
 }
