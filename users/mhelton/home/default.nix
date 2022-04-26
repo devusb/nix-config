@@ -64,7 +64,10 @@
     };
   };
 
-
+  programs.keychain = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # enable vscode-server
   services.vscode-server.enable = true;
