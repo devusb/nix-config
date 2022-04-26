@@ -12,5 +12,14 @@
   home.packages = with pkgs; [ terraform google-cloud-sdk ];
 
   programs.keychain.keys = [ "id_ed25519" ];
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        user = "morgan";
+      };
+    };
+  };
   
 }
