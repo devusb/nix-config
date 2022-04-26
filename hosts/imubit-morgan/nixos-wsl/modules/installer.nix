@@ -31,8 +31,6 @@ with builtins; with lib; {
         echo "Optimizing store..."
         nix-store --optimize
 
-
-        echo "Starting systemd..."
         # Don't package the shell here, it's contained in the rootfs
         exec ${builtins.unsafeDiscardStringContext config.users.users.root.shell} "$@"
       '';
@@ -56,7 +54,10 @@ with builtins; with lib; {
 
         contents = [
           { source = config.environment.etc."wsl.conf".source; target = "/etc/wsl.conf"; }
+          { source = config.environment.etc."fstab".source; target = "/etc/fstab"; }
           { source = passwd; target = "/etc/passwd"; }
+          { source = "${pkgs.busybox}/bin/busybox"; target = "/bin/sh"; }
+          { source = "${pkgs.busybox}/bin/busybox"; target = "/bin/mount"; }
         ];
       };
 

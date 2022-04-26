@@ -16,7 +16,7 @@ in
     automountPath = "/mnt";
     defaultUser = "mhelton";
     startMenuLaunchers = true;
-
+    docker-native.enable = true;
     # Enable integration with Docker Desktop (needs to be installed)
     # docker.enable = true;
   };
