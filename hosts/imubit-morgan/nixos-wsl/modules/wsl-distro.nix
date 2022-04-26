@@ -91,7 +91,7 @@ with builtins; with lib;
 
       users.users.${cfg.defaultUser} = {
         isNormalUser = true;
-        uid = 1000;
+        #uid = 1000;
         extraGroups = [ "wheel" ]; # Allow the default user to use sudo
       };
 
