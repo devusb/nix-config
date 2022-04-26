@@ -9,7 +9,7 @@
   };
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ terraform google-cloud-sdk ];
+  home.packages = with pkgs; [ terraform google-cloud-sdk postgresql ];
 
   programs.keychain.keys = [ "id_ed25519" ];
 
