@@ -13,6 +13,7 @@
     wget
     git
     nfs-utils
+    psmisc
   ];
 
   # enable passwordless sudo
