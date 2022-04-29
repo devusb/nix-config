@@ -31,13 +31,6 @@
     enable = true;
   };
 
-  programs.terminator = {
-    enable = true;
-    config = {
-      profiles.default.use_system_font = false;
-    };
-  };
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
