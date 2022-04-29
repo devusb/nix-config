@@ -22,8 +22,12 @@
       dpi = 180;
       libinput = {  
         enable = true;
-        touchpad.naturalScrolling = true;
-        mouse.naturalScrolling = true;
+        touchpad = {
+          naturalScrolling = true;
+        };
+        mouse = {
+          naturalScrolling = true;
+        };
       };
 
       desktopManager = {
