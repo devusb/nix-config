@@ -23,7 +23,6 @@
    k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli2 dig jq yq sqlite
    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })];
   fonts.fontconfig.enable = true;
-  programs.fzf.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
