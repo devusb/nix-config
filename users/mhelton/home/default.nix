@@ -19,7 +19,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible
+  home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible librespeed-cli
    k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli2 dig jq yq sqlite
    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })];
   fonts.fontconfig.enable = true;
