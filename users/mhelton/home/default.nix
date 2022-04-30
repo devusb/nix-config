@@ -5,6 +5,7 @@
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
+    ./zsh.nix
 
     # Feel free to split up your configuration and import pieces of it here.
     "${fetchTarball { url="https://github.com/msteen/nixos-vscode-server/tarball/master"; sha256="1cszfjwshj6imkwip270ln4l1j328aw2zh9vm26wv3asnqlhdrak";}}/modules/vscode-server/home.nix"
@@ -19,7 +20,7 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible
-   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli2 dig jq yq
+   k3sup kompose micro mosh pwgen python3 inetutils python39Packages.pip zip unzip awscli2 dig jq yq sqlite
    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })];
   fonts.fontconfig.enable = true;
   programs.fzf.enable = true;
@@ -40,20 +41,6 @@
     settings = {
       add_newline = false;
       gcloud.disabled = true;
-    };
-  };
-  
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      update = "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
-      update-home = "home-manager switch --flake /dotfiles/";
-      kb = "kubectl";
-    };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
     };
   };
 
