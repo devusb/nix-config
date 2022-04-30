@@ -13,26 +13,28 @@
         };
         plugins = [
             {
-            name = "zsh-histdb";
-            src = pkgs.fetchFromGitHub {
-                owner = "larkery";
-                repo = "zsh-histdb";
-                rev = "30797f0c50c31c8d8de32386970c5d480e5ab35d";
-                sha256 = "PQIFF8kz+baqmZWiSr+wc4EleZ/KD8Y+lxW2NT35/bg=";
-                fetchSubmodules = true;
+                name = "zsh-histdb";
+                src = pkgs.fetchFromGitHub {
+                    owner = "larkery";
+                    repo = "zsh-histdb";
+                    rev = "30797f0c50c31c8d8de32386970c5d480e5ab35d";
+                    sha256 = "PQIFF8kz+baqmZWiSr+wc4EleZ/KD8Y+lxW2NT35/bg=";
+                    fetchSubmodules = true;
                 };
             }
             {
-            name = "zsh-histdb-skim";
-            src = pkgs.fetchFromGitHub {
-                owner = "devusb";
-                repo = "zsh-histdb-skim";
-                rev = "6c53f58072722fcf62954302ff9490c8f6e1e558";
-                sha256 = "PcIVE/mpij7P6xun0ZLE9VmPirb3C0qXmwyqZZiXe38=";
-                fetchSubmodules = true;
+                name = "zsh-histdb-fzf";
+                file = "fzf-histdb.zsh";
+                src = pkgs.fetchFromGitHub {
+                    owner = "m42e";
+                    repo = "zsh-histdb-fzf";
+                    rev = "055523a798acf02a67e242b3281d917f5ee4309a";
+                    sha256 = "5R6XImDVswD/vTWQRtL28XHNzqurUeukfLevQeMDpuY=";
+                    fetchSubmodules = true;
                 };
             }
         ];
+        initExtra = "bindkey '^R' histdb-fzf-widget";
     };
     programs.starship = {
         enable = true;
