@@ -35,15 +35,6 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      add_newline = false;
-      gcloud.disabled = true;
-    };
-  };
-
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
