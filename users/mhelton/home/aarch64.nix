@@ -1,21 +1,19 @@
 { pkgs, lib, config, ...}: {
-    home.packages = with pkgs; [];
-    programs.firefox.enable = true;
+  imports = [
+    ./kitty.nix
+  ];
+  home.packages = with pkgs; [];
+  programs.firefox.enable = true;
+  programs.kitty.font.size = 20;
 
-  programs.terminator = {
-    enable = true;
-    config = {
-      profiles.default.use_system_font = false;
-    };
+  xsession.windowManager.i3 = {
+      enable = true;
+      config = {
+          modifier = "Mod1";
+          terminal = "kitty";
+          keybindings = let modifier = config.xsession.windowManager.i3.config.modifier; in lib.mkOptionDefault {
+              "${modifier}+Shift+t" = "exec xrandr --dpi 180";
+          };
+      };
   };
-
-    xsession.windowManager.i3 = {
-        enable = true;
-        config = {
-            modifier = "Mod1";
-            keybindings = let modifier = config.xsession.windowManager.i3.config.modifier; in lib.mkOptionDefault {
-                "${modifier}+Shift+t" = "exec xrandr --dpi 180";
-            };
-        };
-    };
 }
