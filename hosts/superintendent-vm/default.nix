@@ -11,6 +11,6 @@
   system.stateVersion = "21.11"; 
 
   networking.useDHCP = false;
-  networking.interfaces.enp0s6.useDHCP = true;
+  networking.interfaces.enp0s7.useDHCP = true;
   networking.firewall.enable = false;
 }
