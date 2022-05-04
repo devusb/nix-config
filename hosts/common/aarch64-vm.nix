@@ -5,7 +5,12 @@
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = mkSure true;
 
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    
+
     boot.kernelParams = [ "net.ifnames=0" ];
+    networking.firewall.enable = false;
 
     # enable syslog
     services.syslogd.enable = true;
