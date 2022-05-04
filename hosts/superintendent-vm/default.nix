@@ -8,9 +8,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.stateVersion = "21.11"; 
-
-  networking.useDHCP = false;
-  networking.interfaces.enp0s7.useDHCP = true;
+  system.stateVersion = "21.11";
+  
   networking.firewall.enable = false;
 }

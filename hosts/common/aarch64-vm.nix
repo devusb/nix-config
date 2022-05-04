@@ -5,6 +5,8 @@
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = mkSure true;
 
+    boot.kernelParams = [ "net.ifnames=0" ];
+
     # enable syslog
     services.syslogd.enable = true;
 
