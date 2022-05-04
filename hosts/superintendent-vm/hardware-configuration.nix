@@ -8,23 +8,29 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "uhci_hcd" "virtio_pci" "usbhid" "usb_storage" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "virtio_pci" "usbhid" "usb_storage" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d10a25df-c7c5-4e45-835f-8fc804cab990";
+    { device = "/dev/disk/by-uuid/1bf23eb0-7941-4d55-ad9e-b8680c29077f";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FA47-29CE";
+    { device = "/dev/disk/by-uuid/ADFC-2C46";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/39f873c0-53d2-486b-85c2-e30b9874842e"; }
+    [ { device = "/dev/disk/by-uuid/4b476980-71af-443a-a0c5-b7a04fcef66a"; }
     ];
+
+  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated config
+  # replicates the default behaviour.
+  networking.useDHCP = lib.mkDefault false;
+  networking.interfaces.enp0s6.useDHCP = lib.mkDefault true;
 
 }
