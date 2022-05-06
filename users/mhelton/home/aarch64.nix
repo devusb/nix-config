@@ -1,6 +1,6 @@
 { pkgs, lib, config, ...}: {
   imports = [
-    ./kitty.nix
+    ./terminal.nix
   ];
   home.packages = with pkgs; [];
   programs.firefox.enable = true;

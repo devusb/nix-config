@@ -1,6 +1,6 @@
 { pkgs, ...}: {
   imports = [
-      ./kitty.nix
+      ./terminal.nix
   ];
   home.packages = with pkgs; [lens];
   programs.google-chrome.enable = true;
