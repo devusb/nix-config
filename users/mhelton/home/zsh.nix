@@ -27,5 +27,8 @@
     programs.atuin = {
         enable = true;
         enableZshIntegration = true;
+        settings = {
+            sync_address = "https://atuin.gaia.devusb.us";
+        };
     };
 }
