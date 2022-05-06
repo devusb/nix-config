@@ -21,5 +21,10 @@
       };
     };
   };
+
+  programs.starship.settings = {
+    kubernetes.disabled = false;
+    aws.disabled = false;
+  };
   
 }
