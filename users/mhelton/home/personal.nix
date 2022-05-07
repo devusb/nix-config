@@ -8,7 +8,7 @@
     VAULT_ADDR = "https://vault.gaia.devusb.us";
   };
 
-  home.packages = with pkgs; [ _1password ];
+  home.packages = with pkgs; [ ];
   
   programs.keychain.keys = [ "id_rsa" ];
 
