@@ -11,6 +11,9 @@
 
   system.stateVersion = "21.11"; 
 
+  # pin kernel version
+  boot.kernelPackages = pkgs.linuxPackages_5_16;
+
   # enable syslog
   services.syslogd.enable = true;
 
