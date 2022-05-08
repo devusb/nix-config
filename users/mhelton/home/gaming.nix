@@ -1,5 +1,5 @@
 { pkgs, ...}: {
-    home.packages = with pkgs; [lutris gnome.adwaita-icon-theme];
+    home.packages = with pkgs; [lutris];
 
   dconf.settings = {
     "org/gnome/shell" = {

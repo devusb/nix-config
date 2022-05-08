@@ -3,7 +3,7 @@
       ./terminal.nix
   ];
 
-  home.packages = with pkgs; [lens _1password-gui-beta];
+  home.packages = with pkgs; [lens gnome.adwaita-icon-theme gnome.gnome-tweaks];
   programs.google-chrome.enable = true;
   programs.vscode.enable = true;
 
@@ -31,5 +31,18 @@
       favorite-apps = ["google-chrome.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
     };
   };
+
+  home.file.".config/autostart/_1password.desktop".text = ''
+      [Desktop Entry]
+      Name=1Password
+      Exec=1password --silent
+      Terminal=false
+      Type=Application
+      Icon=1password
+      StartupWMClass=1Password
+      Comment=Password manager and secure wallet
+      MimeType=x-scheme-handler/onepassword;
+      Categories=Office;
+    '';
 
 }

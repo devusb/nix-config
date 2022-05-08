@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ../common
     ../common/steam.nix
+    ../common/_1password.nix
   ];
   
   boot.loader.systemd-boot.enable = true;
@@ -34,10 +35,10 @@
 
   services.xserver.displayManager = {
     gdm.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "mhelton";
-    };
+    # autoLogin = {
+    #   enable = true;
+    #   user = "mhelton";
+    # };
   };
 
   # autologin crash workaround
