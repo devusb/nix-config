@@ -25,8 +25,8 @@
     {
       inherit overlay overlays;
 
-      #nixosModules = lib.importAttrset ./modules/nixos;
-      #homeManagerModules = lib.importAttrset ./modules/home-manager;
+      nixosModules = lib.importAttrset ./modules/nixos;
+      homeManagerModules = lib.importAttrset ./modules/home-manager;
 
       # System configurations
       # Accessible via 'nixos-rebuild --flake'
