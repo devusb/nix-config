@@ -1,5 +1,5 @@
 { pkgs, ...}: {
-    home.packages = with pkgs; [lutris];
+    home.packages = with pkgs; [lutris lm_sensors];
 
   dconf.settings = {
     "org/gnome/shell" = {
