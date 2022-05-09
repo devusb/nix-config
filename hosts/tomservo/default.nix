@@ -24,7 +24,7 @@
   };
 
   networking.useDHCP = false;
-  networking.interfaces.enp31s0.useDHCP = true;
+  networking.interfaces.enp3s0.useDHCP = true;
   networking.firewall.enable = false;
 
   sound.enable = true;

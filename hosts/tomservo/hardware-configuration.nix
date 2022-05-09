@@ -8,14 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/c544a3a0-1397-489c-ada8-7e86bef30466";
       fsType = "ext4";
+    };
+
+  fileSystems."/nix/store" =
+    { device = "/nix/store";
+      fsType = "none";
+      options = [ "bind" ];
     };
 
   fileSystems."/boot" =
@@ -27,7 +33,12 @@
     [ { device = "/dev/disk/by-uuid/67ff864c-9a61-4614-bfc4-8d8172a4900a"; }
     ];
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated config
+  # replicates the default behaviour.
+  networking.useDHCP = lib.mkDefault false;
+  networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
