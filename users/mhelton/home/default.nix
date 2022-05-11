@@ -16,7 +16,10 @@
   ++ (if work == true then [./work.nix] else [./personal.nix]);
 
   # Comment out if you wish to disable unfree packages for your system
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
+
+  # unfree workaround
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible speedtest-cli htop
