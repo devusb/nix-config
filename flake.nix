@@ -1,5 +1,5 @@
 {
-  description = "You new nix config";
+  description = "mhelton nix config";
 
   inputs = {
     # Utilities for building flakes
