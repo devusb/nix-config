@@ -3,4 +3,5 @@
     ../common
     ../common/wsl.nix
   ];
+  system.stateVersion = "22.05";
 }
