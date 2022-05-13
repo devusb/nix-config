@@ -29,6 +29,9 @@
         enableZshIntegration = true;
         settings = {
             sync_address = "https://atuin.gaia.devusb.us";
+            auto_sync = true;
+            sync_frequency = "5m";
+            search_mode = "fulltext";
         };
     };
 }
