@@ -1,5 +1,5 @@
 { pkgs, ...}: {
-    home.packages = with pkgs; [lutris lm_sensors];
+    home.packages = with pkgs; [lutris lm_sensors dolphin-emu-beta];
 
   dconf.settings = {
     "org/gnome/shell" = {
