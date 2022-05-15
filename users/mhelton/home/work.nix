@@ -9,7 +9,7 @@
   };
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ terraform-full google-cloud-sdk postgresql pgcli mpack ];
+  home.packages = with pkgs; [ terraform-full google-cloud-sdk postgresql pgcli mpack dive crane ];
 
   programs.keychain.keys = [ "id_ed25519" ];
 
