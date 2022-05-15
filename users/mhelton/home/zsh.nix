@@ -12,6 +12,10 @@
             path = "${config.xdg.dataHome}/zsh/history";
         };
     };
+    programs.keychain = {
+        enable = true;
+        enableZshIntegration = true;
+    };
     programs.starship = {
         enable = true;
         enableZshIntegration = true;
