@@ -16,7 +16,7 @@
 
   # Install packages
   home.packages = with pkgs; [ kubectl kubectx k9s fluxcd vault kustomize kubernetes-helm ansible speedtest-cli htop
-   k3sup kompose micro mosh pwgen python3 inetutils zip unzip awscli2 dig jq yq sqlite screen
+   k3sup kompose micro mosh pwgen python3 inetutils zip unzip awscli2 dig jq yq sqlite screen aws-sso-cli
    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })];
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
