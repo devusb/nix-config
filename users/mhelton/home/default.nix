@@ -41,9 +41,9 @@
     #yq
     sqlite
     screen
-    #(pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
-  #fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
