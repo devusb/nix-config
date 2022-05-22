@@ -32,6 +32,34 @@
         (u: ../users/${u}/system);
     };
 
+  mkDarwinSystem =
+    { hostname
+    , system
+    , users ? [ ]
+    }:
+    inputs.darwin.lib.darwinSystem {
+      inherit system;
+      specialArgs = {
+        inherit inputs system hostname;
+      };
+      modules = builtins.attrValues (import ../modules/darwin) ++ [
+        ../hosts/${hostname}
+        {
+          networking.hostName = hostname;
+          # Apply overlay and allow unfree packages
+          nixpkgs = {
+            inherit overlays;
+            config.allowUnfree = true;
+          };
+          # Add each input as a registry
+          nix.registry = inputs.nixpkgs.lib.mapAttrs'
+            (n: v:
+              inputs.nixpkgs.lib.nameValuePair n { flake = v; })
+            inputs;
+        }
+      ];
+    };
+
   mkHome =
     { username
     , system

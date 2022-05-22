@@ -12,6 +12,10 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nix-darwin
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: 
@@ -45,6 +49,13 @@
           hostname = "imubit-morgan";
           system = "x86_64-linux";
           users = ["mhelton"];
+        };
+      };
+
+      darwinConfigurations = {
+        superintendent = lib.mkDarwinSystem {
+          hostname = "superintendent";
+          system = "aarch64-darwin";
         };
       };
 
