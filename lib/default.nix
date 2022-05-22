@@ -67,13 +67,13 @@
     , graphical ? false
     , gaming ? false
     , work ? false
+    , homeDirectory ? "/home/${username}"
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit username system;
+      inherit username system homeDirectory;
       extraSpecialArgs = {
         inherit system hostname graphical gaming work inputs;
       };
-      homeDirectory = "/home/${username}";
       configuration = ../users/${username}/home;
       extraModules = builtins.attrValues (import ../modules/home-manager) ++ [
         # Base configuration

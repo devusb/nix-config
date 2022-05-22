@@ -78,6 +78,12 @@
           hostname = "imubit-morgan";
           work = true;
         };
+        "mhelton@superintendent" = lib.mkHome {
+          username = "mhelton";
+          system = "aarch64-darwin";
+          hostname = "superintendent";
+          homeDirectory = "/Users/mhelton";
+        };
       };
   }
 
