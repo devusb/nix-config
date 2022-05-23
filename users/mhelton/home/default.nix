@@ -7,7 +7,7 @@
   ]
   ++ (if graphical == true then [ ./graphical.nix ] else [])
   ++ (if gaming == true then [ ./gaming.nix ] else [])
-  ++ (if system == "aarch64-linux" then [./aarch64.nix] else [])
+  ++ (if system == "aarch64-linux" then [./aarch64-vm.nix] else [])
   ++ (if work == true then [./work.nix] else [./personal.nix])
   ++ (if system != "aarch64-darwin" then [./linuxPackages.nix] else []);
 
