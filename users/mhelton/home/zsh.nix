@@ -1,10 +1,10 @@
-{ pkgs, config, ...}: {
+{ pkgs, config, system, ...}: {
     programs.zsh = {
         enable = true;
         shellAliases = {
             ll = "ls -l";
-            update = "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
-            update-home = "home-manager switch --flake /dotfiles/";
+            update = if system == "aarch64-darwin" then "darwin-rebuild switch --flake ~/code/nix-config/ && rm result" else "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
+            update-home = if system == "aarch64-darwin" then "home-manager switch --flake ~/code/nix-config/" else "home-manager switch --flake /dotfiles/";
             kb = "kubectl";
         };
         history = {
