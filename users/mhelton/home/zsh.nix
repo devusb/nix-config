@@ -11,6 +11,12 @@
             size = 10000;
             path = "${config.xdg.dataHome}/zsh/history";
         };
+        initExtra = ''
+            if [ -e ~/.env ]; then
+            source ~/.env
+            fi
+        ''
+        ;
     };
     programs.keychain = {
         enable = true;
