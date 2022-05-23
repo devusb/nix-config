@@ -67,13 +67,13 @@
     , graphical ? false
     , gaming ? false
     , work ? false
-    , homeDirectory ? "/home/${username}"
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit username system homeDirectory;
+      inherit username system;
       extraSpecialArgs = {
         inherit system hostname graphical gaming work inputs;
       };
+      homeDirectory = if system == "aarch64-darwin" then "/Users/${username}" else "/home/${username}";
       configuration = ../users/${username}/home;
       extraModules = builtins.attrValues (import ../modules/home-manager) ++ [
         # Base configuration

@@ -82,7 +82,6 @@
           username = "mhelton";
           system = "aarch64-darwin";
           hostname = "superintendent";
-          homeDirectory = "/Users/mhelton";
         };
       };
   }
