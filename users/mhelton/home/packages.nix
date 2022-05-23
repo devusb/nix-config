@@ -22,6 +22,7 @@
     jq
     sqlite
     screen
+    yq-go
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }

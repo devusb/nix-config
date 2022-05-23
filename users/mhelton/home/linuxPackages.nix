@@ -5,7 +5,6 @@
   home.packages = with pkgs; [ 
     ansible
     dig
-    yq
   ];
 
   services.vscode-server.enable = true;
