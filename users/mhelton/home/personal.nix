@@ -12,4 +12,8 @@
   
   programs.keychain.keys = [ "id_rsa" ];
 
+  programs.starship.settings = {
+    aws.disabled = true;
+  };
+
 }
