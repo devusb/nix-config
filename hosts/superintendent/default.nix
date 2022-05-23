@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
-
-{
+{ inputs, lib, config, pkgs, ... }: {
+  imports = [
+  ];
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
+  environment.systemPackages = with pkgs; [ 
+      vim 
+      colima 
+      docker
     ];
 
   # Use a custom configuration.nix location.
