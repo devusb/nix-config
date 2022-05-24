@@ -8,7 +8,6 @@
     VAULT_ADDR = "https://vault.admin.imubit.in";
   };
 
-  # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ terraform-full google-cloud-sdk postgresql pgcli mpack dive crane helm2 aws-sso-cli ];
 
   programs.keychain.keys = [ "id_ed25519" ];
