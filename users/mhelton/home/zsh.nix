@@ -5,7 +5,8 @@
         enableSyntaxHighlighting = true;
         enableCompletion = true;
         shellAliases = {
-            ll = "ls -l";
+            ll = "exa -l --git";
+            ls = "exa";
             update = if system == "aarch64-darwin" then "darwin-rebuild switch --flake ~/code/nix-config/ && rm result" else "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
             update-home = if system == "aarch64-darwin" then "home-manager switch --flake ~/code/nix-config/" else "home-manager switch --flake /dotfiles/";
             kb = "kubectl";
