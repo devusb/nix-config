@@ -40,11 +40,6 @@
           system = "x86_64-linux";
           users = ["mhelton"];
         };
-        superintendent-vm = lib.mkSystem {
-          hostname = "superintendent-vm";
-          system = "aarch64-linux";
-          users = ["mhelton"];
-        };
         imubit-morgan = lib.mkSystem {
           hostname = "imubit-morgan";
           system = "x86_64-linux";
@@ -66,11 +61,6 @@
           hostname = "tomservo";
           graphical = true;
           gaming = true;
-        };
-        "mhelton@superintendent-vm" = lib.mkHome {
-          username = "mhelton";
-          system = "aarch64-linux";
-          hostname = "superintendent-vm";
         };
         "mhelton@imubit-morgan" = lib.mkHome {
           username = "mhelton";
