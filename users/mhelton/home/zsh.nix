@@ -14,12 +14,14 @@
             size = 10000;
             path = "${config.xdg.dataHome}/zsh/history";
         };
+        completionInit = ''
+            autoload -U +X bashcompinit && bashcompinit
+            complete -o nospace -C vault vault
+        '';
         initExtra = ''
             if [ -e ~/.env ]; then
             source ~/.env
             fi
-            autoload -U +X bashcompinit && bashcompinit
-            complete -o nospace -C vault vault
         ''
         ;
     };
