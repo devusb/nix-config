@@ -1,6 +1,9 @@
 { pkgs, config, system, ...}: {
     programs.zsh = {
         enable = true;
+        enableAutosuggestions = true;
+        enableSyntaxHighlighting = true;
+        enableCompletion = true;
         shellAliases = {
             ll = "ls -l";
             update = if system == "aarch64-darwin" then "darwin-rebuild switch --flake ~/code/nix-config/ && rm result" else "nixos-rebuild switch --use-remote-sudo --flake /dotfiles/";
