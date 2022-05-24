@@ -3,6 +3,7 @@
       vim 
       colima 
       docker
+      wget
     ];
 
   services.nix-daemon.enable = true;
