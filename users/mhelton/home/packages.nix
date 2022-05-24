@@ -23,6 +23,10 @@
     sqlite
     screen
     yq-go
+    tldr
+    ripgrep
+    bat
+    exa
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }
