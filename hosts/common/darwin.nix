@@ -19,4 +19,9 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  system.defaults = {
+      dock.autohide = false;
+      dock.orientation = "bottom";
+  };
 }
