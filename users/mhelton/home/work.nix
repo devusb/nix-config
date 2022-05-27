@@ -8,7 +8,7 @@
     VAULT_ADDR = "https://vault.admin.imubit.in";
   };
 
-  home.packages = with pkgs; [ terraform-full google-cloud-sdk postgresql pgcli mpack dive crane helm2 aws-sso-cli ];
+  home.packages = with pkgs; [ terraform google-cloud-sdk postgresql pgcli mpack dive crane helm2 aws-sso-cli ];
 
   programs.keychain.keys = [ "id_ed25519" ];
 
