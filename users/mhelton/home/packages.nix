@@ -27,6 +27,7 @@
     ripgrep
     bat
     exa
+    ansible
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }
