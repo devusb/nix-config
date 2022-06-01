@@ -30,6 +30,7 @@
     ansible
     terraform
     colmena
+    unrar
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }
