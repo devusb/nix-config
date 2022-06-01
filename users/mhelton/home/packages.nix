@@ -28,6 +28,8 @@
     bat
     exa
     ansible
+    terraform
+    colmena
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }
