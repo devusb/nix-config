@@ -1,7 +1,7 @@
-{ lib, stdenv, buildGoPackage, fetchFromGitHub }:
+{ lib, stdenv, buildGoPackage, fetchFromGitHub, version ? "2.15.1" }:
 
 buildGoPackage rec {
-  version = "2.15.1";
+  inherit version;
   pname = "helm";
 
   src = fetchFromGitHub {
@@ -29,7 +29,9 @@ buildGoPackage rec {
   '';
 
   postInstall = ''
-    mv $out/bin/helm $out/bin/helm2
+    mv $out/bin/helm $out/bin/helm${version}
+    mv $out/bin/rudder $out/bin/rudder${version}
+    mv $out/bin/tiller $out/bin/tiller${version}
   '';
 
   meta = with lib; {
