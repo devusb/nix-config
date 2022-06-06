@@ -19,5 +19,6 @@
       homepage = "https://github.com/synfinatic/aws-sso-cli";
       description = "AWS SSO CLI is a secure replacement for using the aws configure sso wizard.";
       license = licenses.gpl3;
+      mainProgram = "aws-sso";
     };
 }
