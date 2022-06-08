@@ -31,6 +31,7 @@
     terraform
     colmena
     unrar
+    zsh-nix-shell
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }
