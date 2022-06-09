@@ -4,6 +4,10 @@
   inputs = {
     # Utilities for building flakes
     utils.url = "github:numtide/flake-utils";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
 
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
@@ -12,6 +16,8 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.flake-compat.follows = "flake-compat";
+    home-manager.inputs.utils.follows = "utils";
 
     # nix-darwin
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -21,6 +27,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.inputs.flake-utils.follows = "utils";
+    nixos-wsl.inputs.flake-compat.follows = "flake-compat";
   };
 
   outputs = inputs: 
