@@ -1,7 +1,3 @@
-# Your overlays should go here (https://nixos.wiki/wiki/Overlays)
-final: prev: {
-  # example = prev.example.overrideAttrs (oldAttrs: rec {
-  # ...
-  # });
+{ inputs, ... }: final: prev: {
+  stable = import inputs.nixpkgs-stable { system = prev.system; };
 } // import ../pkgs { pkgs = final; }
-# This line adds your custom packages into the overlay.

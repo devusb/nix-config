@@ -10,8 +10,9 @@
     };
 
     # Core nix flakes
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
 
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
@@ -32,27 +33,39 @@
 
   outputs = inputs: 
     let
-      overlay = import ./overlays;
-      overlays = with inputs; [
-        overlay
-      ];
-      lib = import ./lib { inherit inputs overlays; };
+      my-lib = import ./lib { inherit inputs; };
+      inherit (builtins) attrValues mapAttrs;
+      inherit (my-lib) mkSystem mkHome mkDarwinSystem mkDeploy importAttrset;
+      inherit (inputs.nixpkgs.lib) genAttrs systems;
+      forAllSystems = genAttrs systems.flakeExposed;
     in
-    {
-      inherit overlay overlays;
+    rec {
+      overlays = {
+        default = import ./overlays { inherit inputs; };
+      };
 
-      nixosModules = lib.importAttrset ./modules/nixos;
-      homeManagerModules = lib.importAttrset ./modules/home-manager;
+      nixosModules = importAttrset ./modules/nixos;
+      homeManagerModules = importAttrset ./modules/home-manager;
+
+      packages = forAllSystems (system:
+        import inputs.nixpkgs { inherit system; overlays = attrValues overlays; }
+      );
+
+      devShells = forAllSystems (system: {
+        default = import ./shell.nix { pkgs = packages.${system}; };
+      });
 
       # System configurations
       # Accessible via 'nixos-rebuild --flake'
       nixosConfigurations = {
-        tomservo = lib.mkSystem {
+        tomservo = mkSystem {
+          inherit overlays;
           hostname = "tomservo";
           system = "x86_64-linux";
           users = ["mhelton"];
         };
-        imubit-morgan = lib.mkSystem {
+        imubit-morgan = mkSystem {
+          inherit overlays;
           hostname = "imubit-morgan";
           system = "x86_64-linux";
           users = ["mhelton"];
@@ -60,48 +73,35 @@
       };
 
       darwinConfigurations = {
-        superintendent = lib.mkDarwinSystem {
+        superintendent = mkDarwinSystem {
+          inherit overlays;
           hostname = "superintendent";
           system = "aarch64-darwin";
         };
       };
 
       homeConfigurations = {
-        "mhelton@tomservo" = lib.mkHome {
+        "mhelton@tomservo" = mkHome {
+          inherit overlays;
           username = "mhelton";
           system = "x86_64-linux";
           hostname = "tomservo";
           graphical = true;
           gaming = true;
         };
-        "mhelton@imubit-morgan" = lib.mkHome {
+        "mhelton@imubit-morgan" = mkHome {
+          inherit overlays;
           username = "mhelton";
           system = "x86_64-linux";
           hostname = "imubit-morgan";
           work = true;
         };
-        "mhelton@superintendent" = lib.mkHome {
+        "mhelton@superintendent" = mkHome {
+          inherit overlays;
           username = "mhelton";
           system = "aarch64-darwin";
           hostname = "superintendent";
         };
       };
-  }
-
-  // inputs.utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import inputs.nixpkgs { inherit system overlays; };
-    in
-    {
-      # Your custom packages, plus nixpkgs and overlayed stuff
-      # Accessible via 'nix build .#example' or 'nix build .#nixpkgs.example'
-      packages = pkgs;
-
-      # Devshell for bootstrapping plus editor utilities (fmt and LSP)
-      # Accessible via 'nix develop'
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ home-manager git ];
-          NIX_CONFIG = "experimental-features = nix-command flakes";
-        };
-    });
+    };
 }

@@ -1,13 +1,18 @@
-{ inputs, overlays }:
+{ inputs, ... }:
+let
+  inherit (builtins) mapAttrs attrValues;
+  inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs' nameValuePair forEach;
+in
 {
   importAttrset = path: builtins.mapAttrs (_: import) (import path);
 
   mkSystem =
     { hostname
+    , overlays ? { }
     , system
     , users ? [ ]
     }:
-    inputs.nixpkgs.lib.nixosSystem {
+    nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs system hostname;
@@ -18,22 +23,23 @@
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           # Add each input as a registry
-          nix.registry = inputs.nixpkgs.lib.mapAttrs'
+          nix.registry = mapAttrs'
             (n: v:
-              inputs.nixpkgs.lib.nameValuePair n { flake = v; })
+              nameValuePair n { flake = v; })
             inputs;
         }
         # System wide config for each user
-      ] ++ inputs.nixpkgs.lib.forEach users
+      ] ++ forEach users
         (u: ../users/${u}/system);
     };
 
   mkDarwinSystem =
     { hostname
+    , overlays ? { }
     , system
     , users ? [ ]
     }:
@@ -48,13 +54,13 @@
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           # Add each input as a registry
-          nix.registry = inputs.nixpkgs.lib.mapAttrs'
+          nix.registry = mapAttrs'
             (n: v:
-              inputs.nixpkgs.lib.nameValuePair n { flake = v; })
+              nameValuePair n { flake = v; })
             inputs;
         }
       ];
@@ -63,6 +69,7 @@
   mkHome =
     { username
     , system
+    , overlays ? { }
     , hostname
     , graphical ? false
     , gaming ? false
@@ -79,7 +86,7 @@
         # Base configuration
         {
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           programs = {

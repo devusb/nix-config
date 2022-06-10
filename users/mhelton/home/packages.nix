@@ -18,7 +18,7 @@
     inetutils
     zip
     unzip
-    awscli2
+    stable.awscli2
     jq
     sqlite
     screen
@@ -27,7 +27,7 @@
     ripgrep
     bat
     exa
-    ansible
+    stable.ansible
     terraform
     colmena
     unrar
