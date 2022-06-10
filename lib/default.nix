@@ -1,9 +1,14 @@
-{ inputs, overlays }:
+{ inputs, ... }:
+let
+  inherit (builtins) mapAttrs attrValues;
+  inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs' nameValuePair;
+in
 {
   importAttrset = path: builtins.mapAttrs (_: import) (import path);
 
   mkSystem =
     { hostname
+    , overlays ? { }
     , system
     , users ? [ ]
     }:
@@ -18,7 +23,7 @@
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           # Add each input as a registry
@@ -34,6 +39,7 @@
 
   mkDarwinSystem =
     { hostname
+    , overlays ? { }
     , system
     , users ? [ ]
     }:
@@ -48,7 +54,7 @@
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           # Add each input as a registry
@@ -63,6 +69,7 @@
   mkHome =
     { username
     , system
+    , overlays ? { }
     , hostname
     , graphical ? false
     , gaming ? false
@@ -79,7 +86,7 @@
         # Base configuration
         {
           nixpkgs = {
-            inherit overlays;
+            overlays = attrValues overlays;
             config.allowUnfree = true;
           };
           programs = {
