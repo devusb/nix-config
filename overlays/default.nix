@@ -1,11 +1,11 @@
 # Your overlays should go here (https://nixos.wiki/wiki/Overlays)
-final: prev: {
+final: prev: rec {
   # example = prev.example.overrideAttrs (oldAttrs: rec {
   # ...
   # });
   python39 = prev.python39.override (oldAttrs: rec {
     packageOverrides = final: prev: {
-      pyopenssl = prev.pyopenssl.overrideAttrs (old: {meta = old.meta // { broken = false; };});
+      pyopenssl = prev.pyopenssl.overrideAttrs (old: rec {meta = old.meta // { broken = false; };});
     };
   });
 } // import ../pkgs { pkgs = final; }
