@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   inherit (builtins) mapAttrs attrValues;
-  inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs' nameValuePair;
+  inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs' nameValuePair forEach;
 in
 {
   importAttrset = path: builtins.mapAttrs (_: import) (import path);
@@ -12,7 +12,7 @@ in
     , system
     , users ? [ ]
     }:
-    inputs.nixpkgs.lib.nixosSystem {
+    nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs system hostname;
@@ -27,13 +27,13 @@ in
             config.allowUnfree = true;
           };
           # Add each input as a registry
-          nix.registry = inputs.nixpkgs.lib.mapAttrs'
+          nix.registry = mapAttrs'
             (n: v:
-              inputs.nixpkgs.lib.nameValuePair n { flake = v; })
+              nameValuePair n { flake = v; })
             inputs;
         }
         # System wide config for each user
-      ] ++ inputs.nixpkgs.lib.forEach users
+      ] ++ forEach users
         (u: ../users/${u}/system);
     };
 
@@ -58,9 +58,9 @@ in
             config.allowUnfree = true;
           };
           # Add each input as a registry
-          nix.registry = inputs.nixpkgs.lib.mapAttrs'
+          nix.registry = mapAttrs'
             (n: v:
-              inputs.nixpkgs.lib.nameValuePair n { flake = v; })
+              nameValuePair n { flake = v; })
             inputs;
         }
       ];
