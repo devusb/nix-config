@@ -3,7 +3,7 @@
       ./terminal.nix
   ];
 
-  home.packages = with pkgs; [lens gnome.adwaita-icon-theme gnome.gnome-tweaks];
+  home.packages = with pkgs; [lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us];
   programs.google-chrome.enable = true;
   programs.vscode.enable = true;
 
