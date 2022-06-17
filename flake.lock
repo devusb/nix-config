@@ -80,6 +80,26 @@
         "type": "github"
       }
     },
+    "mpack": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1653072992,
+        "narHash": "sha256-EDxODb4WdYL2Qj4HXtCg5Qx20XYr7maicATCScZbaKE=",
+        "owner": "league",
+        "repo": "mpack",
+        "rev": "43e409051fd59157085bd03630abd7bc375149e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "league",
+        "repo": "mpack",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": [
@@ -176,6 +196,7 @@
         "flake-compat": "flake-compat",
         "hardware": "hardware",
         "home-manager": "home-manager",
+        "mpack": "mpack",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
