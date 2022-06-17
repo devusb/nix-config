@@ -8,7 +8,7 @@
     VAULT_ADDR = "https://vault.admin.imubit.in";
   };
 
-  home.packages = with pkgs; [ google-cloud-sdk postgresql pgcli mpack dive crane helm2_15_1 helm2_13_1 helm2_16_2 aws-sso-cli ];
+  home.packages = with pkgs; [ google-cloud-sdk postgresql pgcli dive crane helm2_15_1 helm2_13_1 helm2_16_2 aws-sso-cli ];
 
   programs.keychain.keys = [ "id_ed25519" ];
 
