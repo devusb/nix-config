@@ -17,7 +17,7 @@
     inetutils
     zip
     unzip
-    stable.awscli2
+    awscli2
     jq
     sqlite
     screen
