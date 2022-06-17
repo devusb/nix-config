@@ -4,6 +4,7 @@
       colima 
       docker
       wget
+      nano
     ];
 
   services.nix-daemon.enable = true;
