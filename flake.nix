@@ -33,6 +33,11 @@
     # mpack
     mpack.url = "github:league/mpack";
     mpack.inputs.nixpkgs.follows = "nixpkgs";
+
+    # mach-nix
+    mach-nix.url = "github:DavHau/mach-nix";
+    mach-nix.inputs.flake-utils.follows = "utils";
+    mach-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: 
