@@ -14,7 +14,6 @@
     micro
     mosh
     pwgen
-    python3
     inetutils
     zip
     unzip
