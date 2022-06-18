@@ -38,6 +38,7 @@
         settings = {
             add_newline = false;
             gcloud.disabled = true;
+            shlvl.disabled = false;
         };
     };
     programs.fzf = { 
