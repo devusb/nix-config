@@ -4,8 +4,8 @@
   mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
   # workaround broken pyopenssl and twisted InstallCheck phase on darwin
-  awscli2 = prev.awscli2.override { python3 = stable.python39; };
-  python39 = prev.python39.override {
+  awscli2 = if prev.system == "aarch64-darwin" then prev.awscli2.override { python3 = stable.python39; } else prev.awscli2;
+  python39 = if prev.system == "aarch64-darwin" then prev.python39.override {
     packageOverrides = self: super: {
       twisted = super.twisted.overrideAttrs (old: {
         doInstallCheck = false;
@@ -14,6 +14,6 @@
         meta = old.meta // { broken = false; };
       });
     };
-  };
+  } else prev.python39;
 
 } // import ../pkgs { pkgs = final; }
