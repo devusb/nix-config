@@ -73,12 +73,6 @@
           system = "x86_64-linux";
           users = ["mhelton"];
         };
-        imubit-morgan = mkSystem {
-          inherit overlays;
-          hostname = "imubit-morgan";
-          system = "x86_64-linux";
-          users = ["mhelton"];
-        };
       };
 
       darwinConfigurations = {
@@ -102,13 +96,6 @@
           hostname = "tomservo";
           graphical = true;
           gaming = true;
-        };
-        "mhelton@imubit-morgan" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "x86_64-linux";
-          hostname = "imubit-morgan";
-          work = true;
         };
         "mhelton@superintendent" = mkHome {
           inherit overlays;
