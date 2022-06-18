@@ -26,7 +26,7 @@
     ripgrep
     bat
     exa
-    stable.ansible
+    ansible
     terraform
     colmena
     unrar
