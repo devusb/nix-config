@@ -81,9 +81,9 @@
           hostname = "superintendent";
           system = "aarch64-darwin";
         };
-        IMUBIT-MORGANH-MBP13 = mkDarwinSystem {
+        imubit-morganh-mbp13 = mkDarwinSystem {
           inherit overlays;
-          hostname = "IMUBIT-MORGANH-MBP13";
+          hostname = "imubit-morganh-mbp13";
           system = "aarch64-darwin";
         };
       };
@@ -103,11 +103,11 @@
           system = "aarch64-darwin";
           hostname = "superintendent";
         };
-        "mhelton@IMUBIT-MORGANH-MBP13" = mkHome {
+        "mhelton@imubit-morganh-mbp13" = mkHome {
           inherit overlays;
           username = "mhelton";
           system = "aarch64-darwin";
-          hostname = "IMUBIT-MORGANH-MBP13";
+          hostname = "imubit-morganh-mbp13";
           work = true;
         };
       };
