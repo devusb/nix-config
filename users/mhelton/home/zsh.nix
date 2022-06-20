@@ -25,6 +25,18 @@
             source ~/.env
             fi
             source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+            nr() {
+                if (( # == 0 )); then
+                    print >&2 "Usage:\nnr packagename\nnr -x86 packagename"
+                    return
+                fi
+            	if [ $1 = '-x86' ]; then
+                    nix run --system x86_64-darwin nixpkgs#$2 -- $@[3,-1]
+                else
+                    nix run nixpkgs#$1 -- $@[2,-1]
+                fi
+            }
         ''
         ;
     };
