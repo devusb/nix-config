@@ -70,13 +70,13 @@
                     print -l $usage
                     return
                 elif (( $#flag_x86 && $#flag_stable )); then
-                    nix shell --system x86_64-darwin nixpkgs-stable#$1 -- $@[2,-1]
+                    nix shell --system x86_64-darwin nixpkgs-stable#$^@
                 elif (( $#flag_x86 )); then
-                    nix shell --system x86_64-darwin nixpkgs#$1 -- $@[2,-1]
+                    nix shell --system x86_64-darwin nixpkgs#$^@
                 elif (( $#flag_stable )); then
-                    nix shell nixpkgs-stable#$1 -- $@[2,-1]
+                    nix shell nixpkgs-stable#$^@
                 else
-                    nix shell nixpkgs#$1 -- $@[2,-1]
+                    nix shell nixpkgs#$^@
                 fi
             }
         ''
