@@ -57,7 +57,7 @@
                 local flag_x86 flag_stable
                 local usage=(
                     "alias for nix shell"
-                    "ns [-x|--x86] [-s|--stable] package"
+                    "ns [-x|--x86] [-s|--stable] package1 package2"
                 )
 
                 zmodload zsh/zutil
