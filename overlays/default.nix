@@ -3,6 +3,9 @@
   mpack = inputs.mpack.packages.${prev.system}.mpack;
   mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
+  # Darwin packages
+  brave = if prev.system == "aarch64-darwin" then prev.callPackage ../pkgs/brave {} else prev.brave;
+
   # workaround broken pyopenssl and twisted InstallCheck phase on darwin
   awscli2 = if prev.system == "aarch64-darwin" then prev.awscli2.override { 
     python3 = stable.python39; 
