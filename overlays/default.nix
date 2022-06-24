@@ -18,4 +18,4 @@
     };
   } else prev.python39;
 
-} // import ../pkgs { pkgs = final; }
+} // import ../pkgs { pkgs = final; prev = prev; }
