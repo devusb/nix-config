@@ -5,7 +5,6 @@
       docker
       wget
       nano
-      brave
     ];
 
   services.nix-daemon.enable = true;
