@@ -1,4 +1,4 @@
-{ lib, fetchurl, stdenv, undmg, sqlite }:
+{ lib, fetchurl, stdenv, undmg }:
   stdenv.mkDerivation rec {
     pname = "brave";
     version = "1.40.107";
@@ -8,7 +8,7 @@
       sha256 = "sha256-R1356X+T9iWk37ct6tgGvNz3szKTrF9/J1RTQQno/gU=";
     };
 
-    buildInputs = [ undmg sqlite ];
+    buildInputs = [ undmg ];
 
     unpackPhase = ''
       undmg $src
