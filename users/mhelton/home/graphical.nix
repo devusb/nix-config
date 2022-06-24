@@ -4,7 +4,6 @@
   ];
 
   home.packages = with pkgs; [lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave];
-  programs.google-chrome.enable = true;
   programs.vscode.enable = true;
 
   dconf.settings = {
@@ -28,7 +27,7 @@
       natural-scroll = true;
     };
     "org/gnome/shell" = {
-      favorite-apps = ["google-chrome.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
+      favorite-apps = ["brave-browser.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
     };
     "org/gnome/shell/keybindings" = {
       toggle-overview = ["<Control><Alt>Tab"];
