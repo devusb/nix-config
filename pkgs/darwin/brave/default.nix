@@ -1,14 +1,14 @@
-{ lib, fetchurl, stdenv, undmg }:
+{ lib, fetchurl, stdenv, undmg, sqlite }:
   stdenv.mkDerivation rec {
     pname = "brave";
-    version = "1.40.105";
+    version = "1.40.107";
 
     src = fetchurl {
       url = "https://github.com/brave/brave-browser/releases/download/v${version}/Brave-Browser-arm64.dmg";
-      sha256 = "sha256-4UFmEbJBLH3y/yqp/uUGuYddkl1i3OlelWkTR6uWgNM=";
+      sha256 = "sha256-R1356X+T9iWk37ct6tgGvNz3szKTrF9/J1RTQQno/gU=";
     };
 
-    buildInputs = [ undmg ];
+    buildInputs = [ undmg sqlite ];
 
     unpackPhase = ''
       undmg $src
