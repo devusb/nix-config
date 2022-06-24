@@ -30,6 +30,9 @@
     "org/gnome/shell" = {
       favorite-apps = ["google-chrome.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
     };
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = ["<Control><Alt>Tab"];
+    };
   };
 
   home.file.".config/autostart/_1password.desktop".text = ''
