@@ -1,5 +1,7 @@
 # When you add custom packages, list them here
 { pkgs }: {
+  imports = if builtins.pathExists then "./${pkgs.system}" pkgs.system else [];
+  
   helm2_15_1 = pkgs.callPackage ./helm2 { version = "2.15.1"; };
   helm2_13_1 = pkgs.callPackage ./helm2 { version = "2.13.1"; };
   helm2_16_2 = pkgs.callPackage ./helm2 { version = "2.16.2"; };
