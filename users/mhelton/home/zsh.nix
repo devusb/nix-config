@@ -25,7 +25,7 @@
             source ~/.env
             fi
             source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
-        '' + builtins.readFile ./functions.zsh
+        '' + builtins.readFile ./extra/functions.zsh
         ;
     };
     programs.keychain = {
