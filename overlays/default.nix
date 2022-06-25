@@ -7,7 +7,7 @@
   awscli2 = if prev.system == "aarch64-darwin" then prev.awscli2.override { 
     python3 = stable.python39; 
   } else prev.awscli2;
-  python39 = if prev.system == "aarch64-darwin" then prev.python39.override {
+  python310 = if prev.system == "aarch64-darwin" then prev.python310.override {
     packageOverrides = self: super: {
       twisted = super.twisted.overrideAttrs (old: {
         doInstallCheck = false;
@@ -16,6 +16,6 @@
         meta = old.meta // { broken = false; };
       });
     };
-  } else prev.python39;
+  } else prev.python310;
 
 } // import ../pkgs { pkgs = final; prev = prev; }
