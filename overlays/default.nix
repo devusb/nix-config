@@ -17,5 +17,15 @@
       });
     };
   } else prev.python39;
+  python310 = if prev.system == "aarch64-darwin" then prev.python310.override {
+    packageOverrides = self: super: {
+      twisted = super.twisted.overrideAttrs (old: {
+        doInstallCheck = false;
+      });
+      pyopenssl = super.pyopenssl.overrideAttrs (old: {
+        meta = old.meta // { broken = false; };
+      });
+    };
+  } else prev.python39;
 
 } // import ../pkgs { pkgs = final; prev = prev; }

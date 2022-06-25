@@ -77,6 +77,7 @@ in
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit username system;
+      pkgs = builtins.getAttr system inputs.nixpkgs.outputs.legacyPackages;
       extraSpecialArgs = {
         inherit system hostname graphical gaming work inputs;
       };
