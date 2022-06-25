@@ -20,7 +20,7 @@
     '';
 
     patchPhase = ''
-
+      rm -rf Brave\ Browser.app/Contents/Frameworks/Brave\ Browser\ Framework.framework/Versions/Current/Frameworks/Sparkle.framework/Versions/Current/Resources/Autoupdate.app
     '';
 
     meta = {
