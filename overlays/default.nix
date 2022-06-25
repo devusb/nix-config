@@ -1,6 +1,5 @@
 { inputs, ... }: final: prev: rec {
   stable = import inputs.nixpkgs-stable { system = prev.system; };
-  x86_64 = import inputs.nixpkgs { system = "x86_64-darwin"; };
   mpack = inputs.mpack.packages.${prev.system}.mpack;
   mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
