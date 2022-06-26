@@ -1,13 +1,8 @@
 { config, pkgs, lib, ... }:
-
 with lib;
-
 let
-
   cfg = config.programs.iterm2;
-
   toPlist = lib.generators.toPlist { };
-
 in
 {
   options.programs.iterm2 = {
@@ -17,7 +12,7 @@ in
       type = types.package;
       default = pkgs.iterm2;
       defaultText = literalExpression "pkgs.iterm2";
-      description = "The package to use for iterm2.";
+      description = "The package to use for iterm2";
     };
 
     profile = mkOption {
@@ -29,16 +24,19 @@ in
           entryOrAttrsOf = t: either entry (attrsOf t);
           entries = entryOrAttrsOf (entryOrAttrsOf entry);
         in
-        attrsOf entries // { description = "iterm2 configuration"; };
+        attrsOf entries // { description = "iterm2 profile"; };
       default = { };
       example = literalExpression ''
         {
           Name = "home-manager profile";
-          Guid = "C732FDA8-7A4A-4998-A019-C9FDDAB1C0BC";
+          Guid = "02F712C4-2AF1-4236-98BB-3F44FD753723";
           "Unlimited Scrollback" = true;
         }
       '';
-      description = "iTerm2 profile to be linked into the DynamicProfiles directory.";
+      description = ''
+        iTerm2 profile to be linked into the DynamicProfiles directory
+        See https://iterm2.com/documentation-dynamic-profiles.html for usage examples
+      '';
     };
 
     preferences = mkOption {
@@ -50,17 +48,18 @@ in
           entryOrAttrsOf = t: either entry (attrsOf t);
           entries = entryOrAttrsOf (entryOrAttrsOf entry);
         in
-        attrsOf entries // { description = "iterm2 configuration"; };
+        attrsOf entries // { description = "iterm2 preferences"; };
       default = { };
       example = literalExpression ''
-      {
-        PromptOnQuit = false;
-        SoundForEsc = false;
-      }
+        {
+          "Default Bookmark Guid" = "02F712C4-2AF1-4236-98BB-3F44FD753723";
+          PromptOnQuit = false;
+          SoundForEsc = false;
+        }
       '';
       description = ''
-        iTerm2 preferences to be linked into ~/.config/iterm2.
-        To be used, will need to set "Load preferences from a custom folder or URL" in General->Preferences to this folder.
+        iTerm2 preferences to be linked into ~/.config/iterm2
+        To be used, will need to set "Load preferences from a custom folder or URL" in General->Preferences to this folder
       '';
     };
   };
