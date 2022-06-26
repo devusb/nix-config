@@ -1,5 +1,7 @@
-{ pkgs, config, system, ... }: {
-  xdg.configFile."iterm2/com.googlecode.iterm2.plist".source = ./extra/iterm2.conf;
+{ pkgs, config, system, lib, ... }: {
+  xdg.configFile = {
+    "iterm2/com.googlecode.iterm2.plist".text = lib.generators.toPlist {} (import ./iterm2.nix);
+  };
   home.packages = with pkgs; [
   ];
 }
