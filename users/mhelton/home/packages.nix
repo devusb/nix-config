@@ -8,23 +8,19 @@
     kustomize
     kubernetes-helm
     speedtest-cli
-    htop
     k3sup
     kompose
-    micro
     mosh
     pwgen
     inetutils
     zip
     unzip
     awscli2
-    jq
     sqlite
     screen
     yq-go
     tldr
     ripgrep
-    exa
     ansible
     terraform
     colmena
@@ -35,6 +31,22 @@
   ];
 
   programs.bat = {
+    enable = true;
+  };
+
+  programs.exa = {
+    enable = true;
+  };
+
+  programs.micro = {
+    enable = true;
+  };
+
+  programs.jq = {
+    enable = true;
+  };
+
+  programs.htop = {
     enable = true;
   };
 }
