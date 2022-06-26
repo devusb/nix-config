@@ -419,7 +419,7 @@
       "Brighten Bold Text" = true;
       "Character Encoding" = 4;
       "Close Sessions On End" = true;
-      Columns = 155;
+      Columns = 169;
       Command = "";
       "Cursor Boost" = 0;
       "Cursor Color" = {
@@ -797,7 +797,7 @@
       "Option Key Sends" = 0;
       "Prompt Before Closing 2" = false;
       "Right Option Key Sends" = 0;
-      Rows = 42;
+      Rows = 43;
       Screen = -1;
       "Scrollback Lines" = 1000;
       "Selected Text Color" = {
@@ -906,7 +906,7 @@
       Action = 27;
       Escaping = 2;
       Label = "New Tab";
-      Text = "713C0306-62D9-4BF1-A976-CE4127D388C2";
+      Text = "C732FDA8-7A4A-4998-A019-C9FDDAB1C0BC";
       Version = 2;
     };
     "touchbar:A58C948B-BCBB-4EF1-A044-CFD60958D8BE" = {
