@@ -780,7 +780,7 @@
       };
       "Minimum Contrast" = 0;
       "Mouse Reporting" = true;
-      Name = "Default";
+      Name = "mhelton";
       "Non Ascii Font" = "Monaco 12";
       "Non-ASCII Anti Aliased" = true;
       "Normal Font" = "FiraCodeNerdFontCompleteM-Regular 12";
