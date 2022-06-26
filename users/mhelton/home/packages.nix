@@ -24,7 +24,6 @@
     yq-go
     tldr
     ripgrep
-    bat
     exa
     ansible
     terraform
@@ -34,4 +33,8 @@
     mach-nix
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  programs.bat = {
+    enable = true;
+  };
 }
