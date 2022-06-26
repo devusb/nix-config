@@ -850,7 +850,7 @@
       Tags = [ ];
       "Terminal Type" = "xterm-256color";
       Transparency = 0.066398;
-      "Unlimited Scrollback" = false;
+      "Unlimited Scrollback" = true;
       "Use Bold Font" = true;
       "Use Bright Bold" = true;
       "Use Cursor Guide" = false;
@@ -892,4 +892,41 @@
   ];
   VisualIndicatorForEsc = false;
   findMode_iTerm = 0;
+
+  # Touch Bar settings
+  GlobalTouchBarMap = {
+    "touchbar:9CD7FAE6-741C-4C48-8390-4D6E6016E473" = {
+      Action = 0;
+      Escaping = 2;
+      Label = "Next";
+      Text = "";
+      Version = 2;
+    };
+    "touchbar:51DE1F91-E4F8-472E-B5B2-42CE82AC97E6" = {
+      Action = 27;
+      Escaping = 2;
+      Label = "New Tab";
+      Text = "713C0306-62D9-4BF1-A976-CE4127D388C2";
+      Version = 2;
+    };
+    "touchbar:A58C948B-BCBB-4EF1-A044-CFD60958D8BE" = {
+      Action = 2;
+      Escaping = 2;
+      Label = "Prev.";
+      Text = "";
+      Version = 2;
+    };
+  };
+
+  "NSTouchBarConfig regular".CurrentItems = [
+    "iTermTouchBarIdentifierFunctionKeys"
+    "touchbar:51DE1F91-E4F8-472E-B5B2-42CE82AC97E6/v0"
+    "touchbar:A58C948B-BCBB-4EF1-A044-CFD60958D8BE/v0"
+    "touchbar:9CD7FAE6-741C-4C48-8390-4D6E6016E473/v0"
+    "NSTouchBarItemIdentifierFlexibleSpace"
+    "NSTouchBarItemIdentifierOtherItemsProxy"
+    "iTermTouchBarIdentifierAddMark"
+    "iTermTouchBarIdentifierPreviousMark"
+    "iTermTouchBarIdentifierNextMark"
+  ];
 }
