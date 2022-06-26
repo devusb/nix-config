@@ -8,9 +8,8 @@ let
 
   toPlist = lib.generators.toPlist { };
 
-in {
-  #meta.maintainers = [ maintainers.devusb ];
-
+in
+{
   options.programs.iterm2 = {
     enable = mkEnableOption "iterm2";
 
@@ -21,7 +20,7 @@ in {
       description = "The package to use for iterm2.";
     };
 
-    settings = mkOption {
+    profile = mkOption {
       type = with types;
         let
           prim = oneOf [ bool int str float ];
@@ -29,23 +28,55 @@ in {
           entry = either prim (listOf primOrPrimAttrs);
           entryOrAttrsOf = t: either entry (attrsOf t);
           entries = entryOrAttrsOf (entryOrAttrsOf entry);
-        in attrsOf entries // { description = "iterm2 configuration"; };
+        in
+        attrsOf entries // { description = "iterm2 configuration"; };
       default = { };
       example = literalExpression ''
+        {
+          Name = "home-manager profile";
+          Guid = "C732FDA8-7A4A-4998-A019-C9FDDAB1C0BC";
+          "Unlimited Scrollback" = true;
+        }
+      '';
+      description = "iTerm2 profile to be linked into the DynamicProfiles directory.";
+    };
+
+    preferences = mkOption {
+      type = with types;
+        let
+          prim = oneOf [ bool int str float ];
+          primOrPrimAttrs = either prim (attrsOf prim);
+          entry = either prim (listOf primOrPrimAttrs);
+          entryOrAttrsOf = t: either entry (attrsOf t);
+          entries = entryOrAttrsOf (entryOrAttrsOf entry);
+        in
+        attrsOf entries // { description = "iterm2 configuration"; };
+      default = { };
+      example = literalExpression ''
+      {
+        PromptOnQuit = false;
+        SoundForEsc = false;
+      }
       '';
       description = ''
+        iTerm2 preferences to be linked into ~/.config/iterm2.
+        To be used, will need to set "Load preferences from a custom folder or URL" in General->Preferences to this folder.
       '';
     };
   };
 
   config = mkIf cfg.enable {
-
     # Always add the configured `iterm2` package.
-    #home.packages = [ cfg.package ];
+    home.packages = [ cfg.package ];
 
-    # If there are user-provided settings, generate the config file.
-    xdg.configFile."iterm2/AppSupport/DynamicProfiles/home-manager.plist" = mkIf (cfg.settings != { }) {
-      text = toPlist cfg.settings;
+    # If a profile is specified, add it to the DynamicProfiles folder
+    xdg.configFile."iterm2/AppSupport/DynamicProfiles/home-manager.plist" = mkIf (cfg.profile != { }) {
+      text = toPlist { Profiles = [ cfg.profile ]; };
+    };
+
+    # If preferences are specified, add them to .config/iterm2
+    xdg.configFile."iterm2/com.googlecode.iterm2.plist" = mkIf (cfg.preferences != { }) {
+      text = toPlist cfg.preferences;
     };
   };
 }
