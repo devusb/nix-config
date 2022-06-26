@@ -1,6 +1,6 @@
-{ pkgs, ...}: {
+{ pkgs, ... }: {
   programs.git = {
-    userName  = "Morgan Helton";
+    userName = "Morgan Helton";
     userEmail = "morgan@imubit.com";
   };
 
@@ -25,5 +25,5 @@
     kubernetes.disabled = false;
     aws.disabled = false;
   };
-  
+
 }

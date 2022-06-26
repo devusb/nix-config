@@ -40,7 +40,7 @@
     mach-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs: 
+  outputs = inputs:
     let
       my-lib = import ./lib { inherit inputs; };
       inherit (builtins) attrValues mapAttrs;
@@ -71,7 +71,7 @@
           inherit overlays;
           hostname = "tomservo";
           system = "x86_64-linux";
-          users = ["mhelton"];
+          users = [ "mhelton" ];
         };
       };
 

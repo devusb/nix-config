@@ -1,15 +1,15 @@
 { inputs, lib, config, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ 
-      vim 
-      colima 
-      docker
-      wget
-      nano
-    ];
+  environment.systemPackages = with pkgs; [
+    vim
+    colima
+    docker
+    wget
+    nano
+  ];
 
   services.nix-daemon.enable = true;
 
-  programs.zsh.enable = true;  # default shell on catalina
+  programs.zsh.enable = true; # default shell on catalina
 
   nix = {
     package = pkgs.nixFlakes;
@@ -19,7 +19,7 @@
   };
 
   system.defaults = {
-      dock.autohide = false;
-      dock.orientation = "bottom";
+    dock.autohide = false;
+    dock.orientation = "bottom";
   };
 }

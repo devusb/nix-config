@@ -1,7 +1,7 @@
 {
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["mhelton"];
+    polkitPolicyOwners = [ "mhelton" ];
     gid = 5001;
   };
 }

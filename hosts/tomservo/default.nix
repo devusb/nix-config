@@ -5,11 +5,11 @@
     ../common/steam.nix
     ../common/_1password.nix
   ];
-  
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.stateVersion = "21.11"; 
+  system.stateVersion = "21.11";
 
   # pin kernel version
   boot.kernelPackages = pkgs.linuxPackages_5_18;
@@ -22,7 +22,7 @@
     passwordAuthentication = true;
     permitRootLogin = "no";
   };
-  
+
   networking.firewall.enable = false;
 
   hardware.pulseaudio.enable = false;
@@ -51,5 +51,5 @@
   # autologin crash workaround
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
-  
+
 }

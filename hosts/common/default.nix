@@ -40,9 +40,11 @@
 
   # This will add your inputs as registries, making operations with them
   # consistent with your flake inputs.
-  nix.registry = lib.mapAttrs' (n: v:
-    lib.nameValuePair (n) ({ flake = v; })
-  ) inputs;
+  nix.registry = lib.mapAttrs'
+    (n: v:
+      lib.nameValuePair (n) ({ flake = v; })
+    )
+    inputs;
 
   # install some programs globally
   programs.zsh.enable = true;

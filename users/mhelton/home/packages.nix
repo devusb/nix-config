@@ -1,7 +1,7 @@
-{ pkgs, ...}: {
-  home.packages = with pkgs; [ 
-    kubectl 
-    kubectx 
+{ pkgs, ... }: {
+  home.packages = with pkgs; [
+    kubectl
+    kubectx
     k9s
     fluxcd
     vault

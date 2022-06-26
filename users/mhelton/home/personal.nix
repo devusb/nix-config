@@ -1,6 +1,6 @@
-{ pkgs, ...}: {
+{ pkgs, ... }: {
   programs.git = {
-    userName  = "Morgan Helton";
+    userName = "Morgan Helton";
     userEmail = "mhelton@gmail.com";
   };
 
@@ -9,7 +9,7 @@
   };
 
   home.packages = with pkgs; [ ];
-  
+
   programs.keychain.keys = [ "id_rsa" ];
 
   programs.starship.settings = {

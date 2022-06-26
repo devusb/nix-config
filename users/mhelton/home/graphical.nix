@@ -1,9 +1,9 @@
-{ pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
-      ./terminal.nix
+    ./terminal.nix
   ];
 
-  home.packages = with pkgs; [lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip];
+  home.packages = with pkgs; [ lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
   programs.vscode.enable = true;
 
   dconf.settings = {
@@ -27,24 +27,24 @@
       natural-scroll = true;
     };
     "org/gnome/shell" = {
-      favorite-apps = ["brave-browser.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
+      favorite-apps = [ "brave-browser.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop" ];
     };
     "org/gnome/shell/keybindings" = {
-      toggle-overview = ["<Control><Alt>Tab"];
+      toggle-overview = [ "<Control><Alt>Tab" ];
     };
   };
 
   home.file.".config/autostart/_1password.desktop".text = ''
-      [Desktop Entry]
-      Name=1Password
-      Exec=1password --silent
-      Terminal=false
-      Type=Application
-      Icon=1password
-      StartupWMClass=1Password
-      Comment=Password manager and secure wallet
-      MimeType=x-scheme-handler/onepassword;
-      Categories=Office;
-    '';
+    [Desktop Entry]
+    Name=1Password
+    Exec=1password --silent
+    Terminal=false
+    Type=Application
+    Icon=1password
+    StartupWMClass=1Password
+    Comment=Password manager and secure wallet
+    MimeType=x-scheme-handler/onepassword;
+    Categories=Office;
+  '';
 
 }

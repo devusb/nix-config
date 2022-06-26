@@ -17,7 +17,7 @@ buildGoPackage rec {
   goDeps = ./deps.nix;
 
   # Thsese are the original flags from the helm makefile
-  ldflags = ["-X k8s.io/helm/pkg/version.Version=v${version}" "-X k8s.io/helm/pkg/version.GitTreeState=clean""-X k8s.io/helm/pkg/version.BuildMetadata=" "-w" "-s"];
+  ldflags = [ "-X k8s.io/helm/pkg/version.Version=v${version}" "-X k8s.io/helm/pkg/version.GitTreeState=clean" "-X k8s.io/helm/pkg/version.BuildMetadata=" "-w" "-s" ];
 
   preBuild = ''
     # This is a hack(?) to flatten the dependency tree the same way glide or dep would
