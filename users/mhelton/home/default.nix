@@ -19,4 +19,9 @@
   systemd.user.startServices = "sd-switch";
 
   fonts.fontconfig.enable = true;
+
+  programs.iterm2 = {
+    enable = true;
+    settings = import ./extra/iterm2_profile.nix;
+  };
 }
