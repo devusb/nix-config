@@ -19,7 +19,10 @@
   };
 
   system.defaults = {
-    dock.autohide = false;
-    dock.orientation = "bottom";
+      dock = {
+        autohide = false;
+        orientation = "bottom";
+        wvous-tl-corner = 2;
+      };
   };
 }
