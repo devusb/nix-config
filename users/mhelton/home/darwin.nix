@@ -4,7 +4,7 @@
 
   programs.iterm2 = {
     enable = true;
-    profile = import ./extra/iterm2_profile.nix;
+    profiles = import ./extra/iterm2_profile.nix;
     preferences = import ./extra/iterm2.nix;
   };
 }

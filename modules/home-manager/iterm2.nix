@@ -15,7 +15,7 @@ in
       description = "The package to use for iterm2";
     };
 
-    profile = mkOption {
+    profiles = mkOption {
       type = with types;
         let
           prim = oneOf [ bool int str float ];
@@ -24,17 +24,25 @@ in
           entryOrAttrsOf = t: either entry (attrsOf t);
           entries = entryOrAttrsOf (entryOrAttrsOf entry);
         in
-        attrsOf entries // { description = "iterm2 profile"; };
-      default = { };
+        listOf (attrsOf entries) // { description = "iterm2 profiles"; };
+      default = [ ];
       example = literalExpression ''
-        {
-          Name = "home-manager profile";
-          Guid = "02F712C4-2AF1-4236-98BB-3F44FD753723";
-          "Unlimited Scrollback" = true;
-        }
+        [
+          {
+            Name = "home-manager profile";
+            Guid = "02F712C4-2AF1-4236-98BB-3F44FD753723";
+            "Unlimited Scrollback" = true;
+          }
+          {
+            Name = "foo.example.com";
+            Guid = "foo.example.com";
+            "Custom Command" = "Yes";
+            Command = "ssh foo.example.com";
+          }
+        ]
       '';
       description = ''
-        iTerm2 profile to be linked into the DynamicProfiles directory
+        iTerm2 profiles to be linked into the DynamicProfiles directory
         See https://iterm2.com/documentation-dynamic-profiles.html for usage examples
       '';
     };
@@ -69,8 +77,8 @@ in
     home.packages = [ cfg.package ];
 
     # If a profile is specified, add it to the DynamicProfiles folder
-    xdg.configFile."iterm2/AppSupport/DynamicProfiles/home-manager.plist" = mkIf (cfg.profile != { }) {
-      text = toPlist { Profiles = [ cfg.profile ]; };
+    xdg.configFile."iterm2/AppSupport/DynamicProfiles/home-manager.plist" = mkIf (cfg.profiles != [ ]) {
+      text = toPlist { Profiles = cfg.profiles; };
     };
 
     # If preferences are specified, add them to .config/iterm2
