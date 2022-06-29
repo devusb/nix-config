@@ -19,4 +19,8 @@
   systemd.user.startServices = "sd-switch";
 
   fonts.fontconfig.enable = true;
+
+  home.sessionVariables = {
+    EDITOR = "micro";
+  };
 }

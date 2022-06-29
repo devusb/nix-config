@@ -9,7 +9,6 @@
   };
 
   home.packages = with pkgs; [
-    gh
   ];
 
   programs.keychain.keys = [ "id_rsa" ];
@@ -17,5 +16,7 @@
   programs.starship.settings = {
     aws.disabled = true;
   };
+
+  programs.gh.enable = true;
 
 }
