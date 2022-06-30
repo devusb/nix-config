@@ -15,13 +15,13 @@ nr() {
         print -l $usage
         return
     elif (( $#flag_x86 && $#flag_stable )); then
-        nix run --system x86_64-darwin nixpkgs-stable#$1 -- $@[2,-1]
+        nix run --system x86_64-darwin ${DOTFILES}\#stable.$1 -- $@[2,-1]
     elif (( $#flag_x86 )); then
-        nix run --system x86_64-darwin nixpkgs#$1 -- $@[2,-1]
+        nix run --system x86_64-darwin ${DOTFILES}\#$1 -- $@[2,-1]
     elif (( $#flag_stable )); then
-        nix run nixpkgs-stable#$1 -- $@[2,-1]
+        nix run ${DOTFILES}\#stable.$1 -- $@[2,-1]
     else
-        nix run nixpkgs#$1 -- $@[2,-1]
+        nix run ${DOTFILES}\#$1 -- $@[2,-1]
     fi
 }
 
@@ -42,12 +42,12 @@ ns() {
         print -l $usage
         return
     elif (( $#flag_x86 && $#flag_stable )); then
-        nix shell --system x86_64-darwin nixpkgs-stable#$^@
+        nix shell --system x86_64-darwin ${DOTFILES}\#stable.$^@
     elif (( $#flag_x86 )); then
-        nix shell --system x86_64-darwin nixpkgs#$^@
+        nix shell --system x86_64-darwin ${DOTFILES}\#$^@
     elif (( $#flag_stable )); then
-        nix shell nixpkgs-stable#$^@
+        nix shell ${DOTFILES}\#stable.$^@
     else
-        nix shell nixpkgs#$^@
+        nix shell ${DOTFILES}\#$^@
     fi
 }

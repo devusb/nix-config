@@ -7,4 +7,8 @@
   ];
 
   services.vscode-server.enable = true;
+
+  home.sessionVariables = {
+    DOTFILES = "/dotfiles/";
+  };
 }
