@@ -19,13 +19,13 @@
   };
 
   system.defaults = {
-      dock = {
-        autohide = false;
-        orientation = "bottom";
-        wvous-tl-corner = 2;
-        wvous-br-corner = 1;
-        wvous-tr-corner = 1;
-        wvous-bl-corner = 1;
-      };
+    dock = {
+      autohide = false;
+      orientation = "bottom";
+      wvous-tl-corner = 2;
+      wvous-br-corner = 1;
+      wvous-tr-corner = 1;
+      wvous-bl-corner = 1;
+    };
   };
 }
