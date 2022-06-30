@@ -60,4 +60,10 @@
       search_mode = "fulltext";
     };
   };
+  programs.direnv = {
+    enable = true;
+    nix-direnv = {
+      enable = true;
+    };
+  };
 }
