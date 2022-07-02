@@ -10,7 +10,7 @@
     "micro/syntax/terraform.yaml".source =
       pkgs.fetchFromGitHub
         {
-          owner = "devusb";
+          owner = "devops-kung-fu";
           repo = "micro-terraform-syntax";
           rev = "master";
           sha256 = "sha256-2R6Lo4ZvglNMzfkjDYqt19Az2oBSsth6WhHZtiVylx4=";
