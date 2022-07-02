@@ -783,7 +783,7 @@
     "Non Ascii Font" = "Monaco 12";
     "Non-ASCII Anti Aliased" = true;
     "Normal Font" = "FiraCodeNerdFontCompleteM-Regular 12";
-    "Option Key Sends" = 0;
+    "Option Key Sends" = 2;
     "Prompt Before Closing 2" = false;
     "Right Option Key Sends" = 0;
     Rows = 43;
