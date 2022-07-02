@@ -6,7 +6,7 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "ThomasHabets";
     repo = pname;
-    rev = "master";
+    rev = "9268e9c";
     sha256 = "sha256-XzZtV01yrQTU+NTrC6cb9T2RkN085sd9TA1efb39F40=";
   };
   vendorSha256 = "sha256-GNGuJDtH6fwxOUY1igDueLRUJcVHXOfaSmgBvRVSReg=";
