@@ -19,9 +19,6 @@
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
-  # Remove if you wish to disable unfree packages for your system
-  nixpkgs.config.allowUnfree = true;
-
   # Enable flakes and new 'nix' command
   nix = {
     package = pkgs.nixFlakes;
