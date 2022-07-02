@@ -77,9 +77,7 @@ in
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit username system;
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-      };
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {
         inherit system hostname graphical gaming work inputs;
       };
@@ -90,7 +88,7 @@ in
         {
           nixpkgs = {
             overlays = attrValues overlays;
-            config.allowUnfree = true;
+            config.allowUnfreePredicate = (pkg: true);
           };
           programs = {
             home-manager.enable = true;

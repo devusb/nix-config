@@ -12,10 +12,6 @@
   ++ (if work == true then [ ./work.nix ] else [ ./personal.nix ])
   ++ (if system == "x86_64-linux" then [ ./linux.nix ] else [ ./darwin.nix ]);
 
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
