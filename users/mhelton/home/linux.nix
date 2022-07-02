@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    "${fetchTarball { url="https://github.com/msteen/nixos-vscode-server/tarball/master"; sha256="1cszfjwshj6imkwip270ln4l1j328aw2zh9vm26wv3asnqlhdrak";}}/modules/vscode-server/home.nix"
+    "${fetchTarball { url="https://github.com/msteen/nixos-vscode-server/tarball/master"; sha256="0a62zj4vlcxjmn7a30gkpq3zbfys3k1d62d9nn2mi42yyv2hcrm1";}}/modules/vscode-server/home.nix"
   ];
   home.packages = with pkgs; [
     dig
