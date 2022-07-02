@@ -12,9 +12,6 @@
   ++ (if work == true then [ ./work.nix ] else [ ./personal.nix ])
   ++ (if system == "x86_64-linux" then [ ./linux.nix ] else [ ./darwin.nix ]);
 
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
   fonts.fontconfig.enable = true;
 
   home.sessionVariables = {
