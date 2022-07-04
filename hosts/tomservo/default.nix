@@ -11,6 +11,8 @@
 
   system.stateVersion = "21.11";
 
+
+
   # pin kernel version
   boot.kernelPackages = pkgs.linuxPackages_5_18;
 
@@ -51,5 +53,17 @@
   # autologin crash workaround
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
+
+  services.avahi = {
+    enable = true;
+    reflector = true;
+    nssmdns = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      userServices = true;
+      workstation = true;
+    };
+  };
 
 }
