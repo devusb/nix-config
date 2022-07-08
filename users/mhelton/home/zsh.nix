@@ -44,6 +44,7 @@
       add_newline = false;
       gcloud.disabled = true;
       shlvl.disabled = false;
+      time.disabled = false;
     };
   };
   programs.fzf = {
