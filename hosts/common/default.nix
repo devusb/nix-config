@@ -25,7 +25,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
   };
 
   # This will make all users activate their home-manager profile upon login, if
