@@ -4,21 +4,12 @@
   mpack = inputs.mpack.packages.${prev.system}.mpack;
   mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
-  # workaround broken pyopenssl and twisted InstallCheck phase on darwin
-  awscli2 =
-    if prev.system == "aarch64-darwin" then
-      prev.awscli2.override
-        {
-          python3 = stable.python310;
-        } else prev.awscli2;
+  # workaround broken pyopenssl on darwin
   python310 =
-    if prev.system == "aarch64-darwin" then
+    if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
       prev.python310.override
         {
           packageOverrides = self: super: {
-            twisted = super.twisted.overrideAttrs (old: {
-              doInstallCheck = false;
-            });
             pyopenssl = super.pyopenssl.overrideAttrs (old: {
               meta = old.meta // { broken = false; };
             });

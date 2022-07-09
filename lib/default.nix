@@ -76,16 +76,16 @@ in
     , work ? false
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit username system;
       pkgs = inputs.nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {
-        inherit system hostname graphical gaming work inputs;
+        inherit system hostname graphical gaming work inputs username;
       };
-      homeDirectory = if system == "aarch64-darwin" then "/Users/${username}" else "/home/${username}";
-      configuration = ../users/${username}/home;
-      extraModules = builtins.attrValues (import ../modules/home-manager) ++ [
-        # Base configuration
+      modules = builtins.attrValues (import ../modules/home-manager) ++ [
         {
+          home = {
+            inherit username;
+            homeDirectory = if system == "aarch64-darwin" then "/Users/${username}" else "/home/${username}";
+          };
           nixpkgs = {
             overlays = attrValues overlays;
             config.allowUnfreePredicate = (pkg: true);
@@ -96,6 +96,7 @@ in
           };
           systemd.user.startServices = "sd-switch";
         }
+        ../users/${username}/home
       ];
     };
 }
