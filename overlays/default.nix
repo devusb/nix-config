@@ -6,7 +6,7 @@
 
   # workaround broken pyopenssl on darwin
   python310 =
-    if prev.system == "aarch64-darwin" then
+    if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
       prev.python310.override
         {
           packageOverrides = self: super: {
