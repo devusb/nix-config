@@ -16,6 +16,10 @@
     psmisc
   ];
 
+  services.tailscale = {
+    enable = true;
+  };
+
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
