@@ -26,7 +26,6 @@
     unrar
     zsh-nix-shell
     mach-nix
-    tailscale
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 

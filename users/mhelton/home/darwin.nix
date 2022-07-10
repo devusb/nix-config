@@ -1,5 +1,6 @@
 { pkgs, config, system, lib, ... }: {
   home.packages = with pkgs; [
+    tailscale
   ];
 
   programs.iterm2 = {
