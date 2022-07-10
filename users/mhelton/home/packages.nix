@@ -12,7 +12,6 @@
     kompose
     mosh
     pwgen
-    inetutils
     zip
     unzip
     awscli2
