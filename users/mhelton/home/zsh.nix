@@ -16,6 +16,7 @@
       update-home = "home-manager switch --flake $DOTFILES";
       kb = "${pkgs.kubectl}/bin/kubectl";
       cat = "${pkgs.bat}/bin/bat --paging=always";
+      ts = "tailscale";
     };
     history = {
       size = 10000;
