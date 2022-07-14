@@ -55,7 +55,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      sync_address = "https://atuin.gaia.devusb.us";
+      sync_address = "http://atuin.devusb.us:8888";
       auto_sync = true;
       sync_frequency = "5m";
       search_mode = "fulltext";
