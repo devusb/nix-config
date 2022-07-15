@@ -10,18 +10,18 @@ nr() {
         {s,-stable}=flag_stable \
         {x,-x86}=flag_x86 ||
         return 1
-
+    export NIXPKGS_ALLOW_UNFREE=1
     if ((# == 0)); then
         print -l $usage
         return
     elif (( $#flag_x86 && $#flag_stable )); then
-        nix run --system x86_64-darwin ${DOTFILES}\#stable.$1 -- $@[2,-1]
+        nix run --impure --system x86_64-darwin ${DOTFILES}\#stable.$1 -- $@[2,-1]
     elif (( $#flag_x86 )); then
-        nix run --system x86_64-darwin ${DOTFILES}\#$1 -- $@[2,-1]
+        nix run --impure --system x86_64-darwin ${DOTFILES}\#$1 -- $@[2,-1]
     elif (( $#flag_stable )); then
-        nix run ${DOTFILES}\#stable.$1 -- $@[2,-1]
+        nix run --impure ${DOTFILES}\#stable.$1 -- $@[2,-1]
     else
-        nix run ${DOTFILES}\#$1 -- $@[2,-1]
+        nix run --impure ${DOTFILES}\#$1 -- $@[2,-1]
     fi
 }
 
@@ -37,17 +37,17 @@ ns() {
         {s,-stable}=flag_stable \
         {x,-x86}=flag_x86 ||
         return 1
-
+    export NIXPKGS_ALLOW_UNFREE=1
     if ((# == 0)); then
         print -l $usage
         return
     elif (( $#flag_x86 && $#flag_stable )); then
-        nix shell --system x86_64-darwin ${DOTFILES}\#stable.$^@
+        nix shell --impure --system x86_64-darwin ${DOTFILES}\#stable.$^@
     elif (( $#flag_x86 )); then
-        nix shell --system x86_64-darwin ${DOTFILES}\#$^@
+        nix shell --impure --system x86_64-darwin ${DOTFILES}\#$^@
     elif (( $#flag_stable )); then
-        nix shell ${DOTFILES}\#stable.$^@
+        nix shell --impure ${DOTFILES}\#stable.$^@
     else
-        nix shell ${DOTFILES}\#$^@
+        nix shell --impure ${DOTFILES}\#$^@
     fi
 }
