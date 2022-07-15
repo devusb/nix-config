@@ -44,4 +44,10 @@
   programs.htop = {
     enable = true;
   };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    shortcut = "a";
+  };
 }
