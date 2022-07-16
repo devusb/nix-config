@@ -4,14 +4,13 @@
     ../common
     ../common/steam.nix
     ../common/_1password.nix
+    ../common/docker.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "21.11";
-
-
 
   # pin kernel version
   boot.kernelPackages = pkgs.linuxPackages_5_18;
@@ -65,7 +64,5 @@
       workstation = true;
     };
   };
-
-  virtualisation.docker.enable = true;
 
 }
