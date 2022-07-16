@@ -16,7 +16,6 @@
     unzip
     awscli2
     sqlite
-    screen
     yq-go
     tldr
     ripgrep
