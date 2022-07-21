@@ -52,4 +52,12 @@
       tmuxPlugins.tmux-fzf
     ];
   };
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      push = {
+        default = "current";
+      };
+    };
+  };
 }
