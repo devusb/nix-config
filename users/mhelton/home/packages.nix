@@ -58,6 +58,9 @@
       push = {
         default = "current";
       };
+      help = {
+        autocorrect = "10";
+      };
     };
   };
 }
