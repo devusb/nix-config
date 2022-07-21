@@ -408,7 +408,7 @@
     "Brighten Bold Text" = true;
     "Character Encoding" = 4;
     "Close Sessions On End" = true;
-    Columns = 169;
+    Columns = 200;
     Command = "";
     "Cursor Boost" = 0;
     "Cursor Color" = {
@@ -786,7 +786,7 @@
     "Option Key Sends" = 2;
     "Prompt Before Closing 2" = false;
     "Right Option Key Sends" = 0;
-    Rows = 43;
+    Rows = 54;
     Screen = -1;
     "Scrollback Lines" = 1000;
     "Selected Text Color" = {
