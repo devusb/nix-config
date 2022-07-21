@@ -18,5 +18,6 @@ buildGoPackage rec {
   goDeps = ./deps.nix;
 
   meta = {
+    license = lib.licenses.mit;
   };
 }
