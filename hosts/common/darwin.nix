@@ -34,6 +34,8 @@
     };
     NSGlobalDomain = {
       "com.apple.trackpad.scaling" = "1.0";
+      "NSAutomaticCapitalizationEnabled" = false;
+      "NSAutomaticSpellingCorrectionEnabled" = false;
     };
   };
 }
