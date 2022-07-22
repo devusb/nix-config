@@ -28,5 +28,12 @@
       wvous-bl-corner = 1;
       tilesize = 57;
     };
+    trackpad = {
+      Clicking = true;
+      ActuationStrength = 1;
+    };
+    NSGlobalDomain = {
+      "com.apple.trackpad.scaling" = "1.2";
+    };
   };
 }
