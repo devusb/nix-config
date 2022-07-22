@@ -33,7 +33,7 @@
       ActuationStrength = 1;
     };
     NSGlobalDomain = {
-      "com.apple.trackpad.scaling" = "1.2";
+      "com.apple.trackpad.scaling" = "1.0";
     };
   };
 }
