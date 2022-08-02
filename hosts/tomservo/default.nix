@@ -14,6 +14,7 @@
 
   # pin kernel version
   boot.kernelPackages = pkgs.linuxPackages_5_18;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # enable syslog
   services.syslogd.enable = true;
