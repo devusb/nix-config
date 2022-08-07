@@ -56,7 +56,7 @@
     enable = true;
     extraConfig = {
       push = {
-        default = "current";
+        default = "simple";
       };
       help = {
         autocorrect = "10";
