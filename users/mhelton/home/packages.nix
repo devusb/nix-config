@@ -44,14 +44,10 @@
     enable = true;
   };
 
-  programs.tmux = {
+  programs.zellij = {
     enable = true;
-    baseIndex = 1;
-    shortcut = "a";
-    plugins = with pkgs; [
-      tmuxPlugins.tmux-fzf
-    ];
   };
+  
   programs.git = {
     enable = true;
     extraConfig = {
