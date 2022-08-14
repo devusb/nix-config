@@ -80,11 +80,13 @@
           inherit overlays;
           hostname = "superintendent";
           system = "aarch64-darwin";
+          users = [ "mhelton" ];
         };
         imubit-morganh-mbp13 = mkDarwinSystem {
           inherit overlays;
           hostname = "imubit-morganh-mbp13";
           system = "aarch64-darwin";
+          users = [ "mhelton" ];
         };
       };
 
