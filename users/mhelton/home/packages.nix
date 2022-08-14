@@ -9,7 +9,6 @@
     kubernetes-helm
     speedtest-cli
     k3sup
-    kompose
     mosh
     pwgen
     zip
@@ -47,7 +46,7 @@
   programs.zellij = {
     enable = true;
   };
-  
+
   programs.git = {
     enable = true;
     extraConfig = {

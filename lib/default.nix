@@ -63,7 +63,8 @@ in
               nameValuePair n { flake = v; })
             inputs;
         }
-      ];
+      ] ++ forEach users
+        (u: { users.users.${u}.home = "/Users/${u}"; });
     };
 
   mkHome =
