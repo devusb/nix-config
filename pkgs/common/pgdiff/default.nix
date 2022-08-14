@@ -1,11 +1,9 @@
-{ lib, buildGoPackage, fetchFromGitHub }:
+{ lib, buildGoModule, fetchFromGitHub }:
 
-buildGoPackage rec {
+buildGoModule rec {
   pname = "pgdiff";
   version = "1.0b1";
   rev = "2156eaecb0d4c5f1d7cb49a6db90467ec93a1fda";
-
-  goPackagePath = "github.com/joncrlsn/pgdiff";
 
   src = fetchFromGitHub {
     inherit rev;
@@ -15,7 +13,7 @@ buildGoPackage rec {
   };
 
   deleteVendor = true;
-  goDeps = ./deps.nix;
+  vendorSha256 = "sha256-rDuO6SfDOgocCdbMbkL23LJeDFqnWTwnTTp+JofOHos=";
 
   meta = {
     license = lib.licenses.mit;
