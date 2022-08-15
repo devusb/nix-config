@@ -16,4 +16,13 @@
           };
         } else prev.python310;
 
+  micro = stable.micro.overrideAttrs (old: {
+    src = prev.fetchFromGitHub {
+      owner = "devusb";
+      repo = "micro";
+      rev = "allow-plugin-symlinks";
+      sha256 = "sha256-WjdFBNL4Vqtrec5snRw3O5sE8HcrM6P4Rn3Cg3+FrdQ=";
+    };
+  });
+
 } // import ../pkgs { pkgs = final; prev = prev; }
