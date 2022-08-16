@@ -7,14 +7,6 @@
   };
 
   xdg.configFile = {
-    "micro/syntax/terraform.yaml".source =
-      pkgs.fetchFromGitHub
-        {
-          owner = "devops-kung-fu";
-          repo = "micro-terraform-syntax";
-          rev = "4e5217b";
-          sha256 = "sha256-2R6Lo4ZvglNMzfkjDYqt19Az2oBSsth6WhHZtiVylx4=";
-        } + "/terraform.micro";
     "micro/plug/editorconfig".source =
       pkgs.fetchFromGitHub
         {
