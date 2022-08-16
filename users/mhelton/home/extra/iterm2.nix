@@ -36,6 +36,7 @@
   ];
   VisualIndicatorForEsc = false;
   findMode_iTerm = 0;
+  AllowClipboardAccess = true;
 
   # Touch Bar settings
   GlobalTouchBarMap = {
