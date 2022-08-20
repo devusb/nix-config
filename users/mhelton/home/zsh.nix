@@ -12,7 +12,7 @@
       la = "${pkgs.exa}/bin/exa -a --icons";
       ga-intent = "${pkgs.git}/bin/git add --intent-to-add";
       grm-cache = "${pkgs.git}/bin/git rm --cached";
-      update = if system == "aarch64-darwin" then "darwin-rebuild switch --flake $DOTFILES && rm result" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
+      update = if system == "aarch64-darwin" then "sudo -H darwin-rebuild switch --flake $DOTFILES && rm result" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
       update-home = "home-manager switch --flake $DOTFILES";
       kb = "${pkgs.kubectl}/bin/kubectl";
       cat = "${pkgs.bat}/bin/bat --paging=always";
