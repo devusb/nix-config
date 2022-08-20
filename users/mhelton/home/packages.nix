@@ -45,6 +45,16 @@
 
   programs.zellij = {
     enable = true;
+    settings = {
+      keybinds = {
+        unbind = [
+          {Ctrl = "q";}
+        ];
+        session = [
+          {action = ["Quit"]; key = [{Char = "q";}];}
+        ];
+      };
+    };
   };
 
   programs.git = {
