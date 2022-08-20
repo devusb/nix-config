@@ -4,7 +4,6 @@
   mpack = inputs.mpack.packages.${prev.system}.mpack;
   mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
-  # workaround broken pyopenssl on darwin
   python310 =
     if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
       prev.python310.override
