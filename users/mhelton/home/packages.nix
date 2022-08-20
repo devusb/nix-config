@@ -48,10 +48,10 @@
     settings = {
       keybinds = {
         unbind = [
-          {Ctrl = "q";}
+          { Ctrl = "q"; }
         ];
         session = [
-          {action = ["Quit"]; key = [{Char = "q";}];}
+          { action = [ "Quit" ]; key = [{ Char = "q"; }]; }
         ];
       };
     };
