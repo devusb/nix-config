@@ -5,16 +5,12 @@
     k9s
     fluxcd
     vault
-    kustomize
     kubernetes-helm
     speedtest-cli
-    k3sup
-    mosh
     pwgen
     zip
     unzip
     awscli2
-    sqlite
     yq-go
     tldr
     ripgrep
