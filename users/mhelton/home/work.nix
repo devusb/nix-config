@@ -12,7 +12,7 @@
     mpack
     google-cloud-sdk
     postgresql
-    stable.pgcli # pin to stable until #186513 is merged
+    pgcli
     dive
     crane
     helm2_15_1

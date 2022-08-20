@@ -5,16 +5,12 @@
     k9s
     fluxcd
     vault
-    kustomize
     kubernetes-helm
     speedtest-cli
-    k3sup
-    mosh
     pwgen
     zip
     unzip
     awscli2
-    sqlite
     yq-go
     tldr
     ripgrep
@@ -48,10 +44,10 @@
     settings = {
       keybinds = {
         unbind = [
-          {Ctrl = "q";}
+          { Ctrl = "q"; }
         ];
         session = [
-          {action = ["Quit"]; key = [{Char = "q";}];}
+          { action = [ "Quit" ]; key = [{ Char = "q"; }]; }
         ];
       };
     };
