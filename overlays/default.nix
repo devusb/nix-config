@@ -10,11 +10,12 @@
       prev.python310.override
         {
           packageOverrides = self: super: {
+            # https://github.com/NixOS/nixpkgs/issues/175875
             pyopenssl = super.pyopenssl.overrideAttrs (old: {
               meta = old.meta // { broken = false; };
             });
 
-            # ovverride until https://github.com/shapely/shapely/issues/1473 is merged to nixpkgs
+            # https://github.com/NixOS/nixpkgs/issues/185996
             shapely = super.shapely.overrideAttrs (old: rec {
               version = "1.8.4";
               pname = old.pname;
@@ -25,6 +26,7 @@
               patches = builtins.elemAt old.patches 0;
               disabledTests = [ "test_info_handler" "test_error_handler" "test_error_handler_exception" ] ++ old.disabledTests;
             });
+
           };
         } else prev.python310;
 
