@@ -45,9 +45,11 @@
       keybinds = {
         unbind = [
           { Ctrl = "q"; }
+          { Ctrl = "s"; }
         ];
         session = [
           { action = [ "Quit" ]; key = [{ Char = "q"; }]; }
+          { action = [ {SwitchToMode = "Search";} ]; key = [{ Char = "s"; }]; }
         ];
       };
     };
