@@ -17,7 +17,6 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.inputs.flake-compat.follows = "flake-compat";
     home-manager.inputs.utils.follows = "utils";
 
     # nix-darwin
