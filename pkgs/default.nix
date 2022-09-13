@@ -6,4 +6,5 @@
   helm2_17_0 = pkgs.callPackage ./common/helm2 { version = "2.17.0"; buildGoPackage = pkgs.buildGo117Package; };
   pgdiff = pkgs.callPackage ./common/pgdiff { buildGoModule = pkgs.buildGo117Module; };
   brave = if prev.stdenv.isDarwin then prev.callPackage ./darwin/brave { } else prev.brave;
+  google-cloud-sdk = pkgs.callPackage ./common/google-cloud-sdk { python = prev.python3; };
 }
