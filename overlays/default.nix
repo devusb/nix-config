@@ -14,18 +14,6 @@
               meta = old.meta // { broken = false; };
             });
 
-            # https://github.com/NixOS/nixpkgs/issues/185996
-            shapely = super.shapely.overrideAttrs (old: rec {
-              version = "1.8.4";
-              pname = old.pname;
-              src = super.fetchPypi {
-                inherit pname version;
-                sha256 = "sha256-oZXlHKr6IYKR8suqP+9p/TNTyT7EtlsqRyLEz0DDGYw=";
-              };
-              patches = builtins.elemAt old.patches 0;
-              disabledTests = [ "test_info_handler" "test_error_handler" "test_error_handler_exception" ] ++ old.disabledTests;
-            });
-
           };
         } else prev.python310;
 
