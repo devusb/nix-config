@@ -21,8 +21,7 @@ name: NixOS
 #       - 'switch'
 #       - '.mergify.yml'
 
-on:
-  workflow_dispatch:
+on: push
 
 jobs:
   build:
