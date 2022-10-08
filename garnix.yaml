@@ -2,3 +2,5 @@ builds:
   exclude: []
   include:
     - nixosConfigurations.*
+    - darwinConfigurations.*
+    - homeConfigurations.*
