@@ -12,7 +12,7 @@
   programs.zsh.enable = true; # default shell on catalina
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
