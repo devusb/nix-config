@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     mpack
-    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin-darwin-arm ])
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     postgresql
     pgcli
     dive
