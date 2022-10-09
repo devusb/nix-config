@@ -5,5 +5,4 @@
   helm2_16_2 = pkgs.callPackage ./common/helm2 { version = "2.16.2"; buildGoPackage = pkgs.buildGo117Package; };
   helm2_17_0 = pkgs.callPackage ./common/helm2 { version = "2.17.0"; buildGoPackage = pkgs.buildGo117Package; };
   pgdiff = pkgs.callPackage ./common/pgdiff { buildGoModule = pkgs.buildGo117Module; };
-  google-cloud-sdk = pkgs.callPackage ./common/google-cloud-sdk { python = prev.python3; };
 }
