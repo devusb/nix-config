@@ -13,7 +13,7 @@
   system.stateVersion = "21.11";
 
   # pin kernel version
-  boot.kernelPackages =  pkgs.linuxPackages_6_0;
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # enable syslog

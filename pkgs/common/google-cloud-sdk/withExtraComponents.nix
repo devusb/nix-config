@@ -21,10 +21,10 @@ let
   comps = [ google-cloud-sdk ] ++ filterPreInstalled (findDepsRecursive (defaultComponents ++ comps_));
 in
 # Components are installed by copying the `google-cloud-sdk` package, along
-# with each component, over to a new location, and then patching that location
-# with `sed` to ensure the proper paths are used.
-# For some reason, this does not work properly with a `symlinkJoin`: the
-# `gcloud` binary doesn't seem able to find the installed components.
+  # with each component, over to a new location, and then patching that location
+  # with `sed` to ensure the proper paths are used.
+  # For some reason, this does not work properly with a `symlinkJoin`: the
+  # `gcloud` binary doesn't seem able to find the installed components.
 runCommand "google-cloud-sdk-${google-cloud-sdk.version}"
 {
   inherit (google-cloud-sdk) meta;

@@ -49,7 +49,7 @@
         ];
         session = [
           { action = [ "Quit" ]; key = [{ Char = "q"; }]; }
-          { action = [ {SwitchToMode = "Search";} ]; key = [{ Char = "s"; }]; }
+          { action = [{ SwitchToMode = "Search"; }]; key = [{ Char = "s"; }]; }
         ];
       };
     };

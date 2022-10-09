@@ -27,7 +27,8 @@ let
 
   withExtraComponents = callPackage ./withExtraComponents.nix { inherit components; };
 
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "google-cloud-sdk";
   inherit (data) version;
 
@@ -120,7 +121,7 @@ in stdenv.mkDerivation rec {
     longDescription = "The Google Cloud SDK. This package has the programs: gcloud, gsutil, and bq";
     sourceProvenance = with sourceTypes; [
       fromSource
-      binaryNativeCode  # anthoscli and possibly more
+      binaryNativeCode # anthoscli and possibly more
     ];
     # This package contains vendored dependencies. All have free licenses.
     license = licenses.free;

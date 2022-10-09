@@ -23,12 +23,6 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nixos-wsl
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-wsl.inputs.flake-utils.follows = "utils";
-    nixos-wsl.inputs.flake-compat.follows = "flake-compat";
-
     # mpack
     mpack.url = "github:league/mpack";
     mpack.inputs.nixpkgs.follows = "nixpkgs";
