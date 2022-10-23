@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, config, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -41,6 +41,9 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  hardware.nvidia.package = config.nur.repos.arc.packages.nvidia-patch.override {
+    nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   services.xserver.displayManager = {
     gdm.enable = true;

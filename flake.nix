@@ -31,6 +31,9 @@
     mach-nix.url = "github:DavHau/mach-nix";
     mach-nix.inputs.flake-utils.follows = "utils";
     mach-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nur
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = inputs:

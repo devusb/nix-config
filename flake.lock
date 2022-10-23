@@ -151,6 +151,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1666532625,
+        "narHash": "sha256-EnmpX7a1948bn94DKosJfeNhJHj1t1wdLvEh7vo9Ofg=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "caf11d93777caa3a268b404f0f843d4d5b613edc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "pypi-deps-db": {
       "flake": false,
       "locked": {
@@ -177,6 +192,7 @@
         "mpack": "mpack",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nur": "nur",
         "utils": "utils"
       }
     },

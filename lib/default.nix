@@ -19,6 +19,7 @@ in
       };
       modules = builtins.attrValues (import ../modules/nixos) ++ [
         ../hosts/${hostname}
+        inputs.nur.nixosModules.nur
         {
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
