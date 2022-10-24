@@ -32,6 +32,10 @@
     mach-nix.inputs.flake-utils.follows = "utils";
     mach-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # vscode-server
+    vscode-server.url = "github:msteen/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+
     # nur
     nur.url = "github:nix-community/NUR";
   };
