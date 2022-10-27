@@ -51,6 +51,7 @@
       add_newline = false;
       gcloud.disabled = true;
       shlvl.disabled = false;
+      command_timeout = 2000;
     };
   };
   programs.fzf = {
