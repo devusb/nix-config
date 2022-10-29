@@ -1,5 +1,11 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ lutris lm_sensors dolphin-emu-beta chiaki ];
+  home.packages = with pkgs; [
+    lutris
+    lm_sensors
+    dolphin-emu-beta
+    chiaki
+    (sunshine.override { cudaSupport = true; })
+  ];
 
   dconf.settings = {
     "org/gnome/shell" = {
