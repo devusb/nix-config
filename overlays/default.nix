@@ -17,4 +17,23 @@
           };
         } else prev.python310;
 
+  # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
+  zellij = prev.zellij.overrideAttrs (old: rec {
+    inherit (old) pname;
+    version = "0.31.3";
+
+    src = prev.fetchFromGitHub {
+      owner = "zellij-org";
+      repo = "zellij";
+      rev = "v${version}";
+      sha256 = "sha256-4iljPNw/tS/COStARg2PlrCoeE0lkSQ5+r8BrnxFLMo=";
+    };
+
+    cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
+      name = "${pname}-vendor.tar.gz";
+      inherit src;
+      outputHash = "sha256-GMEQRGTzGPVK3DZXGshrVrFavQz6erC08w0nqjKNMpo=";
+    });
+  });
+
 } // import ../pkgs { pkgs = final; prev = prev; }
