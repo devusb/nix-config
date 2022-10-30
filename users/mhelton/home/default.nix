@@ -1,7 +1,5 @@
 { inputs, lib, config, pkgs, system, graphical, gaming, work, ... }: {
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
-    # inputs.nix-colors.homeManagerModule
     ./zsh.nix
     ./packages.nix
     ./micro.nix

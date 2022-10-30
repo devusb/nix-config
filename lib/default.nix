@@ -19,7 +19,6 @@ in
       };
       modules = builtins.attrValues (import ../modules/nixos) ++ [
         ../hosts/${hostname}
-        inputs.nur.nixosModules.nur
         {
           networking.hostName = hostname;
           # Apply overlay and allow unfree packages
@@ -83,7 +82,6 @@ in
         inherit system hostname graphical gaming work inputs username;
       };
       modules = builtins.attrValues (import ../modules/home-manager) ++ [
-        inputs.vscode-server.nixosModules.home
         {
           home = {
             inherit username;

@@ -53,9 +53,6 @@
         default = import ./overlays { inherit inputs; };
       };
 
-      nixosModules = importAttrset ./modules/nixos;
-      homeManagerModules = importAttrset ./modules/home-manager;
-
       packages = forAllSystems (system:
         import inputs.nixpkgs { inherit system; overlays = attrValues overlays; }
       );

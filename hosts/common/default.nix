@@ -1,15 +1,13 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-
 { inputs, lib, config, pkgs, ... }: {
   imports = [
+    inputs.nur.nixosModules.nur
   ];
 
   # Set your time zone.
   time.timeZone = "US/Central";
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git
     nfs-utils

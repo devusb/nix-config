@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
+    inputs.vscode-server.nixosModules.home
   ];
+
   home.packages = with pkgs; [
     dig
     inetutils
