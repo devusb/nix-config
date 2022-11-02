@@ -19,6 +19,7 @@
       ts = "${pkgs.tailscale}/bin/tailscale";
       za = "${pkgs.zellij}/bin/zellij attach";
       z = "${pkgs.zellij}/bin/zellij";
+      wttr = "${pkgs.curl}/bin/curl wttr.in";
     };
     history = {
       size = 10000;
