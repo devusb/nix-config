@@ -51,3 +51,7 @@ ns() {
         NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ${DOTFILES}\#$^@
     fi
 }
+
+wttr () {
+    curl https://wttr.in/$1
+}
