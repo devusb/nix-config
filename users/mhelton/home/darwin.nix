@@ -1,6 +1,8 @@
 { pkgs, config, system, lib, ... }: {
   home.packages = with pkgs; [
     tailscale
+    gnused
+    gnugrep
   ];
 
   programs.iterm2 = {
