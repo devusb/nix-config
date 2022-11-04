@@ -3,6 +3,7 @@
     tailscale
     gnused
     gnugrep
+    gawk
   ];
 
   programs.iterm2 = {
