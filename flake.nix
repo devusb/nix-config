@@ -44,9 +44,9 @@
     let
       my-lib = import ./lib { inherit inputs; };
       #inherit (builtins) attrValues mapAttrs;
-      inherit (my-lib) mkSystem mkHome mkDarwinSystem mkDeploy importAttrset;
-      inherit (inputs.nixpkgs.lib) genAttrs systems;
-      forAllSystems = genAttrs systems.flakeExposed;
+      inherit (my-lib) mkHome mkDarwinSystem mkDeploy importAttrset;
+      inherit (inputs.nixpkgs.lib) genAttrs;
+      forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" ];
     in
     rec {
       overlays = {
