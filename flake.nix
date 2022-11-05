@@ -69,7 +69,18 @@
         tomservo = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/tomservo ];
+          modules = [
+            ./hosts/tomservo
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/linux.nix ./home/mhelton/graphical.nix ./home/mhelton/gaming.nix ];
+              };
+            }
+          ];
         };
       };
 
@@ -89,13 +100,6 @@
       };
 
       homeConfigurations = {
-        "mhelton@tomservo" = home-manager.lib.homeManagerConfiguration {
-          pkgs = legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-          modules = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/linux.nix ./home/mhelton/graphical.nix ./home/mhelton/gaming.nix ];
-        };
         "mhelton@superintendent" = mkHome {
           inherit overlays;
           username = "mhelton";
