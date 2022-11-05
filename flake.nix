@@ -40,18 +40,23 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
     let
       my-lib = import ./lib { inherit inputs; };
       #inherit (builtins) attrValues mapAttrs;
       inherit (my-lib) mkHome mkDarwinSystem mkDeploy importAttrset;
       inherit (inputs.nixpkgs.lib) genAttrs;
+      inherit (self) outputs;
       forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" ];
     in
     rec {
       overlays = {
         default = import ./overlays { inherit inputs; };
       };
+
+      nixosModules = import ./modules/nixos;
+      darwinModules = import ./modules/darwin;
+      homeManagerModules = import ./modules/home-manager;
 
       legacyPackages = forAllSystems (system:
         import nixpkgs {
@@ -68,7 +73,7 @@
       nixosConfigurations = {
         tomservo = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/tomservo
             home-manager.nixosModules.home-manager
@@ -76,8 +81,14 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/linux.nix ./home/mhelton/graphical.nix ./home/mhelton/gaming.nix ];
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/personal.nix
+                  ./home/mhelton/linux.nix
+                  ./home/mhelton/graphical.nix
+                  ./home/mhelton/gaming.nix
+                ];
               };
             }
           ];
@@ -85,11 +96,21 @@
       };
 
       darwinConfigurations = {
-        superintendent = mkDarwinSystem {
-          inherit overlays;
-          hostname = "superintendent";
-          system = "aarch64-darwin";
-          users = [ "mhelton" ];
+        superintendent = darwin.lib.darwinSystem {
+          pkgs = legacyPackages."aarch64-darwin";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/superintendent
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/darwin.nix ];
+              };
+            }
+          ];
         };
         imubit-morganh-mbp13 = mkDarwinSystem {
           inherit overlays;

@@ -11,13 +11,6 @@
 
   programs.zsh.enable = true; # default shell on catalina
 
-  nix = {
-    package = pkgs.nixVersions.stable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   system.defaults = {
     dock = {
       autohide = false;

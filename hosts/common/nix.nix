@@ -10,7 +10,7 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      user = "root";
     };
 
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
