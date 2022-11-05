@@ -4,6 +4,23 @@
     ./nix.nix
   ];
 
+  nix = {
+    package = pkgs.nixUnstable;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+  };
+
   # Set your time zone.
   time.timeZone = "US/Central";
 
