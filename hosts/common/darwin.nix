@@ -31,6 +31,8 @@
 
   programs.zsh.enable = true; # default shell on catalina
 
+  security.pam.enableSudoTouchIdAuth = true; # enable TouchID for sudo
+
   system.defaults = {
     dock = {
       autohide = false;
