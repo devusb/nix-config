@@ -9,5 +9,9 @@
 
   networking.hostName = "superintendent";
 
-  users.users.mhelton.home = "/Users/mhelton";
+  users.users = {
+    mhelton = {
+      home = "/Users/mhelton";
+    };
+  };
 }
