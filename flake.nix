@@ -44,7 +44,7 @@
     let
       inherit (inputs.nixpkgs.lib) genAttrs;
       inherit (self) outputs;
-      forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" ];
+      forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
     in
     rec {
       overlays = {
