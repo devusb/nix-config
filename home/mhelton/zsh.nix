@@ -37,8 +37,7 @@
       bindkey "\e[1;3C" forward-word
       bindkey "\e[1;5D" backward-word
       bindkey "\e[1;5C" forward-word
-    '' + builtins.readFile ./extra/functions.zsh
-    ;
+    '' + import ./extra/zsh_functions.nix { inherit pkgs; };
   };
   programs.keychain = {
     enable = true;
