@@ -1,15 +1,13 @@
 { inputs, ... }:
 let
-  additions = final: prev: rec {
-    imports = [ ../pkgs { pkgs = final; } ];
+  customPkgs = final: _prev: import ../pkgs { pkgs = final; };
 
+  modifications = final: prev: rec {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     x86_64-darwin = import inputs.nixpkgs { system = "x86_64-darwin"; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
-  };
 
-  modifications = final: prev: rec {
     python310 =
       if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
         prev.python310.override
@@ -44,4 +42,4 @@ let
 
   };
 in
-inputs.nixpkgs.lib.composeManyExtensions [ additions modifications ]
+inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
