@@ -1,39 +1,45 @@
-{ inputs, ... }: final: prev: rec {
-  stable = import inputs.nixpkgs-stable { system = prev.system; };
-  x86_64-darwin = import inputs.nixpkgs { system = "x86_64-darwin"; };
-  mpack = inputs.mpack.packages.${prev.system}.mpack;
-  mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
+{ inputs, ... }:
+let
+  customPkgs = final: _prev: import ../pkgs { pkgs = final; };
 
-  python310 =
-    if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
-      prev.python310.override
-        {
-          packageOverrides = self: super: {
-            # https://github.com/NixOS/nixpkgs/issues/175875
-            pyopenssl = super.pyopenssl.overrideAttrs (old: {
-              meta = old.meta // { broken = false; };
-            });
+  modifications = final: prev: rec {
+    stable = import inputs.nixpkgs-stable { system = prev.system; };
+    x86_64-darwin = import inputs.nixpkgs { system = "x86_64-darwin"; };
+    mpack = inputs.mpack.packages.${prev.system}.mpack;
+    mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
-          };
-        } else prev.python310;
+    python310 =
+      if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
+        prev.python310.override
+          {
+            packageOverrides = self: super: {
+              # https://github.com/NixOS/nixpkgs/issues/175875
+              pyopenssl = super.pyopenssl.overrideAttrs (old: {
+                meta = old.meta // { broken = false; };
+              });
 
-  # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
-  zellij = prev.zellij.overrideAttrs (old: rec {
-    inherit (old) pname;
-    version = "0.31.3";
+            };
+          } else prev.python310;
 
-    src = prev.fetchFromGitHub {
-      owner = "zellij-org";
-      repo = "zellij";
-      rev = "v${version}";
-      sha256 = "sha256-4iljPNw/tS/COStARg2PlrCoeE0lkSQ5+r8BrnxFLMo=";
-    };
+    # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
+    zellij = prev.zellij.overrideAttrs (old: rec {
+      inherit (old) pname;
+      version = "0.31.3";
 
-    cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
-      name = "${pname}-vendor.tar.gz";
-      inherit src;
-      outputHash = "sha256-GMEQRGTzGPVK3DZXGshrVrFavQz6erC08w0nqjKNMpo=";
+      src = prev.fetchFromGitHub {
+        owner = "zellij-org";
+        repo = "zellij";
+        rev = "v${version}";
+        sha256 = "sha256-4iljPNw/tS/COStARg2PlrCoeE0lkSQ5+r8BrnxFLMo=";
+      };
+
+      cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
+        name = "${pname}-vendor.tar.gz";
+        inherit src;
+        outputHash = "sha256-GMEQRGTzGPVK3DZXGshrVrFavQz6erC08w0nqjKNMpo=";
+      });
     });
-  });
 
-} // import ../pkgs { pkgs = final; prev = prev; }
+  };
+in
+inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]

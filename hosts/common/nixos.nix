@@ -1,7 +1,24 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nur.nixosModules.nur
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
+
+  nix = {
+    package = pkgs.nixUnstable;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+  };
 
   # Set your time zone.
   time.timeZone = "US/Central";
@@ -24,29 +41,12 @@
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
-  # Enable flakes and new 'nix' command
-  nix = {
-    package = pkgs.nixVersions.stable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings.auto-optimise-store = true;
-  };
-
   # This will make all users activate their home-manager profile upon login, if
   # it exists and is not activated yet. This is useful for setups with opt-in
   # persistance, avoiding having to manually activate every reboot.
   environment.loginShellInit = ''
     [ -d "$HOME/.nix-profile" ] || /nix/var/nix/profiles/per-user/$USER/home-manager/activate &> /dev/null
   '';
-
-  # This will add your inputs as registries, making operations with them
-  # consistent with your flake inputs.
-  nix.registry = lib.mapAttrs'
-    (n: v:
-      lib.nameValuePair (n) ({ flake = v; })
-    )
-    inputs;
 
   # install some programs globally
   programs.zsh.enable = true;

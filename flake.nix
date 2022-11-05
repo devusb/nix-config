@@ -40,74 +40,99 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
     let
-      my-lib = import ./lib { inherit inputs; };
-      inherit (builtins) attrValues mapAttrs;
-      inherit (my-lib) mkSystem mkHome mkDarwinSystem mkDeploy importAttrset;
-      inherit (inputs.nixpkgs.lib) genAttrs systems;
-      forAllSystems = genAttrs systems.flakeExposed;
+      inherit (inputs.nixpkgs.lib) genAttrs;
+      inherit (self) outputs;
+      forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
     in
     rec {
       overlays = {
         default = import ./overlays { inherit inputs; };
       };
 
-      packages = forAllSystems (system:
-        import inputs.nixpkgs { inherit system; overlays = attrValues overlays; }
+      nixosModules = import ./modules/nixos;
+      darwinModules = import ./modules/darwin;
+      homeManagerModules = import ./modules/home-manager;
+
+      legacyPackages = forAllSystems (system:
+        import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues overlays;
+          config.allowUnfree = true;
+        }
       );
 
       devShells = forAllSystems (system: {
-        default = import ./shell.nix { pkgs = packages.${system}; };
+        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
 
-      # System configurations
-      # Accessible via 'nixos-rebuild --flake'
       nixosConfigurations = {
-        tomservo = mkSystem {
-          inherit overlays;
-          hostname = "tomservo";
-          system = "x86_64-linux";
-          users = [ "mhelton" ];
+        tomservo = nixpkgs.lib.nixosSystem {
+          pkgs = legacyPackages."x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/tomservo
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/personal.nix
+                  ./home/mhelton/linux.nix
+                  ./home/mhelton/graphical.nix
+                  ./home/mhelton/gaming.nix
+                ];
+              };
+            }
+          ];
         };
       };
 
       darwinConfigurations = {
-        superintendent = mkDarwinSystem {
-          inherit overlays;
-          hostname = "superintendent";
-          system = "aarch64-darwin";
-          users = [ "mhelton" ];
+        superintendent = darwin.lib.darwinSystem {
+          pkgs = legacyPackages."aarch64-darwin";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/superintendent
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/personal.nix
+                  ./home/mhelton/darwin.nix
+                ];
+              };
+            }
+          ];
         };
-        imubit-morganh-mbp13 = mkDarwinSystem {
-          inherit overlays;
-          hostname = "imubit-morganh-mbp13";
-          system = "aarch64-darwin";
-          users = [ "mhelton" ];
-        };
-      };
 
-      homeConfigurations = {
-        "mhelton@tomservo" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "x86_64-linux";
-          hostname = "tomservo";
-          graphical = true;
-          gaming = true;
-        };
-        "mhelton@superintendent" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "aarch64-darwin";
-          hostname = "superintendent";
-        };
-        "mhelton@imubit-morganh-mbp13" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "aarch64-darwin";
-          hostname = "imubit-morganh-mbp13";
-          work = true;
+        imubit-morganh-mbp13 = darwin.lib.darwinSystem {
+          pkgs = legacyPackages."aarch64-darwin";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/imubit-morganh-mbp13
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/work.nix
+                  ./home/mhelton/darwin.nix
+                ];
+              };
+            }
+          ];
         };
       };
     };

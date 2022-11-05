@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  imports = [
+    ./micro.nix
+  ];
+
   home.packages = with pkgs; [
     kubectl
     kubectx
@@ -22,6 +26,10 @@
     mach-nix
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  programs.home-manager = {
+    enable = true;
+  };
 
   programs.bat = {
     enable = true;
