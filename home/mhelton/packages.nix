@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  imports = [
+    ./micro.nix
+  ];
+
   home.packages = with pkgs; [
     kubectl
     kubectx

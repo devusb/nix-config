@@ -104,7 +104,11 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/darwin.nix ];
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/personal.nix
+                  ./home/mhelton/darwin.nix
+                ];
               };
             }
           ];
@@ -121,7 +125,11 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/work.nix ./home/mhelton/darwin.nix ];
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/work.nix
+                  ./home/mhelton/darwin.nix
+                ];
               };
             }
           ];

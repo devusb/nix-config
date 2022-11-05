@@ -2,7 +2,6 @@
   imports = [
     ./zsh.nix
     ./packages.nix
-    ./micro.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
