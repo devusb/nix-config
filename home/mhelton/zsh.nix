@@ -13,7 +13,6 @@
       ga-intent = "${pkgs.git}/bin/git add --intent-to-add";
       grm-cache = "${pkgs.git}/bin/git rm --cached";
       update = if pkgs.stdenv.isDarwin then "sudo -H darwin-rebuild switch --flake $DOTFILES && rm result" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
-      update-home = "home-manager switch --flake $DOTFILES";
       kb = "${pkgs.kubectl}/bin/kubectl";
       cat = "${pkgs.bat}/bin/bat --paging=always";
       ts = "${pkgs.tailscale}/bin/tailscale";
