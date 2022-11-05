@@ -1,7 +1,6 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nur.nixosModules.nur
-    ./nix.nix
   ];
 
   nix = {
