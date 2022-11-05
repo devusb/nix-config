@@ -23,6 +23,10 @@
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
+  programs.home-manager = {
+    enable = true;
+  };
+
   programs.bat = {
     enable = true;
   };

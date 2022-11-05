@@ -1,11 +1,13 @@
 { pkgs, inputs, config, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../common
+    ../common/users/mhelton
+    ../common/nixos.nix
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
   ];
+  networking.hostName = "tomservo";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

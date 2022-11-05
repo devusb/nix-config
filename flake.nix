@@ -40,10 +40,10 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       my-lib = import ./lib { inherit inputs; };
-      inherit (builtins) attrValues mapAttrs;
+      #inherit (builtins) attrValues mapAttrs;
       inherit (my-lib) mkSystem mkHome mkDarwinSystem mkDeploy importAttrset;
       inherit (inputs.nixpkgs.lib) genAttrs systems;
       forAllSystems = genAttrs systems.flakeExposed;
@@ -53,22 +53,23 @@
         default = import ./overlays { inherit inputs; };
       };
 
-      packages = forAllSystems (system:
-        import inputs.nixpkgs { inherit system; overlays = attrValues overlays; }
+      legacyPackages = forAllSystems (system:
+        import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues overlays;
+          config.allowUnfree = true;
+        }
       );
 
       devShells = forAllSystems (system: {
-        default = import ./shell.nix { pkgs = packages.${system}; };
+        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
 
-      # System configurations
-      # Accessible via 'nixos-rebuild --flake'
       nixosConfigurations = {
-        tomservo = mkSystem {
-          inherit overlays;
-          hostname = "tomservo";
-          system = "x86_64-linux";
-          users = [ "mhelton" ];
+        tomservo = nixpkgs.lib.nixosSystem {
+          pkgs = legacyPackages."x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/tomservo ];
         };
       };
 
@@ -88,13 +89,12 @@
       };
 
       homeConfigurations = {
-        "mhelton@tomservo" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "x86_64-linux";
-          hostname = "tomservo";
-          graphical = true;
-          gaming = true;
+        "mhelton@tomservo" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [ ./home/mhelton ./home/mhelton/personal.nix ./home/mhelton/linux.nix ./home/mhelton/graphical.nix ./home/mhelton/gaming.nix ];
         };
         "mhelton@superintendent" = mkHome {
           inherit overlays;
