@@ -1,4 +1,6 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  imports = [
+  ] ++ (builtins.attrValues outputs.darwinModules);
   nix = {
     package = pkgs.nixUnstable;
     settings = {

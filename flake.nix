@@ -42,9 +42,6 @@
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
     let
-      my-lib = import ./lib { inherit inputs; };
-      #inherit (builtins) attrValues mapAttrs;
-      inherit (my-lib) mkHome mkDarwinSystem mkDeploy importAttrset;
       inherit (inputs.nixpkgs.lib) genAttrs;
       inherit (self) outputs;
       forAllSystems = genAttrs [ "x86_64-linux" "aarch64-darwin" ];
@@ -112,27 +109,22 @@
             }
           ];
         };
-        imubit-morganh-mbp13 = mkDarwinSystem {
-          inherit overlays;
-          hostname = "imubit-morganh-mbp13";
-          system = "aarch64-darwin";
-          users = [ "mhelton" ];
-        };
-      };
 
-      homeConfigurations = {
-        "mhelton@superintendent" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "aarch64-darwin";
-          hostname = "superintendent";
-        };
-        "mhelton@imubit-morganh-mbp13" = mkHome {
-          inherit overlays;
-          username = "mhelton";
-          system = "aarch64-darwin";
-          hostname = "imubit-morganh-mbp13";
-          work = true;
+        imubit-morganh-mbp13 = darwin.lib.darwinSystem {
+          pkgs = legacyPackages."aarch64-darwin";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/imubit-morganh-mbp13
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [ ./home/mhelton ./home/mhelton/work.nix ./home/mhelton/darwin.nix ];
+              };
+            }
+          ];
         };
       };
     };
