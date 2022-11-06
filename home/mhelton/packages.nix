@@ -18,12 +18,12 @@
     yq-go
     tldr
     ripgrep
-    (pkgs.ansible_2_13.override { windowsSupport = true; })
+    (ansible_2_13.override { windowsSupport = true; })
     terraform
     colmena
     unrar
     zsh-nix-shell
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     nil
     nixpkgs-fmt
   ];
