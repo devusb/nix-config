@@ -3,6 +3,7 @@ with pkgs;
 let
   python-packages = pp: with pp; [
     pyyaml
+    boto3
   ];
   python-with-packages = python3.withPackages python-packages;
 in
