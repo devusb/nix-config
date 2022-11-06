@@ -4,10 +4,6 @@
   inputs = {
     # Utilities for building flakes
     utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
 
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -26,11 +22,6 @@
     # mpack
     mpack.url = "github:league/mpack";
     mpack.inputs.nixpkgs.follows = "nixpkgs";
-
-    # mach-nix
-    mach-nix.url = "github:DavHau/mach-nix";
-    mach-nix.inputs.flake-utils.follows = "utils";
-    mach-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # vscode-server
     vscode-server.url = "github:msteen/nixos-vscode-server";

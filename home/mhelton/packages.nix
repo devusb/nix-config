@@ -23,7 +23,6 @@
     colmena
     unrar
     zsh-nix-shell
-    mach-nix
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     nil
     nixpkgs-fmt
