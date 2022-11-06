@@ -25,6 +25,7 @@
     zsh-nix-shell
     mach-nix
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nil
   ];
 
   programs.home-manager = {
