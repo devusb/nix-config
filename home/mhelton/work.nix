@@ -18,7 +18,7 @@ in
   };
 
   programs.zsh.shellAliases = {
-    vssh = "vault ssh -mode=ca -role=infra-admin -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
+    vssh = "${pkgs.vault}/bin/vault ssh -mode=ca -role=infra-admin -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
   };
 
   home.packages = with pkgs; [
