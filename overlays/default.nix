@@ -4,9 +4,7 @@ let
 
   modifications = final: prev: rec {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
-    x86_64-darwin = import inputs.nixpkgs { system = "x86_64-darwin"; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
-    mach-nix = inputs.mach-nix.packages.${prev.system}.mach-nix;
 
     python310 =
       if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
