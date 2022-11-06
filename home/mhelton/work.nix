@@ -1,4 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+with pkgs;
+let
+  python-packages = pp: with pp; [
+    pyyaml
+  ];
+  python-with-packages = python3.withPackages python-packages;
+in
+{
   programs.git = {
     userName = "Morgan Helton";
     userEmail = "morgan@imubit.com";
@@ -13,6 +21,7 @@
   };
 
   home.packages = with pkgs; [
+    python-with-packages
     mpack
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     postgresql
