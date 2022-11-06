@@ -18,7 +18,6 @@
     yq-go
     tldr
     ripgrep
-    (ansible_2_13.override { windowsSupport = true; })
     terraform
     colmena
     unrar
