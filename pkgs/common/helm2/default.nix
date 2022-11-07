@@ -20,7 +20,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin
-    cp helm $out/bin/helm${version}
+    install -m755 -D helm $out/bin/helm${version}
     runHook postInstall
   '';
 

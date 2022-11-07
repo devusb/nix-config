@@ -1,4 +1,3 @@
-# When you add custom packages, list them here
 { pkgs, ... }: {
   # helm2 binaries
   helm2_15_1 = pkgs.callPackage ./common/helm2 {
