@@ -9,8 +9,6 @@ stdenvNoCC.mkDerivation rec {
     sha256 = hash;
   };
 
-  dontFixup = true;
-
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin
