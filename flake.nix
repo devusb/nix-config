@@ -58,6 +58,8 @@
         default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
 
+      formatter = forAllSystems (system: legacyPackages.${system}.nixpkgs-fmt);
+
       nixosConfigurations = {
         tomservo = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
