@@ -34,7 +34,7 @@
   };
 
   # pgdiff
-  pgdiff = pkgs.callPackage ./common/pgdiff { buildGoModule = pkgs.buildGo117Module; };
+  pgdiff = pkgs.callPackage ./common/pgdiff { };
 
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };

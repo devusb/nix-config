@@ -3,17 +3,17 @@
 buildGoModule rec {
   pname = "pgdiff";
   version = "1.0b1";
-  rev = "2156eaecb0d4c5f1d7cb49a6db90467ec93a1fda";
+  rev = "3e91a5abe4b1954190aeefbade7d7aed9443b5ef";
 
   src = fetchFromGitHub {
     inherit rev;
-    owner = "joncrlsn";
+    owner = "devusb";
     repo = "pgdiff";
-    sha256 = "sha256-LCpDcCV40AqPnRNnLxQUUc2SW9ULyrDNg51XrfRPX6A=";
+    sha256 = "sha256-8qZdcORiGnJexj0rU7sgvl2ArwmIYo8aMl3uTw2O0Bw=";
   };
 
   deleteVendor = true;
-  vendorSha256 = "sha256-rDuO6SfDOgocCdbMbkL23LJeDFqnWTwnTTp+JofOHos=";
+  vendorSha256 = "sha256-sbVEGv+EY80gMP/WJFBE+lwsy1MHRFe4KfPWn/wlPZQ=";
 
   meta = {
     license = lib.licenses.mit;
