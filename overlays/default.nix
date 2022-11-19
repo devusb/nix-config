@@ -2,7 +2,7 @@
 let
   customPkgs = final: _prev: import ../pkgs { pkgs = final; };
 
-  modifications = final: prev: rec {
+  modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
 
@@ -37,6 +37,21 @@ let
         outputHash = "sha256-GMEQRGTzGPVK3DZXGshrVrFavQz6erC08w0nqjKNMpo=";
       });
     });
+
+    # until https://github.com/NixOS/nixpkgs/pull/201229 reaches unstable
+    gnome = prev.gnome // {
+      gnome-keyring = (prev.gnome.gnome-keyring.override {
+        glib = prev.glib.overrideAttrs (a: {
+          patches = a.patches ++ [
+            (final.fetchpatch {
+              url =
+                "https://gitlab.gnome.org/GNOME/glib/-/commit/2a36bb4b7e46f9ac043561c61f9a790786a5440c.patch";
+              sha256 = "b77Hxt6WiLxIGqgAj9ZubzPWrWmorcUOEe/dp01BcXA=";
+            })
+          ];
+        });
+      });
+    };
 
   };
 in
