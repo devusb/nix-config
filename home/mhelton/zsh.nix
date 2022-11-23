@@ -60,7 +60,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      sync_address = "http://atuin.devusb.us:8888";
+      sync_address = "https://atuin.springhare-egret.ts.net";
       auto_sync = true;
       sync_frequency = "5m";
       search_mode = "fulltext";
