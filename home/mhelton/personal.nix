@@ -9,6 +9,8 @@
   };
 
   home.packages = with pkgs; [
+    colmena
+    fluxcd
   ];
 
   programs.keychain.keys = [ "id_rsa" ];

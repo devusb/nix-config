@@ -7,7 +7,6 @@
     kubectl
     kubectx
     k9s
-    fluxcd
     vault
     kubernetes-helm
     speedtest-cli
@@ -19,7 +18,6 @@
     tldr
     ripgrep
     terraform
-    colmena
     unrar
     zsh-nix-shell
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
