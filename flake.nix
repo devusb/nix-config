@@ -27,6 +27,11 @@
     vscode-server.url = "github:msteen/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "nixpkgs";
 
+    # colmena
+    colmena.url = "github:zhaofengli/colmena";
+    colmena.inputs.nixpkgs.follows = "nixpkgs";
+    colmena.inputs.flake-utils.follows = "utils";
+
     # nur
     nur.url = "github:nix-community/NUR";
   };

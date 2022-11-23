@@ -5,6 +5,7 @@ let
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
+    colmena = inputs.colmena.packages.${prev.system}.colmena;
 
     python310 =
       if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
