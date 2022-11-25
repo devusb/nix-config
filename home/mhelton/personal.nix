@@ -5,7 +5,7 @@
   };
 
   home.sessionVariables = {
-    VAULT_ADDR = "https://vault.gaia.devusb.us";
+    VAULT_ADDR = "https://vault.springhare-egret.ts.net";
   };
 
   home.packages = with pkgs; [
