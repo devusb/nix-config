@@ -6,11 +6,13 @@
 
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.springhare-egret.ts.net";
+    NOMAD_ADDR = "https://nomad.gaia.devusb.us";
   };
 
   home.packages = with pkgs; [
     colmena
     fluxcd
+    nomad
   ];
 
   programs.keychain.keys = [ "id_rsa" ];
