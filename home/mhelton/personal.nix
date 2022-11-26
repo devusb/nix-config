@@ -13,6 +13,7 @@
     colmena
     fluxcd
     nomad
+    flyctl
   ];
 
   programs.keychain.keys = [ "id_rsa" ];
