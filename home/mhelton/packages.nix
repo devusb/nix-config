@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./micro.nix
+    ./kitty.nix
   ];
 
   home.packages = with pkgs; [

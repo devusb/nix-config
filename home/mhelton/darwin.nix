@@ -1,16 +1,11 @@
 { pkgs, config, system, lib, ... }: {
+  
   home.packages = with pkgs; [
     tailscale
     gnused
     gnugrep
     gawk
   ];
-
-  programs.iterm2 = {
-    enable = true;
-    profiles = import ./extra/iterm2_profile.nix;
-    preferences = import ./extra/iterm2.nix;
-  };
 
   programs.zsh = {
     shellAliases = {

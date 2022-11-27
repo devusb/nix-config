@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  imports = [
-    ./kitty.nix
-  ];
 
   home.packages = with pkgs; [ lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
   programs.vscode.enable = true;
