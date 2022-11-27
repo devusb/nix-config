@@ -14,6 +14,8 @@
     };
   };
 
+  programs.kitty.font.size = 13;
+
   home.sessionVariables = {
     DOTFILES = "$HOME/code/nix-config/";
   };

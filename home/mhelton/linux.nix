@@ -8,6 +8,8 @@
     inetutils
   ];
 
+  programs.kitty.font.size = 12;
+
   services.vscode-server.enable = true;
 
   home.sessionVariables = {

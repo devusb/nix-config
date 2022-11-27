@@ -3,7 +3,6 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 13;
     };
     extraConfig = ''
       term xterm-256color
