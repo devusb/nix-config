@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  home.packages = with pkgs; [ lens gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
+  home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
   programs.vscode.enable = true;
 
   dconf.settings = {
