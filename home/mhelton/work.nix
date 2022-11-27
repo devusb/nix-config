@@ -36,6 +36,10 @@ in
     helm2_17_0
     aws-sso-cli
     pgdiff
+    kubectl
+    kubectx
+    k9s
+    kubernetes-helm
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];

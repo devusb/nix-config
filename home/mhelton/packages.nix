@@ -5,11 +5,7 @@
   ];
 
   home.packages = with pkgs; [
-    kubectl
-    kubectx
-    k9s
     vault
-    kubernetes-helm
     speedtest-cli
     pwgen
     zip
