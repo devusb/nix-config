@@ -8,7 +8,7 @@
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
