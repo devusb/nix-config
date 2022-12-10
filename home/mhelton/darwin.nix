@@ -19,4 +19,8 @@
   home.sessionVariables = {
     DOTFILES = "$HOME/code/nix-config/";
   };
+
+  nix.settings = {
+    builders = "ssh://tomservo x86_64-linux ; ssh://tomservo aarch64-linux";
+  };
 }
