@@ -20,6 +20,7 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     nil
     nixpkgs-fmt
+    headsetcontrol
   ];
 
   programs.home-manager = {
