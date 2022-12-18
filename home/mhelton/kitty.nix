@@ -4,10 +4,14 @@
     font = {
       name = "FiraCode Nerd Font Mono";
     };
-    extraConfig = ''
-      term xterm-256color
-      background_opacity 0.9
-      confirm_os_window_close 2
-    '';
+    settings = {
+      term = "xterm-256color";
+      background_opacity = "0.9";
+      confirm_os_window_close = "2";
+    };
+    keybindings = {
+      "ctrl+f2" = "detach_tab";
+      "cmd+f2" = "detach_tab";
+    };
   };
 }
