@@ -38,6 +38,11 @@
     pulse.enable = true;
   };
 
+  services.udev.extraRules = ''
+    # Logitech G533
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a66", TAG+="uaccess"
+  '';
+
   # add GUI and nvidia drivers
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
