@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  customPkgs = final: _prev: import ../pkgs { pkgs = final; };
+  customPkgs = final: prev: import ../pkgs { inherit prev; };
 
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };

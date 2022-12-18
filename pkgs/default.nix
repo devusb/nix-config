@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ prev, ... }:
+let
+  pkgs = prev;
+in
+{
   # helm2 binaries
   helm2_15_1 = pkgs.callPackage ./common/helm2 {
     version = "2.15.1";
@@ -38,4 +42,15 @@
 
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
+
+  # timedb
+  pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
+    (
+      self: super: {
+        pypika = pkgs.python3Packages.callPackage ../pkgs/common/pypika { };
+        timedb = pkgs.python3Packages.callPackage ../pkgs/common/timedb { };
+      }
+    )
+  ];
+
 }
