@@ -7,18 +7,17 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    python310 =
-      if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
-        prev.python310.override
-          {
-            packageOverrides = self: super: {
-              # https://github.com/NixOS/nixpkgs/issues/175875
-              pyopenssl = super.pyopenssl.overrideAttrs (old: {
-                meta = old.meta // { broken = false; };
-              });
-
-            };
-          } else prev.python310;
+    pythonPackagesExtensions = prev.pythonPackagesExtensions ++
+      # https://github.com/NixOS/nixpkgs/issues/175875
+      (if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then [
+        (
+          self: super: {
+            pyopenssl = super.pyopenssl.overrideAttrs (old: {
+              meta = old.meta // { broken = false; };
+            });
+          }
+        )
+      ] else [ ]);
 
     # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
     zellij = prev.zellij.overrideAttrs (old: rec {
