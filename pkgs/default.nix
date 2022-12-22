@@ -43,12 +43,16 @@ in
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
 
-  # timedb
+  # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
       self: super: {
+        # timedb
         pypika = pkgs.python3Packages.callPackage ../pkgs/common/pypika { };
         timedb = pkgs.python3Packages.callPackage ../pkgs/common/timedb { };
+
+        # dunk 
+        dunk = pkgs.python3Packages.callPackage ../pkgs/common/dunk { };
       }
     )
   ];
