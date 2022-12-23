@@ -16,7 +16,7 @@
 
   programs.kitty.font.size = 13;
 
-  home.sessionVariables = pkgs.lib.mkDefault {
+  home.sessionVariables = {
     DOTFILES = "$HOME/code/nix-config/";
   };
 }
