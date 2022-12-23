@@ -4,6 +4,10 @@
   inputs = {
     # Utilities for building flakes
     utils.url = "github:numtide/flake-utils";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
 
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -31,9 +35,15 @@
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.nixpkgs.follows = "nixpkgs";
     colmena.inputs.flake-utils.follows = "utils";
+    colmena.inputs.flake-compat.follows = "flake-compat";
 
     # nur
     nur.url = "github:nix-community/NUR";
+
+    # devenv
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
+    devenv.inputs.flake-compat.follows = "flake-compat";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
