@@ -21,6 +21,7 @@
     nil
     nixpkgs-fmt
     headsetcontrol
+    difftastic
   ];
 
   programs.home-manager = {
@@ -68,6 +69,10 @@
       help = {
         autocorrect = "10";
       };
+    };
+    difftastic = {
+      enable = true;
+      display = "side-by-side-show-both";
     };
   };
 }
