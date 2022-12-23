@@ -12,7 +12,7 @@
 
   services.vscode-server.enable = true;
 
-  home.sessionVariables = {
+  home.sessionVariables = pkgs.lib.mkDefault {
     DOTFILES = "/dotfiles/";
   };
 }

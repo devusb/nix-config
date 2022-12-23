@@ -15,5 +15,7 @@
     nix
     home-manager
     git
+    hostname
+    micro
   ];
 }

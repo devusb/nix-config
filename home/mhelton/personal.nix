@@ -11,7 +11,6 @@
 
   home.packages = with pkgs; [
     colmena
-    fluxcd
     nomad
     flyctl
   ];
