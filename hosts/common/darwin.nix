@@ -54,4 +54,8 @@
       "NSAutomaticSpellingCorrectionEnabled" = false;
     };
   };
+
+  system.activationScripts.postActivation.text = ''
+    dscl . -create '/Users/${builtins.elemAt (builtins.attrNames config.users.users) 0}' UserShell '${pkgs.zsh}/bin/zsh'
+  '';
 }
