@@ -18,7 +18,7 @@
       ts = "${pkgs.tailscale}/bin/tailscale";
       za = "${pkgs.zellij}/bin/zellij attach";
       z = "${pkgs.zellij}/bin/zellij";
-      dunk = "${pkgs.git}/bin/git diff | ${pkgs.python3Packages.dunk}/bin/dunk";
+      gl = "${pkgs.git}/bin/git log -p --ext-diff";
     };
     history = {
       size = 10000;
