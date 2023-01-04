@@ -43,6 +43,9 @@ in
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
 
+  # theforceengine
+  theforceengine = pkgs.callPackage ./linux/theforceengine { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
@@ -51,7 +54,7 @@ in
         pypika = pkgs.python3Packages.callPackage ../pkgs/common/pypika { };
         timedb = pkgs.python3Packages.callPackage ../pkgs/common/timedb { };
 
-        # dunk 
+        # dunk
         dunk = pkgs.python3Packages.callPackage ../pkgs/common/dunk { };
       }
     )
