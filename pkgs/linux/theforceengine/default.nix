@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "mlauss";
     repo = "TheForceEngine";
-    rev = "dadd27a37212ab2284f01c0b6c7e729f4a963936";
-    sha256 = "sha256-PglzBEt0ofy479ch4WSDBKFTo5q27INh68z6RdfVJqA=";
+    rev = "a4699ad99aeb3e9f66469740c40df9f4fbecc5a4";
+    sha256 = "sha256-Uih7z8vyKtZYRprhPFT5Fo+i+UA/lNLMh0WBYZY1YYY=";
   };
 
   nativeBuildInputs = [
