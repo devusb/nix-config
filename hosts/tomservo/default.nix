@@ -38,6 +38,11 @@
     pulse.enable = true;
   };
 
+  # keychron function keys 
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
+
   services.udev.extraRules = ''
     # Logitech G533
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a66", TAG+="uaccess"
