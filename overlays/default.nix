@@ -27,18 +27,6 @@ let
       });
     });
 
-    # override until https://github.com/NixOS/nixpkgs/pull/206211 hits unstable
-    ipmiview = prev.ipmiview.overrideAttrs (old: rec {
-      inherit (old) pname;
-      version = "2.21.0";
-      buildVersion = "221118";
-
-      src = prev.fetchurl {
-        url = "https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${version}_build.${buildVersion}_bundleJRE_Linux_x64.tar.gz";
-        hash = "sha256-ZN0vadGbjGj9U2wPqvHLjS9fsk3DNCbXoNvzUfnn8IM=";
-      };
-    });
-
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
