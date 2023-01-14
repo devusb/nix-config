@@ -7,6 +7,7 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
+    attic = inputs.attic.packages.${prev.system}.attic;
 
     # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
     zellij = prev.zellij.overrideAttrs (old: rec {

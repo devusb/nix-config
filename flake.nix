@@ -44,6 +44,12 @@
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
     devenv.inputs.flake-compat.follows = "flake-compat";
+
+    # attic
+    attic.url = "github:zhaofengli/attic";
+    attic.inputs.nixpkgs.follows = "nixpkgs";
+    attic.inputs.flake-utils.follows = "utils";
+    attic.inputs.flake-compat.follows = "flake-compat";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:

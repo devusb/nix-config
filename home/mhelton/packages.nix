@@ -23,6 +23,7 @@
     headsetcontrol
     difftastic
     devenv
+    attic
   ];
 
   programs.home-manager = {
