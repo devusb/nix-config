@@ -47,9 +47,6 @@
 
     # attic
     attic.url = "github:zhaofengli/attic";
-    attic.inputs.nixpkgs.follows = "nixpkgs";
-    attic.inputs.flake-utils.follows = "utils";
-    attic.inputs.flake-compat.follows = "flake-compat";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
