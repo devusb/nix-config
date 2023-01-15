@@ -8,11 +8,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1673244053,
-        "narHash": "sha256-knT3uV+LOCpMaT253PG1XAqKKta+3dEbA+TsMcg1yFU=",
+        "lastModified": 1673766011,
+        "narHash": "sha256-R1YZYJCWOE+LPxDPjvBmvmhczcUdH+LDPaaTXY8kjkU=",
         "owner": "zhaofengli",
         "repo": "attic",
-        "rev": "8fc6b3935da9a218fcdb87b07b29f72d15b1fc42",
+        "rev": "5216e06a1849c2fcef4f8820c5c74976e2150bb6",
         "type": "github"
       },
       "original": {

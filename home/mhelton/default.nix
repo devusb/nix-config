@@ -32,7 +32,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
-      "attic:I4vi3l7yEd0olLKqbxv1aPRsf2OnTnouKwhn3N9byng="
+      "attic:D6/KHcMALn0Zc1BVc/bkuou0DbpVmm4RsyF6c4l9AsE="
     ];
     netrc-file = "${config.xdg.configHome}/nix/netrc";
   };
