@@ -9,7 +9,7 @@
     stateVersion = "21.11";
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
     sessionVariables = {
-      EDITOR = "micro";
+      EDITOR = "${pkgs.micro}/bin/micro";
     };
   };
 

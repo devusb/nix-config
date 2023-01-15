@@ -69,10 +69,6 @@
   services.xserver.displayManager = {
     gdm.enable = true;
     gdm.autoSuspend = false;
-    autoLogin = {
-      enable = true;
-      user = "mhelton";
-    };
   };
 
   # autologin crash workaround
