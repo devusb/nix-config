@@ -38,7 +38,7 @@
     pulse.enable = true;
   };
 
-  # keychron function keys 
+  # keychron function keys
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2
   '';
@@ -53,7 +53,16 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
-  hardware.nvidia.package = config.nur.repos.arc.packages.nvidia-patch.override {
+  hardware.nvidia.package = (config.nur.repos.arc.packages.nvidia-patch.overrideAttrs (old: {
+    # override until https://github.com/arcnmx/nixexprs/pull/41 is merged
+    version = "2023-01-06";
+    src = pkgs.fetchFromGitHub {
+      owner = "keylase";
+      repo = "nvidia-patch";
+      rev = "787785e1cf14cf6ae76ea15dc4004127b2b8f917";
+      sha256 = "sha256-mIRM2N+C+EPKVLVXtuAvHV6CfVRzjfB39fK/rXe4sGA=";
+    };
+  })).override {
     nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
