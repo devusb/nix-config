@@ -41,6 +41,7 @@ in
     kubectx
     k9s
     kubernetes-helm
+    glab
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
