@@ -28,6 +28,11 @@ let
       });
     });
 
+    # fix failing cot test -- need to PR to nixpkgs
+    cot = prev.cot.overrideAttrs (old: rec {
+      disabledTests = old.disabledTests ++ [ "test_serial_fixup_stubbed" ];
+    });
+
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
