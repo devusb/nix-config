@@ -8,21 +8,25 @@
 , rtmidi
 , glew
 , alsa-lib
+, cmake
+, pkg-config
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "theforceengine";
-  version = "1.01";
+  version = "1.02";
 
   src = fetchFromGitHub {
-    owner = "mlauss";
+    owner = "mlauss2";
     repo = "TheForceEngine";
-    rev = "a4699ad99aeb3e9f66469740c40df9f4fbecc5a4";
-    sha256 = "sha256-Uih7z8vyKtZYRprhPFT5Fo+i+UA/lNLMh0WBYZY1YYY=";
+    rev = "0683434d5540f964e008820e7952a34813ff867c";
+    sha256 = "sha256-Onow2qZ3zTdfwhqa88sBzNaCyRgnAwkY1LVi34Fr0Sg=";
   };
 
   nativeBuildInputs = [
     makeWrapper
+    cmake
+    pkg-config
   ];
 
   buildInputs = [
@@ -35,17 +39,8 @@ stdenv.mkDerivation rec {
   ];
 
   prePatch = ''
-    substituteInPlace Makefile \
-      --replace "-I/usr/include/SDL2" "-I${SDL2.dev}/include/SDL2"
-  '';
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp -r TheForceEngine $out/
-  '';
-
-  postFixup = ''
-    makeWrapper $out/TheForceEngine/tfelnx $out/bin/tfelnx --chdir $out/TheForceEngine
+    substituteInPlace TheForceEngine/TFE_FileSystem/paths-posix.cpp \
+      --replace "/usr/share" "$out/share"
   '';
 
   meta = with lib; {
