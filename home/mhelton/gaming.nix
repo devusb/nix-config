@@ -14,12 +14,9 @@ in {
     };
   };
 
-  systemd.user.services = {
-    sunshine = {
-      Unit.Description = "Sunshine is a Game stream host for Moonlight.";
-      Service.ExecStart = "${sunshine}/bin/sunshine";
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
+  services.sunshine = {
+    enable = true;
+    package = sunshine;
   };
 
 }
