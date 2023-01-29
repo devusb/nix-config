@@ -6,6 +6,7 @@ in {
     lm_sensors
     dolphin-emu-beta
     chiaki
+    theforceengine
   ];
 
   dconf.settings = {
