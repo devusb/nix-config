@@ -3,4 +3,5 @@
   iterm2 = ./iterm2.nix;
   uxplay = ./uxplay.nix;
   sunshine = ./sunshine.nix;
+  shairport-sync = ./shairport-sync.nix;
 }

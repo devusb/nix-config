@@ -2,7 +2,7 @@
 
   home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
   programs.vscode.enable = true;
-  services.uxplay.enable = true;
+  services.shairport-sync.enable = true;
 
   dconf.settings = {
     "org/gnome/desktop/background" = {

@@ -46,6 +46,10 @@ in
   # theforceengine
   theforceengine = pkgs.callPackage ./linux/theforceengine { };
 
+  # shairport-sync
+  shairport-sync = pkgs.callPackage ./linux/shairport-sync { };
+  nqptp = pkgs.callPackage ./linux/nqptp { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (

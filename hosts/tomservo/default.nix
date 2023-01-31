@@ -86,4 +86,6 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
+  services.nqptp.enable = true;
+
 }
