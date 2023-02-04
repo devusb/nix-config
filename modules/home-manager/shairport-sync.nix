@@ -14,7 +14,10 @@ in
       shairport-sync = {
         Unit.Description = "Airtunes server and emulator with multi-room capabilities";
         Service.ExecStart = "${pkgs.shairport-sync}/bin/shairport-sync -o pa -a ${osConfig.networking.hostName}";
-        Install.WantedBy = [ "multi-user.target" ];
+        Install.WantedBy = [ "default.target" ];
+        Unit.After = [ "wireplumber.service" ];
+        Unit.Wants = [ "wireplumber.service" ];
+        Service.Restart = "on-failure";
       };
     };
   };
