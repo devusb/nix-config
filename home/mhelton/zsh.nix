@@ -27,6 +27,7 @@
     initExtra = ''
       autoload -U +X bashcompinit && bashcompinit
       complete -o nospace -C vault vault
+      setopt prompt_sp
       if [ -e ~/.env ]; then
       source ~/.env
       fi
