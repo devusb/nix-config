@@ -10,23 +10,25 @@
 , alsa-lib
 , cmake
 , pkg-config
+, git
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "theforceengine";
-  version = "1.02";
+  version = "1.08.000";
 
   src = fetchFromGitHub {
-    owner = "mlauss2";
+    owner = "luciusDXL";
     repo = "TheForceEngine";
-    rev = "0683434d5540f964e008820e7952a34813ff867c";
-    sha256 = "sha256-Onow2qZ3zTdfwhqa88sBzNaCyRgnAwkY1LVi34Fr0Sg=";
+    rev = "v${version}";
+    sha256 = "sha256-N86w8vTRma/BmzMQmcQRZdF7YzkMdbc96Y5Fcly1f28=";
   };
 
   nativeBuildInputs = [
     makeWrapper
     cmake
     pkg-config
+    git
   ];
 
   buildInputs = [
