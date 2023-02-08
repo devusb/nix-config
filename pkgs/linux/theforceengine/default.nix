@@ -15,13 +15,13 @@
 
 stdenv.mkDerivation rec {
   pname = "theforceengine";
-  version = "1.08.000";
+  version = "1.08.100";
 
   src = fetchFromGitHub {
     owner = "luciusDXL";
     repo = "TheForceEngine";
     rev = "v${version}";
-    sha256 = "sha256-N86w8vTRma/BmzMQmcQRZdF7YzkMdbc96Y5Fcly1f28=";
+    sha256 = "sha256-2XrpNdwAiXgLQmccvow7GHJmTmlowMS72MLltApCB5M=";
   };
 
   nativeBuildInputs = [
@@ -41,8 +41,13 @@ stdenv.mkDerivation rec {
   ];
 
   prePatch = ''
+    # use nix store path instead of hardcoded /usr/share
     substituteInPlace TheForceEngine/TFE_FileSystem/paths-posix.cpp \
       --replace "/usr/share" "$out/share"
+
+    # disable replacing of version string with "0.0.0" -- use static version from repo
+    substituteInPlace CMakeLists.txt \
+      --replace "create_git_version_h()" ""
   '';
 
   meta = with lib; {
