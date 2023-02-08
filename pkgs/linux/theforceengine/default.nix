@@ -1,7 +1,6 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, makeWrapper
 , SDL2
 , libdevil
 , rtaudio
@@ -25,7 +24,6 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    makeWrapper
     cmake
     pkg-config
     git
