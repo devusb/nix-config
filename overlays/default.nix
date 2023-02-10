@@ -8,7 +8,8 @@ let
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
     attic = inputs.attic.packages.${prev.system}.attic;
-
+    nixgl = inputs.nixgl.packages.${prev.system}.nixGLDefault;
+    
     # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
     zellij = prev.zellij.overrideAttrs (old: rec {
       inherit (old) pname;

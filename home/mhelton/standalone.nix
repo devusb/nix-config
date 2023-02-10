@@ -2,6 +2,7 @@
 
   home.packages = with pkgs; [
     nix
+    nixgl
   ];
 
   nix.package = pkgs.nix;

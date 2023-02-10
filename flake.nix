@@ -40,6 +40,11 @@
     # nur
     nur.url = "github:nix-community/NUR";
 
+    # nixGL
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
+    nixgl.inputs.flake-utils.follows = "utils";
+
     # devenv
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
