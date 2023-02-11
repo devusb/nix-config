@@ -144,12 +144,13 @@ stdenv.mkDerivation rec {
     ln -sf ${compat-list} ./dist/compatibility_list/compatibility_list.json
   '';
 
-  passthru.updateScript = runCommandLocal "yuzu-${branch}-updateScript" {
-    script = substituteAll {
-      src = ./update.sh;
-      inherit branch;
-    };
-  } "install -Dm755 $script $out";
+  passthru.updateScript = runCommandLocal "yuzu-${branch}-updateScript"
+    {
+      script = substituteAll {
+        src = ./update.sh;
+        inherit branch;
+      };
+    } "install -Dm755 $script $out";
 
   meta = with lib; {
     homepage = "https://yuzu-emu.org";
@@ -165,7 +166,9 @@ stdenv.mkDerivation rec {
     license = with licenses; [
       gpl3Plus
       # Icons
-      asl20 mit cc0
+      asl20
+      mit
+      cc0
     ];
     maintainers = with maintainers; [
       ashley
