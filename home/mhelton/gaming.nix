@@ -7,6 +7,7 @@ in {
     dolphin-emu-beta
     chiaki
     theforceengine
+    yuzu
   ];
 
   dconf.settings = {

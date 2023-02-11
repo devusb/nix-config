@@ -50,6 +50,9 @@ in
   shairport-sync = pkgs.callPackage ./linux/shairport-sync { };
   nqptp = pkgs.callPackage ./linux/nqptp { };
 
+  # yuzu
+  yuzu = pkgs.libsForQt5.callPackage ./linux/yuzu { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
