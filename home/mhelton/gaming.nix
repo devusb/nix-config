@@ -8,6 +8,7 @@ in {
     chiaki
     theforceengine
     yuzu
+    ryujinx
   ];
 
   dconf.settings = {
