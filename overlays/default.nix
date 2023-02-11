@@ -30,7 +30,7 @@ let
     });
 
     # fix failing cot test -- need to PR to nixpkgs
-    cot = prev.cot.overrideAttrs (old: rec {
+    cot = prev.cot.overrideAttrs (old: {
       disabledTests = old.disabledTests ++ [ "test_serial_fixup_stubbed" ];
     });
 
