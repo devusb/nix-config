@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     nix
     nixgl.nixGLIntel
+    nixgl.nixVulkanIntel
   ];
 
   nix.package = pkgs.nix;
