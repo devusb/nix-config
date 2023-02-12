@@ -12,7 +12,10 @@
 
   services.vscode-server.enable = true;
 
+  services.syncthing.enable = true;
+
   home.sessionVariables = {
     DOTFILES = "/dotfiles/";
   };
+
 }
