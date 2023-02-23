@@ -16,6 +16,7 @@ in
 
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.admin.imubit.in";
+    GL_HOST = "https://imugit.imubit.com";
   };
 
   programs.zsh.shellAliases = {
