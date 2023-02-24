@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip ];
+  home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip cider ];
   programs.vscode.enable = true;
   services.shairport-sync.enable = true;
 
