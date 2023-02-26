@@ -29,13 +29,13 @@
 
 buildDotnetModule rec {
   pname = "ryujinx";
-  version = "2022-02-24";
+  version = "2022-02-26";
 
   src = fetchFromGitHub {
     owner = "riperiperi";
     repo = "Ryujinx";
-    rev = "bc2ae96c0b29a49c5a9ed346b9227a14efa578f5";
-    sha256 = "sha256-J7QRp5+VkbI96wo0zR+5KYAVOn2AucJIOyFMJ2K7g4c=";
+    rev = "206a34f837762fdd7ea1fd0817fbf218f534a64b";
+    sha256 = "sha256-Siy4rY3U75yD9O4/At2DrMb2wYTLD9LqN8afznmlASc=";
   };
 
   dotnet-sdk = dotnetCorePackages.sdk_7_0;
@@ -79,19 +79,12 @@ buildDotnetModule rec {
     SDL2
   ];
 
-  patches = [ ];
-
-  prePatch = ''
-    substituteInPlace Ryujinx.Common/ReleaseInformation.cs \
-      --replace "AppDomain.CurrentDomain.BaseDirectory" "AppDataManager.BaseDirPath"
-  '';
-
   projectFile = "Ryujinx.sln";
   testProjectFile = "Ryujinx.Tests/Ryujinx.Tests.csproj";
-  doCheck = false;
+  doCheck = true;
 
   dotnetFlags = [
-    "/p:ExtraDefineConstants=DISABLE_UPDATER"
+    "/p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR"
   ];
 
   executables = [
