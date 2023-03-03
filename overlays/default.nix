@@ -10,6 +10,9 @@ let
     attic = inputs.attic.packages.${prev.system}.attic;
     nixgl = inputs.nixgl.packages.${prev.system};
 
+    # google-cloud-sdk autoPatchelf
+    google-cloud-sdk = inputs.devusb-google-cloud-sdk.legacyPackages.${prev.system}.google-cloud-sdk;
+
     # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
     zellij = prev.zellij.overrideAttrs (old: rec {
       inherit (old) pname;
@@ -33,7 +36,7 @@ let
     cot = prev.cot.overrideAttrs (old: {
       disabledTests = old.disabledTests ++ [ "test_serial_fixup_stubbed" ];
     });
-
+    
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
