@@ -47,9 +47,6 @@ in
   shairport-sync = pkgs.callPackage ./linux/shairport-sync { };
   nqptp = pkgs.callPackage ./linux/nqptp { };
 
-  # yuzu
-  yuzu = pkgs.libsForQt5.callPackage ./linux/yuzu { };
-
   # ryujinx
   ryujinx = pkgs.callPackage ./linux/ryujinx { };
 
@@ -60,9 +57,6 @@ in
         # timedb
         pypika = pkgs.python3Packages.callPackage ../pkgs/common/pypika { };
         timedb = pkgs.python3Packages.callPackage ../pkgs/common/timedb { };
-
-        # dunk
-        dunk = pkgs.python3Packages.callPackage ../pkgs/common/dunk { };
       }
     )
   ];
