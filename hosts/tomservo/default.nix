@@ -49,14 +49,11 @@
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a66", TAG+="uaccess"
   '';
 
-  # add GUI and nvidia drivers
+  # add GUI
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
   hardware.opengl.enable = true;
-  hardware.nvidia.package = config.nur.repos.arc.packages.nvidia-patch.override {
-    nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
 
   services.xserver.displayManager = {
     gdm.enable = true;
