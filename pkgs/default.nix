@@ -43,9 +43,6 @@ in
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
 
-  # theforceengine
-  theforceengine = pkgs.callPackage ./linux/theforceengine { };
-
   # shairport-sync
   shairport-sync = pkgs.callPackage ./linux/shairport-sync { };
   nqptp = pkgs.callPackage ./linux/nqptp { };

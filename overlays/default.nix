@@ -36,7 +36,7 @@ let
     cot = prev.cot.overrideAttrs (old: {
       disabledTests = old.disabledTests ++ [ "test_serial_fixup_stubbed" ];
     });
-    
+
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
