@@ -43,10 +43,6 @@ in
   # sm64ex
   sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
 
-  # shairport-sync
-  shairport-sync = pkgs.callPackage ./linux/shairport-sync { };
-  nqptp = pkgs.callPackage ./linux/nqptp { };
-
   # ryujinx
   ryujinx = pkgs.callPackage ./linux/ryujinx { };
 

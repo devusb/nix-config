@@ -1,8 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  shairport-sync = pkgs.shairport-sync.override { enableAirplay2 = true; };
+in
+{
 
   home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip cider ];
   programs.vscode.enable = true;
-  services.shairport-sync.enable = true;
+  services.shairport-sync = {
+    enable = true;
+    package = shairport-sync;
+  };
 
   dconf.settings = {
     "org/gnome/desktop/background" = {
