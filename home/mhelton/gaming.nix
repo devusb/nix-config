@@ -15,8 +15,4 @@
     };
   };
 
-  services.sunshine = {
-    enable = true;
-  };
-
 }

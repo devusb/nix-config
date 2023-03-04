@@ -85,4 +85,6 @@
 
   services.nqptp.enable = true;
 
+  services.sunshine.enable = false;
+
 }

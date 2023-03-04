@@ -2,4 +2,5 @@
 
 {
   nqptp = ./nqptp.nix;
+  sunshine = ./sunshine.nix;
 }
