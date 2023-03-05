@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   shairport-sync = pkgs.shairport-sync.override { enableAirplay2 = true; };
+  brave = pkgs.brave.override { vulkanSupport = true; };
 in
 {
 
