@@ -55,6 +55,14 @@
 
     # attic
     attic.url = "github:zhaofengli/attic";
+
+    # nix-search-cli
+    nix-search-cli = {
+      url = "github:peterldowns/nix-search-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
+      inputs.flake-compat.follows = "flake-compat";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:

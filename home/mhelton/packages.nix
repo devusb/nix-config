@@ -24,6 +24,7 @@
     difftastic
     devenv
     attic
+    nix-search
   ];
 
   programs.home-manager = {

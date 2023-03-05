@@ -9,6 +9,7 @@ let
     devenv = inputs.devenv.packages.${prev.system}.devenv;
     attic = inputs.attic.packages.${prev.system}.attic;
     nixgl = inputs.nixgl.packages.${prev.system};
+    nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
 
     # google-cloud-sdk autoPatchelf
     google-cloud-sdk = inputs.devusb-google-cloud-sdk.legacyPackages.${prev.system}.google-cloud-sdk;
