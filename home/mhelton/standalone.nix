@@ -1,10 +1,19 @@
-{ pkgs, ... }: {
-
+{ pkgs, ... }:
+let
+  ryujinx-wrapped = pkgs.writeShellApplication {
+    name = "ryujinx";
+    runtimeInputs = with pkgs; [ ryujinx nixgl.nixVulkanIntel ];
+    text = ''
+      nixVulkanIntel ryujinx
+    '';
+  };
+in
+{
   home.packages = with pkgs; [
     nix
     nixgl.nixGLIntel
     nixgl.nixVulkanIntel
-    ryujinx
+    ryujinx-wrapped
   ];
 
   nix.package = pkgs.nix;
