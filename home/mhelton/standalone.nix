@@ -4,6 +4,7 @@
     nix
     nixgl.nixGLIntel
     nixgl.nixVulkanIntel
+    ryujinx
   ];
 
   nix.package = pkgs.nix;
@@ -16,4 +17,6 @@
   home.sessionVariables = {
     DOTFILES = "$HOME/code/nix-config/";
   };
+
+  services.syncthing.enable = true;
 }
