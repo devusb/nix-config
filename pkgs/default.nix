@@ -40,9 +40,6 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./common/pgdiff { };
 
-  # sm64ex
-  sm64ex-coop = pkgs.callPackage ./linux/sm64ex-coop { };
-
   # ryujinx
   ryujinx = pkgs.callPackage ./linux/ryujinx { };
 
