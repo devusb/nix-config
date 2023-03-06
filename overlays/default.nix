@@ -11,9 +11,6 @@ let
     nixgl = inputs.nixgl.packages.${prev.system};
     nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
 
-    # google-cloud-sdk autoPatchelf
-    google-cloud-sdk = inputs.devusb-google-cloud-sdk.legacyPackages.${prev.system}.google-cloud-sdk;
-
     # pin zellij to last version before switch to kdl configs https://github.com/zellij-org/zellij/pull/1759
     zellij = prev.zellij.overrideAttrs (old: rec {
       inherit (old) pname;
@@ -31,11 +28,6 @@ let
         inherit src;
         outputHash = "sha256-GMEQRGTzGPVK3DZXGshrVrFavQz6erC08w0nqjKNMpo=";
       });
-    });
-
-    # fix failing cot test -- need to PR to nixpkgs
-    cot = prev.cot.overrideAttrs (old: {
-      disabledTests = old.disabledTests ++ [ "test_serial_fixup_stubbed" ];
     });
 
   };

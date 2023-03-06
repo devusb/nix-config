@@ -14,9 +14,6 @@
     hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
-    # nixpkgs branches for bandaids
-    devusb-google-cloud-sdk.url = "github:devusb/nixpkgs/google-cloud-sdk";
-
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -57,12 +54,10 @@
     attic.url = "github:zhaofengli/attic";
 
     # nix-search-cli
-    nix-search-cli = {
-      url = "github:peterldowns/nix-search-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "utils";
-      inputs.flake-compat.follows = "flake-compat";
-    };
+    nix-search-cli.url = "github:peterldowns/nix-search-cli";
+    nix-search-cli.inputs.nixpkgs.follows = "nixpkgs";
+    nix-search-cli.inputs.flake-utils.follows = "utils";
+    nix-search-cli.inputs.flake-compat.follows = "flake-compat";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
