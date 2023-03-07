@@ -23,7 +23,6 @@
     headsetcontrol
     difftastic
     devenv
-    attic
     nix-search
   ];
 
