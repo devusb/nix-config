@@ -53,6 +53,9 @@
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.deviceSection = ''
+    Option "VariableRefresh" "true"
+  '';
   hardware.opengl.enable = true;
 
   services.xserver.displayManager = {
