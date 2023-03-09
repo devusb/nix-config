@@ -1,4 +1,8 @@
-{ pkgs, inputs, config, ... }: {
+{ pkgs, inputs, config, ... }:
+let
+  shairport-sync = pkgs.shairport-sync.override { enableAirplay2 = true; };
+in
+{
   imports = [
     ./hardware-configuration.nix
     ../common/users/mhelton
@@ -7,6 +11,8 @@
     ../common/_1password.nix
     ../common/docker.nix
   ];
+  disabledModules = [ "services/networking/shairport-sync.nix" ];
+
   networking.hostName = "tomservo";
 
   boot.loader.systemd-boot.enable = true;
@@ -87,6 +93,10 @@
   };
 
   services.nqptp.enable = true;
+  services.shairport-sync = {
+    enable = true;
+    package = shairport-sync;
+  };
 
   services.sunshine.enable = true;
 

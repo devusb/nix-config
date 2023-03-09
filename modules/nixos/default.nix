@@ -2,5 +2,6 @@
 
 {
   nqptp = ./nqptp.nix;
+  shairport-sync = ./shairport-sync.nix;
   sunshine = ./sunshine.nix;
 }
