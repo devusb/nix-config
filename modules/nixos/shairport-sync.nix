@@ -16,7 +16,7 @@ in
     systemd.user.services.shairport-sync =
       {
         description = "shairport-sync";
-        wantedBy = [ "default.target" ];
+        wantedBy = [ "graphical-session.target" ];
         wants = [ "wireplumber.service" ];
         after = [ "wireplumber.service" ];
         serviceConfig = {
