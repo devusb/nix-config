@@ -38,6 +38,9 @@ in
     "org/gnome/shell/keybindings" = {
       toggle-overview = [ "<Control><Alt>Tab" ];
     };
+    "org/gnome/mutter" = {
+      auto-maximize = false;
+    };
   };
 
   home.file.".config/autostart/_1password.desktop".text = ''
