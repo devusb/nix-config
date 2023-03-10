@@ -67,6 +67,7 @@
     extraConfig = {
       push = {
         default = "simple";
+        autoSetupRemote = true;
       };
       help = {
         autocorrect = "10";
