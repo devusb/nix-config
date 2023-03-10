@@ -23,8 +23,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  # enable syslog
-  services.syslogd.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   services.openssh = {
     enable = true;
