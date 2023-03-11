@@ -6,7 +6,7 @@
     dolphin-emu-beta
     chiaki
     theforceengine
-    ryujinx-git
+    ryujinx
   ];
 
   dconf.settings = {
