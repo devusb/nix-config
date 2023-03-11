@@ -57,7 +57,7 @@
         session = {
           bind = {
             _args = [ "q" ];
-            Quit = [];
+            Quit = [ ];
           };
         };
       };
