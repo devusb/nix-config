@@ -51,13 +51,15 @@
     settings = {
       keybinds = {
         unbind = [
-          { Ctrl = "q"; }
-          { Ctrl = "s"; }
+          "Ctrl q"
+          "Ctrl s"
         ];
-        session = [
-          { action = [ "Quit" ]; key = [{ Char = "q"; }]; }
-          { action = [{ SwitchToMode = "Search"; }]; key = [{ Char = "s"; }]; }
-        ];
+        session = {
+          bind = {
+            _args = [ "q" ];
+            Quit = [];
+          };
+        };
       };
     };
   };
