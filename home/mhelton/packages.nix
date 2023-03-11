@@ -55,9 +55,11 @@
           "Ctrl s"
         ];
         session = {
-          bind = {
-            _args = [ "q" ];
+          "bind \"q\"" = {
             Quit = [ ];
+          };
+          "bind \"s\"" = {
+            SwitchToMode = "Search";
           };
         };
       };
