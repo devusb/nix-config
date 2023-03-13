@@ -2,6 +2,7 @@
   imports = [
     ./micro.nix
     ./kitty.nix
+    ./neovim.nix
   ];
 
   home.packages = with pkgs; [
@@ -82,4 +83,5 @@
       display = "side-by-side-show-both";
     };
   };
+
 }
