@@ -4,6 +4,12 @@
   ];
   programs.nixvim = {
     enable = true;
+    plugins = {
+      treesitter.enable = true;
+    };
+    colorschemes = {
+      gruvbox.enable = true;
+    };
   };
 
 }
