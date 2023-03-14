@@ -6,6 +6,7 @@
     enable = true;
     plugins = {
       treesitter.enable = true;
+      telescope.enable = true;
     };
     colorschemes = {
       gruvbox.enable = true;
