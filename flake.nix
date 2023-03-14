@@ -45,11 +45,6 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
     nixgl.inputs.flake-utils.follows = "utils";
 
-    # devenv
-    devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
-    devenv.inputs.flake-compat.follows = "flake-compat";
-
     # attic
     attic.url = "github:zhaofengli/attic";
 

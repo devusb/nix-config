@@ -23,7 +23,6 @@
     nixpkgs-fmt
     headsetcontrol
     difftastic
-    devenv
     nix-search
   ];
 
