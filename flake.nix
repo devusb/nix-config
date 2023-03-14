@@ -58,6 +58,11 @@
     nix-search-cli.inputs.nixpkgs.follows = "nixpkgs";
     nix-search-cli.inputs.flake-utils.follows = "utils";
     nix-search-cli.inputs.flake-compat.follows = "flake-compat";
+
+    # nixvim
+    nixvim.url = "github:pta2002/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.flake-utils.follows = "utils";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:

@@ -1,18 +1,9 @@
-{ pkgs, ... }: {
-  programs.neovim = {
+{ inputs, pkgs, ... }: {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
+  programs.nixvim = {
     enable = true;
-    withPython3 = true;
-    withNodeJs = true;
-    extraPackages = with pkgs; [
-      ripgrep
-      gcc
-      stylua
-      black
-      nodePackages.prettier
-      python3Packages.flake8
-      google-java-format
-      wget
-    ];
   };
 
 }
