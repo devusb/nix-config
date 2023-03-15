@@ -9,6 +9,10 @@
     plugins = {
       treesitter.enable = true;
       telescope.enable = true;
+      nvim-autopairs = {
+        enable = true;
+        checkTs = true;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
