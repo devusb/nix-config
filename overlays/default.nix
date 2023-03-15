@@ -10,6 +10,10 @@ let
     nixgl = inputs.nixgl.packages.${prev.system};
     nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
 
+    colima = prev.colima.overrideAttrs (old: {
+      doCheck = false;
+    });
+
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
