@@ -10,6 +10,9 @@
       treesitter.enable = true;
       telescope.enable = true;
     };
+    extraPlugins = with pkgs.vimPlugins; [
+      editorconfig-nvim
+    ];
     colorschemes = {
       gruvbox.enable = true;
     };
