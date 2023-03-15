@@ -13,6 +13,9 @@
         enable = true;
         checkTs = true;
       };
+      neo-tree = {
+        enable = true;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
