@@ -12,6 +12,7 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
+      indent-o-matic
     ];
     colorschemes = {
       gruvbox.enable = true;
