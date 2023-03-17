@@ -48,6 +48,16 @@
       "<leader>tp" = "<Cmd>BufferPrevious<CR>";
       "<leader>tc" = "<Cmd>BufferClose<CR>";
     };
+    maps.terminal = {
+      "<esc><esc>" = "<C-\\><C-N>";
+    };
+    autoCmd = [
+      {
+        event = [ "TermOpen" ];
+        pattern = [ "*" ];
+        command = "startinsert";
+      }
+    ];
   };
 
 }
