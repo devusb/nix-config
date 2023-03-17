@@ -39,11 +39,14 @@
       gruvbox.enable = true;
     };
     maps.normal = {
-      "<leader>t" = "<CMD>NeoTreeShowToggle<CR>";
       "<leader>ft" = "<CMD>Telescope find_files<CR>";
       "<leader>fg" = "<CMD>Telescope grep_string<CR>";
       "j" = "gj";
       "k" = "gk";
+      "<leader>t" = "<CMD>NeoTreeShowToggle<CR>";
+      "<leader>tn" = "<Cmd>BufferNext<CR>";
+      "<leader>tp" = "<Cmd>BufferPrevious<CR>";
+      "<leader>tc" = "<Cmd>BufferClose<CR>";
     };
   };
 
