@@ -22,8 +22,11 @@
         enable = true;
       };
       barbar.enable = true;
-      lightline.enable = true;
+      lightline = {
+        enable = true;
+      };
       indent-blankline.enable = true;
+      fugitive.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
