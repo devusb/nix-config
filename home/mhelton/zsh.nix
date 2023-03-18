@@ -17,6 +17,8 @@
       cat = "${pkgs.bat}/bin/bat --paging=always";
       ts = "${pkgs.tailscale}/bin/tailscale";
       za = "${pkgs.zellij}/bin/zellij attach";
+      zr = "${pkgs.zellij}/bin/zellij run";
+      ze = "${pkgs.zellij}/bin/zellij edit";
       z = "${pkgs.zellij}/bin/zellij";
       gl = "${pkgs.git}/bin/git log -p --ext-diff";
       devenv = "nix flake init -t github:cachix/devenv";
