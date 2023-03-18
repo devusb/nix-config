@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./micro.nix
     ./kitty.nix
     ./neovim.nix
   ];
@@ -52,14 +51,10 @@
       keybinds = {
         unbind = [
           "Ctrl q"
-          "Ctrl s"
         ];
         session = {
           "bind \"q\"" = {
             Quit = [ ];
-          };
-          "bind \"s\"" = {
-            SwitchToMode = "Search";
           };
         };
       };
