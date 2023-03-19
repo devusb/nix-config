@@ -40,9 +40,6 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./common/pgdiff { };
 
-  # ryujinx
-  ryujinx = pkgs.callPackage ./linux/ryujinx { };
-
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
