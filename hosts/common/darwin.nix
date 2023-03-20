@@ -6,7 +6,7 @@
     package = pkgs.nixUnstable;
     settings = {
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
-      auto-optimise-store = true;
+      auto-optimise-store = false;
       warn-dirty = false;
       trusted-users = [ "mhelton" ];
     };
