@@ -28,7 +28,7 @@
         keymaps = {
           next = "<TAB>";
           previous = "<S-TAB>";
-          close = "<C-w>";
+          close = "<leader>tc";
           pick = "<leader>p";
         };
       };
