@@ -23,7 +23,15 @@
         checkTs = true;
       };
       neo-tree.enable = true;
-      barbar.enable = true;
+      barbar = {
+        enable = true;
+        keymaps = {
+          next = "<TAB>";
+          previous = "<S-TAB>";
+          close = "<C-w>";
+          pick = "<leader>p";
+        };
+      };
       indent-blankline.enable = true;
       fugitive.enable = true;
       lualine = {
@@ -44,9 +52,6 @@
       "j" = "gj";
       "k" = "gk";
       "<leader>tt" = "<CMD>NeoTreeShowToggle<CR>";
-      "<leader>tn" = "<Cmd>BufferNext<CR>";
-      "<leader>tp" = "<Cmd>BufferPrevious<CR>";
-      "<leader>tc" = "<Cmd>BufferClose<CR>";
     };
     maps.terminal = {
       "<esc><esc>" = "<C-\\><C-N>";
