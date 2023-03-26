@@ -40,6 +40,9 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./common/pgdiff { };
 
+  # sleep-on-lan
+  sleep-on-lan = pkgs.callPackage ./common/sleep-on-lan { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (

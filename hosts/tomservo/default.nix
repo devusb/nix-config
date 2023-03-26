@@ -97,4 +97,6 @@ in
 
   services.sunshine.enable = true;
 
+  services.sleep-on-lan.enable = true;
+
 }

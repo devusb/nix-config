@@ -4,4 +4,5 @@
   nqptp = ./nqptp.nix;
   shairport-sync = ./shairport-sync.nix;
   sunshine = ./sunshine.nix;
+  sleep-on-lan = ./sleep-on-lan.nix;
 }
