@@ -23,15 +23,7 @@
         checkTs = true;
       };
       neo-tree.enable = true;
-      barbar = {
-        enable = true;
-        keymaps = {
-          next = "<TAB>";
-          previous = "<S-TAB>";
-          close = "<leader>tc";
-          pick = "<leader>p";
-        };
-      };
+      bufferline.enable = true;
       indent-blankline.enable = true;
       fugitive.enable = true;
       lualine = {
