@@ -60,10 +60,12 @@ in
     Option "VariableRefresh" "true"
   '';
   hardware.opengl.enable = true;
+  hardware.opengl.mesaPackage = pkgs.mesa_23;
 
   services.xserver.displayManager = {
     gdm.enable = true;
     gdm.autoSuspend = false;
+    gdm.wayland = false;
   };
 
   # autologin crash workaround
