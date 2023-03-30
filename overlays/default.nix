@@ -9,6 +9,10 @@ let
     attic = inputs.attic.packages.${prev.system}.attic-client;
     nixgl = inputs.nixgl.packages.${prev.system};
     nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
+
+    gutenprint = prev.gutenprint.overrideAttrs (old: {
+      nativeBuildInputs = with prev; [ makeWrapper pkg-config cups perl ];
+    });
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
