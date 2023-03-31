@@ -11,9 +11,9 @@ in
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
-      primary-color = "#3465a4";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.webp";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
+      primary-color = "#3071AE";
       secondary-color = "#000000";
     };
     "org/gnome/desktop/screensaver" = {
