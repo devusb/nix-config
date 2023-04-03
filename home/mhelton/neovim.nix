@@ -30,6 +30,7 @@
         enable = true;
         theme = "gruvbox-material";
       };
+      commentary.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
