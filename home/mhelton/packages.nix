@@ -22,7 +22,6 @@
     nixpkgs-fmt
     headsetcontrol
     difftastic
-    nix-search
   ];
 
   programs.home-manager = {
@@ -76,6 +75,11 @@
       enable = true;
       display = "side-by-side-show-both";
     };
+  };
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
 }
