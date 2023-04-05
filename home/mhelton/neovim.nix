@@ -31,6 +31,15 @@
         theme = "gruvbox-material";
       };
       commentary.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          rnix-lsp = {
+            enable = true;
+            autostart = true;
+          };
+        };
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
