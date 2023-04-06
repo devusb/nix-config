@@ -28,7 +28,7 @@ in
       natural-scroll = true;
     };
     "org/gnome/shell" = {
-      favorite-apps = [ "brave-browser.desktop" "kitty.desktop" "code.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop" ];
+      favorite-apps = [ "brave-browser.desktop" "kitty.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop" ];
     };
     "org/gnome/shell/keybindings" = {
       toggle-overview = [ "<Control><Alt>Tab" ];
