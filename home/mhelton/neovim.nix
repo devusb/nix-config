@@ -35,14 +35,8 @@
       lsp = {
         enable = true;
         servers = {
-          rnix-lsp = {
-            enable = true;
-            autostart = true;
-          };
-          terraformls = {
-            enable = true;
-            autostart = true;
-          };
+          rnix-lsp.enable = true;
+          terraformls.enable = true;
         };
       };
       nvim-cmp = {
