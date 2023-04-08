@@ -49,6 +49,11 @@
         enable = true;
         autoEnableSources = true;
         sources = [{ name = "nvim_lsp"; }];
+        snippet.expand = "luasnip";
+        mappingPresets = [ "insert" ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+        };
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
