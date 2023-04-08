@@ -12,7 +12,7 @@
       clipboard = "unnamedplus";
     };
     plugins = {
-      luasnip.enable = true;
+      nix.enable = true;
       treesitter.enable = true;
       telescope = {
         enable = true;
@@ -39,6 +39,7 @@
           terraformls.enable = true;
         };
       };
+      luasnip.enable = true;
       nvim-cmp = {
         enable = true;
         autoEnableSources = true;
