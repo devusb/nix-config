@@ -26,7 +26,6 @@
       neo-tree.enable = true;
       bufferline.enable = true;
       indent-blankline.enable = true;
-      fugitive.enable = true;
       lualine = {
         enable = true;
         theme = "gruvbox-material";
@@ -54,7 +53,11 @@
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
       indent-o-matic
+      leap-nvim
     ];
+    extraConfigLua = ''
+      require('leap').add_default_mappings()
+    '';
     colorschemes = {
       gruvbox.enable = true;
     };
