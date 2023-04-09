@@ -49,7 +49,7 @@
     attic.url = "github:zhaofengli/attic";
 
     # nixvim
-    nixvim.url = "github:devusb/nixvim/terraform-ls";
+    nixvim.url = "github:pta2002/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.flake-utils.follows = "utils";
   };

@@ -396,16 +396,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1680892275,
-        "narHash": "sha256-R/LR2pOkqk4iiyhLR5m3FtOGn9WqWp0BsB9lj4Tr+Yo=",
-        "owner": "devusb",
+        "lastModified": 1680988170,
+        "narHash": "sha256-QCl2A80m3p/lkRCO9C/PipdkV9I1mbqhnFftjoY4dQ8=",
+        "owner": "pta2002",
         "repo": "nixvim",
-        "rev": "f8956e4639691fd515b85541449e460b24d584af",
+        "rev": "b6706fa0ec59f37b35bd4c6f3f3be0011bf14964",
         "type": "github"
       },
       "original": {
-        "owner": "devusb",
-        "ref": "terraform-ls",
+        "owner": "pta2002",
         "repo": "nixvim",
         "type": "github"
       }
