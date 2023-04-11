@@ -11,7 +11,6 @@ in
     ../common/_1password.nix
     ../common/docker.nix
   ];
-  disabledModules = [ "services/networking/shairport-sync.nix" ];
 
   networking.hostName = "tomservo";
 

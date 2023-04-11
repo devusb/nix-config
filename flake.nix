@@ -52,6 +52,10 @@
     nixvim.url = "github:pta2002/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.flake-utils.follows = "utils";
+
+    # disko
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -106,6 +110,29 @@
             }
           ];
         };
+        durandal = nixpkgs.lib.nixosSystem {
+          pkgs = legacyPackages."x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/durandal
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs outputs; };
+                users.mhelton.imports = [
+                  ./home/mhelton
+                  ./home/mhelton/personal.nix
+                  ./home/mhelton/linux.nix
+                  ./home/mhelton/graphical.nix
+                  ./home/mhelton/gaming.nix
+                ];
+              };
+            }
+          ];
+        };
+
       };
 
       darwinConfigurations = {

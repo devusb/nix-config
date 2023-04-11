@@ -2,6 +2,7 @@
   imports = [
     inputs.nur.nixosModules.nur
   ] ++ (builtins.attrValues outputs.nixosModules);
+  disabledModules = [ "services/networking/shairport-sync.nix" ];
 
   nix = {
     package = pkgs.nixUnstable;
