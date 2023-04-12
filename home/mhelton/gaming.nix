@@ -7,6 +7,7 @@
     chiaki
     theforceengine
     ryujinx
+    moonlight-qt
   ];
 
   dconf.settings = {
