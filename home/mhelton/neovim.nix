@@ -36,6 +36,7 @@
         servers = {
           rnix-lsp.enable = true;
           terraformls.enable = true;
+          gopls.enable = true;
         };
       };
       luasnip.enable = true;
