@@ -9,6 +9,7 @@ let
     attic = inputs.attic.packages.${prev.system}.attic-client;
     nixgl = inputs.nixgl.packages.${prev.system};
     nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
+    devenv = inputs.devenv.packages.${prev.system}.devenv;
 
     gutenprint = prev.gutenprint.overrideAttrs (old: {
       nativeBuildInputs = with prev; [ makeWrapper pkg-config cups perl ];

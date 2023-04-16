@@ -22,6 +22,7 @@
     nixpkgs-fmt
     headsetcontrol
     difftastic
+    devenv
   ];
 
   programs.home-manager = {

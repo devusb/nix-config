@@ -21,7 +21,6 @@
       ze = "${pkgs.zellij}/bin/zellij edit";
       z = "${pkgs.zellij}/bin/zellij";
       gl = "${pkgs.git}/bin/git log -p --ext-diff";
-      devenv = "nix flake init -t github:cachix/devenv";
     };
     history = {
       size = 10000;
