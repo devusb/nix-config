@@ -17,7 +17,6 @@
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.inputs.utils.follows = "utils";
 
     # nix-darwin
     darwin.url = "github:lnl7/nix-darwin/master";
