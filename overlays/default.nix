@@ -24,6 +24,11 @@ let
             url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2954/diffs.patch";
             sha256 = "sha256-jFoOd/hctFhkU0tNSNxuMzZTlihYOflkhRv9Szvd0Us=";
           })
+          # https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+          (prev.fetchurl {
+            url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2952/diffs.patch";
+            sha256 = "sha256-eceXbMeGQCiC9V7XMEN3oDcw4ZmOBh5KAoe1xau6Lg8=";
+          })
         ];
       });
     });
