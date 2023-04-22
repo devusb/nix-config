@@ -32,6 +32,16 @@ let
         ];
       });
     });
+
+    openjk = prev.openjk.overrideAttrs (old: {
+      version = "unstable-2023-04-20";
+      src = prev.fetchFromGitHub {
+        owner = "JACoders";
+        repo = "OpenJK";
+        rev = "f1448bc2c04d13f259a88dd2a22d6b3c6fa68772";
+        sha256 = "sha256-jTZz1TjjobZmJcwtR3o0QtTWASMSXcUav6oRAEPDMJU=";
+      };
+    });
   };
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
