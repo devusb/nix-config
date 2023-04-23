@@ -113,6 +113,7 @@
             }
           ];
         };
+
         durandal = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs outputs; };
@@ -135,7 +136,6 @@
             }
           ];
         };
-
       };
 
       darwinConfigurations = {
@@ -186,7 +186,6 @@
         "deck@bb" = home-manager.lib.homeManagerConfiguration rec {
           pkgs = legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-
           modules = [
             ./home/mhelton
             ./home/mhelton/personal.nix
