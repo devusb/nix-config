@@ -8,7 +8,7 @@
     theforceengine
     ryujinx
     moonlight-qt
-    openjk
+    openjk.openjo
   ];
 
   dconf.settings = {
