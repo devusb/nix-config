@@ -27,6 +27,7 @@
       full = true;
       toggle_hud_position = "R_Shift+F10";
       position = "top-right";
+      no_display = true;
     };
   };
 
