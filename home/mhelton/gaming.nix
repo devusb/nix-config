@@ -24,6 +24,9 @@
       gl_vsync = -1;
       vsync = 0;
       fps_limit = 144;
+      full = true;
+      toggle_hud_position = "R_Shift+F10";
+      position = "top-right";
     };
   };
 
