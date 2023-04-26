@@ -17,4 +17,14 @@
     };
   };
 
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = true;
+    settings = {
+      gl_vsync = -1;
+      vsync = 0;
+      fps_limit = 144;
+    };
+  };
+
 }
