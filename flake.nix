@@ -26,10 +26,6 @@
     mpack.url = "github:league/mpack";
     mpack.inputs.nixpkgs.follows = "nixpkgs";
 
-    # vscode-server
-    vscode-server.url = "github:msteen/nixos-vscode-server";
-    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
-
     # colmena
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.nixpkgs.follows = "nixpkgs";

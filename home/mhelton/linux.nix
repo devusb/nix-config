@@ -1,6 +1,5 @@
 { inputs, pkgs, ... }: {
   imports = [
-    inputs.vscode-server.nixosModules.home
   ];
 
   home.packages = with pkgs; [
@@ -14,8 +13,6 @@
       linux_display_server = "x11";
     };
   };
-
-  services.vscode-server.enable = true;
 
   services.syncthing.enable = true;
 

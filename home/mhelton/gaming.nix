@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  moonlight = pkgs.moonlight-qt.override { SDL2 = pkgs.SDL2.override { drmSupport = true; }; };
+in
 {
   home.packages = with pkgs; [
     lutris
@@ -7,7 +10,7 @@
     chiaki
     theforceengine
     ryujinx
-    moonlight-qt
+    moonlight
     openjk.openjo
   ];
 
