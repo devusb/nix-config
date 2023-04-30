@@ -32,6 +32,7 @@
   };
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.modesetting.enable = true;
   hardware.opengl.enable = true;
 
   system.stateVersion = "22.11";
