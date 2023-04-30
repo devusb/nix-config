@@ -9,9 +9,6 @@
 
   programs.kitty = {
     font.size = 12;
-    settings = {
-      linux_display_server = "x11";
-    };
   };
 
   services.syncthing.enable = true;
