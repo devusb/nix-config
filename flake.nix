@@ -55,6 +55,11 @@
     # devenv
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    # plasma-manager
+    plasma-manager.url = "github:pjones/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -103,6 +108,7 @@
                   ./home/mhelton/personal.nix
                   ./home/mhelton/linux.nix
                   ./home/mhelton/graphical.nix
+                  ./home/mhelton/plasma.nix
                   ./home/mhelton/gaming.nix
                 ];
               };
@@ -126,6 +132,7 @@
                   ./home/mhelton/personal.nix
                   ./home/mhelton/linux.nix
                   ./home/mhelton/graphical.nix
+                  ./home/mhelton/gnome.nix
                   ./home/mhelton/gaming.nix
                 ];
               };

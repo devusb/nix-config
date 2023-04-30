@@ -14,11 +14,6 @@ in
     openjk.openjo
   ];
 
-  dconf.settings = {
-    "org/gnome/shell" = {
-      favorite-apps = [ "steam.desktop" "net.lutris.Lutris.desktop" ];
-    };
-  };
 
   programs.mangohud = {
     enable = true;

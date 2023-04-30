@@ -51,24 +51,18 @@ in
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a66", TAG+="uaccess"
   '';
 
-  # add GUI
+  # Graphical
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
   services.xserver.deviceSection = ''
     Option "VariableRefresh" "true"
   '';
   hardware.opengl.enable = true;
 
-  services.xserver.displayManager = {
-    gdm.enable = true;
-    gdm.autoSuspend = false;
-    gdm.wayland = false;
-  };
-
-  # autologin crash workaround
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # Plasma
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  programs.kdeconnect.enable = true;
 
   services.avahi = {
     enable = true;
@@ -95,7 +89,7 @@ in
     package = shairport-sync;
   };
 
-  services.sunshine.enable = true;
+  services.sunshine.enable = false;
 
   networking.interfaces.enp5s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;

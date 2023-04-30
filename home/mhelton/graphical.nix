@@ -5,50 +5,27 @@ in
 {
 
   home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip cider ];
-  programs.vscode.enable = true;
 
-  dconf.settings = {
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.webp";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
-      primary-color = "#3071AE";
-      secondary-color = "#000000";
-    };
-    "org/gnome/desktop/screensaver" = {
-      color-shading-type = "solid";
-      lock-enabled = false;
-      picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
-      primary-color = "#3465a4";
-      secondary-color = "#000000";
-    };
-    "org/gnome/desktop/peripherals/mouse" = {
-      natural-scroll = true;
-    };
-    "org/gnome/shell" = {
-      favorite-apps = [ "brave-browser.desktop" "kitty.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop" ];
-    };
-    "org/gnome/shell/keybindings" = {
-      toggle-overview = [ "<Control><Alt>Tab" ];
-    };
-    "org/gnome/mutter" = {
-      auto-maximize = false;
-    };
-  };
-
-  home.file.".config/autostart/_1password.desktop".text = ''
+  xdg.configFile."autostart/1password.desktop".text = ''
     [Desktop Entry]
-    Name=1Password
-    Exec=1password --silent
-    Terminal=false
-    Type=Application
-    Icon=1password
-    StartupWMClass=1Password
-    Comment=Password manager and secure wallet
-    MimeType=x-scheme-handler/onepassword;
     Categories=Office;
+    Comment[en_US]=Password manager and secure wallet
+    Comment=Password manager and secure wallet
+    Exec=1password %U --silent
+    GenericName[en_US]=
+    GenericName=
+    Icon=1password
+    MimeType=
+    Name[en_US]=1Password
+    Name=1Password
+    Path=
+    StartupNotify=true
+    StartupWMClass=1Password
+    Terminal=false
+    TerminalOptions=
+    Type=Application
+    X-KDE-SubstituteUID=false
+    X-KDE-Username=
   '';
 
 }
