@@ -5,4 +5,5 @@
   shairport-sync = ./shairport-sync.nix;
   sunshine = ./sunshine.nix;
   sleep-on-lan = ./sleep-on-lan.nix;
+  plex-mpv-shim = ./plex-mpv-shim.nix;
 }
