@@ -11,6 +11,12 @@ let
     nix-search = inputs.nix-search-cli.packages.${prev.system}.nix-search;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
 
+    # mpv with plugins
+    mpv = prev.mpv.override {
+      scripts = with prev.mpvScripts; [ inhibit-gnome ];
+    };
+
+    # mutter patches
     gnome = prev.gnome.overrideScope' (gself: gsuper: {
       mutter = gsuper.mutter.overrideAttrs (old: {
         patches = [
@@ -33,6 +39,7 @@ let
       });
     });
 
+    # bump openjk version
     openjk = prev.openjk.overrideAttrs (old: {
       version = "unstable-2023-04-20";
       src = prev.fetchFromGitHub {
