@@ -17,13 +17,13 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.memtest86.enable = true;
 
   networking.hostName = "durandal"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
@@ -61,6 +61,14 @@
   services.flatpak.enable = true;
 
   services.plex-mpv-shim.enable = true;
+
+  # monitoring
+  services.prometheus.exporters = {
+    node = {
+      enable = true;
+      enabledCollectors = [ "systemd" "ethtool" "netstat" ];
+    };
+  };
 
 }
 
