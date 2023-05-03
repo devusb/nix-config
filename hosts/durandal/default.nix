@@ -24,17 +24,20 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    autoSuspend = false;
-  };
-  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.modesetting.enable = true;
   hardware.opengl.enable = true;
 
+  # Plasma
+  services.xserver.displayManager.sddm = {
+    enable = true;
+  };
+  services.xserver.desktopManager.plasma5 = {
+    enable = true;
+    bigscreen.enable = true;
+    useQtScaling = true;
+  };
+  programs.kdeconnect.enable = true;
   system.stateVersion = "22.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -57,6 +60,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  hardware.bluetooth.enable = true;
 
   services.flatpak.enable = true;
 

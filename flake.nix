@@ -132,7 +132,7 @@
                   ./home/mhelton/personal.nix
                   ./home/mhelton/linux.nix
                   ./home/mhelton/graphical.nix
-                  ./home/mhelton/gnome.nix
+                  ./home/mhelton/plasma.nix
                   ./home/mhelton/gaming.nix
                 ];
               };
