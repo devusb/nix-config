@@ -6,4 +6,5 @@
   sunshine = ./sunshine.nix;
   sleep-on-lan = ./sleep-on-lan.nix;
   plex-mpv-shim = ./plex-mpv-shim.nix;
+  nfs-client = ./nfs-client.nix;
 }
