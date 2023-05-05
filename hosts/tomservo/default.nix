@@ -22,6 +22,10 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  environment.variables = {
+    VDPAU_DRIVER = "radeonsi";
+  };
+
   services.openssh = {
     enable = true;
     settings = {
@@ -57,7 +61,13 @@ in
   services.xserver.deviceSection = ''
     Option "VariableRefresh" "true"
   '';
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;
