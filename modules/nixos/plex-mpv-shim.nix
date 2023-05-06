@@ -12,15 +12,15 @@ in
   };
 
   config =
-  mkIf config.services.plex-mpv-shim.enable {
-    environment.systemPackages = [ cfg.package ];
-    systemd.user.services.plex-mpv-shim =
-      {
-        description = "plex-mpv-shim";
-        wantedBy = [ "graphical-session.target" ];
-        serviceConfig = {
-          ExecStart = "${cfg.package}/bin/plex-mpv-shim";
+    mkIf config.services.plex-mpv-shim.enable {
+      environment.systemPackages = [ cfg.package ];
+      systemd.user.services.plex-mpv-shim =
+        {
+          description = "plex-mpv-shim";
+          wantedBy = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart = "${cfg.package}/bin/plex-mpv-shim";
+          };
         };
-      };
-  };
+    };
 }

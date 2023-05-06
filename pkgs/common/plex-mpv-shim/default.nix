@@ -1,5 +1,15 @@
-{ lib, buildPythonApplication, fetchFromGitHub, mpv, python, requests, python-mpv-jsonipc, pystray, tkinter
-, wrapGAppsHook, gobject-introspection }:
+{ lib
+, buildPythonApplication
+, fetchFromGitHub
+, mpv
+, python
+, requests
+, python-mpv-jsonipc
+, pystray
+, tkinter
+, wrapGAppsHook
+, gobject-introspection
+}:
 let
   default-shader-pack = fetchFromGitHub {
     owner = "iwalton3";
