@@ -21,10 +21,19 @@
 
   networking.hostName = "durandal"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
     nvtop
   ];
+
+  # monitoring
+  services.prometheus.exporters = {
+    node = {
+      enable = true;
+      enabledCollectors = [ "systemd" "ethtool" "netstat" ];
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -65,19 +74,9 @@
     pulse.enable = true;
   };
 
-  hardware.bluetooth.enable = true;
-
   services.flatpak.enable = true;
-
   services.plex-mpv-shim.enable = true;
-
-  # monitoring
-  services.prometheus.exporters = {
-    node = {
-      enable = true;
-      enabledCollectors = [ "systemd" "ethtool" "netstat" ];
-    };
-  };
+  services.nfs-client.enable = true;
 
 }
 
