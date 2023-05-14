@@ -18,14 +18,17 @@ in
       "/mnt/r2d2/media" = {
         device = "192.168.20.131:/mnt/media";
         fsType = "nfs";
+        options = [ "x-systemd.automount" "noauto" ];
       };
       "/mnt/r2d2/backup" = {
         device = "192.168.20.131:/mnt/backup";
         fsType = "nfs";
+        options = [ "x-systemd.automount" "noauto" ];
       };
       "/mnt/r2d2/homes" = {
         device = "192.168.20.131:/mnt/homes";
         fsType = "nfs";
+        options = [ "x-systemd.automount" "noauto" ];
       };
     };
   };
