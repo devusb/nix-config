@@ -23,6 +23,7 @@
     headsetcontrol
     difftastic
     devenv
+    ouch
   ];
 
   programs.home-manager = {
