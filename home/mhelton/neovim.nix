@@ -34,7 +34,7 @@
       lsp = {
         enable = true;
         servers = {
-          rnix-lsp.enable = true;
+          nil_ls.enable = true;
           terraformls.enable = true;
           gopls.enable = true;
         };
