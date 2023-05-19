@@ -99,7 +99,7 @@ in
     package = shairport-sync;
   };
 
-  services.sunshine.enable = false;
+  services.sunshine.enable = true;
 
   networking.interfaces.enp5s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;
