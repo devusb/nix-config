@@ -19,6 +19,10 @@ in
 
   config = mkIf config.services.sunshine.enable {
 
+    environment.systemPackages = [
+      pkgs.sunshine
+    ];
+
     security.wrappers.sunshine = {
       owner = "root";
       group = "root";
