@@ -49,6 +49,9 @@
     bigscreen.enable = true;
     useQtScaling = true;
   };
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    plasma-remotecontrollers
+  ];
   programs.kdeconnect.enable = true;
   system.stateVersion = "22.11";
 
