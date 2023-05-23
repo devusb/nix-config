@@ -50,6 +50,9 @@ in
         # timedb
         pypika = pkgs.python3Packages.callPackage ../pkgs/common/pypika { };
         timedb = pkgs.python3Packages.callPackage ../pkgs/common/timedb { };
+
+        # krr
+        krr = pkgs.python3Packages.callPackage ../pkgs/common/krr { };
       }
     )
   ];
