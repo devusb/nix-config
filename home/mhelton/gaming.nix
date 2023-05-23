@@ -9,6 +9,7 @@
     ryujinx
     moonlight-qt
     openjk.openjo
+    heroic
   ];
 
 
