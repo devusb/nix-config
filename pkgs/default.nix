@@ -40,9 +40,6 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./common/pgdiff { };
 
-  # plex-mpv-shim
-  plex-mpv-shim = pkgs.python3Packages.callPackage ./common/plex-mpv-shim { };
-
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
