@@ -28,4 +28,14 @@ in
   };
 
   services.syncthing.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        user = "mhelton";
+      };
+    };
+  };
+
 }
