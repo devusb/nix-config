@@ -24,6 +24,7 @@
     difftastic
     devenv
     ouch
+    attic
   ];
 
   programs.home-manager = {
