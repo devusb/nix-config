@@ -21,6 +21,20 @@ let
         sha256 = "sha256-jTZz1TjjobZmJcwtR3o0QtTWASMSXcUav6oRAEPDMJU=";
       };
     });
+
+    # bump john version
+    john = prev.john.overrideAttrs (old: {
+      version = "unstable-2023-06-02";
+      src = prev.fetchFromGitHub {
+        owner = "openwall";
+        repo = "john";
+        rev = "7c73ca9003b2392727fbc4de137fc96a38f82c7e";
+        sha256 = "sha256-TRAxfLBgMA4xQs77ThdRd9uscLNXqF9ycvE6LeYDsSY=";
+      };
+      patches = []; # patches have been upstreamed
+    });
+
   };
+
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
