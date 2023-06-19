@@ -164,7 +164,6 @@
             modules = [
               ./hosts/bb
               home-manager.nixosModules.home-manager
-              "${inputs.jovian}/modules"
               {
                 home-manager = {
                   useGlobalPkgs = true;

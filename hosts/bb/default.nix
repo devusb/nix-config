@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       inputs.disko.nixosModules.disko
       (import ./disko-config.nix { disks = [ "/dev/mmcblk0" ]; })
+      "${inputs.jovian}/modules"
       ../common/users/mhelton
       ../common/nixos.nix
       ../common/steam.nix
