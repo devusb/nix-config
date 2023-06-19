@@ -44,6 +44,13 @@
   services.xserver.displayManager.sddm = {
     enable = true;
   };
+  services.xserver.displayManager = {
+    defaultSession = "plasma";
+    autoLogin = {
+      enable = true;
+      user = "mhelton";
+    };
+  };
   services.xserver.desktopManager.plasma5 = {
     enable = true;
     bigscreen.enable = true;
