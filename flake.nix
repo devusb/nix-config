@@ -177,6 +177,9 @@
                     ./home/mhelton/plasma.nix
                     ./home/mhelton/gaming.nix
                   ];
+                  users.mhelton = {
+                    programs.mangohud.enable = nixpkgs.lib.mkForce false;
+                  };
                 };
               }
             ];
