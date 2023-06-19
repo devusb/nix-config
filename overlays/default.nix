@@ -31,7 +31,7 @@ let
         rev = "7c73ca9003b2392727fbc4de137fc96a38f82c7e";
         sha256 = "sha256-TRAxfLBgMA4xQs77ThdRd9uscLNXqF9ycvE6LeYDsSY=";
       };
-      patches = []; # patches have been upstreamed
+      patches = [ ]; # patches have been upstreamed
     });
 
   };
