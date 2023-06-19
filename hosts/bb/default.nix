@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -25,12 +25,15 @@
   networking.hostName = "bb"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
+  hardware.pulseaudio.enable = lib.mkForce false;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5.mobile.enable = true;
+
   jovian.steam.enable = true;
 
   system.stateVersion = "23.05"; # Did you read the comment?
