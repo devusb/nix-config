@@ -71,6 +71,7 @@ in
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
 
