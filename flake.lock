@@ -357,6 +357,22 @@
         "type": "github"
       }
     },
+    "jovian": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687034006,
+        "narHash": "sha256-H3BKqE/LqJ7Fn92vYafAtRX4Nz/dZ4yT+BAk9gaNoEA=",
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "rev": "7b85bd1de57ee685535029c0aead77050fa734c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "type": "github"
+      }
+    },
     "lowdown-src": {
       "flake": false,
       "locked": {
@@ -705,6 +721,7 @@
         "flake-compat": "flake-compat_3",
         "hardware": "hardware",
         "home-manager": "home-manager",
+        "jovian": "jovian",
         "mpack": "mpack",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",

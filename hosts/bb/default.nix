@@ -1,0 +1,38 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ inputs, config, pkgs, ... }:
+
+{
+  imports =
+    [
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      inputs.disko.nixosModules.disko
+      (import ./disko-config.nix { disks = [ "/dev/mmcblk0" ]; })
+      ../common/users/mhelton
+      ../common/nixos.nix
+      ../common/steam.nix
+    ];
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  jovian.devices.steamdeck.enable = true;
+
+  networking.hostName = "bb"; # Define your hostname.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  jovian.steam.enable = true;
+
+  system.stateVersion = "23.05"; # Did you read the comment?
+
+}
+

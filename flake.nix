@@ -60,6 +60,12 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    # Jovian-NixOS
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -139,6 +145,44 @@
             }
           ];
         };
+
+        bb =
+          let
+            system = "x86_64-linux";
+            # add Jovian-NixOS overlay
+            legacyPackages = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+              overlays = builtins.attrValues {
+                default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) (import "${inputs.jovian}/overlay.nix") ];
+              };
+            };
+          in
+          nixpkgs.lib.nixosSystem {
+            pkgs = legacyPackages;
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/bb
+              home-manager.nixosModules.home-manager
+              "${inputs.jovian}/modules"
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs outputs; };
+                  users.mhelton.imports = [
+                    ./home/mhelton
+                    ./home/mhelton/personal.nix
+                    ./home/mhelton/linux.nix
+                    ./home/mhelton/graphical.nix
+                    ./home/mhelton/plasma.nix
+                    ./home/mhelton/gaming.nix
+                  ];
+                };
+              }
+            ];
+          };
+
       };
 
       darwinConfigurations = {
