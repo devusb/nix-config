@@ -15,6 +15,7 @@
       ../common/users/mhelton
       ../common/nixos.nix
       ../common/steam.nix
+      ../common/_1password.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
