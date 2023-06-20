@@ -37,6 +37,7 @@
   };
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.plasma5.mobile.enable = true;
+  programs.kdeconnect.enable = true;
 
   jovian.steam.enable = true;
   jovian.devices.steamdeck.enable = true;
