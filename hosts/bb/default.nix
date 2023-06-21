@@ -29,15 +29,8 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.displayManager = {
-    sddm.enable = true;
-    setupCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --rotate right
-    '';
-  };
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.plasma5.mobile.enable = true;
-  programs.kdeconnect.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   jovian.steam.enable = true;
   jovian.devices.steamdeck.enable = true;
@@ -51,9 +44,9 @@
         autoLogin.user = "mhelton";
       };
     };
-    mobile.configuration = {
+    desktop.configuration = {
       services.xserver.displayManager = {
-        defaultSession = "plasma-mobile";
+        defaultSession = "gnome-xorg";
         autoLogin.user = "mhelton";
       };
     };
