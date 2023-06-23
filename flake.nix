@@ -116,7 +116,6 @@
                   ./home/mhelton/graphical.nix
                   ./home/mhelton/plasma.nix
                   ./home/mhelton/gaming.nix
-                  ./home/mhelton/deck.nix
                 ];
               };
             }
