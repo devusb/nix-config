@@ -13,6 +13,9 @@
     };
   };
 
+  # https://github.com/nix-community/home-manager/issues/4142
+  manual.manpages.enable = false;
+
   systemd.user.startServices = "sd-switch";
 
   fonts = {
