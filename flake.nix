@@ -229,19 +229,5 @@
         };
       };
 
-      homeConfigurations = {
-        "deck@bb" = home-manager.lib.homeManagerConfiguration rec {
-          pkgs = legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/mhelton
-            ./home/mhelton/personal.nix
-            ./home/mhelton/standalone.nix
-            {
-              home.username = pkgs.lib.mkForce "deck";
-            }
-          ];
-        };
-      };
     };
 }
