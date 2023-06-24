@@ -26,6 +26,18 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   hardware.pulseaudio.enable = lib.mkForce false;
 
+  fileSystems."/mnt/sdcard" = {
+    device = "/dev/mmcblk0p1";
+    options = [
+      "rw"
+      "user"
+      "defaults"
+      "exec"
+      "nofail"
+      "x-systemd.automount"
+    ];
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -39,6 +51,11 @@
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.plasma5.mobile.enable = true;
   programs.kdeconnect.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    partition-manager
+    libsForQt5.kpmcore
+  ];
 
   jovian.steam.enable = true;
   jovian.devices.steamdeck.enable = true;
