@@ -10,7 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.disko.nixosModules.disko
-      (import ./disko-config.nix { disks = [ "/dev/mmcblk0" ]; })
+      (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
       "${inputs.jovian}/modules"
       ../common/users/mhelton
       ../common/nixos.nix

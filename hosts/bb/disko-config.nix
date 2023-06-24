@@ -11,7 +11,7 @@
             {
               name = "ESP";
               start = "1MiB";
-              end = "100MiB";
+              end = "500MiB";
               bootable = true;
               content = {
                 type = "filesystem";
@@ -21,7 +21,7 @@
             }
             {
               name = "root";
-              start = "100MiB";
+              start = "500MiB";
               end = "-1G";
               part-type = "primary";
               content = {
