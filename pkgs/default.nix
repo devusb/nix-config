@@ -40,6 +40,9 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./common/pgdiff { };
 
+  # kubectl-cnp
+  kubectl-cnp = pkgs.callPackage ./common/kubectl-cnp { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
