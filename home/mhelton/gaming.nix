@@ -4,7 +4,7 @@
     lutris
     lm_sensors
     dolphin-emu-beta
-    chiaki
+    chiaki4deck
     theforceengine
     ryujinx
     moonlight-qt
