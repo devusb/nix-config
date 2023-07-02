@@ -40,8 +40,8 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./pgdiff { };
 
-  # kubectl-cnp
-  kubectl-cnp = pkgs.callPackage ./kubectl-cnp { };
+  # kubectl-cnpg
+  kubectl-cnpg = pkgs.callPackage ./kubectl-cnpg { };
 
   # chiaki4deck
   chiaki4deck = pkgs.libsForQt5.callPackage ./chiaki4deck { };

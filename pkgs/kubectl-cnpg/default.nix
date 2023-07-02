@@ -3,7 +3,7 @@
 , lib
 }:
 buildGoModule rec {
-  pname = "kubectl-cnp";
+  pname = "kubectl-cnpg";
   version = "1.20.1";
 
   src = fetchFromGitHub {
