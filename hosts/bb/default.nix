@@ -55,6 +55,10 @@
   services.xserver.desktopManager.plasma5.mobile.enable = true;
   programs.kdeconnect.enable = true;
 
+  environment.variables = {
+    VDPAU_DRIVER = "radeonsi";
+  };
+
   environment.systemPackages = with pkgs; [
     partition-manager
     libsForQt5.kpmcore
