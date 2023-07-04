@@ -25,9 +25,9 @@ in
         default = "fullscreen";
         description = lib.mdDoc "Display mode";
       };
-      registrationKey = mkOption {
-        type = types.str;
-        description = lib.mdDoc "PlayStation Remote Play registration key";
+      registrationKeyPath = mkOption {
+        type = types.path;
+        description = lib.mdDoc "Path to file containing PlayStation Remote Play registration key";
       };
       consoleNickname = mkOption {
         type = types.str;
@@ -84,7 +84,7 @@ in
         # Wake up console from sleep/rest mode if not already awake
         if ! echo "$ps_status" | grep -q ready
         then
-            ${cfg.package}/bin/chiaki wakeup -${consoleType} -h ${cfg.consoleAddress} -r '${cfg.registrationKey}' 2>/dev/null
+            ${cfg.package}/bin/chiaki wakeup -${consoleType} -h ${cfg.consoleAddress} -r $(cat ${cfg.registrationKeyPath}) 2>/dev/null
         fi
 
         # Wait for PlayStation to report ready status, exit script on error if it never happens.
@@ -115,7 +115,8 @@ in
         categories = [ "Game" ];
       };
     in
-  {
-    environment.systemPackages = [ pkgs.chiaki4deck launcher desktopItem ];
-  });
+    {
+      environment.systemPackages = [ pkgs.chiaki4deck launcher desktopItem ];
+    }
+  );
 }

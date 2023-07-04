@@ -12,6 +12,7 @@
       inputs.disko.nixosModules.disko
       (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
       "${inputs.jovian}/modules"
+      inputs.sops-nix.nixosModules.sops
       ../common/users/mhelton
       ../common/nixos.nix
       ../common/steam.nix
@@ -25,6 +26,8 @@
   networking.hostName = "bb"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   hardware.pulseaudio.enable = lib.mkForce false;
+
+  services.openssh.enable = true;
 
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";
@@ -68,6 +71,20 @@
   jovian.devices.steamdeck.enable = true;
   programs.steam.package = pkgs.steam.override {
     extraArgs = "-steamdeck";
+  };
+
+  sops = {
+    secrets.registration_key = {
+      sopsFile = ../../secrets/playstation.yaml;
+      owner = config.users.users.mhelton.name;
+    };
+  };
+
+  programs.chiaki4deck = {
+    enable = true;
+    consoleAddress = "192.168.10.58";
+    registrationKeyPath = config.sops.secrets.registration_key.path;
+    consoleNickname = "PS5-875";
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?

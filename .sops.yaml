@@ -1,0 +1,9 @@
+keys:
+  - &admin_mhelton age1m97ls72xcy8v492xrru4keyjve0jcqytqne6jk62zl72j3xsqgrql0ckw2
+  - &bb age1tjjl492ww3uq9gtsxrwtwxkuptskv2cq457aj38a967hcyax8fvs7mg502
+creation_rules:
+  - path_regex: secrets.*$
+    key_groups:
+    - age:
+      - *admin_mhelton
+      - *bb
