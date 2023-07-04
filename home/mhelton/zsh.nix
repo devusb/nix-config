@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
     shellAliases = {
       ll = "${pkgs.exa}/bin/exa -l --git --icons";
