@@ -34,6 +34,17 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
+    # bump shairport-sync version
+    shairport-sync = prev.shairport-sync.overrideAttrs (old: rec {
+      version = "4.2";
+      src = prev.fetchFromGitHub {
+        owner = "mikebrady";
+        repo = "shairport-sync";
+        rev = version;
+        sha256 = "sha256-ru2iaXSgS+w2ktqGLGC9SiYztkmmOQVzHaeLwMqvMzk=";
+      };
+    });
+
   };
 
 in
