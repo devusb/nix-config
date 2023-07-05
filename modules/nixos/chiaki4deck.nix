@@ -116,7 +116,7 @@ in
       };
     in
     {
-      environment.systemPackages = [ pkgs.chiaki4deck launcher desktopItem ];
+      environment.systemPackages = [ cfg.package launcher desktopItem ];
     }
   );
 }
