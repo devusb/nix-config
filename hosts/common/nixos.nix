@@ -25,6 +25,8 @@
   # Set your time zone.
   time.timeZone = "US/Central";
 
+  services.fstrim.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     wget
