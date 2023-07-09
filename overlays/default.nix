@@ -34,21 +34,21 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
-    # bump heroic version
-    heroic-unwrapped = prev.heroic-unwrapped.overrideAttrs (old: rec {
-      version = "unstable-2023-06-04";
-      src = prev.fetchFromGitHub {
-        owner = "Heroic-Games-Launcher";
-        repo = "HeroicGamesLauncher";
-        rev = "94dcf7563062a0609fccb4f0e6acb509d683cd83";
-        sha256 = "sha256-yMFQTLy7PHPBaEJOynzr2iNrm4npQirCZkSEbWYAEjc=";
-      };
-      offlineCache = prev.fetchYarnDeps {
-        yarnLock = "${src}/yarn.lock";
-        sha256 = "sha256-xiLK0D9+oL2UMD7b/9htOQJEpYCNayKW+KJ/vNVCgsw=";
-      };
-      patches = [ ]; # patches have been upstreamed
-    });
+    # # bump heroic version
+    # heroic-unwrapped = prev.heroic-unwrapped.overrideAttrs (old: rec {
+    #   version = "unstable-2023-06-04";
+    #   src = prev.fetchFromGitHub {
+    #     owner = "Heroic-Games-Launcher";
+    #     repo = "HeroicGamesLauncher";
+    #     rev = "94dcf7563062a0609fccb4f0e6acb509d683cd83";
+    #     sha256 = "sha256-yMFQTLy7PHPBaEJOynzr2iNrm4npQirCZkSEbWYAEjc=";
+    #   };
+    #   offlineCache = prev.fetchYarnDeps {
+    #     yarnLock = "${src}/yarn.lock";
+    #     sha256 = "sha256-xiLK0D9+oL2UMD7b/9htOQJEpYCNayKW+KJ/vNVCgsw=";
+    #   };
+    #   patches = [ ]; # patches have been upstreamed
+    # });
 
   };
 
