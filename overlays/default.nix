@@ -34,6 +34,10 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
+    shairport-sync = prev.shairport-sync.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.unixtools.xxd ];
+    });
+
   };
 
 in
