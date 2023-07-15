@@ -49,7 +49,8 @@
 
   services.xserver.displayManager = {
     sddm.enable = true;
-    defaultSession = lib.mkDefault "plasma";
+    defaultSession = "steam-wayland";
+    autoLogin.user = lib.mkDefault "mhelton";
     setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --rotate right
     '';
@@ -90,15 +91,15 @@
   system.stateVersion = "23.05"; # Did you read the comment?
 
   specialisation = {
-    gaming.configuration = {
+    desktop.configuration = {
       services.xserver.displayManager = {
-        defaultSession = "steam-wayland";
+        defaultSession = lib.mkForce "plasma";
         autoLogin.user = "mhelton";
       };
     };
-    desktop.configuration = {
+    sddm.configuration = {
       services.xserver.displayManager = {
-        autoLogin.user = "mhelton";
+        autoLogin.user = null;
       };
     };
   };
