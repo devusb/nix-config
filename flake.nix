@@ -54,7 +54,7 @@
 
     # devenv
     devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
+    devenv.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     # plasma-manager
     plasma-manager.url = "github:pjones/plasma-manager";
