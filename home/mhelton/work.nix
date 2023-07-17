@@ -27,7 +27,7 @@ in
     python-with-packages
     mpack
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-    (ansible_2_13.override { windowsSupport = true; })
+    (stable.ansible_2_13.override { windowsSupport = true; })
     postgresql
     pgcli
     dive
