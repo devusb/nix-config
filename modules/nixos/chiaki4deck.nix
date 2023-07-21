@@ -110,7 +110,7 @@ in
         name = "chiaki4deck-launcher";
         desktopName = "chiaki4deck Launcher";
         comment = "Auto-launch chiaki4deck connection to PlayStation";
-        icon = "chiaki";
+        icon = "chiaki4deck";
         exec = "Chiaki-launcher.sh";
         categories = [ "Game" ];
       };
