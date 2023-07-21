@@ -40,9 +40,6 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./pgdiff { };
 
-  # chiaki4deck
-  chiaki4deck = pkgs.libsForQt5.callPackage ./chiaki4deck { };
-
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
