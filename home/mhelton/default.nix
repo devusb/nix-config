@@ -29,6 +29,7 @@
       "https://devenv.cachix.org"
       "https://colmena.cachix.org"
       "https://attic.springhare-egret.ts.net/r2d2"
+      "https://cache.garnix.io"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -36,6 +37,7 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
       "r2d2:Ds1ZTOy/chjZLq3Z00wkA2ESzl7+z9Avii1Cck7sktk="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
     netrc-file = "${config.xdg.configHome}/nix/netrc";
   };
