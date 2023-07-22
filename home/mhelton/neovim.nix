@@ -67,7 +67,7 @@
       "<leader>fg" = "<CMD>Telescope live_grep<CR>";
       "j" = "gj";
       "k" = "gk";
-      "<leader>tt" = "<CMD>NeoTreeShowToggle<CR>";
+      "<leader>tt" = "<CMD>Neotree toggle<CR>";
       "<leader>gb" = "<CMD>BufferLinePick<CR>";
     };
     maps.terminal = {
