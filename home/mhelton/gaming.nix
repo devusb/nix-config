@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    lutris
+    (lutris.override {
+      extraPkgs = pkgs: [ gamescope ];
+    })
     lm_sensors
     dolphin-emu-beta
     chiaki4deck
