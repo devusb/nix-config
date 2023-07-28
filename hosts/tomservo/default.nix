@@ -102,6 +102,8 @@ in
 
   services.sunshine.enable = true;
 
+  services.plex-mpv-shim.enable = true;
+
   networking.interfaces.enp5s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;
 
