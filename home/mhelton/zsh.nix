@@ -52,6 +52,10 @@
       gcloud.disabled = true;
       shlvl.disabled = false;
       command_timeout = 2000;
+      kubernetes.context_aliases = {
+        "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster";
+        "arn:.*/(?P<var_cluster>[\\w-]+)" = "aws-$var_cluster";
+      };
     };
   };
   programs.fzf = {
