@@ -38,6 +38,19 @@ let
       nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.unixtools.xxd ];
     });
 
+    # starship PR for aws-sso-cli
+    starship = prev.starship.overrideAttrs (old: {
+      patches = [
+        (prev.fetchpatch {
+          url = "https://patch-diff.githubusercontent.com/raw/starship/starship/pull/5028.diff";
+          hash = "sha256-k6b57kPs6H6DcloRAB85a8g/ixO5QgtxNKEzzON5PMI=";
+        })
+      ];
+      checkFlags = [
+        "--skip=modules::aws::tests::expiration_date_set"
+      ];
+    });
+
   };
 
 in
