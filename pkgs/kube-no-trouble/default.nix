@@ -5,16 +5,22 @@
 
 buildGoModule rec {
   pname = "kube-no-trouble";
-  version = "0.7.0";
+  version = "unstable-2023-05-05";
 
   src = fetchFromGitHub {
     owner = "doitintl";
     repo = "kube-no-trouble";
-    rev = "${version}";
-    hash = "sha256-QIvMhKAo30gInqJBpHvhcyjgVkdRqgBKwLQ80ng/75U=";
+    rev = "df9a0174afa2f13cee0c3f5bcc3bf3421166b57d";
+    hash = "sha256-9moDISLgWUk1PzZbHdkgVrIfjFhtJq/hCOA0t38VznY=";
   };
 
-  vendorHash = "sha256-XXf6CPPHVvCTZA4Ve5/wmlgXQ/gZZUW0W/jXA0bJgLA=";
+  ldflags = [
+    "-s"
+    "-w"
+    "-X main.version=${version}"
+  ];
+
+  vendorHash = "sha256-5w8WE6gcAz+ZBtx2KHaORa78pe3jba5gFwGcJJY0XZA=";
 
   meta = with lib; {
     homepage = "https://github.com/doitintl/kube-no-trouble";
