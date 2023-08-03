@@ -44,6 +44,7 @@ in
     kubernetes-helm
     glab
     kubectl-cnpg
+    kube-no-trouble
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
