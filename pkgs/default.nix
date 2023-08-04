@@ -46,6 +46,9 @@ in
   # kor
   kor = pkgs.callPackage ./kor { };
 
+  # krr
+  robusta_krr = pkgs.callPackage ./robusta_krr { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
@@ -55,7 +58,7 @@ in
         timedb = pkgs.python3Packages.callPackage ../pkgs/timedb { };
 
         # krr
-        krr = pkgs.python3Packages.callPackage ../pkgs/krr { };
+        # krr = pkgs.python3Packages.callPackage ../pkgs/krr { };
       }
     )
   ];
