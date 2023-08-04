@@ -43,6 +43,9 @@ in
   # kube-no-trouble
   kube-no-trouble = pkgs.callPackage ./kube-no-trouble { };
 
+  # kor
+  kor = pkgs.callPackage ./kor { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
