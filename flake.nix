@@ -67,10 +67,7 @@
     sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
 
     # Jovian-NixOS
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      flake = false;
-    };
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -159,7 +156,7 @@
               inherit system;
               config.allowUnfree = true;
               overlays = builtins.attrValues {
-                default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) (import "${inputs.jovian}/overlay.nix") ];
+                default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) inputs.jovian.overlays.jovian ];
               };
             };
           in

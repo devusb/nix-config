@@ -11,7 +11,7 @@
       ./hardware-configuration.nix
       inputs.disko.nixosModules.disko
       (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
-      "${inputs.jovian}/modules"
+      inputs.jovian.nixosModules.jovian
       inputs.sops-nix.nixosModules.sops
       ../common/users/mhelton
       ../common/nixos.nix
