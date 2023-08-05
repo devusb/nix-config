@@ -19,7 +19,7 @@ in
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_6_3;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   environment.variables = {
