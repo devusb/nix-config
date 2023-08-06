@@ -46,7 +46,7 @@ let
     doCheck = false;
   };
 in
-python3.pkgs.buildPythonPackage rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "robusta_krr";
   version = "1.0.0";
 
