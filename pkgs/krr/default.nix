@@ -46,17 +46,17 @@ let
     doCheck = false;
   };
 in
-python3.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonApplication {
   pname = "robusta_krr";
-  version = "1.0.0";
+  version = "1.4.1.dev0";
 
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "robusta-dev";
     repo = "krr";
-    rev = "v${version}";
-    sha256 = "sha256-LaSbSbh13bcQwxWXZ7RlddPqmMbte8Vf69M5Ms/BaJE=";
+    rev = "c503daa35a7e3a227093626158fa94ec51487cb2";
+    sha256 = "sha256-12QZquqwAs6rlyYWmKO3zBNwODUlQcrDGf/On+U79KQ=";
   };
 
   propagatedBuildInputs = with python3.pkgs; [
@@ -71,6 +71,7 @@ python3.pkgs.buildPythonApplication rec {
     alive-progress
     prometheus-api-client
     rich
+    aiostream
     certifi
     charset-normalizer
     click
@@ -99,6 +100,7 @@ python3.pkgs.buildPythonApplication rec {
     rsa
     setuptools
     shellingham
+    slack-sdk
     six
     typing-extensions
     tzdata
