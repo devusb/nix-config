@@ -38,6 +38,11 @@ let
       nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.unixtools.xxd ];
     });
 
+    plex-mpv-shim = prev.plex-mpv-shim.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.python3.pkgs.pythonRelaxDepsHook ];
+      pythonRemoveDeps = [ "python-mpv" ];
+    });
+
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
       patches = [
