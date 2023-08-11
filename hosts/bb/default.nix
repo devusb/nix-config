@@ -26,6 +26,7 @@
   networking.hostName = "bb"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   hardware.pulseaudio.enable = lib.mkForce false;
+  hardware.bluetooth.enable = true;
 
   services.openssh.enable = true;
 
@@ -47,16 +48,7 @@
     Option "VariableRefresh" "true"
   '';
 
-  services.xserver.displayManager = {
-    sddm.enable = true;
-    defaultSession = "steam-wayland";
-    autoLogin.user = lib.mkDefault "mhelton";
-    setupCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --rotate right
-    '';
-  };
   services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.plasma5.mobile.enable = true;
   programs.kdeconnect.enable = true;
 
   environment.variables = {
@@ -68,7 +60,12 @@
     libsForQt5.kpmcore
   ];
 
-  jovian.steam.enable = true;
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    user = "mhelton";
+    desktopSession = "plasma";
+  };
   jovian.devices.steamdeck.enable = true;
   programs.steam.package = pkgs.steam.override {
     extraArgs = "-steamdeck";
@@ -90,19 +87,19 @@
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  specialisation = {
-    desktop.configuration = {
-      services.xserver.displayManager = {
-        defaultSession = lib.mkForce "plasma";
-        autoLogin.user = "mhelton";
-      };
-    };
-    sddm.configuration = {
-      services.xserver.displayManager = {
-        autoLogin.user = null;
-      };
-    };
-  };
+  # specialisation = {
+  #   desktop.configuration = {
+  #     services.xserver.displayManager = {
+  #       defaultSession = lib.mkForce "plasma";
+  #       autoLogin.user = "mhelton";
+  #     };
+  #   };
+  #   sddm.configuration = {
+  #     services.xserver.displayManager = {
+  #       autoLogin.user = null;
+  #     };
+  #   };
+  # };
 
 }
 
