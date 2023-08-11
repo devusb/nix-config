@@ -84,19 +84,5 @@
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # specialisation = {
-  #   desktop.configuration = {
-  #     services.xserver.displayManager = {
-  #       defaultSession = lib.mkForce "plasma";
-  #       autoLogin.user = "mhelton";
-  #     };
-  #   };
-  #   sddm.configuration = {
-  #     services.xserver.displayManager = {
-  #       autoLogin.user = null;
-  #     };
-  #   };
-  # };
-
 }
 
