@@ -44,9 +44,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.deviceSection = ''
-    Option "VariableRefresh" "true"
-  '';
 
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
