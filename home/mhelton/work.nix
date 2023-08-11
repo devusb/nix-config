@@ -45,6 +45,7 @@ in
     glab
     kubectl-cnpg
     kube-no-trouble
+    krr
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
