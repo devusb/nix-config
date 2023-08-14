@@ -61,7 +61,7 @@
     enable = true;
     autoStart = true;
     user = "mhelton";
-    desktopSession = "plasma";
+    desktopSession = lib.mkDefault "plasma";
   };
   jovian.devices.steamdeck.enable = true;
   programs.steam.package = pkgs.steam.override {
@@ -83,6 +83,12 @@
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?
+
+   specialisation = {
+    plasma-wayland.configuration = {
+      jovian.steam.desktopSession = "plasmawayland";
+    };
+  };
 
 }
 
