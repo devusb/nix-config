@@ -38,6 +38,10 @@ let
       nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.unixtools.xxd ];
     });
 
+    heroic-unwrapped = prev.heroic-unwrapped.override {
+      electron = prev.electron_25;
+    };
+
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
       patches = [
