@@ -4,7 +4,7 @@ let
 in
 {
 
-  home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip cider ];
+  home.packages = with pkgs; [ gnome.adwaita-icon-theme gnome.gnome-tweaks zoom-us ipmiview brave xclip wl-clipboard cider ];
 
   xdg.configFile."autostart/1password.desktop".text = ''
     [Desktop Entry]
