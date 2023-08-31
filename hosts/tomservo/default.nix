@@ -19,7 +19,7 @@ in
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_4;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # add 133Hz to workaround https://gitlab.freedesktop.org/drm/amd/-/issues/2657
