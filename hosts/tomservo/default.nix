@@ -19,10 +19,10 @@ in
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_6_4;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  # add 133Hz to workaround https://gitlab.freedesktop.org/drm/amd/-/issues/2657
+  # add 143Hz to workaround https://gitlab.freedesktop.org/drm/amd/-/issues/2657
   boot.kernelParams = [
     "video=DP-4:3440x1440@143"
   ];
@@ -61,11 +61,17 @@ in
   '';
 
   # Graphical
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" ];
-  services.xserver.deviceSection = ''
-    Option "VariableRefresh" "true"
-  '';
+  services.xserver = {
+    enable = true;
+    exportConfiguration = true;
+    videoDrivers = [ "modesetting" ];
+    deviceSection = ''
+      Option "VariableRefresh" "true"
+    '';
+    monitorSection = ''
+      Modeline "3440x1440_142.00"  1070.25  3440 3744 4128 4816  1440 1443 1453 1566 -hsync +vsync
+    '';
+  };
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
@@ -76,7 +82,7 @@ in
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
 
