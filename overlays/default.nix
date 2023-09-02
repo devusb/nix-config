@@ -42,6 +42,18 @@ let
       electron = prev.electron_25;
     };
 
+    moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
+      version = "unstable-2023-08-29";
+      src = prev.fetchFromGitHub {
+        owner = "moonlight-stream";
+        repo = "moonlight-qt";
+        rev = "41f8fa95fea9e825ad15612b2ead06cbf607ffdf";
+        hash = "sha256-SyO+t3Bj/FOHD/LV1AIEtVp8L9L2kqp2rjiQcnvfsjw=";
+        fetchSubmodules = true;
+      };
+      patches = [ ];
+    });
+
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
       patches = [
