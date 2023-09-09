@@ -34,10 +34,6 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
-    shairport-sync = prev.shairport-sync.overrideAttrs (old: {
-      nativeBuildInputs = old.nativeBuildInputs ++ [ prev.pkgs.unixtools.xxd ];
-    });
-
     heroic-unwrapped = prev.heroic-unwrapped.override {
       electron = prev.electron_25;
     };

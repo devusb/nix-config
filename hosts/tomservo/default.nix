@@ -1,7 +1,4 @@
 { pkgs, inputs, config, ... }:
-let
-  shairport-sync = pkgs.shairport-sync.override { enableAirplay2 = true; };
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -103,12 +100,6 @@ in
   services.printing = {
     enable = true;
     drivers = with pkgs; [ gutenprint ];
-  };
-
-  services.nqptp.enable = true;
-  services.shairport-sync = {
-    enable = true;
-    package = shairport-sync;
   };
 
   services.sunshine.enable = true;
