@@ -39,12 +39,12 @@ let
     };
 
     moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-      version = "unstable-2023-08-29";
+      version = "unstable-2023-09-08";
       src = prev.fetchFromGitHub {
         owner = "moonlight-stream";
         repo = "moonlight-qt";
-        rev = "41f8fa95fea9e825ad15612b2ead06cbf607ffdf";
-        hash = "sha256-SyO+t3Bj/FOHD/LV1AIEtVp8L9L2kqp2rjiQcnvfsjw=";
+        rev = "7551e90899a8da4d775c68ff52ab2ffdf529d23d";
+        hash = "sha256-s6Sn/OcqtKINp47vBqU1j/MaXjp3Z3qKoZzrH9tDFfU=";
         fetchSubmodules = true;
       };
       patches = [ ];
