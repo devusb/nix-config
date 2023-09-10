@@ -20,6 +20,9 @@
 
   networking.hostName = "durandal"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.localCommands = ''
+    ip route add throw 192.168.0.0/16 table 52
+  '';
   hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
