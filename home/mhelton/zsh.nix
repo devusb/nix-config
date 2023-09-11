@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, lib, config, ... }: {
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -13,6 +13,7 @@
       ga-intent = "${pkgs.git}/bin/git add --intent-to-add";
       grm-cache = "${pkgs.git}/bin/git rm --cached";
       update = if pkgs.stdenv.isDarwin then "darwin-rebuild switch --flake $DOTFILES" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
+      update-boot = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild boot --use-remote-sudo --flake $DOTFILES";
       kb = "${pkgs.kubectl}/bin/kubectl";
       cat = "${pkgs.bat}/bin/bat --paging=always";
       ts = "${pkgs.tailscale}/bin/tailscale";
