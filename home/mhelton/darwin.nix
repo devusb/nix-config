@@ -5,6 +5,7 @@
     gnused
     gnugrep
     gawk
+    watch
   ];
 
   programs.zsh = {
