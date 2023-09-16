@@ -26,6 +26,7 @@
   time.timeZone = "US/Central";
 
   services.fstrim.enable = true;
+  boot.swraid.enable = lib.mkDefault false;
 
   environment.systemPackages = with pkgs; [
     vim

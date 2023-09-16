@@ -16,13 +16,8 @@
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  # add 143Hz to workaround https://gitlab.freedesktop.org/drm/amd/-/issues/2657
-  boot.kernelParams = [
-    "video=DP-4:3440x1440@143"
-  ];
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";

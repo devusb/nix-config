@@ -34,10 +34,6 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
-    heroic-unwrapped = prev.heroic-unwrapped.override {
-      electron = prev.electron_25;
-    };
-
     moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
       version = "unstable-2023-09-08";
       src = prev.fetchFromGitHub {
