@@ -49,6 +49,9 @@ in
   # krr
   krr = pkgs.callPackage ./krr { };
 
+  # kubectl-gadget
+  kubectl-gadget = pkgs.callPackage ./kubectl-gadget { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
