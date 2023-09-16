@@ -4,6 +4,7 @@ let
 
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
+    small = import inputs.nixpkgs-small { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     attic = inputs.attic.packages.${prev.system}.attic-client;
