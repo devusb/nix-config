@@ -24,7 +24,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "bb"; # Define your hostname.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+  };
   hardware.pulseaudio.enable = lib.mkForce false;
   hardware.bluetooth.enable = true;
 
