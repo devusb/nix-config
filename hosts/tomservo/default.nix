@@ -16,7 +16,7 @@
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.small.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   environment.variables = {
@@ -59,9 +59,6 @@
     videoDrivers = [ "modesetting" ];
     deviceSection = ''
       Option "VariableRefresh" "true"
-    '';
-    monitorSection = ''
-      Modeline "3440x1440_142.00"  1070.25  3440 3744 4128 4816  1440 1443 1453 1566 -hsync +vsync
     '';
   };
   hardware.opengl = {
