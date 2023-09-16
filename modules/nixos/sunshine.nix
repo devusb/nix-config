@@ -36,6 +36,7 @@ in
         wantedBy = [ "graphical-session.target" ];
         serviceConfig = {
           ExecStart = "${config.security.wrapperDir}/sunshine";
+          ExecStartPre = "${lib.getExe pkgs.xorg.xset} dpms force on";
           Restart = "always";
         };
       };
