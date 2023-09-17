@@ -5,13 +5,13 @@
 
 buildGoModule rec {
   pname = "kube-no-trouble";
-  version = "unstable-2023-09-04";
+  version = "nightly-0.7.0-53-g4fa4920";
 
   src = fetchFromGitHub {
     owner = "doitintl";
     repo = "kube-no-trouble";
-    rev = "f6ebd85d8856d41d91578f793587b41a374e1fac";
-    hash = "sha256-yqKc/vqUFZqePCUWNtu/rmR3XJk+9Y+cPinsdiLnQWk=";
+    rev = "${version}";
+    hash = "sha256-nMlyRmfsKFkQ18L/RxmVOqoNIWdDyHY7+vZaCOvj4Is=";
   };
 
   ldflags = [
