@@ -45,18 +45,37 @@ let
     ];
     doCheck = false;
   };
+  prometrix = python3.pkgs.buildPythonPackage rec {
+    pname = "prometrix";
+    version = "0.1.12";
+    pyproject = true;
+    src = fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-QzFxOAx4Un0TRXdpgiMA9uZR/5jBXhxy4TrLWXterOw=";
+    };
+    propagatedBuildInputs = with python3.pkgs; [
+      pandas
+      numpy
+      dateparser
+      matplotlib
+      httmock
+      requests
+      poetry-core
+    ];
+    doCheck = false;
+  };
 in
-python3.pkgs.buildPythonApplication {
+python3.pkgs.buildPythonApplication rec {
   pname = "robusta_krr";
-  version = "1.4.1.dev0";
+  version = "1.6.0";
 
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "robusta-dev";
     repo = "krr";
-    rev = "c503daa35a7e3a227093626158fa94ec51487cb2";
-    sha256 = "sha256-12QZquqwAs6rlyYWmKO3zBNwODUlQcrDGf/On+U79KQ=";
+    rev = "v${version}";
+    sha256 = "sha256-P/jweTZtU7IEPafyS6LtgrkVHvnPsYJik1IpETv6ZuU=";
   };
 
   propagatedBuildInputs = with python3.pkgs; [
@@ -70,6 +89,7 @@ python3.pkgs.buildPythonApplication {
     about-time
     alive-progress
     prometheus-api-client
+    prometrix
     rich
     aiostream
     certifi
