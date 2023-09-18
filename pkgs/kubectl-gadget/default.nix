@@ -21,7 +21,12 @@ buildGoModule rec {
 
   tags = [ "withoutebpf" ];
 
-  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X main.version=${version}"
+    "-X main.gadgetimage=ghcr.io/inspektor-gadget/inspektor-gadget:v${version}"
+  ];
 
   CGO_ENABLED = 0;
 
