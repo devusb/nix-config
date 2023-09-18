@@ -25,6 +25,7 @@
     devenv
     ouch
     attic
+    fx
   ];
 
   programs.home-manager = {
