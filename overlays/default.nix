@@ -2,7 +2,7 @@
 let
   customPkgs = final: prev: import ../pkgs { inherit prev; };
 
-  modifications = final: prev: {
+  modifications = final: prev: rec {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     small = import inputs.nixpkgs-small { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
@@ -35,17 +35,21 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
+    # bump moonlight-qt version
     moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-      version = "unstable-2023-09-08";
+      version = "unstable-2023-09-18";
       src = prev.fetchFromGitHub {
         owner = "moonlight-stream";
         repo = "moonlight-qt";
-        rev = "7551e90899a8da4d775c68ff52ab2ffdf529d23d";
-        hash = "sha256-s6Sn/OcqtKINp47vBqU1j/MaXjp3Z3qKoZzrH9tDFfU=";
+        rev = "654be492a0faf9be25af1c6160c54aabfb3a1c81";
+        hash = "sha256-FQcoxoKOOgTdUXblZ1Zi/Muks8gNILSvQvdTR7QpRo0=";
         fetchSubmodules = true;
       };
       patches = [ ];
     });
+
+    # fix vulkan-helper hash
+    vulkan-helper = small.vulkan-helper;
 
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
