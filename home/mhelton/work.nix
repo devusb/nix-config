@@ -46,6 +46,7 @@ in
     kubectl-cnpg
     kube-no-trouble
     krr
+    kubectl-gadget
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
