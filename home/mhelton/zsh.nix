@@ -75,6 +75,9 @@
   };
   programs.direnv = {
     enable = true;
+    config = {
+      warn_timeout = "2m";
+    };
     nix-direnv = {
       enable = true;
     };
