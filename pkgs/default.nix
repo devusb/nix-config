@@ -37,6 +37,9 @@ in
     };
   };
 
+  # go-plex-client
+  go-plex-client = pkgs.callPackage ./go-plex-client { };
+
   # pgdiff
   pgdiff = pkgs.callPackage ./pgdiff { };
 

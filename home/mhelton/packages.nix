@@ -26,6 +26,7 @@
     ouch
     attic
     fx
+    go-plex-client
   ];
 
   programs.home-manager = {
