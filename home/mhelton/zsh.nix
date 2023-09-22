@@ -57,6 +57,13 @@
         "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster";
         "arn:.*/(?P<var_cluster>[\\w-]+)" = "aws-$var_cluster";
       };
+      env_var = {
+        DATABASE_URI = {
+          style = "yellow bold";
+          format = "with [$symbol$env_value]($style) ";
+          symbol = "⛁ ";
+        };
+      };
     };
   };
   programs.fzf = {
