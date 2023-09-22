@@ -48,8 +48,6 @@ let
       patches = [ ];
     });
 
-    # fix vulkan-helper hash
-    vulkan-helper = small.vulkan-helper;
 
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
