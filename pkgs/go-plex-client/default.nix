@@ -5,13 +5,13 @@
 
 buildGoModule rec {
   pname = "go-plex-client";
-  version = "unstable-2023-05-08";
+  version = "unstable-2023-09-23";
 
   src = fetchFromGitHub {
-    owner = "jrudio";
+    owner = "devusb";
     repo = "go-plex-client";
-    rev = "834554e41d30eef59205fb43221dda92d8dbebd1";
-    hash = "sha256-ulPMaScJrysAo1uuNzc+wCzKoBvmK8LZ2HNsyiqYMDE=";
+    rev = "e717ba6c074086a24fa7b94eb5535d0a9c2578ed";
+    hash = "sha256-+cuG/0kh7S1OF99jqNeaoZWcqe+IHJvJCp+CRp96st8=";
   };
 
   vendorHash = "sha256-vRp3h+6GWSfmdz0LDO1mJnwU1kjUUUXsIwUsZM9aLIQ=";
@@ -29,6 +29,6 @@ buildGoModule rec {
     homepage = "https://github.com/jrudio/go-plex-client";
     license = licenses.unfree; # FIXME: nix-init did not found a license
     maintainers = with maintainers; [ ];
-    mainProgram = "go-plex-client";
+    mainProgram = "plex-cli";
   };
 }
