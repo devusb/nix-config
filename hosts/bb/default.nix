@@ -87,7 +87,7 @@
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-   specialisation = {
+  specialisation = {
     plasma-wayland.configuration = {
       jovian.steam.desktopSession = "plasmawayland";
     };
