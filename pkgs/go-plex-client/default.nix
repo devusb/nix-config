@@ -10,8 +10,8 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "devusb";
     repo = "go-plex-client";
-    rev = "e717ba6c074086a24fa7b94eb5535d0a9c2578ed";
-    hash = "sha256-+cuG/0kh7S1OF99jqNeaoZWcqe+IHJvJCp+CRp96st8=";
+    rev = "8d015b55b9b4824a74a4bdca613fa975497ac598";
+    hash = "sha256-ovpyeuBI7zUQBb6NHIa0R2epMD0G2RQqcDM+QsCcfsg=";
   };
 
   vendorHash = "sha256-vRp3h+6GWSfmdz0LDO1mJnwU1kjUUUXsIwUsZM9aLIQ=";
@@ -28,7 +28,7 @@ buildGoModule rec {
     description = "A Plex.tv and Plex Media Server Go client";
     homepage = "https://github.com/jrudio/go-plex-client";
     license = licenses.unfree; # FIXME: nix-init did not found a license
-    maintainers = with maintainers; [ ];
+    maintainers = with maintainers; [ devusb ];
     mainProgram = "plex-cli";
   };
 }
