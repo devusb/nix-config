@@ -1,20 +1,29 @@
 { lib
 , buildGoModule
 , fetchFromGitHub
+, fetchpatch
 }:
 
 buildGoModule rec {
   pname = "go-plex-client";
-  version = "unstable-2023-09-23";
+  version = "unstable-2023-05-08";
 
   src = fetchFromGitHub {
-    owner = "devusb";
+    owner = "jrudio";
     repo = "go-plex-client";
-    rev = "8d015b55b9b4824a74a4bdca613fa975497ac598";
-    hash = "sha256-ovpyeuBI7zUQBb6NHIa0R2epMD0G2RQqcDM+QsCcfsg=";
+    rev = "834554e41d30eef59205fb43221dda92d8dbebd1";
+    hash = "sha256-ulPMaScJrysAo1uuNzc+wCzKoBvmK8LZ2HNsyiqYMDE=";
   };
 
   vendorHash = "sha256-vRp3h+6GWSfmdz0LDO1mJnwU1kjUUUXsIwUsZM9aLIQ=";
+
+  patches = [
+    # patch to add season downloading
+    (fetchpatch {
+      url = "https://patch-diff.githubusercontent.com/raw/jrudio/go-plex-client/pull/61.diff";
+      hash = "sha256-L5jWdtJcy/13gNLImtqTSBeV1Avl8bLtUj8JaPss7kM=";
+    })
+  ];
 
   ldflags = [ "-s" "-w" ];
 
