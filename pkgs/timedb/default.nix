@@ -15,11 +15,12 @@
 
 buildPythonPackage rec {
   pname = "timedb";
-  version = "3.37.1+19de890";
+  rev = "19de8900752f67bfd9b325996c86ab4977e28dc8";
+  version = "3.37.1+${builtins.substring 0 7 rev}";
 
   src = fetchGit {
     url = "git@imugit.imubit.com:imubit-dlpc/product/timedb.git";
-    rev = "19de8900752f67bfd9b325996c86ab4977e28dc8";
+    inherit rev;
   };
 
   propagatedBuildInputs = [
