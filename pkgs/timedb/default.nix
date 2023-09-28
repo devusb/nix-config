@@ -37,7 +37,6 @@ buildPythonPackage rec {
   nativeBuildInputs = [ pythonRelaxDepsHook ];
 
   pythonRelaxDeps = true;
-  pythonRemoveDeps = [ "psycopg2-binary" ];
 
   postPatch = ''
     substituteInPlace setup.py \
