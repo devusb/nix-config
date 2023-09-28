@@ -47,6 +47,7 @@ in
     kube-no-trouble
     krr
     kubectl-gadget
+    pg_activity
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
