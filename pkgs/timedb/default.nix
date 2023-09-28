@@ -1,6 +1,5 @@
 { lib
 , buildPythonPackage
-, fetchurl
 , pythonRelaxDepsHook
 , psycopg2
 , pandas
@@ -11,17 +10,16 @@
 , docopt
 , pytimeparse
 , packaging
+, pip
 }:
 
 buildPythonPackage rec {
   pname = "timedb";
-  version = "3.37.1";
-  format = "wheel";
+  version = "3.37.1+19de890";
 
-  src = fetchurl {
-    inherit pname version;
-    url = "http://10.10.30.245:8081/repository/pypi-stable/packages/${pname}/${version}/${pname}-${version}-py2.py3-none-any.whl";
-    sha256 = "sha256-pEntL45c7gcNavHUahNfH2DcdkrkYu4SVImX0xTNsdo=";
+  src = fetchGit {
+    url = "git@imugit.imubit.com:imubit-dlpc/product/timedb.git";
+    rev = "19de8900752f67bfd9b325996c86ab4977e28dc8";
   };
 
   propagatedBuildInputs = [
@@ -34,17 +32,17 @@ buildPythonPackage rec {
     docopt
     pytimeparse
     packaging
+    pip
   ];
   nativeBuildInputs = [ pythonRelaxDepsHook ];
 
   pythonRelaxDeps = true;
   pythonRemoveDeps = [ "psycopg2-binary" ];
 
-  dontUseWheelUnpack = true;
-  unpackPhase = ''
-    mkdir dist
-    cp $src dist/${pname}-${version}-py2.py3-none-any.whl
-    chmod +w dist
+  postPatch = ''
+    substituteInPlace setup.py \
+    --replace "import versioneer" "" \
+    --replace "versioneer.get_version()" "'${version}'" \
   '';
 
   doCheck = false;
