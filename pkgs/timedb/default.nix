@@ -10,17 +10,18 @@
 , docopt
 , pytimeparse
 , packaging
-, pip
+, pbr
 }:
 
 buildPythonPackage rec {
   pname = "timedb";
-  rev = "19de8900752f67bfd9b325996c86ab4977e28dc8";
+  rev = "ba4dc0600890d27478fc78b9b2a18f4e21c139b7";
   version = "3.37.1+${builtins.substring 0 7 rev}";
 
   src = fetchGit {
     url = "git@imugit.imubit.com:imubit-dlpc/product/timedb.git";
     inherit rev;
+    allRefs = true;
   };
 
   propagatedBuildInputs = [
@@ -33,7 +34,7 @@ buildPythonPackage rec {
     docopt
     pytimeparse
     packaging
-    pip
+    pbr
   ];
   nativeBuildInputs = [ pythonRelaxDepsHook ];
 
