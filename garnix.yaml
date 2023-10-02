@@ -1,5 +1,6 @@
 builds:
-  exclude: []
+  exclude:
+    - '.*imubit.*'
   include:
     - nixosConfigurations.*
     - darwinConfigurations.*

@@ -64,6 +64,14 @@
 
     # Jovian-NixOS
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    # p81
+    p81.url = "github:devusb/p81.nix";
+    p81.inputs.nixpkgs.follows = "nixpkgs";
+
+    # sentinelone
+    sentinelone.url = "github:devusb/sentinelone.nix";
+    sentinelone.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -172,6 +180,33 @@
                     ./home/mhelton/gaming.nix
                     ./home/mhelton/plasma.nix
                     ./home/mhelton/deck.nix
+                  ];
+                };
+              }
+            ];
+          };
+
+        imubit-morganh-dell =
+          let
+            legacyPackages = legacyPackagesWithOverlays { extraOverlays = [ inputs.p81.overlays.default inputs.sentinelone.overlays.default ]; };
+          in
+          nixpkgs.lib.nixosSystem {
+            pkgs = legacyPackages."x86_64-linux";
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/imubit-morganh-dell
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs outputs; };
+                  users.mhelton.imports = [
+                    ./home/mhelton
+                    ./home/mhelton/work.nix
+                    ./home/mhelton/linux.nix
+                    ./home/mhelton/graphical.nix
+                    ./home/mhelton/plasma.nix
                   ];
                 };
               }
