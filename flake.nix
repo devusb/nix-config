@@ -86,13 +86,18 @@
       darwinModules = import ./modules/darwin;
       homeManagerModules = import ./modules/home-manager;
 
-      legacyPackages = forAllSystems (system:
+      # allow for extra overlays to be added later
+      legacyPackagesWithOverlays = { extraOverlays ? [ ] }: (forAllSystems (system:
         import nixpkgs {
           inherit system;
-          overlays = builtins.attrValues overlays;
+          overlays = builtins.attrValues {
+            default = inputs.nixpkgs.lib.composeManyExtensions ([ (import ./overlays { inherit inputs; }) ] ++ extraOverlays);
+          };
           config.allowUnfree = true;
         }
-      );
+      ));
+      # but create one with normal overlays if not
+      legacyPackages = legacyPackagesWithOverlays { };
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix { pkgs = legacyPackages.${system}; };
@@ -151,18 +156,10 @@
 
         bb =
           let
-            system = "x86_64-linux";
-            # add Jovian-NixOS overlay
-            legacyPackages = import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-              overlays = builtins.attrValues {
-                default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) inputs.jovian.overlays.jovian ];
-              };
-            };
+            legacyPackages = legacyPackagesWithOverlays { extraOverlays = [ inputs.jovian.overlays.jovian ]; };
           in
           nixpkgs.lib.nixosSystem {
-            pkgs = legacyPackages;
+            pkgs = legacyPackages."x86_64-linux";
             specialArgs = { inherit inputs outputs; };
             modules = [
               ./hosts/bb
