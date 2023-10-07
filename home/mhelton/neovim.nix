@@ -62,17 +62,37 @@
     colorschemes = {
       gruvbox.enable = true;
     };
-    maps.normal = {
-      "<leader>ft" = "<CMD>Telescope find_files<CR>";
-      "<leader>fg" = "<CMD>Telescope live_grep<CR>";
-      "j" = "gj";
-      "k" = "gk";
-      "<leader>tt" = "<CMD>Neotree toggle<CR>";
-      "<leader>gb" = "<CMD>BufferLinePick<CR>";
-    };
-    maps.terminal = {
-      "<esc><esc>" = "<C-\\><C-N>";
-    };
+    keymaps = [
+      {
+        key = "<leader>ft";
+        action = "<CMD>Telescope find_files<CR>";
+      }
+      {
+        key = "<leader>fg";
+        action = "<CMD>Telescope live_grep<CR>";
+      }
+      {
+        key = "j";
+        action = "gj";
+      }
+      {
+        key = "k";
+        action = "gk";
+      }
+      {
+        key = "<leader>tt";
+        action = "<CMD>Neotree toggle<CR>";
+      }
+      {
+        key = "<leader>tt";
+        action = "<CMD>BufferLinePick<CR>";
+      }
+      {
+        mode = "t";
+        key = "<esc><esc>";
+        action = "<C-\\><C-N>";
+      }
+    ];
     autoCmd = [
       {
         event = [ "TermOpen" ];
