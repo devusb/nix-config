@@ -1,6 +1,8 @@
 { pkgs, ... }:
 let
-  brave = pkgs.brave.override { vulkanSupport = true; };
+  brave = pkgs.brave.override {
+    commandLineArgs = "--disable-gpu-shader-disk-cache";
+  };
 in
 {
 
