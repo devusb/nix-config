@@ -1,7 +1,6 @@
 builds:
-  exclude:
-    - '.*imubit.*'
+  exclude: []
   include:
-    - nixosConfigurations.*
-    - darwinConfigurations.*
-    - homeConfigurations.*
+    - nixosConfigurations.bb
+    - nixosConfigurations.durandal
+    - nixosConfigurations.tomservo
