@@ -46,7 +46,6 @@
     google-chrome
     slack
     teams-for-linux
-    p3x-onenote
   ];
   xdg.portal = {
     enable = true;
