@@ -22,6 +22,7 @@
       ze = "${pkgs.zellij}/bin/zellij edit";
       z = "${pkgs.zellij}/bin/zellij";
       gl = "${pkgs.git}/bin/git log -p --ext-diff";
+      watch = "${lib.getExe pkgs.watch} --color ";
     };
     history = {
       size = 10000;
