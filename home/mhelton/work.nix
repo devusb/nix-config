@@ -48,6 +48,7 @@ in
     krr
     kubectl-gadget
     pg_activity
+    diffr
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
