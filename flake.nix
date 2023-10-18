@@ -13,7 +13,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
