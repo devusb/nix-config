@@ -96,6 +96,9 @@
             default = inputs.nixpkgs.lib.composeManyExtensions ([ (import ./overlays { inherit inputs; }) ] ++ extraOverlays);
           };
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "electron-24.8.6"
+          ];
         }
       ));
       # but create one with normal overlays if not
@@ -157,9 +160,6 @@
         };
 
         bb =
-          let
-            legacyPackages = legacyPackagesWithOverlays { extraOverlays = [ inputs.jovian.overlays.jovian ]; };
-          in
           nixpkgs.lib.nixosSystem {
             pkgs = legacyPackages."x86_64-linux";
             specialArgs = { inherit inputs outputs; };
