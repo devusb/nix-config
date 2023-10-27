@@ -15,7 +15,7 @@
 
 buildPythonPackage rec {
   pname = "timedb";
-  rev = "ba4dc0600890d27478fc78b9b2a18f4e21c139b7";
+  rev = "7bd4788fab4c266f341755447f362a080c3dc0d7";
   version = "3.37.1+${builtins.substring 0 7 rev}";
 
   src = fetchGit {
