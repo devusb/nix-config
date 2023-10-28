@@ -86,7 +86,10 @@
     pulse.enable = true;
   };
 
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    autoUpdate = true;
+  };
   services.plex-mpv-shim.enable = true;
   services.nfs-client.enable = true;
 
