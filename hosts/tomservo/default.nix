@@ -89,7 +89,7 @@
 
   services.flatpak = {
     enable = true;
-    autoUpdate = true;
+    autoUpdate.enable = true;
   };
 
   services.printing = {

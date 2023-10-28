@@ -1,21 +1,23 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  cfg = config.services.flatpak;
+  cfg = config.services.flatpak.autoUpdate;
 in
 {
   options = {
-    services.flatpak = {
-      autoUpdate = mkOption {
-        type = types.bool;
-        description = "Enable Flatpak auto-updating";
-        default = false;
+
+    services.flatpak.autoUpdate = {
+      enable = mkEnableOption (mdDoc "Auto-updating of installed Flatpaks");
+      schedule = mkOption {
+        description = "Update schedule";
+        type = types.str;
+        default = "*-*-* 02:00:00 America/Chicago";
       };
     };
   };
 
   config =
-    mkIf cfg.autoUpdate {
+    mkIf cfg.enable {
       systemd.services.flatpak-autoupdate = {
         description = "updating installed Flatpaks";
         serviceConfig.Type = "oneshot";
@@ -27,7 +29,7 @@ in
       systemd.timers.flatpak-autoupdate = {
         description = "updating installed flatpaks";
         timerConfig = {
-          OnCalendar = "*-*-* 02:00:00 America/Chicago";
+          OnCalendar = cfg.schedule;
           Persistent = true;
         };
         wantedBy = [ "timers.target" ];
