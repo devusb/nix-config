@@ -9,6 +9,7 @@ in
       autoUpdate = mkOption {
         type = types.bool;
         description = "Enable Flatpak auto-updating";
+        default = false;
       };
     };
   };
