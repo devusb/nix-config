@@ -35,20 +35,6 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
-    # bump moonlight-qt version
-    moonlight-qt = prev.moonlight-qt.overrideAttrs (old: {
-      version = "unstable-2023-09-18";
-      src = prev.fetchFromGitHub {
-        owner = "moonlight-stream";
-        repo = "moonlight-qt";
-        rev = "654be492a0faf9be25af1c6160c54aabfb3a1c81";
-        hash = "sha256-FQcoxoKOOgTdUXblZ1Zi/Muks8gNILSvQvdTR7QpRo0=";
-        fetchSubmodules = true;
-      };
-      patches = [ ];
-    });
-
-
     # starship PR for aws-sso-cli
     starship = prev.starship.overrideAttrs (old: {
       patches = [
