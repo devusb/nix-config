@@ -87,7 +87,10 @@
     };
   };
 
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    autoUpdate = true;
+  };
 
   services.printing = {
     enable = true;

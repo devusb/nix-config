@@ -8,4 +8,5 @@
   plex-mpv-shim = ./plex-mpv-shim.nix;
   nfs-client = ./nfs-client.nix;
   chiaki4deck = ./chiaki4deck.nix;
+  flatpak-update = ./flatpak-update.nix;
 }
