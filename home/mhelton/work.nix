@@ -19,8 +19,11 @@ in
     GL_HOST = "https://imugit.imubit.com";
   };
 
-  programs.zsh.shellAliases = {
-    vssh = "${pkgs.vault}/bin/vault ssh -mode=ca -role=infra-admin -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
+  programs.zsh = {
+    shellAliases = {
+      vssh = "${pkgs.vault}/bin/vault ssh -mode=ca -role=infra-admin -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
+    };
+    initExtra = pkgs.lib.mkAfter (import ./extra/journalcreds.nix { inherit pkgs; });
   };
 
   home.packages = with pkgs; [
