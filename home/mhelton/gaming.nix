@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     lutris
     lm_sensors
-    dolphin-emu-beta
     chiaki4deck
     theforceengine
     ryujinx
