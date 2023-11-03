@@ -27,6 +27,7 @@
     attic
     fx
     go-plex-client
+    chatblade
   ];
 
   programs.home-manager = {
