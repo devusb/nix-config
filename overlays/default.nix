@@ -65,6 +65,44 @@ let
       ];
     });
 
+    # bump chiaki4deck
+    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
+      inherit (old) pname;
+      version = "1.4.1";
+
+      src = prev.fetchFromGitHub {
+        owner = "streetpea";
+        repo = pname;
+        rev = "v${version}";
+        hash = "sha256-W/t9uYApt8j5UMjtVWhFtq+IHmu9vi6M92I8N4kRtEk=";
+        fetchSubmodules = true;
+      };
+    });
+
+    # bump aws-sso-cli
+    aws-sso-cli =
+      (
+        let
+          version = "1.14.2";
+          src = prev.fetchFromGitHub {
+            owner = "synfinatic";
+            repo = "aws-sso-cli";
+            rev = "v${version}";
+            hash = "sha256-KtSmDBr2JRxyBUJ5UWMmnfN87oO1/TiCrtuxA2b9Ph0=";
+          };
+        in
+        prev.aws-sso-cli.override {
+          buildGoModule = args: prev.buildGoModule (args // {
+            inherit src version;
+            vendorHash = "sha256-B7t1syBJjwaTM4Tgj/OhhmHJRAhJ/Ewg+g55AKpdj4c=";
+          });
+        }
+      ).overrideAttrs (old: {
+        checkFlags = [
+          # requires network access
+          "-skip=TestAWSConsoleUrl|TestAWSFederatedUrl"
+        ];
+      });
   };
 
 in
