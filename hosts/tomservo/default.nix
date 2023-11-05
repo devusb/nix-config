@@ -7,6 +7,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    inputs.chaotic.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -68,6 +69,7 @@
       libvdpau-va-gl
     ];
   };
+  chaotic.mesa-git.enable = true;
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;

@@ -71,6 +71,9 @@
     # sentinelone
     sentinelone.url = "github:devusb/sentinelone.nix";
     sentinelone.inputs.nixpkgs.follows = "nixpkgs";
+
+    # chaotic-nyx
+    chaotic.url = "github:devusb/nyx/shader-fix";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
