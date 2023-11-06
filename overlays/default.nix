@@ -81,9 +81,10 @@ let
 
     # bump aws-sso-cli
     aws-sso-cli =
+      let version = "1.14.2";
+      in
       (
         let
-          version = "1.14.2";
           src = prev.fetchFromGitHub {
             owner = "synfinatic";
             repo = "aws-sso-cli";
@@ -101,6 +102,10 @@ let
         checkFlags = [
           # requires network access
           "-skip=TestAWSConsoleUrl|TestAWSFederatedUrl"
+        ];
+        ldflags = [
+          "-X main.Version=${version}"
+          "-X main.Tag=nixpkgs"
         ];
       });
   };
