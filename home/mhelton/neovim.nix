@@ -23,7 +23,9 @@
         enable = true;
         checkTs = true;
       };
-      neo-tree.enable = true;
+      oil = {
+        enable = true;
+      };
       bufferline.enable = true;
       indent-blankline.enable = true;
       lualine = {
@@ -80,12 +82,8 @@
         action = "gk";
       }
       {
-        key = "<leader>tt";
-        action = "<CMD>Neotree toggle<CR>";
-      }
-      {
-        key = "<leader>tt";
-        action = "<CMD>BufferLinePick<CR>";
+        key = "<leader>o";
+        action = "<CMD>Oil --float .<CR>";
       }
       {
         mode = "t";
