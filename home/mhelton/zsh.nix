@@ -5,11 +5,6 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     shellAliases = {
-      ll = "${pkgs.eza}/bin/eza -l --git --icons";
-      ls = "${pkgs.eza}/bin/eza --icons";
-      lla = "${pkgs.eza}/bin/eza -la --git --icons";
-      lt = "${pkgs.eza}/bin/eza --tree --icons";
-      la = "${pkgs.eza}/bin/eza -a --icons";
       ga-intent = "${pkgs.git}/bin/git add --intent-to-add";
       grm-cache = "${pkgs.git}/bin/git rm --cached";
       update = if pkgs.stdenv.isDarwin then "darwin-rebuild switch --flake $DOTFILES" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";

@@ -40,6 +40,11 @@
 
   programs.eza = {
     enable = true;
+    enableAliases = true;
+    extraOptions = [
+      "--git"
+      "--icons"
+    ];
   };
 
   programs.jq = {
