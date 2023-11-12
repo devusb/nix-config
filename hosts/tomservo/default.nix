@@ -1,4 +1,10 @@
 { pkgs, inputs, config, ... }:
+let
+  extraOpenglPackages = with pkgs; [
+    vaapiVdpau
+    libvdpau-va-gl
+  ];
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -64,12 +70,12 @@
   };
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+    extraPackages = extraOpenglPackages;
   };
-  chaotic.mesa-git.enable = true;
+  chaotic.mesa-git = {
+    enable = true;
+    extraPackages = extraOpenglPackages;
+  };
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;
