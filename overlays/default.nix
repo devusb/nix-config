@@ -79,35 +79,6 @@ let
       };
     });
 
-    # bump aws-sso-cli
-    aws-sso-cli =
-      let version = "1.14.2";
-      in
-      (
-        let
-          src = prev.fetchFromGitHub {
-            owner = "synfinatic";
-            repo = "aws-sso-cli";
-            rev = "v${version}";
-            hash = "sha256-KtSmDBr2JRxyBUJ5UWMmnfN87oO1/TiCrtuxA2b9Ph0=";
-          };
-        in
-        prev.aws-sso-cli.override {
-          buildGoModule = args: prev.buildGoModule (args // {
-            inherit src version;
-            vendorHash = "sha256-B7t1syBJjwaTM4Tgj/OhhmHJRAhJ/Ewg+g55AKpdj4c=";
-          });
-        }
-      ).overrideAttrs (old: {
-        checkFlags = [
-          # requires network access
-          "-skip=TestAWSConsoleUrl|TestAWSFederatedUrl"
-        ];
-        ldflags = [
-          "-X main.Version=${version}"
-          "-X main.Tag=nixpkgs"
-        ];
-      });
   };
 
 in
