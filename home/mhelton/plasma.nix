@@ -5,6 +5,9 @@
   xdg.configFile."BraveSoftware/Brave-Browser/NativeMessagingHosts/org.kde.plasma.browser_integration.json".source = "${pkgs.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
   programs.plasma = {
     enable = true;
+    workspace = {
+      theme = "breeze-dark";
+    };
     shortcuts = {
       "ActivityManager"."switch-to-activity-8d0d13b8-1f4a-403b-bc55-5d80fb89abec" = [ ];
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
