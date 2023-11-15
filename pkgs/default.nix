@@ -55,6 +55,9 @@ in
   # kubectl-gadget
   kubectl-gadget = pkgs.callPackage ./kubectl-gadget { };
 
+  # vkv
+  vkv = pkgs.callPackage ./vkv { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
