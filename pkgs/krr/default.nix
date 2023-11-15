@@ -2,6 +2,7 @@
 , fetchFromGitHub
 , fetchPypi
 , python3
+, fetchpatch
 }:
 
 let
@@ -67,15 +68,15 @@ let
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "robusta_krr";
-  version = "1.6.0";
+  version = "unstable-2023-11-06";
 
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "robusta-dev";
     repo = "krr";
-    rev = "v${version}";
-    sha256 = "sha256-P/jweTZtU7IEPafyS6LtgrkVHvnPsYJik1IpETv6ZuU=";
+    rev = "952fd37a489b4cea9512e51793023d0d20116e4b";
+    sha256 = "sha256-C/WfE0/SR1BFHY+aW/jC08iy/MZnwkXwQ2KFQUrsIn0=";
   };
 
   propagatedBuildInputs = with python3.pkgs; [
