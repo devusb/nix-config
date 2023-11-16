@@ -83,6 +83,8 @@ in
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
 
+  services.xserver.displayManager.autoLogin.user = "mhelton";
+
   services.avahi = {
     enable = true;
     reflector = true;
