@@ -38,6 +38,8 @@
     enable = true;
   };
 
+  programs.lesspipe.enable = true;
+
   programs.eza = {
     enable = true;
     enableAliases = true;
