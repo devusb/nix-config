@@ -18,6 +18,10 @@ in
     obsidian
   ];
 
+  programs.firefox = {
+    enable = true;
+  };
+
   xdg.configFile."autostart/1password.desktop".text = ''
     [Desktop Entry]
     Categories=Office;
