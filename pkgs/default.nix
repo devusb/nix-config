@@ -61,6 +61,9 @@ in
   # extest
   extest = pkgs.callPackage ./extest { };
 
+  # reposync
+  reposync = pkgs.callPackage ./reposync { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
