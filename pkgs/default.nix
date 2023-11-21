@@ -58,6 +58,9 @@ in
   # vkv
   vkv = pkgs.callPackage ./vkv { };
 
+  # extest
+  extest = pkgs.callPackage ./extest { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (

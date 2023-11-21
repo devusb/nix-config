@@ -67,12 +67,9 @@
     enable = true;
     autoStart = true;
     user = "mhelton";
-    desktopSession = lib.mkDefault "plasma";
+    desktopSession = "plasmawayland";
   };
   jovian.devices.steamdeck.enable = true;
-  programs.steam.package = pkgs.steam.override {
-    extraArgs = "-steamdeck";
-  };
 
   sops = {
     secrets.registration_key = {
@@ -88,13 +85,7 @@
     consoleNickname = "PS5-875";
   };
 
-  system.stateVersion = "23.05"; # Did you read the comment?
-
-  specialisation = {
-    plasma-wayland.configuration = {
-      jovian.steam.desktopSession = "plasmawayland";
-    };
-  };
+  system.stateVersion = "23.05"; # Did you read the comment?``
 
 }
 
