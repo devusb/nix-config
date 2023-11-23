@@ -23,7 +23,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "US/Central";
+  services.automatic-timezoned.enable = true;
 
   services.fstrim.enable = true;
   boot.swraid.enable = lib.mkDefault false;
