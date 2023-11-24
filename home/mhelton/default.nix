@@ -11,6 +11,9 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
+
+    # needed until https://github.com/nix-community/home-manager/issues/4694 is merged
+    enableNixpkgsReleaseCheck = false;
   };
 
   # https://github.com/nix-community/home-manager/issues/4142
