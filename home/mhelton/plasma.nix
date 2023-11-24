@@ -78,9 +78,9 @@
       "kwin"."Switch to Desktop 7" = [ ];
       "kwin"."Switch to Desktop 8" = [ ];
       "kwin"."Switch to Desktop 9" = [ ];
-      "kwin"."Switch to Next Desktop" = [ ];
+      "kwin"."Switch to Next Desktop" = "Ctrl+Meta+Right";
       "kwin"."Switch to Next Screen" = [ ];
-      "kwin"."Switch to Previous Desktop" = [ ];
+      "kwin"."Switch to Previous Desktop" = "Ctrl+Meta+Left";
       "kwin"."Switch to Previous Screen" = [ ];
       "kwin"."Switch to Screen 0" = [ ];
       "kwin"."Switch to Screen 1" = [ ];
@@ -850,8 +850,7 @@
       "kscreenlockerrc"."Daemon"."LockOnResume" = false;
       "kwalletrc"."Wallet"."First Use" = false;
       "kwinrc"."Compositing"."AllowTearing" = false;
-      "kwinrc"."Desktops"."Id_1" = "2aa0e5cf-8099-4f83-8bdc-bc8147861f56";
-      "kwinrc"."Desktops"."Number" = 1;
+      "kwinrc"."Desktops"."Number" = 2;
       "kwinrc"."Desktops"."Rows" = 1;
       "kwinrc"."NightColor"."Mode" = "Constant";
       "kwinrc"."Tiling"."padding" = 4;
