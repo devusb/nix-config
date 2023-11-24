@@ -85,6 +85,10 @@
     consoleNickname = "PS5-875";
   };
 
+  services.flatpak = {
+    enable = true;
+  };
+
   system.stateVersion = "23.05"; # Did you read the comment?``
 
 }
