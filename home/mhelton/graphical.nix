@@ -1,9 +1,4 @@
 { pkgs, ... }:
-let
-  brave = pkgs.brave.override {
-    commandLineArgs = "--disable-gpu-shader-disk-cache";
-  };
-in
 {
 
   home.packages = with pkgs; [
@@ -11,7 +6,6 @@ in
     gnome.gnome-tweaks
     zoom-us
     ipmiview
-    brave
     xclip
     wl-clipboard
     cider
