@@ -64,6 +64,9 @@ in
   # reposync
   reposync = pkgs.callPackage ./reposync { };
 
+  # JellyPlex-Watched
+  jellyplex-watched = pkgs.callPackage ./jellyplex-watched { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
