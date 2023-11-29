@@ -29,11 +29,11 @@ python3.pkgs.buildPythonPackage rec {
     sed -i -e '1i#!/usr/bin/python' main.py
 
     mkdir -p $out/bin
-    mkdir -p $out/share
+    mkdir -p $out/share/jellyplex-watched
 
-    cp -r src $out/share
-    install -m 755 -t $out/share main.py
-    makeWrapper $out/share/main.py $out/bin/jellyplex-watched \
+    cp -r src $out/share/jellyplex-watched
+    install -m 755 -t $out/share/jellyplex-watched main.py
+    makeWrapper $out/share/jellyplex-watched/main.py $out/bin/jellyplex-watched \
       --prefix PYTHONPATH : "$PYTHONPATH"
 
     runHook postInstall
