@@ -13,7 +13,6 @@
     awscli2
     yq-go
     tldr
-    ripgrep
     terraform
     unrar
     zsh-nix-shell
@@ -36,6 +35,11 @@
 
   programs.bat = {
     enable = true;
+  };
+
+  programs.ripgrep = {
+    enable = true;
+    package = pkgs.ripgrep-all;
   };
 
   programs.lesspipe.enable = true;
