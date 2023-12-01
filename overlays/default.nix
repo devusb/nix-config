@@ -79,6 +79,10 @@ let
       };
     });
 
+    sunshine = prev.sunshine.overrideAttrs (old: {
+      runtimeDependencies = old.runtimeDependencies ++ [ prev.libglvnd ];
+    });
+
   };
 
 in
