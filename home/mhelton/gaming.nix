@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, ... }:
 {
   home.packages = with pkgs; [
     lutris
@@ -26,5 +26,35 @@
       no_display = true;
     };
   };
+
+  xdg.configFile."sunshine/apps.json".text = pkgs.lib.mkIf osConfig.services.sunshine.enable (builtins.toJSON {
+    env = {
+      PATH = "$(PATH):$(HOME)/.local/bin";
+    };
+    apps = [
+      {
+        name = "1440p Desktop";
+        prep-cmd = [
+          {
+            do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
+            undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+          }
+        ];
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+      {
+        name = "1080p Desktop";
+        prep-cmd = [
+          {
+            do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1920x1080@120";
+            undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+          }
+        ];
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+    ];
+  });
 
 }
