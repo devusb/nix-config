@@ -27,6 +27,7 @@
     fx
     go-plex-client
     chatblade
+    ripgrep-all
   ];
 
   programs.home-manager = {
@@ -39,7 +40,6 @@
 
   programs.ripgrep = {
     enable = true;
-    package = pkgs.ripgrep-all;
   };
 
   programs.lesspipe.enable = true;
