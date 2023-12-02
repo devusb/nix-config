@@ -10,6 +10,7 @@
     wl-clipboard
     cider
     obsidian
+    jellyfin-media-player
   ];
 
   programs.firefox = {
