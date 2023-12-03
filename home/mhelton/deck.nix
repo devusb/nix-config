@@ -1,10 +1,10 @@
-{ pkgs, lib, osConfig, ... }:
+{ pkgs, lib, ... }:
 {
   programs.mangohud.enable = lib.mkForce false;
 
   xdg.configFile."autostart/Steam.desktop".text = ''
     [Desktop Entry]
-    Exec=sh -c "LD_PRELOAD=${pkgs.pkgsi686Linux.extest}/lib/libextest.so:${if osConfig.chaotic.mesa-git.enable then osConfig.environment.sessionVariables.LD_PRELOAD else ""} steam -silent"
+    Exec=sh -c "LD_PRELOAD=${pkgs.pkgsi686Linux.extest}/lib/libextest.so steam -silent"
     GenericName[en_US]=
     GenericName=
     Icon=Steam
