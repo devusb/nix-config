@@ -12,7 +12,7 @@
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
@@ -31,9 +31,6 @@
     colmena.inputs.nixpkgs.follows = "nixpkgs";
     colmena.inputs.flake-utils.follows = "utils";
     colmena.inputs.flake-compat.follows = "flake-compat";
-
-    # nur
-    nur.url = "github:nix-community/NUR";
 
     # attic
     attic.url = "github:zhaofengli/attic";

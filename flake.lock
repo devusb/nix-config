@@ -598,16 +598,16 @@
     },
     "nixpkgs-stable_3": {
       "locked": {
-        "lastModified": 1701362232,
-        "narHash": "sha256-GVdzxL0lhEadqs3hfRLuj+L1OJFGiL/L7gCcelgBlsw=",
+        "lastModified": 1701389149,
+        "narHash": "sha256-rU1suTIEd5DGCaAXKW6yHoCfR1mnYjOXQFOaH7M23js=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d2332963662edffacfddfad59ff4f709dde80ffe",
+        "rev": "5de0b32be6e85dc1a9404c75131316e4ffbc634c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.05",
+        "ref": "nixos-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -696,21 +696,6 @@
       "original": {
         "owner": "pta2002",
         "repo": "nixvim",
-        "type": "github"
-      }
-    },
-    "nur": {
-      "locked": {
-        "lastModified": 1701525157,
-        "narHash": "sha256-GVE2K1UcVRBOghRWmgpIwKjziwfmqSMMLYzec8CHCzA=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "2852283c5f07fdb12fa595d0d2d5fa27d8557586",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
         "type": "github"
       }
     },
@@ -853,7 +838,6 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable_3",
         "nixvim": "nixvim",
-        "nur": "nur",
         "p81": "p81",
         "plasma-manager": "plasma-manager",
         "sentinelone": "sentinelone",

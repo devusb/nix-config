@@ -1,6 +1,5 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
-    inputs.nur.nixosModules.nur
   ] ++ (builtins.attrValues outputs.nixosModules);
   disabledModules = [ "services/networking/shairport-sync.nix" ];
 
