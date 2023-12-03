@@ -23,7 +23,10 @@
   networking.localCommands = ''
     ip route add throw 192.168.0.0/16 table 52
   '';
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez';
+  };
 
   environment.systemPackages = with pkgs; [
     nvtop
