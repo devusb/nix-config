@@ -13,7 +13,7 @@ buildGoModule rec {
   };
 
   deleteVendor = true;
-  vendorSha256 = "sha256-sbVEGv+EY80gMP/WJFBE+lwsy1MHRFe4KfPWn/wlPZQ=";
+  vendorHash = "sha256-sbVEGv+EY80gMP/WJFBE+lwsy1MHRFe4KfPWn/wlPZQ=";
 
   meta = {
     license = lib.licenses.mit;
