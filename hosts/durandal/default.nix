@@ -18,6 +18,12 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.memtest86.enable = true;
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+    }
+  ];
+
   networking.hostName = "durandal"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.localCommands = ''
