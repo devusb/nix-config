@@ -72,6 +72,18 @@ let
       ];
     });
 
+    # https://github.com/NixOS/nixpkgs/pull/272434
+    ouch = prev.ouch.overrideAttrs (old: {
+      preCheck = ''
+        substituteInPlace tests/ui.rs \
+          --replace 'format!(r"/private{path}")' 'path.to_string()'
+      '';
+
+      env = { OUCH_ARTIFACTS_FOLDER = "artifacts"; } //
+        # Work around https://github.com/NixOS/nixpkgs/issues/166205.
+        prev.lib.optionalAttrs prev.stdenv.cc.isClang { NIX_LDFLAGS = "-l${prev.stdenv.cc.libcxx.cxxabi.libName}"; };
+    });
+
   };
 
 in
