@@ -62,24 +62,6 @@ let
       ];
     });
 
-    # bump chiaki4deck
-    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
-      inherit (old) pname;
-      version = "1.4.1";
-
-      src = prev.fetchFromGitHub {
-        owner = "streetpea";
-        repo = pname;
-        rev = "v${version}";
-        hash = "sha256-W/t9uYApt8j5UMjtVWhFtq+IHmu9vi6M92I8N4kRtEk=";
-        fetchSubmodules = true;
-      };
-    });
-
-    sunshine = prev.sunshine.overrideAttrs (old: {
-      runtimeDependencies = old.runtimeDependencies ++ [ prev.libglvnd ];
-    });
-
     # https://github.com/bluez/bluez/issues/614
     bluez' = prev.bluez.overrideAttrs (old: {
       patches = old.patches ++ [
