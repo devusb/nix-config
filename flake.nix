@@ -160,12 +160,12 @@
           ];
         };
 
-        bb =
+        bob =
           nixpkgs.lib.nixosSystem {
             pkgs = legacyPackages."x86_64-linux";
             specialArgs = { inherit inputs outputs; };
             modules = [
-              ./hosts/bb
+              ./hosts/bob
               home-manager.nixosModules.home-manager
               {
                 home-manager = {

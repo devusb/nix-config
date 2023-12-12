@@ -23,7 +23,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "bb"; # Define your hostname.
+  networking.hostName = "bob"; # Define your hostname.
   networking.networkmanager = {
     enable = true;
     wifi.powersave = false;
