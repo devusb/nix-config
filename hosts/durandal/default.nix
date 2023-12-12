@@ -31,7 +31,6 @@
   '';
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluez';
   };
 
   environment.systemPackages = with pkgs; [
