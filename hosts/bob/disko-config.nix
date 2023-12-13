@@ -1,7 +1,7 @@
-{ disks ? [ "/dev/vdb" ], ... }: {
+{ disks ? [ "/dev/nvme0n1" ], ... }: {
   disko.devices = {
     disk = {
-      vdb = {
+      nvme0n1 = {
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
@@ -28,9 +28,7 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
-                  # keyFile = "/tmp/secret.key";
                 };
-                additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];

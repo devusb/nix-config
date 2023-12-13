@@ -137,6 +137,26 @@
         "type": "github"
       }
     },
+    "deckbd": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678976786,
+        "narHash": "sha256-T7iYl1xWtk39XMUUWm1pK0WVm5UK656HmqWHKDmJ220=",
+        "owner": "Ninlives",
+        "repo": "deckbd",
+        "rev": "327a8c91159e1b7faa2f12b5e11060b2eb9947a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Ninlives",
+        "repo": "deckbd",
+        "type": "github"
+      }
+    },
     "devenv": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -777,6 +797,7 @@
         "chaotic": "chaotic",
         "colmena": "colmena",
         "darwin": "darwin",
+        "deckbd": "deckbd",
         "devenv": "devenv",
         "disko": "disko",
         "flake-compat": "flake-compat_3",

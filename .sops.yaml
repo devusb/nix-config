@@ -2,6 +2,7 @@ keys:
   - &admin_mhelton age1m97ls72xcy8v492xrru4keyjve0jcqytqne6jk62zl72j3xsqgrql0ckw2
   - &bb age1tjjl492ww3uq9gtsxrwtwxkuptskv2cq457aj38a967hcyax8fvs7mg502
   - &imubit-morganh-dell age1c4aat2jljlmp84jatkewz4k7hzqj0jkq2hplpt5lzd5v78t7q39q87z28c
+  - &bob age1w0fmtklwf4jdr3rzxx6jd3qrdc5j433vsx0j682py2yvc4vpn5ysl03jdx
 creation_rules:
   - path_regex: secrets.*$
     key_groups:
@@ -9,3 +10,4 @@ creation_rules:
       - *admin_mhelton
       - *bb
       - *imubit-morganh-dell
+      - *bob
