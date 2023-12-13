@@ -63,6 +63,17 @@ let
       ];
     });
 
+    pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+      (self: super: {
+        # skip additional tests that seem to require network access
+        slack-sdk = super.slack-sdk.overrideAttrs (old: {
+          disabledTests = old.disabledTests ++ [
+            "test_web_client_http_retry"
+            "test_web_client_http_retry_connection"
+          ];
+        });
+      })
+    ];
   };
 
 in
