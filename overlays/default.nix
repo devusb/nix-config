@@ -63,6 +63,18 @@ let
       ];
     });
 
+    # bump chiaki for HDR
+    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: {
+      version = "1.5.0-unstable-2023-12-14";
+      src = prev.fetchFromGitHub {
+        owner = "streetpea";
+        repo = old.pname;
+        rev = "e641d82762cbb5a729648a37b6e77c14e1027a0c";
+        hash = "sha256-H8E/mx+n7bCZ99+yodJ7tGNh2TV8T7FXLeGMHlCdeUo=";
+        fetchSubmodules = true;
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
