@@ -17,6 +17,7 @@
       ../common/nixos.nix
       ../common/steam.nix
       ../common/_1password.nix
+      inputs.chaotic.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -72,6 +73,8 @@
 
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
+
+  chaotic.mesa-git.enable = true;
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
