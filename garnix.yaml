@@ -1,6 +1,6 @@
 builds:
   exclude: []
   include:
-    - nixosConfigurations.bb
+    - nixosConfigurations.bob
     - nixosConfigurations.durandal
     - nixosConfigurations.tomservo
