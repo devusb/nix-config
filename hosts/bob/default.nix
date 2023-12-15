@@ -74,7 +74,11 @@
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
 
-  chaotic.mesa-git.enable = true;
+  chaotic.mesa-git = {
+    enable = true;
+    extraPackages = [ pkgs.mesa-radv-jupiter.drivers ];
+    extraPackages32 = [ pkgs.pkgsi686Linux.mesa-radv-jupiter.drivers ];
+  };
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
