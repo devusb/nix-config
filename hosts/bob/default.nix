@@ -76,8 +76,6 @@
 
   chaotic.mesa-git = {
     enable = true;
-    extraPackages = [ pkgs.mesa-radv-jupiter.drivers ];
-    extraPackages32 = [ pkgs.pkgsi686Linux.mesa-radv-jupiter.drivers ];
   };
 
   environment.variables = {
