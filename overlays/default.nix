@@ -64,13 +64,13 @@ let
     });
 
     # bump chiaki for HDR
-    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: {
-      version = "1.5.0-unstable-2023-12-14";
+    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
+      version = "1.5.1";
       src = prev.fetchFromGitHub {
         owner = "streetpea";
         repo = old.pname;
-        rev = "e641d82762cbb5a729648a37b6e77c14e1027a0c";
-        hash = "sha256-H8E/mx+n7bCZ99+yodJ7tGNh2TV8T7FXLeGMHlCdeUo=";
+        rev = "v${version}";
+        hash = "sha256-XNpD9JPbckiq0HgpV/QJR8hDmvGTptxBMoGihHz44lc=";
         fetchSubmodules = true;
       };
     });
