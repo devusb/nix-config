@@ -9,4 +9,5 @@
   nfs-client = ./nfs-client.nix;
   chiaki4deck = ./chiaki4deck.nix;
   flatpak-update = ./flatpak-update.nix;
+  deckbd = ./deckbd.nix;
 }

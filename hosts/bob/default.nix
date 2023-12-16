@@ -23,28 +23,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.initrd.kernelModules = [ "uinput" "evdev" "hid_steam" ];
-  boot.initrd.preLVMCommands =
-    let
-      deckbd = "${pkgs.deckbd}/bin/deckbd";
-    in
-    ''
-      try=10
-      while true;do
-        ${deckbd} query && break
-        if test $try -le 0;then break; fi
-        sleep 1
-        echo "Waiting for controller to appear, $try retry remains..."
-        try=$((try - 1))
-      done
-      echo "Initialise deckbd";
-      ${deckbd} &
-      DECKBD_PID=$!
-    '';
-  boot.initrd.postMountCommands = ''
-    kill $DECKBD_PID
-  '';
+  boot.initrd.deckbd.enable = true;
 
   networking.hostName = "bob"; # Define your hostname.
   networking.networkmanager = {
@@ -73,10 +52,6 @@
 
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
-
-  chaotic.mesa-git = {
-    enable = true;
-  };
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
@@ -113,7 +88,16 @@
     enable = true;
   };
 
-  system.stateVersion = "23.05"; # Did you read the comment?``
+  system.stateVersion = "23.05"; # Did you read the comment?
+
+  specialisation = {
+    mesa-git.configuration = {
+      chaotic.mesa-git = {
+        enable = true;
+        fallbackSpecialisation = false;
+      };
+    };
+  };
 
 }
 
