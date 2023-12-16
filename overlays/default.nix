@@ -64,6 +64,18 @@ let
     });
 
     # bump chiaki for HDR
+    libplacebo_6 = prev.libplacebo.overrideAttrs (old: rec {
+      version = "6.338.1";
+      src = prev.fetchFromGitLab {
+        domain = "code.videolan.org";
+        owner = "videolan";
+        repo = old.pname;
+        rev = "v${version}";
+        hash = "sha256-NZmwR3+lIC2PF+k+kqCjoMYkMM/PKOJmDwAq7t6YONY=";
+      };
+      buildInputs = old.buildInputs ++ [ prev.xxHash ];
+    });
+
     chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
       version = "1.5.1";
       src = prev.fetchFromGitHub {
@@ -73,6 +85,16 @@ let
         hash = "sha256-XNpD9JPbckiq0HgpV/QJR8hDmvGTptxBMoGihHz44lc=";
         fetchSubmodules = true;
       };
+      buildInputs = old.buildInputs ++ [
+        libplacebo_6
+        prev.vulkan-headers
+        prev.libunwind
+        prev.shaderc
+        prev.vulkan-loader
+        prev.lcms2
+        prev.libdovi
+        prev.xxHash
+      ];
     });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
