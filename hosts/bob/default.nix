@@ -69,6 +69,7 @@
     desktopSession = "plasmawayland";
   };
   jovian.devices.steamdeck.enable = true;
+  jovian.decky-loader.enable = true;
 
   sops = {
     secrets.registration_key = {
