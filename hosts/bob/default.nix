@@ -67,8 +67,12 @@
     autoStart = true;
     user = "mhelton";
     desktopSession = "plasmawayland";
+
   };
-  jovian.devices.steamdeck.enable = true;
+  jovian.devices.steamdeck = {
+    enable = true;
+    enableGyroDsuService = true;
+  };
   jovian.decky-loader.enable = true;
 
   sops = {
