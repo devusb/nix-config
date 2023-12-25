@@ -28,6 +28,7 @@
     go-plex-client
     chatblade
     ripgrep-all
+    nom
   ];
 
   programs.home-manager = {
