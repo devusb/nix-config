@@ -3,7 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { inputs, config, pkgs, lib, ... }:
-
+let
+  steam-extest = pkgs.steam.override {
+    extraEnv = {
+      LD_PRELOAD = "${pkgs.pkgsi686Linux.extest}/lib/libextest.so";
+    };
+  };
+in
 {
   imports =
     [
@@ -74,6 +80,7 @@
     enableGyroDsuService = true;
   };
   jovian.decky-loader.enable = true;
+  programs.steam.package = steam-extest;
 
   sops = {
     secrets.registration_key = {

@@ -4,7 +4,7 @@
 
   xdg.configFile."autostart/Steam.desktop".text = ''
     [Desktop Entry]
-    Exec=sh -c "LD_PRELOAD=${pkgs.pkgsi686Linux.extest}/lib/libextest.so steam -silent"
+    Exec=steam -silent
     GenericName[en_US]=
     GenericName=
     Icon=Steam
