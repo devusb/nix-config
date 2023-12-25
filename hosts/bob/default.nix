@@ -89,6 +89,8 @@
     consoleNickname = "PS5-875";
   };
 
+  services.joycond.enable = true;
+
   services.flatpak = {
     enable = true;
   };

@@ -97,6 +97,17 @@ let
       ];
     });
 
+    # joycond
+    joycond = prev.joycond.overrideAttrs (old: {
+      version = "0.1.0-unstable-2023-12-03";
+      src = prev.fetchFromGitHub {
+        owner = "DanielOgorchock";
+        repo = old.pname;
+        rev = "9d1f5098b716681d087cca695ad714218a18d4e8";
+        hash = "sha256-LT40EqBMaG6Wwl9AvhOxLNmolgUPSl5IkryOqIGAOCE=";
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
