@@ -1,0 +1,20 @@
+name: build
+on:
+  workflow_dispatch: # allows manual triggering
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DeterminateSystems/nix-installer-action@v8
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: ryanccn/attic-action@v0
+        with:
+          cache: ${{ secrets.ATTIC_CACHE }}
+          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+          token: ${{ secrets.ATTIC_TOKEN }}
+          skip-use: true
+      - name: build tomservo
+        run: nix build .#nixosConfigurations.tomservo.config.system.build.toplevel
