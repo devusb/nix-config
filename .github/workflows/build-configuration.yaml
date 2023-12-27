@@ -6,12 +6,15 @@ on:
         required: true
         type: string
         default: tomservo
-  push:
 
 jobs:
   build_nixos:
     runs-on: ubuntu-latest
     steps:
+      - name: "Create Dir for Mounting moar Disk Space ❄"
+        run: |
+          sudo mkdir /nix
+
       - name: "Maximize Disk Space"
         run: |
           sudo rm -rf $AGENT_TOOLSDIRECTORY
@@ -34,14 +37,21 @@ jobs:
           remove-haskell: "true"
           remove-codeql: "true"
           remove-docker-images: "true"
+          build-mount-path: /nix
+
+      - name: "Install Nix ❄️"
+        uses: cachix/install-nix-action@v20
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v3
-      - uses: DeterminateSystems/nix-installer-action@v8
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      # - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: ryanccn/attic-action@v0
         with:
           cache: ${{ secrets.ATTIC_CACHE }}
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           token: ${{ secrets.ATTIC_TOKEN }}
           skip-use: true
-      - name: build ${{ inputs.hostname }}
-        run: nix build .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel
+      - name: build tomservo
+        run: nix build .#nixosConfigurations.tomservo.config.system.build.toplevel
