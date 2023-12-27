@@ -23,6 +23,7 @@ in
       ../common/nixos.nix
       ../common/steam.nix
       ../common/_1password.nix
+      ../common/docker.nix
       inputs.chaotic.nixosModules.default
     ];
 
