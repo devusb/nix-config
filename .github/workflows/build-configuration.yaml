@@ -15,6 +15,7 @@ jobs:
       - name: "Create Dir for Mounting moar Disk Space ❄"
         run: |
           sudo mkdir /nix
+          sudo chown -R runner /nix
 
       - name: "Maximize Disk Space"
         run: |
