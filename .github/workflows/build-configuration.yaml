@@ -19,9 +19,6 @@ jobs:
           cache: ${{ secrets.ATTIC_CACHE }}
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           token: ${{ secrets.ATTIC_TOKEN }}
-          skip-push: true
       - name: build tomservo
         run: |
-          nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.tomservo.config.system.build.toplevel --skip-cached --eval-workers 2 --debug
-          attic push r2d2 result
-
+          nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.tomservo.config.system.build.toplevel --skip-cached --eval-workers 2
