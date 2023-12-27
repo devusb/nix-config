@@ -1,0 +1,51 @@
+name: build NixOS configuration
+on:
+  workflow_dispatch:
+    inputs:
+      hostname:
+        required: true
+        type: string
+        default: tomservo
+
+jobs:
+  build_nixos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Create Dir for Mounting moar Disk Space ❄"
+        run: |
+          sudo mkdir /nix
+
+      - name: "Maximize Disk Space"
+        run: |
+          sudo rm -rf $AGENT_TOOLSDIRECTORY
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/lib/heroku
+          sudo rm -rf /var/lib/docker/overlay2
+          sudo rm -rf /home/linuxbrew
+          sudo rm -rf /home/runner/.rustup
+
+      - name: "Maximize Disk Space 😈"
+        uses: easimon/maximize-build-space@v8
+        with:
+          root-reserve-mb: 8192
+          swap-size-mb: 1024
+          build-mount-path: /nix
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+          remove-docker-images: "true"
+      - uses: actions/checkout@v3
+      - uses: DeterminateSystems/nix-installer-action@v8
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: ryanccn/attic-action@v0
+        with:
+          cache: ${{ secrets.ATTIC_CACHE }}
+          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+          token: ${{ secrets.ATTIC_TOKEN }}
+          skip-use: true
+      - name: build ${{ inputs.hostname }}
+        run: nix build .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel
