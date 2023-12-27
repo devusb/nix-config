@@ -12,11 +12,6 @@ jobs:
   build_nixos:
     runs-on: ubuntu-latest
     steps:
-      - name: "Create Dir for Mounting moar Disk Space ❄"
-        run: |
-          sudo mkdir /nix
-          sudo chown -R runner /nix
-
       - name: "Maximize Disk Space"
         run: |
           sudo rm -rf $AGENT_TOOLSDIRECTORY
@@ -34,7 +29,6 @@ jobs:
         with:
           root-reserve-mb: 8192
           swap-size-mb: 1024
-          build-mount-path: /nix
           remove-dotnet: "true"
           remove-android: "true"
           remove-haskell: "true"
