@@ -19,3 +19,13 @@ jobs:
           pr-labels: |                  # Labels to be set on the PR
             dependencies
             automated
+  build_tomservo:
+    needs: lockfile
+    uses: ./.github/workflows/build-configuration.yaml
+    with:
+      hostname: tomservo
+  build_bob:
+    needs: lockfile
+    uses: ./.github/workflows/build-configuration.yaml
+    with:
+      hostname: bob

@@ -1,12 +1,10 @@
 name: build NixOS configuration
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       hostname:
         required: true
         type: string
-        default: tomservo
-  push:
 
 jobs:
   build_nixos:
@@ -19,6 +17,6 @@ jobs:
           cache: ${{ secrets.ATTIC_CACHE }}
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           token: ${{ secrets.ATTIC_TOKEN }}
-      - name: build tomservo
+      - name: build ${{ inputs.hostname }}
         run: |
-          nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.tomservo.config.system.build.toplevel --skip-cached --eval-workers 2
+          nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel --skip-cached --eval-workers 2 --no-nom
