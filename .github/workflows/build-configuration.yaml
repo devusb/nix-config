@@ -1,4 +1,4 @@
-name: build NixOS configuration
+name: build and cache NixOS configuration
 on:
   workflow_call:
     inputs:
@@ -21,4 +21,5 @@ jobs:
       - name: build ${{ inputs.hostname }}
         run: |
           nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel --skip-cached --eval-workers 2 --no-nom
-          attic push ${{ secrets.ATTIC_CACHE }} result*
+      - name: push to attic
+        run: attic push ${{ secrets.ATTIC_CACHE }} result*

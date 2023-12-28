@@ -7,7 +7,7 @@ jobs:
   build_hosts:
     strategy:
       matrix:
-        hosts: ["tomservo", "bob", "durandal"]
+        hosts: ["tomservo", "bob"]
     secrets: inherit
     uses: ./.github/workflows/build-configuration.yaml
     with:
