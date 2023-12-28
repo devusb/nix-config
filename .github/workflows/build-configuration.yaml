@@ -21,4 +21,4 @@ jobs:
       - name: build ${{ inputs.hostname }}
         run: |
           nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel --skip-cached --eval-workers 2 --no-nom
-          attic push r2d2 result*
+          attic push ${{ secrets.ATTIC_CACHE }} result*

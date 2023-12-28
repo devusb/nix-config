@@ -9,6 +9,7 @@ jobs:
       matrix:
         hosts: ["tomservo", "bob", "durandal"]
     secrets: inherit
+    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflows/build-configuration.yaml
         with:
