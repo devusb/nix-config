@@ -1,7 +1,6 @@
 name: build NixOS configurations for PRs
 
 on:
-  workflow_dispatch:
   pull_request:
 
 jobs:
@@ -11,8 +10,8 @@ jobs:
         hosts: ["tomservo", "bob", "durandal"]
     secrets: inherit
     steps:
-      uses: ./.github/workflows/build-configuration.yaml
-      with:
-        hostname: ${{ matrix.hosts }}
+      - uses: ./.github/workflows/build-configuration.yaml
+        with:
+          hostname: ${{ matrix.hosts }}
 
 
