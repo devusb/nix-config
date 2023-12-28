@@ -9,7 +9,6 @@ jobs:
       matrix:
         hosts: ["tomservo", "bob", "durandal"]
     secrets: inherit
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/build-configuration.yaml
     with:
       hostname: ${{ matrix.hosts }}
