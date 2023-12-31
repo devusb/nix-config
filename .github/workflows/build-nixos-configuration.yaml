@@ -44,9 +44,6 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v3
-        name: "Checkout repo"
-
       - uses: ryanccn/attic-action@v0
         name: "Install Attic"
         with:
@@ -54,6 +51,9 @@ jobs:
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           token: ${{ secrets.ATTIC_TOKEN }}
           skip-push: true
+
+      - uses: actions/checkout@v3
+        name: "Checkout repo"
 
       - name: Build ${{ inputs.hostname }}
         run: |

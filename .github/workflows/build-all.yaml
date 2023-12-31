@@ -1,7 +1,8 @@
-name: build NixOS configurations
+name: build configurations
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build_hosts:
