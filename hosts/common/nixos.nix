@@ -27,6 +27,10 @@
   services.fstrim.enable = true;
   boot.swraid.enable = lib.mkDefault false;
 
+  services.earlyoom = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     wget
