@@ -1,7 +1,7 @@
 name: build NixOS configurations
 
 on:
-  push:
+  pull_request:
 
 jobs:
   build_hosts:
@@ -9,7 +9,7 @@ jobs:
       matrix:
         hosts: ["tomservo", "bob", "durandal"]
     secrets: inherit
-    uses: ./.github/workflows/build-configuration.yaml
+    uses: ./.github/workflows/build-nixos-configuration.yaml
     with:
       hostname: ${{ matrix.hosts }}
 
