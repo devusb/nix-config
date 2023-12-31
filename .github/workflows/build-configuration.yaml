@@ -10,16 +10,51 @@ jobs:
   build_nixos:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: DeterminateSystems/nix-installer-action@v8
+      - name: "Create build dir"
+        run: |
+          sudo mkdir /nix
+
+      - name: "Maximize Disk Space"
+        run: |
+          sudo rm -rf $AGENT_TOOLSDIRECTORY
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/lib/heroku
+          sudo rm -rf /var/lib/docker/overlay2
+          sudo rm -rf /home/linuxbrew
+          sudo rm -rf /home/runner/.rustup
+
+      - name: "Maximize disk space"
+        uses: easimon/maximize-build-space@v8
+        with:
+          root-reserve-mb: 8192
+          swap-size-mb: 1024
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+          remove-docker-images: "true"
+          build-mount-path: /nix
+
+      - name: "Install Nix"
+        uses: cachix/install-nix-action@v20
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
       - uses: ryanccn/attic-action@v0
+        name: "Install Attic"
         with:
           cache: ${{ secrets.ATTIC_CACHE }}
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           token: ${{ secrets.ATTIC_TOKEN }}
           skip-push: true
-      - name: build ${{ inputs.hostname }}
+
+      - name: Build ${{ inputs.hostname }}
         run: |
           nix run github:Mic92/nix-fast-build -- --flake .#nixosConfigurations.${{ inputs.hostname }}.config.system.build.toplevel --skip-cached --eval-workers 2 --no-nom
-      - name: push to attic
+
+      - name: Push to Attic
         run: attic push ${{ secrets.ATTIC_CACHE }} result*
