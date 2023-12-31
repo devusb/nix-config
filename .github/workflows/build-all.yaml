@@ -1,0 +1,17 @@
+name: build configurations
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build_hosts:
+    strategy:
+      matrix:
+        hosts: ["tomservo", "bob", "durandal"]
+    secrets: inherit
+    uses: ./.github/workflows/build-nixos-configuration.yaml
+    with:
+      hostname: ${{ matrix.hosts }}
+
+
