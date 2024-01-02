@@ -6,7 +6,7 @@
 let
   steam-extest = pkgs.steam.override {
     extraEnv = {
-      LD_PRELOAD = "${pkgs.pkgsi686Linux.extest}/lib/libextest.so:${if config.chaotic.mesa-git.enable then config.environment.sessionVariables.LD_PRELOAD else ""}";
+      LD_PRELOAD = "${pkgs.pkgsi686Linux.extest}/lib/libextest.so:${config.environment.sessionVariables.LD_PRELOAD or ""}";
     };
   };
 in
