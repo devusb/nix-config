@@ -22,6 +22,8 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.enableContainers = false;
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   system.stateVersion = "21.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -112,7 +114,7 @@ in
 
   services.plex-mpv-shim.enable = true;
 
-  networking.interfaces.enp5s0.wakeOnLan.enable = true;
+  networking.interfaces.enp6s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;
 
   services.nfs-client.enable = true;

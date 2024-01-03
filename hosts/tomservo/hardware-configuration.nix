@@ -33,6 +33,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/media" =
+    { device = "/dev/disk/by-uuid/85bed6a3-24b6-4e5a-80e7-2937d56277b4";
+      fsType = "btrfs";
+    };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/67ff864c-9a61-4614-bfc4-8d8172a4900a"; }];
 
@@ -41,9 +46,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
