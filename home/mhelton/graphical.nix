@@ -17,6 +17,10 @@
     enable = true;
   };
 
+  programs.mpv = {
+    enable = true;
+  };
+
   xdg.configFile."autostart/1password.desktop".text = ''
     [Desktop Entry]
     Categories=Office;
