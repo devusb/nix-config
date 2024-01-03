@@ -11,13 +11,10 @@
     cider
     obsidian
     jellyfin-media-player
+    haruna
   ];
 
   programs.firefox = {
-    enable = true;
-  };
-
-  programs.mpv = {
     enable = true;
   };
 
