@@ -34,7 +34,8 @@
     };
 
   fileSystems."/mnt/media" =
-    { device = "/dev/disk/by-uuid/85bed6a3-24b6-4e5a-80e7-2937d56277b4";
+    {
+      device = "/dev/disk/by-uuid/85bed6a3-24b6-4e5a-80e7-2937d56277b4";
       fsType = "btrfs";
     };
 

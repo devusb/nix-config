@@ -49,10 +49,16 @@
       gcloud.disabled = true;
       shlvl.disabled = false;
       command_timeout = 5000;
-      kubernetes.context_aliases = {
-        "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster";
-        "arn:.*/(?P<var_cluster>[\\w-]+)" = "aws-$var_cluster";
-      };
+      kubernetes.contexts = [
+        {
+          context_pattern = "gke_.*_(?P<var_cluster>[\\w-]+)";
+          context_alias = "gke-$var_cluster";
+        }
+        {
+          context_pattern = "arn:.*/(?P<var_cluster>[\\w-]+)";
+          context_alias = "aws-$var_cluster";
+        }
+      ];
       env_var = {
         DATABASE_URI = {
           style = "yellow bold";
