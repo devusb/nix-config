@@ -37,6 +37,16 @@
     nvtop
   ];
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:devusb/nix-config";
+    allowReboot = true;
+    rebootWindow = {
+      upper = "02:30";
+      lower = "04:00";
+    };
+  };
+
   # monitoring
   services.prometheus.exporters = {
     node = {
