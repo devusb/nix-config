@@ -1,7 +1,6 @@
 name: build configurations
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
