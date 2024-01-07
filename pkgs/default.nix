@@ -46,9 +46,6 @@ in
   # pgdiff
   pgdiff = pkgs.callPackage ./pgdiff { };
 
-  # kube-no-trouble
-  kube-no-trouble = pkgs.callPackage ./kube-no-trouble { };
-
   # kor
   kor = pkgs.callPackage ./kor { };
 

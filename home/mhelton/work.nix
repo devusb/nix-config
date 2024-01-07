@@ -47,7 +47,7 @@ in
     kubernetes-helm
     glab
     kubectl-cnpg
-    kube-no-trouble
+    kubent
     krr
     kubectl-gadget
     pg_activity
