@@ -52,9 +52,6 @@ in
   # krr
   krr = pkgs.callPackage ./krr { };
 
-  # kubectl-gadget
-  kubectl-gadget = pkgs.callPackage ./kubectl-gadget { };
-
   # vkv
   vkv = pkgs.callPackage ./vkv { };
 
