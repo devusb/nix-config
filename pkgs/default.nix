@@ -40,6 +40,9 @@ in
   # go-plex-client
   go-plex-client = pkgs.callPackage ./go-plex-client { };
 
+  # go-simple-upload-server
+  go-simple-upload-server = pkgs.callPackage ./go-simple-upload-server { };
+
   # pgdiff
   pgdiff = pkgs.callPackage ./pgdiff { };
 
