@@ -16,6 +16,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-uaC/pSR2PYrTBH1nWMu/dJ9cpJRtO3c4ZAP0frkYaMA=";
 
+  patches = [
+    ./config-fix.patch
+  ];
+
   ldflags = [ "-s" "-w" ];
 
   meta = with lib; {

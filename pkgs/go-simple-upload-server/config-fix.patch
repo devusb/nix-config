@@ -1,0 +1,13 @@
+diff --git a/app.go b/app.go
+index afaf1e9..7b4b279 100644
+--- a/app.go
++++ b/app.go
+@@ -50,7 +50,7 @@ func main() {
+ 		if err := json.NewDecoder(f).Decode(&fileConfig); err != nil {
+ 			log.Fatalf("failed to load config: %v", err)
+ 		}
+-		if err := mergo.Merge(&fileConfig, config, mergo.WithOverride); err != nil {
++		if err := mergo.Merge(&fileConfig, config); err != nil {
+ 			log.Fatalf("failed to merge config: %v", err)
+ 		}
+ 		config = fileConfig
