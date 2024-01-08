@@ -28,7 +28,7 @@
     go-plex-client
     chatblade
     ripgrep-all
-    nom
+    nix-output-monitor
   ];
 
   programs.home-manager = {
