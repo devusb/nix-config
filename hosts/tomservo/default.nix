@@ -29,17 +29,6 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:devusb/nix-config";
-    dates = "03:15";
-    allowReboot = true;
-    rebootWindow = {
-      upper = "02:30";
-      lower = "04:00";
-    };
-  };
-
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
   };
