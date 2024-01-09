@@ -64,14 +64,6 @@ let
     });
 
     chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
-      version = "1.5.1";
-      src = prev.fetchFromGitHub {
-        owner = "streetpea";
-        repo = old.pname;
-        rev = "v${version}";
-        hash = "sha256-XNpD9JPbckiq0HgpV/QJR8hDmvGTptxBMoGihHz44lc=";
-        fetchSubmodules = true;
-      };
       buildInputs = old.buildInputs ++ [
         libplacebo_6
         prev.vulkan-headers
