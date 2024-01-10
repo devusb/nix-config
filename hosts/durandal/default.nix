@@ -43,8 +43,8 @@
     dates = "03:15";
     allowReboot = true;
     rebootWindow = {
-      upper = "02:30";
-      lower = "04:00";
+      upper = "04:00";
+      lower = "02:30";
     };
   };
 
