@@ -7,7 +7,7 @@
     theforceengine
     ryujinx
     moonlight-qt
-    openjk.openjo
+    # openjk.openjo
     heroic
   ];
 
