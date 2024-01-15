@@ -75,10 +75,10 @@ in
     enable = true;
     extraPackages = extraOpenglPackages;
   };
-  # chaotic.mesa-git = {
-  #   enable = true;
-  #   extraPackages = extraOpenglPackages;
-  # };
+  chaotic.mesa-git = {
+    enable = true;
+    extraPackages = extraOpenglPackages;
+  };
 
   # Plasma
   services.xserver.displayManager.sddm.enable = true;

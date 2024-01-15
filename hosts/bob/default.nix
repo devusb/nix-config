@@ -105,14 +105,14 @@ in
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # specialisation = {
-  #   mesa-git.configuration = {
-  #     chaotic.mesa-git = {
-  #       enable = true;
-  #       fallbackSpecialisation = false;
-  #     };
-  #   };
-  # };
+  specialisation = {
+    mesa-git.configuration = {
+      chaotic.mesa-git = {
+        enable = true;
+        fallbackSpecialisation = false;
+      };
+    };
+  };
 
 }
 
