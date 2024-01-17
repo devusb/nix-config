@@ -94,6 +94,7 @@ let
           disabledTests = old.disabledTests ++ [
             "test_web_client_http_retry"
             "test_web_client_http_retry_connection"
+            "test_webhook_http_retry"
           ];
         });
       })

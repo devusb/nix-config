@@ -62,8 +62,17 @@ let
       httmock
       requests
       poetry-core
+      boto3
+      botocore
+      prometheus-api-client
+      pydantic_1
     ];
     doCheck = false;
+    nativeBuildInputs = with python3.pkgs; [
+      pythonRelaxDepsHook
+    ];
+
+    pythonRelaxDeps = true;
   };
 in
 python3.pkgs.buildPythonApplication rec {
@@ -81,7 +90,7 @@ python3.pkgs.buildPythonApplication rec {
 
   propagatedBuildInputs = with python3.pkgs; [
     poetry-core
-    pydantic
+    pydantic_1
     numpy
     pandas
     cachetools
