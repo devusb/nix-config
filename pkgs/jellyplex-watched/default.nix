@@ -5,14 +5,14 @@
 
 python3.pkgs.buildPythonPackage rec {
   pname = "jellyplex-watched";
-  version = "5.0.0-unstable-2023-11-18";
+  version = "5.0.0-unstable-2024-01-17";
   pyproject = false;
 
   src = fetchFromGitHub {
     owner = "luigi311";
     repo = "JellyPlex-Watched";
-    rev = "5baea978ab0b3d98a2d6fb0dbbeb692534d64412";
-    hash = "sha256-lJcR38qrcXMUCBxEvhIZ3mFn+EKXC1e5j7w5Cw14ybA=";
+    rev = "29cb0cebd52af4a3115665cbce5d6a7954f39b0c";
+    hash = "sha256-wHptH4g2ehUV+zLCvKAhdZS8S9yIVkqaJN9xLfT4Qq8=";
   };
 
   propagatedBuildInputs = with python3.pkgs; [
