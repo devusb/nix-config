@@ -64,6 +64,9 @@ in
   # JellyPlex-Watched
   jellyplex-watched = pkgs.callPackage ./jellyplex-watched { };
 
+  # sunshine
+  sunshine-unstable = pkgs.callPackage ./sunshine { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (

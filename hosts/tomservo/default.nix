@@ -75,14 +75,20 @@ in
     enable = true;
     extraPackages = extraOpenglPackages;
   };
-  chaotic.mesa-git = {
-    enable = true;
-    extraPackages = extraOpenglPackages;
+  specialisation.mesa-git.configuration = {
+    chaotic.mesa-git = {
+      enable = true;
+      extraPackages = extraOpenglPackages;
+      fallbackSpecialisation = false;
+    };
   };
 
   # Plasma
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "plasma";
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
 
@@ -110,7 +116,10 @@ in
     drivers = with pkgs; [ gutenprint ];
   };
 
-  services.sunshine.enable = true;
+  services.sunshine = {
+    enable = true;
+    package = pkgs.sunshine-unstable;
+  };
 
   services.plex-mpv-shim.enable = true;
 
