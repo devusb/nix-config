@@ -40,10 +40,10 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:devusb/nix-config";
-    dates = "03:15";
+    dates = "02:30";
     allowReboot = true;
     rebootWindow = {
-      upper = "04:00";
+      upper = "04:45";
       lower = "02:30";
     };
   };
