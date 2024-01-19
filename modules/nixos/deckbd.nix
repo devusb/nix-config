@@ -16,7 +16,7 @@ in
       boot.initrd.kernelModules = [ "uinput" "evdev" "hid_steam" ];
       boot.initrd.preLVMCommands =
         let
-          deckbd = "${pkgs.deckbd}/bin/deckbd";
+          deckbd = "${cfg.package}/bin/deckbd";
         in
         ''
           try=10
