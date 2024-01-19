@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, lib, inputs, config, ... }:
 let
   extraOpenglPackages = with pkgs; [
     vaapiVdpau
@@ -14,6 +14,7 @@ in
     ../common/_1password.nix
     ../common/docker.nix
     inputs.chaotic.nixosModules.default
+    inputs.kde2nix.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -91,6 +92,12 @@ in
   services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
   programs.kdeconnect.enable = true;
+
+  specialisation.plasma6.configuration = {
+    services.xserver.desktopManager.plasma6.enable = true;
+    services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
+    services.xserver.displayManager.defaultSession = lib.mkForce "plasma";
+  };
 
   services.xserver.displayManager.autoLogin.user = "mhelton";
 
