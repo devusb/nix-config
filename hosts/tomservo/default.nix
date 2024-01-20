@@ -89,17 +89,18 @@ in
     enable = true;
     wayland.enable = true;
   };
-  services.xserver.displayManager.defaultSession = "plasmawayland";
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasma";
+  services.xserver.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
-  specialisation.plasma6.configuration = {
-    services.xserver.desktopManager.plasma6.enable = true;
-    services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
-    services.xserver.displayManager.defaultSession = lib.mkForce "plasma";
-    environment.systemPackages = with pkgs; [
-      kde-rounded-corners
-    ];
+  environment.systemPackages = with pkgs; [
+    kde-rounded-corners
+  ];
+
+  specialisation.plasma5.configuration = {
+    services.xserver.desktopManager.plasma5.enable = true;
+    services.xserver.desktopManager.plasma6.enable = lib.mkForce false;
+    services.xserver.displayManager.defaultSession = lib.mkForce "plasmawayland";
   };
 
   services.xserver.displayManager.autoLogin.user = "mhelton";
