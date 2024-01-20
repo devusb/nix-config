@@ -13,6 +13,12 @@
     flyctl
   ];
 
+  nix.settings = {
+    builders = [
+      "ssh-ng://mhelton@chopper x86_64-linux,aarch64-linux - 6 - - - -"
+    ];
+  };
+
   programs.keychain.keys = [ "id_rsa" ];
 
   programs.starship.settings = {

@@ -39,9 +39,6 @@
       "r2d2:dGjwZKsBup19Wq8b3/W2smJjrw55tC0DnCQhu/qsfb4="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
-    builders = [
-      "@${config.xdg.configHome}/nix/builders"
-    ];
     builders-use-substitutes = true;
     netrc-file = "${config.xdg.configHome}/nix/netrc";
   };
