@@ -55,6 +55,17 @@
           exclude-global-prep-cmd = "false";
           auto-detach = "true";
         }
+        {
+          name = "800p Desktop";
+          prep-cmd = [
+            {
+              do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1280x800@144";
+              undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+            }
+          ];
+          exclude-global-prep-cmd = "false";
+          auto-detach = "true";
+        }
       ];
     });
   };
