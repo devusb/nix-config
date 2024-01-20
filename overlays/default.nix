@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  customPkgs = final: prev: import ../pkgs { inherit prev; };
+  customPkgs = final: prev: import ../pkgs { inherit final prev; };
 
   modifications = final: prev: rec {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
@@ -9,6 +9,7 @@ let
     attic = inputs.attic.packages.${prev.system}.attic-client;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
     deckbd = inputs.deckbd.packages.${prev.system}.default;
+    kde2nix = inputs.kde2nix.packages.${prev.system};
 
     # bump openjk version
     openjk = prev.openjk.overrideAttrs (old: {
@@ -62,8 +63,7 @@ let
       };
       buildInputs = old.buildInputs ++ [ prev.xxHash ];
     });
-
-    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: rec {
+    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [
         libplacebo_6
         prev.vulkan-headers

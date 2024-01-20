@@ -97,6 +97,9 @@ in
     services.xserver.desktopManager.plasma6.enable = true;
     services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
     services.xserver.displayManager.defaultSession = lib.mkForce "plasma";
+    environment.systemPackages = with pkgs; [
+      kde-rounded-corners
+    ];
   };
 
   services.xserver.displayManager.autoLogin.user = "mhelton";

@@ -1,4 +1,4 @@
-{ prev, ... }:
+{ final, prev, ... }:
 let
   pkgs = prev;
 in
@@ -66,6 +66,9 @@ in
 
   # sunshine
   sunshine-unstable = pkgs.callPackage ./sunshine { };
+
+  # kde-rounded-corners
+  kde-rounded-corners = pkgs.qt6Packages.callPackage ./kde-rounded-corners { kwin = final.kde2nix.kwin; kcmutils = final.kde2nix.kcmutils; };
 
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
