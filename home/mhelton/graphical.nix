@@ -12,6 +12,7 @@
     obsidian
     jellyfin-media-player
     haruna
+    virt-manager
   ];
 
   programs.firefox = {
