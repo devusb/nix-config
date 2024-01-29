@@ -95,6 +95,7 @@ let
             "test_web_client_http_retry"
             "test_web_client_http_retry_connection"
             "test_webhook_http_retry"
+            "test_issue_690_oauth_v2_access"
           ];
         });
       })
