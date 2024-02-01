@@ -13,6 +13,7 @@ in
     };
   };
   config = mkIf config.services.shairport-sync.enable {
+    services.nqptp.enable = true;
     systemd.user.services.shairport-sync =
       {
         description = "shairport-sync";
@@ -20,7 +21,7 @@ in
         wants = [ "wireplumber.service" ];
         after = [ "wireplumber.service" ];
         serviceConfig = {
-          ExecStart = "${cfg.package}/bin/shairport-sync -o pa -a ${config.networking.hostName}";
+          ExecStart = "${cfg.package}/bin/shairport-sync -o pw -a ${config.networking.hostName}";
         };
       };
   };
