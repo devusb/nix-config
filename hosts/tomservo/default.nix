@@ -135,13 +135,6 @@ in
 
   services.plex-mpv-shim.enable = true;
 
-  services.shairport-sync = {
-    enable = true;
-    package = pkgs.shairport-sync.override {
-      enableAirplay2 = true;
-    };
-  };
-
   networking.interfaces.enp6s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;
 
