@@ -15,8 +15,8 @@
 
 buildPythonPackage rec {
   pname = "timedb";
-  rev = "7bd4788fab4c266f341755447f362a080c3dc0d7";
-  version = "3.37.1+${builtins.substring 0 7 rev}";
+  rev = "f9c05773c605d0a66cb115c786c054a8cb6bdbf5";
+  version = "3.38.0";
 
   src = fetchGit {
     url = "git@imugit.imubit.com:imubit-dlpc/product/timedb.git";
