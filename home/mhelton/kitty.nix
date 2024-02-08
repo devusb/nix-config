@@ -12,6 +12,8 @@
     keybindings = {
       "ctrl+f2" = "detach_tab";
       "cmd+f2" = "detach_tab";
+      "ctrl+shift+t" = "new_tab_with_cwd";
+      "cmd+shift+t" = "new_tab_with_cwd";
     };
   };
 }
