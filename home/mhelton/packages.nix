@@ -26,7 +26,6 @@
     attic
     fx
     go-plex-client
-    chatblade
     ripgrep-all
     nix-output-monitor
   ];
