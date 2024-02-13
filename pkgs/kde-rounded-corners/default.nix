@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     owner = "matinlotfali";
     repo = "KDE-Rounded-Corners";
     rev = "v${version}";
-    hash = "sha256-2YNFDgiP3sUOPK5BbEzxieMLnWTLDcLG9ITBhjVqyyY=";
+    hash = "sha256-DE3XTu3CQY9mGuOpehWno/4yFyLjHuh4RxdUh+aTU7M=";
   };
 
   nativeBuildInputs = [ cmake qtbase kcmutils extra-cmake-modules wrapQtAppsHook ];
