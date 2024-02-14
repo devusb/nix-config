@@ -87,6 +87,11 @@ let
       };
     });
 
+    # remove xdg from aws-sso-cli on darwin
+    aws-sso-cli = prev.aws-sso-cli.overrideAttrs (old: {
+      postInstall = "";
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
