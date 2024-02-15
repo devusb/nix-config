@@ -29,7 +29,7 @@
       "https://devenv.cachix.org"
       "https://colmena.cachix.org"
       "https://attic.springhare-egret.ts.net/r2d2"
-      "https://cache.garnix.io"
+      # "https://cache.garnix.io"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
