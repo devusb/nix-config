@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
+    inputs.nix-packages.nixosModules.default
   ] ++ (builtins.attrValues outputs.nixosModules);
-  disabledModules = [ "services/networking/shairport-sync.nix" ];
 
   nix = {
     package = pkgs.nixUnstable;

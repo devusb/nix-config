@@ -23,6 +23,10 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # nix-packages
+    nix-packages.url = "github:devusb/nix-packages";
+    nix-packages.inputs.nixpkgs.follows = "nixpkgs";
+
     # hercules-ci
     hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
 
