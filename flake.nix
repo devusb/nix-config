@@ -8,6 +8,7 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Core nix flakes
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,6 +22,9 @@
     # nix-darwin
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # hercules-ci
+    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
 
     # mpack
     mpack.url = "github:league/mpack";
@@ -80,98 +84,56 @@
     kde2nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, attic, ... }@inputs:
     let
       inherit (inputs.nixpkgs.lib) genAttrs;
       inherit (self) outputs;
       forAllSystems = genAttrs [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
     in
-    rec {
-      overlays = {
-        default = import ./overlays { inherit inputs; };
-      };
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        hercules-ci-effects.flakeModule
+        hercules-ci-effects.push-cache-effect
+      ];
 
-      nixosModules = import ./modules/nixos;
-      darwinModules = import ./modules/darwin;
-      homeManagerModules = import ./modules/home-manager;
-
-      # allow for extra overlays to be added later
-      legacyPackagesWithOverlays = { extraOverlays ? [ ] }: (forAllSystems (system:
-        import nixpkgs {
-          inherit system;
-          overlays = builtins.attrValues {
-            default = inputs.nixpkgs.lib.composeManyExtensions ([ (import ./overlays { inherit inputs; }) ] ++ extraOverlays);
-          };
-          config.allowUnfree = true;
-          config.permittedInsecurePackages = [
-            "electron-24.8.6"
-            "electron-25.9.0"
-          ];
-        }
-      ));
-      # but create one with normal overlays if not
-      legacyPackages = legacyPackagesWithOverlays { };
-
-      devShells = forAllSystems (system: {
-        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
-      });
-
-      formatter = forAllSystems (system: legacyPackages.${system}.nixpkgs-fmt);
-
-      nixosConfigurations = {
-        tomservo = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/tomservo
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [
-                  ./home/mhelton
-                  ./home/mhelton/personal.nix
-                  ./home/mhelton/linux.nix
-                  ./home/mhelton/graphical.nix
-                  ./home/mhelton/gaming.nix
-                ];
-              };
-            }
-          ];
+      flake = rec {
+        overlays = {
+          default = import ./overlays { inherit inputs; };
         };
 
-        durandal = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/durandal
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [
-                  ./home/mhelton
-                  ./home/mhelton/personal.nix
-                  ./home/mhelton/linux.nix
-                  ./home/mhelton/graphical.nix
-                  ./home/mhelton/plasma.nix
-                  ./home/mhelton/gaming.nix
-                ];
-              };
-            }
-          ];
-        };
+        nixosModules = import ./modules/nixos;
+        darwinModules = import ./modules/darwin;
+        homeManagerModules = import ./modules/home-manager;
 
-        bob =
-          nixpkgs.lib.nixosSystem {
+        # allow for extra overlays to be added later
+        legacyPackagesWithOverlays = { extraOverlays ? [ ] }: (forAllSystems (system:
+          import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues {
+              default = inputs.nixpkgs.lib.composeManyExtensions ([ (import ./overlays { inherit inputs; }) ] ++ extraOverlays);
+            };
+            config.allowUnfree = true;
+            config.permittedInsecurePackages = [
+              "electron-24.8.6"
+              "electron-25.9.0"
+            ];
+          }
+        ));
+        # but create one with normal overlays if not
+        legacyPackages = legacyPackagesWithOverlays { };
+
+        devShells = forAllSystems (system: {
+          default = import ./shell.nix { pkgs = legacyPackages.${system}; };
+        });
+
+        formatter = forAllSystems (system: legacyPackages.${system}.nixpkgs-fmt);
+
+        nixosConfigurations = {
+          tomservo = nixpkgs.lib.nixosSystem {
             pkgs = legacyPackages."x86_64-linux";
             specialArgs = { inherit inputs outputs; };
             modules = [
-              ./hosts/bob
+              ./hosts/tomservo
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -184,23 +146,17 @@
                     ./home/mhelton/linux.nix
                     ./home/mhelton/graphical.nix
                     ./home/mhelton/gaming.nix
-                    ./home/mhelton/plasma.nix
-                    ./home/mhelton/deck.nix
                   ];
                 };
               }
             ];
           };
 
-        imubit-morganh-dell =
-          let
-            legacyPackages = legacyPackagesWithOverlays { extraOverlays = [ inputs.p81.overlays.default inputs.sentinelone.overlays.default ]; };
-          in
-          nixpkgs.lib.nixosSystem {
+          durandal = nixpkgs.lib.nixosSystem {
             pkgs = legacyPackages."x86_64-linux";
             specialArgs = { inherit inputs outputs; };
             modules = [
-              ./hosts/imubit-morganh-dell
+              ./hosts/durandal
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -209,58 +165,145 @@
                   extraSpecialArgs = { inherit inputs outputs; };
                   users.mhelton.imports = [
                     ./home/mhelton
-                    ./home/mhelton/work.nix
+                    ./home/mhelton/personal.nix
                     ./home/mhelton/linux.nix
                     ./home/mhelton/graphical.nix
                     ./home/mhelton/plasma.nix
+                    ./home/mhelton/gaming.nix
                   ];
                 };
               }
             ];
           };
 
-      };
+          bob =
+            nixpkgs.lib.nixosSystem {
+              pkgs = legacyPackages."x86_64-linux";
+              specialArgs = { inherit inputs outputs; };
+              modules = [
+                ./hosts/bob
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = { inherit inputs outputs; };
+                    users.mhelton.imports = [
+                      ./home/mhelton
+                      ./home/mhelton/personal.nix
+                      ./home/mhelton/linux.nix
+                      ./home/mhelton/graphical.nix
+                      ./home/mhelton/gaming.nix
+                      ./home/mhelton/plasma.nix
+                      ./home/mhelton/deck.nix
+                    ];
+                  };
+                }
+              ];
+            };
 
-      darwinConfigurations = {
-        superintendent = darwin.lib.darwinSystem {
-          pkgs = legacyPackages."aarch64-darwin";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/superintendent
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [
-                  ./home/mhelton
-                  ./home/mhelton/personal.nix
-                  ./home/mhelton/darwin.nix
-                ];
-              };
-            }
-          ];
+          imubit-morganh-dell =
+            let
+              legacyPackages = legacyPackagesWithOverlays { extraOverlays = [ inputs.p81.overlays.default inputs.sentinelone.overlays.default ]; };
+            in
+            nixpkgs.lib.nixosSystem {
+              pkgs = legacyPackages."x86_64-linux";
+              specialArgs = { inherit inputs outputs; };
+              modules = [
+                ./hosts/imubit-morganh-dell
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = { inherit inputs outputs; };
+                    users.mhelton.imports = [
+                      ./home/mhelton
+                      ./home/mhelton/work.nix
+                      ./home/mhelton/linux.nix
+                      ./home/mhelton/graphical.nix
+                      ./home/mhelton/plasma.nix
+                    ];
+                  };
+                }
+              ];
+            };
         };
 
-        imubit-morganh-mbp13 = darwin.lib.darwinSystem {
-          pkgs = legacyPackages."aarch64-darwin";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/imubit-morganh-mbp13
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs outputs; };
-                users.mhelton.imports = [
-                  ./home/mhelton
-                  ./home/mhelton/work.nix
-                  ./home/mhelton/darwin.nix
-                ];
-              };
-            }
+        darwinConfigurations = {
+          superintendent = darwin.lib.darwinSystem {
+            pkgs = legacyPackages."aarch64-darwin";
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/superintendent
+              home-manager.darwinModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs outputs; };
+                  users.mhelton.imports = [
+                    ./home/mhelton
+                    ./home/mhelton/personal.nix
+                    ./home/mhelton/darwin.nix
+                  ];
+                };
+              }
+            ];
+          };
+
+          imubit-morganh-mbp13 = darwin.lib.darwinSystem {
+            pkgs = legacyPackages."aarch64-darwin";
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/imubit-morganh-mbp13
+              home-manager.darwinModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs outputs; };
+                  users.mhelton.imports = [
+                    ./home/mhelton
+                    ./home/mhelton/work.nix
+                    ./home/mhelton/darwin.nix
+                  ];
+                };
+              }
+            ];
+          };
+        };
+
+      };
+
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+
+      herculesCI = { config, lib, ... }: {
+        ciSystems = [ "x86_64-linux" ];
+        onPush.default.outputs = {
+          # don't build all configurations
+          nixosConfigurations = lib.mkForce { };
+          darwinConfigurations = lib.mkForce { };
+
+          tomservo = self.nixosConfigurations.tomservo.config.system.build.toplevel;
+          bob = self.nixosConfigurations.bob.config.system.build.toplevel;
+          durandal = self.nixosConfigurations.bob.config.system.build.toplevel;
+        };
+      };
+
+      push-cache-effect = {
+        enable = true;
+        attic-client-pkg = attic.packages.x86_64-linux.attic-client;
+        caches.r2d2 = {
+          type = "attic";
+          secretName = "attic";
+          packages = [
+            self.nixosConfigurations.tomservo.config.system.build.toplevel
+            self.nixosConfigurations.bob.config.system.build.toplevel
+            self.nixosConfigurations.durandal.config.system.build.toplevel
           ];
         };
       };

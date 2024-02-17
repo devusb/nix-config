@@ -2,6 +2,8 @@
   imports = [
   ] ++ (builtins.attrValues outputs.darwinModules);
 
+  nixpkgs.system = "aarch64-darwin";
+
   nix = {
     package = pkgs.nixUnstable;
     settings = {
