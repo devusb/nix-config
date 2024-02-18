@@ -45,7 +45,6 @@
 
     # nixvim
     nixvim.url = "github:pta2002/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     # disko
     disko.url = "github:nix-community/disko";
