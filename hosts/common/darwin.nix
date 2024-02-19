@@ -1,5 +1,6 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
+    inputs.nix-packages.darwinModules.default
   ] ++ (builtins.attrValues outputs.darwinModules);
 
   nixpkgs.system = "aarch64-darwin";

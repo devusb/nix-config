@@ -200,9 +200,9 @@
 
         darwinConfigurations = {
           superintendent = darwin.lib.darwinSystem {
-            pkgs = legacyPackages."aarch64-darwin";
             specialArgs = { inherit inputs outputs; };
             modules = [
+              { nixpkgs.pkgs = legacyPackages."aarch64-darwin"; }
               ./hosts/superintendent
               home-manager.darwinModules.home-manager
               {
@@ -221,9 +221,9 @@
           };
 
           imubit-morganh-mbp13 = darwin.lib.darwinSystem {
-            pkgs = legacyPackages."aarch64-darwin";
             specialArgs = { inherit inputs outputs; };
             modules = [
+              { nixpkgs.pkgs = legacyPackages."aarch64-darwin"; }
               ./hosts/imubit-morganh-mbp13
               home-manager.darwinModules.home-manager
               {

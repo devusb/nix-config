@@ -37,32 +37,11 @@ in
     };
   };
 
-  # go-plex-client
-  go-plex-client = pkgs.callPackage ./go-plex-client { };
-
-  # pgdiff
-  pgdiff = pkgs.callPackage ./pgdiff { };
-
-  # kor
-  kor = pkgs.callPackage ./kor { };
-
   # krr
   krr = pkgs.callPackage ./krr { };
 
-  # vkv
-  vkv = pkgs.callPackage ./vkv { };
-
-  # extest
-  extest = pkgs.callPackage ./extest { };
-
-  # reposync
-  reposync = pkgs.callPackage ./reposync { };
-
   # sunshine
   sunshine-unstable = pkgs.callPackage ./sunshine { };
-
-  # kde-rounded-corners
-  kde-rounded-corners = pkgs.qt6Packages.callPackage ./kde-rounded-corners { kwin = final.kde2nix.kwin; kcmutils = final.kde2nix.kcmutils; };
 
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
