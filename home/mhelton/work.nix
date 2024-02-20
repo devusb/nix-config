@@ -48,7 +48,7 @@ in
     glab
     kubectl-cnpg
     kubent
-    krr
+    # krr
     kubectl-gadget
     pg_activity
     diffr
