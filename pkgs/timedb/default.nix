@@ -1,5 +1,4 @@
-{ lib
-, buildPythonPackage
+{ buildPythonPackage
 , pythonRelaxDepsHook
 , psycopg2
 , pandas

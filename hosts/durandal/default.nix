@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports =
     [
@@ -85,14 +85,6 @@
   system.stateVersion = "22.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
 
   networking.firewall.enable = false;
 

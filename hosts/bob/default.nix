@@ -41,8 +41,6 @@ in
   hardware.pulseaudio.enable = lib.mkForce false;
   hardware.bluetooth.enable = true;
 
-  services.openssh.enable = true;
-
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";
     options = [

@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, config, ... }:
+{ pkgs, lib, inputs, ... }:
 let
   extraOpenglPackages = with pkgs; [
     vaapiVdpau
@@ -33,14 +33,6 @@ in
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
-  };
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
   };
 
   networking.firewall.enable = false;

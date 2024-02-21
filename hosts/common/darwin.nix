@@ -17,6 +17,8 @@
     gc = {
       automatic = true;
       user = "root";
+      dates = "weekly";
+      options = "--delete-older-than 14d";
     };
 
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
@@ -24,11 +26,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
+    neovim
     colima
     docker
     wget
-    nano
   ];
 
   services.nix-daemon.enable = true;

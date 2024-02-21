@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ outputs, config, pkgs, ... }: {
   imports = [
     ./zsh.nix
     ./packages.nix

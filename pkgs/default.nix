@@ -1,4 +1,4 @@
-{ final, prev, ... }:
+{ prev, ... }:
 let
   pkgs = prev;
 in
@@ -39,9 +39,6 @@ in
 
   # krr
   krr = pkgs.callPackage ./krr { };
-
-  # sunshine
-  sunshine-unstable = pkgs.callPackage ./sunshine { };
 
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [

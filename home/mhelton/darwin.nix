@@ -1,4 +1,4 @@
-{ pkgs, config, system, lib, ... }: {
+{ pkgs, ... }: {
 
   home.packages = with pkgs; [
     tailscale

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
   programs.mangohud.enable = lib.mkForce false;
 

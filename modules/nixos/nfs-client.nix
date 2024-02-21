@@ -1,10 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
-
-let
-  cfg = config.services.nfs-client;
-in
 
 {
   options = {

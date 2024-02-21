@@ -80,18 +80,34 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, attic, ... }@inputs:
-    let
-      inherit (inputs.nixpkgs.lib) genAttrs;
-      inherit (self) outputs;
-      forAllSystems = genAttrs [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
-    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
         hercules-ci-effects.push-cache-effect
       ];
 
-      flake = rec {
+      perSystem = { system, ... }: rec {
+        legacyPackages =
+          import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues {
+              default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
+            };
+            config.allowUnfree = true;
+            config.permittedInsecurePackages = [
+              "electron-24.8.6"
+              "electron-25.9.0"
+            ];
+          };
+
+        devShells = {
+          default = import ./shell.nix { pkgs = legacyPackages; };
+        };
+
+        formatter = legacyPackages.nixpkgs-fmt;
+      };
+
+      flake = with self; {
         overlays = {
           default = import ./overlays { inherit inputs; };
         };
@@ -99,29 +115,6 @@
         nixosModules = import ./modules/nixos;
         darwinModules = import ./modules/darwin;
         homeManagerModules = import ./modules/home-manager;
-
-        # allow for extra overlays to be added later
-        legacyPackagesWithOverlays = { extraOverlays ? [ ] }: (forAllSystems (system:
-          import nixpkgs {
-            inherit system;
-            overlays = builtins.attrValues {
-              default = inputs.nixpkgs.lib.composeManyExtensions ([ (import ./overlays { inherit inputs; }) ] ++ extraOverlays);
-            };
-            config.allowUnfree = true;
-            config.permittedInsecurePackages = [
-              "electron-24.8.6"
-              "electron-25.9.0"
-            ];
-          }
-        ));
-        # but create one with normal overlays if not
-        legacyPackages = legacyPackagesWithOverlays { };
-
-        devShells = forAllSystems (system: {
-          default = import ./shell.nix { pkgs = legacyPackages.${system}; };
-        });
-
-        formatter = forAllSystems (system: legacyPackages.${system}.nixpkgs-fmt);
 
         nixosConfigurations = {
           tomservo = nixpkgs.lib.nixosSystem {
@@ -249,7 +242,7 @@
         "aarch64-darwin"
       ];
 
-      herculesCI = { config, lib, ... }: {
+      herculesCI = { ... }: {
         ciSystems = [ "x86_64-linux" ];
       };
 
