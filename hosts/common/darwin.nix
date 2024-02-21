@@ -47,6 +47,13 @@
   };
   homebrew = {
     enable = true;
+    global = {
+      autoUpdate = false;
+    };
+    onActivation = {
+      upgrade = true;
+      autoUpdate = false;
+    };
     casks = [
       "obsidian"
       "mimestream"
