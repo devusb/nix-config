@@ -35,14 +35,6 @@ in
     VDPAU_DRIVER = "radeonsi";
   };
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
-
   networking.firewall.enable = false;
 
   hardware.pulseaudio.enable = false;

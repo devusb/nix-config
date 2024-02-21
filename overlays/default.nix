@@ -34,23 +34,6 @@ let
       patches = [ ]; # patches have been upstreamed
     });
 
-    # add MIME type for Teams link association
-    teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
-      desktopItems = [
-        (prev.makeDesktopItem {
-          name = old.pname;
-          exec = "${old.pname} %u";
-          icon = old.pname;
-          desktopName = "Microsoft Teams for Linux";
-          comment = old.meta.description;
-          categories = [ "Network" "InstantMessaging" "Chat" ];
-          mimeTypes = [
-            "x-scheme-handler/msteams"
-          ];
-        })
-      ];
-    });
-
     # bump chiaki for HDR
     libplacebo_6 = prev.libplacebo.overrideAttrs (old: rec {
       version = "6.338.1";
