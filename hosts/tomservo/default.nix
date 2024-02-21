@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, config, ... }:
+{ pkgs, lib, inputs, ... }:
 let
   extraOpenglPackages = with pkgs; [
     vaapiVdpau

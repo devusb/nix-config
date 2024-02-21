@@ -249,7 +249,7 @@
         "aarch64-darwin"
       ];
 
-      herculesCI = { config, lib, ... }: {
+      herculesCI = { ... }: {
         ciSystems = [ "x86_64-linux" ];
       };
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   users.users = {
     mhelton = {
       isNormalUser = true;
