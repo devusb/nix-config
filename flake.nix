@@ -87,7 +87,6 @@
       ];
 
       perSystem = { system, ... }: rec {
-        # allow for extra overlays to be added later
         legacyPackages =
           import nixpkgs {
             inherit system;
