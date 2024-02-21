@@ -73,7 +73,6 @@ in
     autoStart = true;
     user = "mhelton";
     desktopSession = "plasmawayland";
-
   };
   jovian.devices.steamdeck = {
     enable = true;

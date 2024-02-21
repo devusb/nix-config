@@ -16,8 +16,12 @@
 
     gc = {
       automatic = true;
-      user = "root";
       options = "--delete-older-than 14d";
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
     };
 
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
