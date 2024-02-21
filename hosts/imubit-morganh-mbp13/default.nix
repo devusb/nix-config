@@ -16,4 +16,8 @@
     };
   };
 
+  homebrew.casks = [
+    "dbeaver-community"
+  ];
+
 }

@@ -1,6 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nix-packages.darwinModules.default
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ] ++ (builtins.attrValues outputs.darwinModules);
 
   nixpkgs.system = "aarch64-darwin";
@@ -34,6 +35,24 @@
     docker
     wget
   ];
+
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true;
+    user = "mhelton";
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
+  };
+  homebrew = {
+    enable = true;
+    casks = [
+      "obsidian"
+      "mimestream"
+      "rectangle"
+    ];
+  };
 
   services.nix-daemon.enable = true;
 
