@@ -104,5 +104,8 @@
   services.plex-mpv-shim.enable = true;
   services.nfs-client.enable = true;
 
+  networking.interfaces.enp31s0.wakeOnLan.enable = true;
+  services.sleep-on-lan.enable = true;
+
 }
 
