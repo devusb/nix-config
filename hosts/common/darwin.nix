@@ -58,6 +58,7 @@
       "obsidian"
       "mimestream"
       "rectangle"
+      "firefox"
     ];
   };
 

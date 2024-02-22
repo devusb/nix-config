@@ -14,4 +14,12 @@
       home = "/Users/mhelton";
     };
   };
+
+  homebrew.casks = [
+    "1password"
+    "tailscale"
+    "moonlight"
+    "grandperspective"
+  ];
+
 }
