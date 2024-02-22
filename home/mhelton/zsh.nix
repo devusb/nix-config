@@ -80,6 +80,7 @@
       auto_sync = true;
       sync_frequency = "5m";
       search_mode = "fulltext";
+      sync.records = true;
     };
   };
   programs.direnv = {
