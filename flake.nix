@@ -102,7 +102,7 @@
           import nixpkgs {
             inherit system;
             overlays = builtins.attrValues {
-              default = inputs.nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
+              default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
             };
             config.allowUnfree = true;
             config.permittedInsecurePackages = [
