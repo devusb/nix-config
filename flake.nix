@@ -91,7 +91,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, attic, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
       imports = [
         hercules-ci-effects.flakeModule
         hercules-ci-effects.push-cache-effect
@@ -110,6 +110,7 @@
               "electron-25.9.0"
             ];
           };
+        _module.args.pkgs = legacyPackages;
 
         devShells = {
           default = import ./shell.nix { pkgs = legacyPackages; };
@@ -118,27 +119,25 @@
         formatter = legacyPackages.nixpkgs-fmt;
       };
 
-      flake = with self; {
+      flake = rec {
         overlays = {
           default = import ./overlays { inherit inputs; };
         };
 
         nixosModules = import ./modules/nixos;
-        darwinModules = import ./modules/darwin;
-        homeManagerModules = import ./modules/home-manager;
 
         nixosConfigurations = {
-          tomservo = nixpkgs.lib.nixosSystem {
-            pkgs = legacyPackages."x86_64-linux";
-            specialArgs = { inherit inputs outputs; };
-            modules = [
+          tomservo = withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+            inherit pkgs;
+            specialArgs = { inherit inputs; };
+            modules = (builtins.attrValues nixosModules) ++ [
               ./hosts/tomservo
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs outputs; };
+                  extraSpecialArgs = { inherit inputs; };
                   users.mhelton.imports = [
                     ./home/mhelton
                     ./home/mhelton/personal.nix
@@ -149,19 +148,19 @@
                 };
               }
             ];
-          };
+          });
 
-          durandal = nixpkgs.lib.nixosSystem {
-            pkgs = legacyPackages."x86_64-linux";
-            specialArgs = { inherit inputs outputs; };
-            modules = [
+          durandal = withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+            inherit pkgs;
+            specialArgs = { inherit inputs; };
+            modules = (builtins.attrValues nixosModules) ++ [
               ./hosts/durandal
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs outputs; };
+                  extraSpecialArgs = { inherit inputs; };
                   users.mhelton.imports = [
                     ./home/mhelton
                     ./home/mhelton/personal.nix
@@ -173,20 +172,20 @@
                 };
               }
             ];
-          };
+          });
 
           bob =
-            nixpkgs.lib.nixosSystem {
-              pkgs = legacyPackages."x86_64-linux";
-              specialArgs = { inherit inputs outputs; };
-              modules = [
+            withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+              inherit pkgs;
+              specialArgs = { inherit inputs; };
+              modules = (builtins.attrValues nixosModules) ++ [
                 ./hosts/bob
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
                     useGlobalPkgs = true;
                     useUserPackages = true;
-                    extraSpecialArgs = { inherit inputs outputs; };
+                    extraSpecialArgs = { inherit inputs; };
                     users.mhelton.imports = [
                       ./home/mhelton
                       ./home/mhelton/personal.nix
@@ -199,21 +198,21 @@
                   };
                 }
               ];
-            };
+            });
         };
 
         darwinConfigurations = {
-          superintendent = darwin.lib.darwinSystem {
-            specialArgs = { inherit inputs outputs; };
+          superintendent = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
+            specialArgs = { inherit inputs; };
             modules = [
-              { nixpkgs.pkgs = legacyPackages."aarch64-darwin"; }
+              { nixpkgs.pkgs = pkgs; }
               ./hosts/superintendent
               home-manager.darwinModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs outputs; };
+                  extraSpecialArgs = { inherit inputs; outputs = self; };
                   users.mhelton.imports = [
                     ./home/mhelton
                     ./home/mhelton/personal.nix
@@ -222,19 +221,19 @@
                 };
               }
             ];
-          };
+          });
 
-          imubit-morganh-mbp13 = darwin.lib.darwinSystem {
-            specialArgs = { inherit inputs outputs; };
+          imubit-morganh-mbp13 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
+            specialArgs = { inherit inputs; };
             modules = [
-              { nixpkgs.pkgs = legacyPackages."aarch64-darwin"; }
+              { nixpkgs.pkgs = pkgs; }
               ./hosts/imubit-morganh-mbp13
               home-manager.darwinModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs outputs; };
+                  extraSpecialArgs = { inherit inputs; };
                   users.mhelton.imports = [
                     ./home/mhelton
                     ./home/mhelton/work.nix
@@ -243,9 +242,8 @@
                 };
               }
             ];
-          };
+          });
         };
-
       };
 
       systems = [
@@ -267,5 +265,5 @@
         };
       };
 
-    };
+    });
 }

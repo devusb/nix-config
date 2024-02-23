@@ -1,8 +1,8 @@
-{ outputs, config, pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ./zsh.nix
     ./packages.nix
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
   home = {
     username = "mhelton";

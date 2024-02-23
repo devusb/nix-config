@@ -1,7 +1,7 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nix-packages.nixosModules.default
-  ] ++ (builtins.attrValues outputs.nixosModules);
+  ];
 
   nix = {
     package = pkgs.nixUnstable;

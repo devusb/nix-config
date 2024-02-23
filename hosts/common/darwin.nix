@@ -1,8 +1,8 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nix-packages.darwinModules.default
     inputs.nix-homebrew.darwinModules.nix-homebrew
-  ] ++ (builtins.attrValues outputs.darwinModules);
+  ];
 
   nixpkgs.system = "aarch64-darwin";
 
