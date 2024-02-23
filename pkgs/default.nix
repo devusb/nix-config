@@ -45,7 +45,6 @@ in
     (
       self: super: {
         # timedb
-        pypika = pkgs.python3Packages.callPackage ../pkgs/pypika { };
         timedb = pkgs.python3Packages.callPackage ../pkgs/timedb { };
 
       }
