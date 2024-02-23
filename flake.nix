@@ -212,7 +212,7 @@
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; outputs = self; };
+                  extraSpecialArgs = { inherit inputs; };
                   users.mhelton.imports = [
                     ./home/mhelton
                     ./home/mhelton/personal.nix
