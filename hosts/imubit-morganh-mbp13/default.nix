@@ -10,12 +10,6 @@
 
   networking.hostName = "imubit-morganh-mbp13";
 
-  users.users = {
-    mhelton = {
-      home = "/Users/mhelton";
-    };
-  };
-
   homebrew.casks = [
     "dbeaver-community"
   ];

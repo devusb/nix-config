@@ -29,6 +29,12 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
   };
 
+  users.users = {
+    mhelton = {
+      home = "/Users/mhelton";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     neovim
     colima

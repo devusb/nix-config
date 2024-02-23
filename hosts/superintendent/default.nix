@@ -9,12 +9,6 @@
 
   networking.hostName = "superintendent";
 
-  users.users = {
-    mhelton = {
-      home = "/Users/mhelton";
-    };
-  };
-
   homebrew.casks = [
     "1password"
     "tailscale"
