@@ -30,6 +30,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  virtualisation.libvirtd.enable = true;
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
