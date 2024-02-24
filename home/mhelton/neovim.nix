@@ -52,6 +52,10 @@
           "<CR>" = "cmp.mapping.confirm({ select = true })";
         };
       };
+      nvim-osc52 = {
+        enable = true;
+        keymaps.enable = true;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
