@@ -12,6 +12,7 @@
 
   homebrew.casks = [
     "dbeaver-community"
+    "microsoft-remote-desktop"
   ];
 
 }
