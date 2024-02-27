@@ -67,6 +67,7 @@
       "mimestream"
       "rectangle"
       "firefox"
+      "aldente"
     ];
   };
 
