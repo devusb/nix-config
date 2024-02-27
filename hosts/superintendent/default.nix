@@ -14,7 +14,6 @@
     "tailscale"
     "moonlight"
     "grandperspective"
-    "calibre"
   ];
 
 }
