@@ -9,7 +9,6 @@ let
     attic = inputs.attic.packages.${prev.system}.attic-client;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
     deckbd = inputs.deckbd.packages.${prev.system}.default;
-    kde2nix = inputs.kde2nix.packages.${prev.system};
 
     # bump openjk version
     openjk = prev.openjk.overrideAttrs (old: {
