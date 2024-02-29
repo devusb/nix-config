@@ -88,10 +88,6 @@
     # deckbd
     deckbd.url = "github:Ninlives/deckbd";
     deckbd.inputs.nixpkgs.follows = "nixpkgs";
-
-    # kde2nix
-    kde2nix.url = "github:nix-community/kde2nix";
-    kde2nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, attic, ... }@inputs:
