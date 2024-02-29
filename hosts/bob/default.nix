@@ -78,7 +78,6 @@ in
     enable = true;
     enableGyroDsuService = true;
   };
-  jovian.decky-loader.enable = true;
   programs.steam.package = steam-extest;
 
   sops = {
