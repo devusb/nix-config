@@ -14,7 +14,6 @@ in
     ../common/_1password.nix
     ../common/docker.nix
     inputs.chaotic.nixosModules.default
-    inputs.kde2nix.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -92,12 +91,6 @@ in
   environment.systemPackages = with pkgs; [
     kde-rounded-corners
   ];
-
-  specialisation.plasma5.configuration = {
-    services.xserver.desktopManager.plasma5.enable = true;
-    services.xserver.desktopManager.plasma6.enable = lib.mkForce false;
-    services.xserver.displayManager.defaultSession = lib.mkForce "plasmawayland";
-  };
 
   services.xserver.displayManager.autoLogin.user = "mhelton";
 
