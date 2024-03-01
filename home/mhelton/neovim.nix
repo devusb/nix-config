@@ -39,6 +39,7 @@
           nil_ls.enable = true;
           terraformls.enable = true;
           gopls.enable = true;
+          pyright.enable = true;
         };
         keymaps.lspBuf = {
           "gd" = "definition";
