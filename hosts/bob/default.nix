@@ -56,7 +56,7 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
   environment.variables = {
@@ -72,7 +72,7 @@ in
     enable = true;
     autoStart = true;
     user = "mhelton";
-    desktopSession = "plasmawayland";
+    desktopSession = "plasma";
   };
   jovian.devices.steamdeck = {
     enable = true;

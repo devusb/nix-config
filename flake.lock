@@ -1518,29 +1518,6 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1708970090,
-        "narHash": "sha256-z/8pJRiLfYqGQvIJj3xGqobygNkVSSGN6115pAEDNU4=",
-        "owner": "pjones",
-        "repo": "plasma-manager",
-        "rev": "74fa336c22adf822c6ef13b21bfff18fbef66e9c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pjones",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -1621,7 +1598,6 @@
         "nixpkgs": "nixpkgs_8",
         "nixpkgs-stable": "nixpkgs-stable_5",
         "nixvim": "nixvim",
-        "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "utils": "utils"
       }

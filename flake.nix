@@ -69,11 +69,6 @@
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 
-    # plasma-manager
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
-
     # sops-nix
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -166,7 +161,6 @@
                     ./home/mhelton/personal.nix
                     ./home/mhelton/linux.nix
                     ./home/mhelton/graphical.nix
-                    ./home/mhelton/plasma.nix
                     ./home/mhelton/gaming.nix
                   ];
                 };
@@ -192,7 +186,6 @@
                       ./home/mhelton/linux.nix
                       ./home/mhelton/graphical.nix
                       ./home/mhelton/gaming.nix
-                      ./home/mhelton/plasma.nix
                       ./home/mhelton/deck.nix
                     ];
                   };
