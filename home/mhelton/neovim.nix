@@ -40,6 +40,13 @@
           terraformls.enable = true;
           gopls.enable = true;
         };
+        keymaps.lspBuf = {
+          "gd" = "definition";
+          "gD" = "references";
+          "gt" = "type_definition";
+          "gi" = "implementation";
+          "K" = "hover";
+        };
       };
       luasnip.enable = true;
       nvim-cmp = {
