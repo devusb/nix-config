@@ -1,10 +1,4 @@
 { pkgs, lib, inputs, ... }:
-let
-  extraOpenglPackages = with pkgs; [
-    vaapiVdpau
-    libvdpau-va-gl
-  ];
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -30,10 +24,6 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   virtualisation.libvirtd.enable = true;
-
-  environment.variables = {
-    VDPAU_DRIVER = "radeonsi";
-  };
 
   networking.firewall.enable = false;
 
@@ -69,12 +59,11 @@ in
   };
   hardware.opengl = {
     enable = true;
-    extraPackages = extraOpenglPackages;
+    driSupport32Bit = true;
   };
   specialisation.mesa-git.configuration = {
     chaotic.mesa-git = {
       enable = true;
-      extraPackages = extraOpenglPackages;
       fallbackSpecialisation = false;
     };
   };
