@@ -3,4 +3,5 @@
     enable = true;
     polkitPolicyOwners = [ "mhelton" ];
   };
+  programs._1password.enable = true;
 }
