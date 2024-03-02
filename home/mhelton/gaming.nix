@@ -37,8 +37,8 @@
           name = "1440p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
-              undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.2560x1440@144";
+              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
             }
           ];
           exclude-global-prep-cmd = "false";
@@ -48,8 +48,8 @@
           name = "1080p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1920x1080@120";
-              undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1920x1080@120";
+              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
             }
           ];
           exclude-global-prep-cmd = "false";
@@ -59,8 +59,8 @@
           name = "800p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1280x800@144";
-              undo = "${pkgs.libsForQt5.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1280x800@144";
+              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
             }
           ];
           exclude-global-prep-cmd = "false";
