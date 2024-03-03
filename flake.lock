@@ -303,6 +303,7 @@
     "deckbd": {
       "inputs": {
         "nixpkgs": [
+          "nix-packages",
           "nixpkgs"
         ]
       },
@@ -1204,6 +1205,7 @@
     "nix-packages": {
       "inputs": {
         "attic": "attic_3",
+        "deckbd": "deckbd",
         "flake-parts": "flake-parts_3",
         "hercules-ci-effects": "hercules-ci-effects_2",
         "nixpkgs": [
@@ -1211,11 +1213,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709206858,
-        "narHash": "sha256-e9jxmmHBiS7J4No+HsVd5oSULX0O7/PMKHi1X3ppHXA=",
+        "lastModified": 1709441667,
+        "narHash": "sha256-O+zDUNN9C4uTLH/eLLGIuBHIO5XbaYfrPdcEUnhKxVM=",
         "owner": "devusb",
         "repo": "nix-packages",
-        "rev": "e29169193d57a3d260d4747e239e83566dcc3934",
+        "rev": "b1f5fdbe2cd9444d928c6eced923b1da8be21e00",
         "type": "github"
       },
       "original": {
@@ -1580,7 +1582,6 @@
         "chaotic": "chaotic",
         "colmena": "colmena",
         "darwin": "darwin",
-        "deckbd": "deckbd",
         "devenv": "devenv",
         "disko": "disko",
         "flake-compat": "flake-compat_4",

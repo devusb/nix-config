@@ -8,7 +8,6 @@ let
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     attic = inputs.attic.packages.${prev.system}.attic-client;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
-    deckbd = inputs.deckbd.packages.${prev.system}.default;
 
     # bump openjk version
     openjk = prev.openjk.overrideAttrs (old: {
