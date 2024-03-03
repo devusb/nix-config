@@ -1,44 +1,55 @@
-{ disks ? [ "/dev/vda" ], ... }: {
+{
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = builtins.elemAt disks 0;
+        device = "/dev/disk/by-id/ata-Samsung_SSD_850_EVO_250GB_S21NNXAG358685B";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "boot";
-              start = "0";
-              end = "1M";
-              flags = [ "bios_grub" ];
-            }
-            {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              priority = 1;
               name = "ESP";
               start = "1M";
               end = "512M";
-              bootable = true;
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            }
-            {
-              name = "root";
-              start = "512M";
-              end = "100%";
+            };
+            root = {
+              size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+
+                subvolumes = {
+                  "/rootfs" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/";
+                  };
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/home";
+                  };
+                  "/nix" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/nix";
+                  };
+                  "/swap" = {
+                    mountpoint = "/.swapvol";
+                    swap = {
+                      swapfile.size = "8G";
+                    };
+                  };
+                };
               };
-            }
-          ];
+            };
+          };
         };
       };
     };
   };
 }
-

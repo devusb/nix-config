@@ -5,24 +5,16 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.disko.nixosModules.disko
-      (import ./disko-config.nix { disks = [ "/dev/sda" ]; })
+      ./disko-config.nix
       ../common/users/mhelton
       ../common/nixos.nix
       ../common/steam.nix
       ../common/_1password.nix
     ];
 
-  boot.loader.grub.devices = [ "/dev/sda" ];
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.memtest86.enable = true;
-
-  swapDevices = [
-    {
-      device = "/swapfile";
-    }
-  ];
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "durandal"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -73,14 +65,8 @@
       user = "mhelton";
     };
   };
-  services.xserver.desktopManager.plasma5 = {
-    enable = true;
-    bigscreen.enable = true;
-    useQtScaling = true;
-  };
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    plasma-remotecontrollers
-  ];
+  services.xserver.desktopManager.plasma6.enable = true;
+
   programs.kdeconnect.enable = true;
   system.stateVersion = "22.11";
 
