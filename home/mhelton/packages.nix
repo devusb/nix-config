@@ -38,6 +38,11 @@
     enable = true;
   };
 
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd cd" ];
+  };
+
   programs.ripgrep = {
     enable = true;
   };
