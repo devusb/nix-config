@@ -8,6 +8,7 @@
       term = "xterm-256color";
       background_opacity = "0.9";
       confirm_os_window_close = "2";
+      macos_option_as_alt = "yes";
     };
     keybindings = {
       "ctrl+f2" = "detach_tab";
