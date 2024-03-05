@@ -5,6 +5,7 @@ let
     pyyaml
     boto3
     timedb
+    presenterm-export
   ];
   python-with-packages = python3.withPackages python-packages;
 in
@@ -48,11 +49,11 @@ in
     glab
     kubectl-cnpg
     kubent
-    # krr
     kubectl-gadget
     pg_activity
     diffr
     vkv
+    presenterm
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];

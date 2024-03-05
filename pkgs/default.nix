@@ -45,7 +45,8 @@ in
     (
       self: super: {
         # timedb
-        timedb = pkgs.python3Packages.callPackage ../pkgs/timedb { };
+        timedb = pkgs.python3Packages.callPackage ./timedb { };
+        presenterm-export = pkgs.python3Packages.callPackage ./presenterm-export { };
 
       }
     )
