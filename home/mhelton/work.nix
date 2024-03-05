@@ -54,6 +54,7 @@ in
     diffr
     vkv
     presenterm
+    jira-cli-go
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
