@@ -59,7 +59,7 @@
     enable = true;
   };
   services.xserver.displayManager = {
-    defaultSession = "plasmax11";
+    defaultSession = "plasma";
     autoLogin = {
       enable = true;
       user = "mhelton";
