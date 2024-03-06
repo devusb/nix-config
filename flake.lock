@@ -1253,11 +1253,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709441874,
-        "narHash": "sha256-legfWiXH4bEJaVVbKF2xPk0cN0JjMtfaoo2/eCqfVKk=",
+        "lastModified": 1709689322,
+        "narHash": "sha256-oY2ArAufrmYXyP6xGTU6PzU7E2XvpbMdQ/6LmeFm+ng=",
         "owner": "devusb",
         "repo": "nix-packages",
-        "rev": "fd9cbabbe424772b1890ac589cfef17e06e6c38a",
+        "rev": "df51b4831b618d5377a97836372447fb4489d747",
         "type": "github"
       },
       "original": {
