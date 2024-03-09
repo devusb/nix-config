@@ -23,7 +23,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-  virtualisation.libvirtd.enable = true;
 
   networking.firewall.enable = false;
 
