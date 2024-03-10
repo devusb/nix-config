@@ -7,7 +7,7 @@
   nixpkgs.system = "aarch64-darwin";
 
   nix = {
-    package = pkgs.nixUnstable;
+    # package = pkgs.nixUnstable;
     settings = {
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       auto-optimise-store = false;
