@@ -68,6 +68,19 @@ let
       };
     });
 
+
+    # https://invent.kde.org/plasma/kwin/-/merge_requests/5299
+    kdePackages = prev.kdePackages.overrideScope (gfinal: gprev: {
+      kwin = gprev.kwin.overrideAttrs (old: {
+        patches = old.patches ++ [
+          (prev.fetchpatch {
+            url = "https://invent.kde.org/plasma/kwin/-/merge_requests/5299/diffs.patch";
+            hash = "sha256-FLjTZX1peqcKxtOSl878rCdlZwQICvtHDrtR1UFHJrU=";
+          })
+        ];
+      });
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
