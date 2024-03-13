@@ -51,11 +51,9 @@
 
   programs.eza = {
     enable = true;
-    enableAliases = true;
-    extraOptions = [
-      "--git"
-      "--icons"
-    ];
+    enableZshIntegration = true;
+    icons = true;
+    git = true;
   };
 
   programs.jq = {
