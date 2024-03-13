@@ -37,16 +37,12 @@ in
     };
   };
 
-  # krr
-  krr = pkgs.callPackage ./krr { };
-
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
       self: super: {
         # timedb
         timedb = pkgs.python3Packages.callPackage ./timedb { };
-        presenterm-export = pkgs.python3Packages.callPackage ./presenterm-export { };
 
       }
     )

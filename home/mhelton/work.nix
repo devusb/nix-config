@@ -5,7 +5,6 @@ let
     pyyaml
     boto3
     timedb
-    presenterm-export
   ];
   python-with-packages = python3.withPackages python-packages;
 in
@@ -54,6 +53,7 @@ in
     diffr
     vkv
     presenterm
+    presenterm-export
     jira-cli-go
   ];
 
