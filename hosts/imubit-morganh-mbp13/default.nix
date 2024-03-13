@@ -15,4 +15,6 @@
     "microsoft-remote-desktop"
   ];
 
+  nix.linux-builder.enable = true;
+
 }
