@@ -3,11 +3,9 @@
   home.packages = with pkgs; [
     lutris
     lm_sensors
-    chiaki4deck
     theforceengine
     ryujinx
     moonlight-qt
-    # openjk.openjo
     heroic
   ];
 
