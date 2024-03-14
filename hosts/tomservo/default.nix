@@ -106,7 +106,7 @@
 
   services.sunshine = {
     enable = true;
-    package = pkgs.sunshine-unstable;
+    package = pkgs.sunshine-git;
     applications = {
       env = {
         PATH = "$(PATH):$(HOME)/.local/bin";
