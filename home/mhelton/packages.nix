@@ -6,7 +6,7 @@
 
   home.packages = with pkgs; [
     vault
-    speedtest-cli
+    speedtest-go
     pwgen
     zip
     unzip
