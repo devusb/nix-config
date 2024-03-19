@@ -32,7 +32,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:devusb/nix-config";
-    dates = "02:30";
+    dates = "Sat *-*-* 02:30:00";
     allowReboot = true;
     rebootWindow = {
       upper = "04:45";
