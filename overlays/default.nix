@@ -20,6 +20,12 @@ let
       };
     });
 
+    kubectl-gadget = prev.kubectl-gadget.overrideAttrs (old: {
+      ldflags = old.ldflags ++ [
+        "-X main.gadgetimage=ghcr.io/inspektor-gadget/inspektor-gadget:v${old.version}"
+      ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
