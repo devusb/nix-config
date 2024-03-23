@@ -26,6 +26,10 @@ let
       ];
     });
 
+    vault = prev.vault.override (old: {
+      buildGoModule = prev.buildGo121Module;
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
