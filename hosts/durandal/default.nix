@@ -26,7 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nvtop
+    nvtopPackages.nvidia
   ];
 
   system.autoUpgrade = {
