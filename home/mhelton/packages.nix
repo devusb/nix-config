@@ -10,7 +10,7 @@
     pwgen
     zip
     unzip
-    awscli2
+    stable.awscli2
     yq-go
     tldr
     terraform
