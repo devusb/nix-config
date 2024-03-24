@@ -54,6 +54,6 @@
   }
 
   wttr () {
-      ${pkgs.curl}/bin/curl https://wttr.in/$1
+      ${pkgs.curl}/bin/curl "https://wttr.in/$1?u"
   }
 ''
