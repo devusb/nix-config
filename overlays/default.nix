@@ -20,24 +20,6 @@ let
       };
     });
 
-    kubectl-gadget = prev.kubectl-gadget.overrideAttrs (old: {
-      ldflags = old.ldflags ++ [
-        "-X main.gadgetimage=ghcr.io/inspektor-gadget/inspektor-gadget:v${old.version}"
-      ];
-    });
-
-    vault = prev.vault.override (old: {
-      buildGoModule = prev.buildGo121Module;
-    });
-
-    proton-ge-bin = prev.proton-ge-bin.overrideAttrs (old: rec {
-      version = "GE-Proton9-2";
-      src = prev.fetchzip {
-        url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${version}/${version}.tar.gz";
-        hash = "sha256-NqBzKonCYH+hNpVZzDhrVf+r2i6EwLG/IFBXjE2mC7s=";
-      };
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
