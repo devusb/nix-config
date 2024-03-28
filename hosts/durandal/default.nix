@@ -26,7 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nvtopPackages.nvidia
+    nvtopPackages.amd
   ];
 
   system.autoUpgrade = {
@@ -50,13 +50,13 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesetting.enable = true;
+  services.xserver.videoDrivers = [ "modesetting" ];
   hardware.opengl.enable = true;
 
   # Plasma
   services.xserver.displayManager.sddm = {
     enable = true;
+    wayland.enable = true;
   };
   services.xserver.displayManager = {
     defaultSession = "plasma";
