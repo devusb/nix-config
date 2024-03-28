@@ -106,7 +106,6 @@
 
   services.sunshine = {
     enable = true;
-    package = pkgs.sunshine-git;
     capSysAdmin = true;
     openFirewall = true;
     applications = {
