@@ -65,7 +65,7 @@ in
 
   environment.systemPackages = with pkgs; [
     partition-manager
-    libsForQt5.kpmcore
+    kdePackages.kpmcore
   ];
 
   jovian.steam = {
