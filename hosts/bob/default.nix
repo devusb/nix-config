@@ -3,13 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { inputs, config, pkgs, lib, ... }:
-let
-  steam-extest = pkgs.steam.override {
-    extraEnv = {
-      LD_PRELOAD = "${pkgs.pkgsi686Linux.extest}/lib/libextest.so:${config.environment.sessionVariables.LD_PRELOAD or ""}";
-    };
-  };
-in
 {
   imports =
     [
@@ -78,7 +71,7 @@ in
     enable = true;
     enableGyroDsuService = true;
   };
-  programs.steam.package = steam-extest;
+  programs.steam.extest.enable = true;
 
   sops = {
     secrets.registration_key = {
