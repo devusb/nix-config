@@ -7,7 +7,7 @@
     viAlias = true;
     vimAlias = true;
     globals.mapleader = ",";
-    options = {
+    opts = {
       number = true;
       clipboard = "unnamedplus";
     };
