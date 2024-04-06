@@ -72,7 +72,7 @@
 
   services.nix-daemon.enable = true;
 
-  programs.zsh.enable = true; # default shell on catalina
+  programs.zsh.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true; # enable TouchID for sudo
 
@@ -85,6 +85,16 @@
       wvous-tr-corner = 1;
       wvous-bl-corner = 1;
       tilesize = 57;
+      show-recents = false;
+      persistent-apps = [
+        "/System/Applications/Launchpad.app"
+        "/Applications/Firefox.app"
+        "/System/Applications/Messages.app"
+        "/System/Applications/FaceTime.app"
+        "/Applications/Mimestream.app"
+        "${pkgs.kitty}/Applications/kitty.app"
+        "/System/Applications/System\ Settings.app"
+      ];
     };
     trackpad = {
       Clicking = true;
@@ -94,6 +104,7 @@
       "com.apple.trackpad.scaling" = 1.0;
       "NSAutomaticCapitalizationEnabled" = false;
       "NSAutomaticSpellingCorrectionEnabled" = false;
+      "AppleInterfaceStyleSwitchesAutomatically" = true;
     };
   };
 
