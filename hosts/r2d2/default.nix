@@ -7,7 +7,7 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
-  networking.hostName = "superintendent";
+  networking.hostName = "r2d2";
 
   homebrew.casks = [
     "1password"
