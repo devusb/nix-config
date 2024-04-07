@@ -191,7 +191,7 @@
         };
 
         darwinConfigurations = {
-         r2d2 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
+          r2d2 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
             specialArgs = { inherit inputs; };
             modules = [
               { nixpkgs.pkgs = pkgs; }
