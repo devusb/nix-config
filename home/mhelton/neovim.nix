@@ -17,7 +17,7 @@
       telescope = {
         enable = true;
         extensions.fzf-native.enable = true;
-        extensions.fzf-native.fuzzy = true;
+        extensions.fzf-native.settings.fuzzy = true;
       };
       nvim-autopairs = {
         enable = true;
