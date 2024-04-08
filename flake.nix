@@ -269,15 +269,19 @@
         ciSystems = [ "x86_64-linux" ];
       };
 
-      push-cache-effect = {
-        enable = true;
-        attic-client-pkg = nixpkgs.legacyPackages.x86_64-linux.attic-client;
-        caches.r2d2 = {
-          type = "attic";
-          secretName = "attic";
-          packages = map (host: self.nixosConfigurations."${host}".config.system.build.toplevel) (builtins.attrNames self.nixosConfigurations);
+      push-cache-effect =
+        let
+          pushConfigurations = [ "tomservo" "durandal" "bob" ];
+        in
+        {
+          enable = true;
+          attic-client-pkg = nixpkgs.legacyPackages.x86_64-linux.attic-client;
+          caches.r2d2 = {
+            type = "attic";
+            secretName = "attic";
+            packages = map (host: self.nixosConfigurations."${host}".config.system.build.toplevel) pushConfigurations;
+          };
         };
-      };
 
     });
 }
