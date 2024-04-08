@@ -93,6 +93,7 @@
         "/System/Applications/FaceTime.app"
         "/Applications/Mimestream.app"
         "${pkgs.kitty}/Applications/kitty.app"
+        "/Applications/Obsidian.app"
         "/System/Applications/System\ Settings.app"
       ];
     };

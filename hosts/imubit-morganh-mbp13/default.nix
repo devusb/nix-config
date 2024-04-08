@@ -15,6 +15,11 @@
     "microsoft-remote-desktop"
   ];
 
+  system.defaults.dock.persistent-apps = [
+    "/Applications/Google\ Chrome.app"
+    "/Applications/Slack.app"
+  ];
+
   nix.linux-builder.enable = true;
 
 }
