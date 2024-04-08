@@ -23,6 +23,10 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # nixos-apple-silicon
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
+
     # nix-homebrew
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
@@ -55,9 +59,6 @@
     colmena.inputs.flake-utils.follows = "utils";
     colmena.inputs.flake-compat.follows = "flake-compat";
 
-    # attic
-    attic.url = "github:zhaofengli/attic";
-
     # nixvim
     nixvim.url = "github:pta2002/nixvim";
 
@@ -81,7 +82,7 @@
     chaotic.url = "github:chaotic-cx/nyx";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, attic, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
       imports = [
         hercules-ci-effects.flakeModule
@@ -188,6 +189,29 @@
                 }
               ];
             });
+
+          r2d2 =
+            withSystem "aarch64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+              inherit pkgs;
+              specialArgs = { inherit inputs; };
+              modules = (builtins.attrValues nixosModules) ++ [
+                ./hosts/r2d2/nixos
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = { inherit inputs; };
+                    users.mhelton.imports = [
+                      ./home/mhelton
+                      ./home/mhelton/personal.nix
+                      ./home/mhelton/linux.nix
+                      ./home/mhelton/graphical.nix
+                    ];
+                  };
+                }
+              ];
+            });
         };
 
         darwinConfigurations = {
@@ -195,7 +219,7 @@
             specialArgs = { inherit inputs; };
             modules = [
               { nixpkgs.pkgs = pkgs; }
-              ./hosts/r2d2
+              ./hosts/r2d2/darwin
               home-manager.darwinModules.home-manager
               {
                 home-manager = {
@@ -237,6 +261,7 @@
 
       systems = [
         "x86_64-linux"
+        "aarch64-linux"
         "aarch64-darwin"
       ];
 
@@ -246,7 +271,7 @@
 
       push-cache-effect = {
         enable = true;
-        attic-client-pkg = attic.packages.x86_64-linux.attic-client;
+        attic-client-pkg = nixpkgs.legacyPackages.x86_64-linux.attic-client;
         caches.r2d2 = {
           type = "attic";
           secretName = "attic";

@@ -6,7 +6,6 @@ let
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
-    attic = inputs.attic.packages.${prev.system}.attic-client;
     devenv = inputs.devenv.packages.${prev.system}.devenv;
 
     # joycond

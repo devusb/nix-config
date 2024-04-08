@@ -2,17 +2,15 @@
 {
 
   home.packages = with pkgs; [
-    gnome.adwaita-icon-theme
-    gnome.gnome-tweaks
-    zoom-us
-    ipmiview
     xclip
     wl-clipboard
-    cider
     obsidian
     jellyfin-media-player
     haruna
     virt-manager
+  ] ++ lib.optionals (!stdenv.isAarch64) [
+    zoom-us
+    cider
   ];
 
   programs.firefox = {

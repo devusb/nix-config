@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ../common/darwin.nix
+    ../../common/darwin.nix
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.

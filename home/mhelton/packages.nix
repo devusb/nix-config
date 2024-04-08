@@ -23,7 +23,7 @@
     difftastic
     devenv
     ouch
-    attic
+    attic-client
     fx
     go-plex-client
     ripgrep-all
