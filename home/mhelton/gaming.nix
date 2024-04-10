@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     lutris

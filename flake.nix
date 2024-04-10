@@ -190,12 +190,12 @@
               ];
             });
 
-          r2d2 =
+          superintendent =
             withSystem "aarch64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
               inherit pkgs;
               specialArgs = { inherit inputs; };
               modules = (builtins.attrValues nixosModules) ++ [
-                ./hosts/r2d2/nixos
+                ./hosts/superintendent/nixos
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
@@ -215,11 +215,11 @@
         };
 
         darwinConfigurations = {
-          r2d2 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
+          superintendent = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
             specialArgs = { inherit inputs; };
             modules = [
               { nixpkgs.pkgs = pkgs; }
-              ./hosts/r2d2/darwin
+              ./hosts/superintendent/darwin
               home-manager.darwinModules.home-manager
               {
                 home-manager = {

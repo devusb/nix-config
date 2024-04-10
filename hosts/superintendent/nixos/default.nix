@@ -10,24 +10,17 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
-  boot.kernelParams = [
-    "apple_dcp.show_notch=1"
-  ];
   boot.initrd.luks.devices = {
     luksroot = {
-      device = "/dev/disk/by-uuid/da8b234f-f8cf-4b9d-a715-d800e53c89e1";
+      device = "/dev/disk/by-uuid/f687fb72-c558-4eec-9020-d82b0dc94816";
       preLVM = true;
     };
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/e7db8c27-b422-440a-995f-e251b5042e65"; }
-  ];
-
   hardware.asahi = {
     peripheralFirmwareDirectory = pkgs.fetchzip {
-      url = "https://filebrowser.chopper.devusb.us/api/public/dl/xQYuJB9X/firmware.zip";
-      hash = "sha256-L3XiUowdAOEC9T9XwCut+h05EylNhPZNnMIOkDsaHnQ=";
+      url = "https://filebrowser.chopper.devusb.us/api/public/dl/xQYuJB9X/firmware_m1.zip";
+      hash = "sha256-BOf2kKGPFn3P2zQf+DqLfT0K+JynrNicb9e3xlpY9MM=";
       stripRoot = false;
     };
     useExperimentalGPUDriver = true;
@@ -37,13 +30,13 @@
   hardware.opengl.enable = true;
   sound.enable = true;
 
-  networking.hostName = "r2d2"; # Define your hostname.
+  networking.hostName = "superintendent";
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
   };
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 
   environment.systemPackages = with pkgs; [
     kde-rounded-corners
