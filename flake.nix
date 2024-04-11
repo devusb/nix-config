@@ -80,6 +80,10 @@
 
     # chaotic-nyx
     chaotic.url = "github:chaotic-cx/nyx";
+
+    # nixos-aarch64-widevine
+    nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
+    nixos-aarch64-widevine.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, ... }@inputs:

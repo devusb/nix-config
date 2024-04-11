@@ -1420,6 +1420,26 @@
         "type": "github"
       }
     },
+    "nixos-aarch64-widevine": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712238860,
+        "narHash": "sha256-TbRlZPiCKcuZgrElc5NPKWx1DgmdiQiUaIt7eNSGoMc=",
+        "owner": "epetousis",
+        "repo": "nixos-aarch64-widevine",
+        "rev": "f0a8df49191d23568e7b5f50b2f8a358e616e3e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "epetousis",
+        "repo": "nixos-aarch64-widevine",
+        "type": "github"
+      }
+    },
     "nixos-apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat_9",
@@ -1879,6 +1899,7 @@
         "mpack": "mpack",
         "nix-homebrew": "nix-homebrew",
         "nix-packages": "nix-packages",
+        "nixos-aarch64-widevine": "nixos-aarch64-widevine",
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpkgs": "nixpkgs_8",
         "nixpkgs-stable": "nixpkgs-stable_5",
