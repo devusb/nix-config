@@ -41,11 +41,6 @@
   # widevine support
   nixpkgs.overlays = [
     inputs.nixos-aarch64-widevine.overlays.default
-    (final: prev: {
-      firefox = prev.firefox.override (old: {
-        extraPrefsFiles = [ "${final.widevine-installer}/conf/gmpwidevine.js" ];
-      });
-    })
   ];
   environment.sessionVariables.MOZ_GMP_PATH = [ "${pkgs.widevine-cdm-lacros}/gmp-widevinecdm/system-installed" ];
 

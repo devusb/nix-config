@@ -1427,11 +1427,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712238860,
-        "narHash": "sha256-TbRlZPiCKcuZgrElc5NPKWx1DgmdiQiUaIt7eNSGoMc=",
+        "lastModified": 1712816564,
+        "narHash": "sha256-2oPCuv4hox+FDWdUnyjhmSB7d24i0mFH5pJjVJGY6JM=",
         "owner": "epetousis",
         "repo": "nixos-aarch64-widevine",
-        "rev": "f0a8df49191d23568e7b5f50b2f8a358e616e3e1",
+        "rev": "fa046abfed9ff3b5c1e0a2ae16311a33056056fd",
         "type": "github"
       },
       "original": {
