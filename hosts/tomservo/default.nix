@@ -68,11 +68,11 @@
   };
 
   # Plasma
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
-  services.xserver.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
@@ -80,7 +80,7 @@
     kde-rounded-corners
   ];
 
-  services.xserver.displayManager.autoLogin.user = "mhelton";
+  services.displayManager.autoLogin.user = "mhelton";
 
   services.avahi = {
     enable = true;
