@@ -6,7 +6,6 @@ let
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
-    devenv = inputs.devenv.packages.${prev.system}.devenv;
 
     # joycond
     joycond = prev.joycond.overrideAttrs (old: {
