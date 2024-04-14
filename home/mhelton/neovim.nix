@@ -21,7 +21,9 @@
       };
       nvim-autopairs = {
         enable = true;
-        checkTs = true;
+        settings = {
+          checkTs = true;
+        };
       };
       oil = {
         enable = true;

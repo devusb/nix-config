@@ -54,11 +54,11 @@
   hardware.opengl.enable = true;
 
   # Plasma
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
-  services.xserver.displayManager = {
+  services.displayManager = {
     defaultSession = "plasma";
     autoLogin = {
       enable = true;
