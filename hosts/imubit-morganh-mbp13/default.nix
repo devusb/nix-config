@@ -13,6 +13,7 @@
   homebrew.casks = [
     "dbeaver-community"
     "microsoft-remote-desktop"
+    "bruno"
   ];
 
   system.defaults.dock.persistent-apps = [
