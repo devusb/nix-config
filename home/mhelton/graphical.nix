@@ -1,5 +1,7 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
+  imports = [
+    ./plasma.nix
+  ];
 
   home.packages = with pkgs; [
     xclip
