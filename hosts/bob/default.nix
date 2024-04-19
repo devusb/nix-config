@@ -56,11 +56,6 @@
     VDPAU_DRIVER = "radeonsi";
   };
 
-  environment.systemPackages = with pkgs; [
-    partition-manager
-    kdePackages.kpmcore
-  ];
-
   jovian.steam = {
     enable = true;
     autoStart = true;

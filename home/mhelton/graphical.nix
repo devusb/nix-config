@@ -10,6 +10,9 @@
     jellyfin-media-player
     haruna
     virt-manager
+    kdePackages.kweather
+    kdePackages.kpmcore
+    kdePackages.partitionmanager
   ] ++ lib.optionals (!stdenv.isAarch64) [
     zoom-us
     cider
