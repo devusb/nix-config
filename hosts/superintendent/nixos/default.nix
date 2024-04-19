@@ -39,6 +39,7 @@
     enable = true;
     wifi.backend = "iwd";
   };
+  hardware.bluetooth.enable = true;
 
   system.stateVersion = "24.05";
 
