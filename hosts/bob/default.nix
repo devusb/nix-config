@@ -31,7 +31,6 @@
     wifi.powersave = false;
   };
   services.geoclue2.enableWifi = false;
-  hardware.pulseaudio.enable = lib.mkForce false;
   hardware.bluetooth.enable = true;
 
   fileSystems."/mnt/sdcard" = {
