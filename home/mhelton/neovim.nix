@@ -27,6 +27,7 @@
       };
       oil = {
         enable = true;
+        package = pkgs.oil-nvim-git;
       };
       bufferline.enable = true;
       indent-blankline.enable = true;

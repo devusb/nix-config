@@ -18,6 +18,17 @@ let
       };
     });
 
+    oil-nvim-git = prev.vimPlugins.oil-nvim.overrideAttrs (old: {
+      version = "2024-04-26";
+      src = prev.fetchFromGitHub {
+        owner = "stevearc";
+        repo = "oil.nvim";
+        rev = "f3a31eba24587bc038592103d8f7e64648292115";
+        hash = "sha256-JlA5/qU3U/uAuNt9iVIsIUnULxtxpzoO49ooF8MY3gw=";
+        fetchSubmodules = true;
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
@@ -32,6 +43,8 @@ let
       })
     ];
   };
+
+
 
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
