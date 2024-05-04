@@ -157,4 +157,13 @@
 
   services.nfs-client.enable = true;
 
+  services.ollama = {
+    enable = true;
+    listenAddress = "0.0.0.0:11434";
+    acceleration = "rocm";
+    environmentVariables = {
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+    };
+  };
+
 }
