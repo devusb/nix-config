@@ -1,8 +1,8 @@
 { ... }: {
   services.ollama = {
     enable = true;
-    listenAddress = "0.0.0.0:11434";
     acceleration = "rocm";
+    listenAddress = "0.0.0.0";
     environmentVariables = {
       HSA_OVERRIDE_GFX_VERSION = "11.0.0";
     };
@@ -17,8 +17,11 @@
       "--add-host=host.docker.internal:host-gateway"
     ];
     ports = [
-      "3000:8080"
+      "127.0.0.1:3000:8080"
     ];
+    environment = {
+      ENABLE_SIGNUP = "False";
+    };
   };
 
 }
