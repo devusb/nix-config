@@ -8,6 +8,7 @@
     ../common/_1password.nix
     ../common/docker.nix
     inputs.chaotic.nixosModules.default
+    ./ollama.nix
   ];
 
   networking.hostName = "tomservo";
@@ -150,20 +151,9 @@
     };
   };
 
-  services.plex-mpv-shim.enable = true;
-
   networking.interfaces.enp6s0.wakeOnLan.enable = true;
   services.sleep-on-lan.enable = true;
 
   services.nfs-client.enable = true;
-
-  services.ollama = {
-    enable = true;
-    listenAddress = "0.0.0.0:11434";
-    acceleration = "rocm";
-    environmentVariables = {
-      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
-    };
-  };
 
 }
