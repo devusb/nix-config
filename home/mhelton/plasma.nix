@@ -13,6 +13,7 @@
     kwin = {
       virtualDesktops = {
         number = 2;
+        rows = 1;
       };
     };
 
