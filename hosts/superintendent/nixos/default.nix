@@ -12,7 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
   boot.initrd.luks.devices = {
     luksroot = {
-      device = "/dev/disk/by-uuid/f687fb72-c558-4eec-9020-d82b0dc94816";
+      device = "/dev/disk/by-uuid/f0c23256-efd3-4f56-8895-a0889c717dec";
       preLVM = true;
     };
   };

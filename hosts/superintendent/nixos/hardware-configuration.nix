@@ -16,33 +16,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/c280b937-23d3-490e-bc31-3f4a376cdc6a";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/c280b937-23d3-490e-bc31-3f4a376cdc6a";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "/dev/disk/by-uuid/c280b937-23d3-490e-bc31-3f4a376cdc6a";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
+      device = "/dev/disk/by-uuid/e10d0e72-57c1-4bd2-8e1b-448972583a05";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/406B-121D";
+      device = "/dev/disk/by-uuid/C023-15EA";
       fsType = "vfat";
     };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/05183bc6-476f-483e-9c64-4249b0361b3e"; }
+    { device = "/dev/disk/by-uuid/6f8894de-22ab-460a-a726-24ba143a9c04"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
