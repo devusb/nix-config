@@ -32,6 +32,9 @@
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
 
+    # nixos-hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     # nix-homebrew
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
@@ -195,6 +198,30 @@
               ];
             });
 
+          r2d2 =
+            withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+              inherit pkgs;
+              specialArgs = { inherit inputs; };
+              modules = (builtins.attrValues nixosModules) ++ [
+                ./hosts/r2d2
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = { inherit inputs; };
+                    users.mhelton.imports = [
+                      ./home/mhelton
+                      ./home/mhelton/personal.nix
+                      ./home/mhelton/linux.nix
+                      ./home/mhelton/graphical.nix
+                      ./home/mhelton/gaming.nix
+                    ];
+                  };
+                }
+              ];
+            });
+
           superintendent =
             withSystem "aarch64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
               inherit pkgs;
@@ -276,7 +303,7 @@
 
       push-cache-effect =
         let
-          pushConfigurations = [ "tomservo" "durandal" "bob" ];
+          pushConfigurations = [ "tomservo" "durandal" "bob" "r2d2" ];
         in
         {
           enable = true;

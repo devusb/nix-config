@@ -34,7 +34,7 @@
   };
 
   # Set your time zone.
-  services.automatic-timezoned.enable = true;
+  services.automatic-timezoned.enable = lib.mkDefault true;
 
   services.fstrim.enable = true;
   boot.swraid.enable = lib.mkDefault false;
