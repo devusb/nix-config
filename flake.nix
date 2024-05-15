@@ -38,7 +38,7 @@
     # nix-homebrew
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
-      url = "github:homebrew/homebrew-core";
+      url = "github:homebrew/homebrew-core/5b848b21fcac10fdfa83ce28d95ffcad45ae7be8";
       flake = false;
     };
     homebrew-cask = {
