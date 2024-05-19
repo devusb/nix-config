@@ -12,7 +12,7 @@
   ];
 
   networking.hostName = "tomservo";
-  networking.networkmanager.enable = true;
+  networking.useNetworkd = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
