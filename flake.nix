@@ -36,9 +36,16 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # nix-homebrew
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    brew-src = {
+      url = "github:Homebrew/brew/4.3.0";
+      flake = false;
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
     homebrew-core = {
-      url = "github:homebrew/homebrew-core/5b848b21fcac10fdfa83ce28d95ffcad45ae7be8";
+      url = "github:homebrew/homebrew-core";
       flake = false;
     };
     homebrew-cask = {
