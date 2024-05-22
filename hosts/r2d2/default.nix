@@ -29,6 +29,8 @@
   '';
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   services.automatic-timezoned.enable = false;
   time.timeZone = "US/Central";
 
