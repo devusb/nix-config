@@ -38,6 +38,7 @@
   networking.networkmanager = {
     enable = true;
     wifi.powersave = false;
+    wifi.backend = "iwd";
   };
 
   hardware.bluetooth.enable = true;
