@@ -29,6 +29,7 @@
   networking.networkmanager = {
     enable = true;
     wifi.powersave = false;
+    wifi.backend = "iwd";
   };
   services.geoclue2.enableWifi = false;
   hardware.bluetooth.enable = true;
