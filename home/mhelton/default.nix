@@ -11,6 +11,9 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
+
+    # enable until 24.11 is in home-manager
+    enableNixpkgsReleaseCheck = false;
   };
 
   # https://github.com/nix-community/home-manager/issues/4142
