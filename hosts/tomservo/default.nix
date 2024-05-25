@@ -8,7 +8,6 @@
     ../common/_1password.nix
     ../common/docker.nix
     inputs.chaotic.nixosModules.default
-    ./ollama.nix
   ];
 
   networking.hostName = "tomservo";
