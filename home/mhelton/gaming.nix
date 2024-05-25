@@ -7,6 +7,7 @@
     ryujinx
     moonlight-qt
     heroic
+    chiaki4deck
   ];
 
 
