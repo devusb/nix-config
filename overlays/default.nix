@@ -18,20 +18,6 @@ let
       };
     });
 
-    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [ prev.curlFull ];
-      postPatch = ''
-        substituteInPlace CMakeLists.txt \
-          --replace-fail ' WS WSS' ""
-
-        substituteInPlace lib/CMakeLists.txt \
-          --replace-fail 'libcurl_shared' 'libcurl'
-      '';
-      cmakeFlags = old.cmakeFlags ++ [
-        (prev.lib.cmakeFeature "CHIAKI_USE_SYSTEM_CURL" "true")
-      ];
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
@@ -46,8 +32,5 @@ let
       })
     ];
   };
-
-
-
 in
 inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
