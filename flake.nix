@@ -228,53 +228,9 @@
                 }
               ];
             });
-
-          superintendent =
-            withSystem "aarch64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
-              inherit pkgs;
-              specialArgs = { inherit inputs; };
-              modules = (builtins.attrValues nixosModules) ++ [
-                ./hosts/superintendent/nixos
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    extraSpecialArgs = { inherit inputs; };
-                    users.mhelton.imports = [
-                      ./home/mhelton
-                      ./home/mhelton/personal.nix
-                      ./home/mhelton/linux.nix
-                      ./home/mhelton/graphical.nix
-                    ];
-                  };
-                }
-              ];
-            });
         };
 
         darwinConfigurations = {
-          superintendent = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
-            specialArgs = { inherit inputs; };
-            modules = [
-              { nixpkgs.pkgs = pkgs; }
-              ./hosts/superintendent/darwin
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users.mhelton.imports = [
-                    ./home/mhelton
-                    ./home/mhelton/personal.nix
-                    ./home/mhelton/darwin.nix
-                  ];
-                };
-              }
-            ];
-          });
-
           imubit-morganh-mbp13 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
             specialArgs = { inherit inputs; };
             modules = [
