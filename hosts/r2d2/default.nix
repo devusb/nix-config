@@ -82,6 +82,11 @@
 
   services.fwupd.enable = true;
 
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint ];
+  };
+
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
