@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib ... }:
 {
   imports =
     [
@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
       inputs.disko.nixosModules.disko
+      inputs.lanzaboote.nixosModules.lanzaboote
       (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
       inputs.sops-nix.nixosModules.sops
       ../common/users/mhelton
@@ -22,6 +23,10 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   pkiBundle = "/etc/secureboot";
+  # };
 
   boot.blacklistedKernelModules = [ "hid_sensor_hub" ];
   boot.extraModprobeConfig = ''
@@ -73,6 +78,7 @@
 
   environment.systemPackages = with pkgs; [
     kde-rounded-corners
+    sbctl
   ];
   programs.kdeconnect.enable = true;
 
