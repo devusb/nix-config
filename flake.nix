@@ -28,13 +28,10 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nixos-apple-silicon
-    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
-    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
-
     # nixos-hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    # nix-homebrew
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
     };
@@ -85,10 +82,6 @@
 
     # chaotic-nyx
     chaotic.url = "github:chaotic-cx/nyx";
-
-    # nixos-aarch64-widevine
-    nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
-    nixos-aarch64-widevine.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, ... }@inputs:
