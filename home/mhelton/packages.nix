@@ -28,6 +28,8 @@
     go-plex-client
     ripgrep-all
     nix-output-monitor
+    tv-sony
+    soco-cli
   ];
 
   programs.home-manager = {
