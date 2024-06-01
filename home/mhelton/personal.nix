@@ -1,7 +1,12 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   programs.git = {
     userName = "Morgan Helton";
     userEmail = "mhelton@gmail.com";
+    signing = {
+      key = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
+      signByDefault = true;
+    };
+    extraConfig.gpg.format = "ssh";
   };
 
   home.sessionVariables = {
