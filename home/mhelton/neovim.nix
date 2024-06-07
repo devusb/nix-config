@@ -38,7 +38,7 @@
       lsp = {
         enable = true;
         servers = {
-          nil_ls.enable = true;
+          nil-ls.enable = true;
           terraformls.enable = true;
           gopls.enable = true;
           pyright.enable = true;
