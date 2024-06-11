@@ -18,6 +18,14 @@ let
       };
     });
 
+    obsidian = prev.obsidian.overrideAttrs (old: rec {
+      filename = if prev.stdenv.isDarwin then "Obsidian-${old.version}-universal.dmg" else "obsidian-${old.version}.tar.gz";
+      src = prev.fetchurl {
+        url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v${old.version}/${filename}";
+        hash = if prev.stdenv.isDarwin then "sha256-o5ELpG82mJgcd9Pil6A99BPK6Hoa0OKJJkYpyfGJR9I=" else "sha256-ho8E2Iq+s/w8NjmxzZo/y5aj3MNgbyvIGjk3nSKPLDw=";
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
