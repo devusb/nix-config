@@ -7,11 +7,11 @@
     xclip
     wl-clipboard
     obsidian
+    jellyfin-media-player
     haruna
     virt-manager
     kdePackages.kpmcore
     kdePackages.partitionmanager
-    delfin
   ] ++ lib.optionals (!stdenv.isAarch64) [
     zoom-us
     cider
