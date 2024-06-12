@@ -813,6 +813,7 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "v0.4.1",
         "repo": "lanzaboote",
         "type": "github"
       }
