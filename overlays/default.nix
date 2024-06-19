@@ -18,6 +18,17 @@ let
       };
     });
 
+    chiaki4deck = prev.chiaki4deck.overrideAttrs (old: {
+      version = "1.7.2-unstable-2024-06-18";
+      src = prev.fetchFromGitHub {
+        owner = "streetpea";
+        repo = old.pname;
+        rev = "e8210b78f813d0d5b4964b273d6140e709cb306c";
+        hash = "sha256-kTMpoQgfdDpDPxMQoGPAwRyHeyy21EmVHSDPuN5J/lQ=";
+        fetchSubmodules = true;
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
