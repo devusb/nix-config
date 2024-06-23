@@ -58,7 +58,6 @@
   };
   hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
   };
   specialisation.mesa-git.configuration = {
     chaotic.mesa-git = {
