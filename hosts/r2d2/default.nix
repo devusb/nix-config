@@ -64,7 +64,7 @@
     videoDrivers = [ "modesetting" ];
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Plasma
   services.displayManager.sddm = {

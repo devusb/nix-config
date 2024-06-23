@@ -51,7 +51,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Plasma
   services.displayManager.sddm = {
