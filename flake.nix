@@ -214,6 +214,7 @@
                       ./home/mhelton/linux.nix
                       ./home/mhelton/graphical.nix
                       ./home/mhelton/gaming.nix
+                      ./home/mhelton/framework.nix
                     ];
                   };
                 }

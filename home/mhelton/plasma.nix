@@ -50,18 +50,28 @@
       };
     };
 
-    configFile = {
-      "kwinrulesrc"."1"."Description".value = "Firefox Picture-in-Picture";
-      "kwinrulesrc"."1"."above".value = true;
-      "kwinrulesrc"."1"."aboverule".value = 2;
-      "kwinrulesrc"."1"."title".value = "Picture-in-Picture";
-      "kwinrulesrc"."1"."titlematch".value = 1;
-      "kwinrulesrc"."1"."types".value = 1;
-      "kwinrulesrc"."1"."wmclass".value = "firefox";
-      "kwinrulesrc"."1"."wmclassmatch".value = 1;
-      "kwinrulesrc"."General"."count".value = 1;
-      "kwinrulesrc"."General"."rules".value = "1";
-    };
+    window-rules = [
+      {
+        description = "Firefox Picture-in-Picture";
+        match = {
+          window-class = {
+            value = "firefox";
+            type = "exact";
+            match-whole = false;
+          };
+          title = {
+            value = "Picture-in-Picture";
+            type = "exact";
+          };
+          window-types = [ "normal" ];
+        };
+        apply = {
+          above = {
+            value = true;
+          };
+        };
+      }
+    ];
   };
 
 }
