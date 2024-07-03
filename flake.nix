@@ -65,6 +65,12 @@
     colmena.inputs.flake-utils.follows = "utils";
     colmena.inputs.flake-compat.follows = "flake-compat";
 
+    # lix
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixvim
     nixvim.url = "github:pta2002/nixvim";
 

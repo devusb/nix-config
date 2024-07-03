@@ -4,7 +4,7 @@
       "inputs": {
         "crane": "crane_2",
         "flake-compat": "flake-compat_3",
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nix-packages",
           "nixpkgs"
@@ -194,7 +194,7 @@
     },
     "devshell": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixvim",
           "nixpkgs"
@@ -482,6 +482,24 @@
       }
     },
     "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_4"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_4": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
@@ -496,9 +514,9 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
+    "flake-utils_5": {
       "inputs": {
-        "systems": "systems_4"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1701680307,
@@ -511,6 +529,21 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flakey-profile": {
+      "locked": {
+        "lastModified": 1712898590,
+        "narHash": "sha256-FhGIEU93VHAChKEXx905TSiPZKga69bWl1VB37FK//I=",
+        "owner": "lf-",
+        "repo": "flakey-profile",
+        "rev": "243c903fd8eadc0f63d205665a92d4df91d42d9d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lf-",
+        "repo": "flakey-profile",
         "type": "github"
       }
     },
@@ -818,6 +851,41 @@
         "type": "github"
       }
     },
+    "lix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718419213,
+        "narHash": "sha256-WY7BGnu5PnbK4O8cKKv9kvxwzZIGbIQUQLGPHFXitI0=",
+        "rev": "253546d5fbf8a5aa60ac8164c1b4f5794dc4e9d1",
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/253546d5fbf8a5aa60ac8164c1b4f5794dc4e9d1.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/lix/archive/2.90.0-rc1.tar.gz"
+      }
+    },
+    "lix-module": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "flakey-profile": "flakey-profile",
+        "lix": "lix",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718778548,
+        "narHash": "sha256-64lB/NO6AQ6z6EDCemPSYZWX/Qc6Rt04cPia5T5v01g=",
+        "rev": "29ed1bb67751e5b107d08df35d18dda6d45324e9",
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/29ed1bb67751e5b107d08df35d18dda6d45324e9.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz"
+      }
+    },
     "mpack": {
       "inputs": {
         "nixpkgs": [
@@ -925,7 +993,7 @@
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_5"
       },
@@ -1270,6 +1338,7 @@
         "homebrew-core": "homebrew-core",
         "jovian": "jovian_2",
         "lanzaboote": "lanzaboote",
+        "lix-module": "lix-module",
         "mpack": "mpack",
         "nix-homebrew": "nix-homebrew",
         "nix-packages": "nix-packages",
@@ -1421,6 +1490,21 @@
         "type": "github"
       }
     },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -1444,7 +1528,7 @@
     },
     "utils": {
       "inputs": {
-        "systems": "systems_5"
+        "systems": "systems_6"
       },
       "locked": {
         "lastModified": 1710146030,
