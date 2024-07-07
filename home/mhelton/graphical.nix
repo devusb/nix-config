@@ -8,6 +8,7 @@
     wl-clipboard
     obsidian
     jellyfin-media-player
+    delfin
     haruna
     virt-manager
     kdePackages.kpmcore
