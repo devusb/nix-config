@@ -18,6 +18,10 @@ let
       };
     });
 
+    awscli2 = prev.awscli2.override {
+      python3 = prev.python311;
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
