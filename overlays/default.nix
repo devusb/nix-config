@@ -2,7 +2,7 @@
 let
   customPkgs = final: prev: import ../pkgs { inherit final prev; };
 
-  modifications = final: prev: {
+  modifications = final: prev: rec {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
@@ -20,6 +20,14 @@ let
 
     awscli2 = prev.awscli2.override {
       python3 = prev.python311;
+    };
+
+    sunshine = prev.sunshine.override {
+      miniupnpc = stable.miniupnpc;
+    };
+
+    chiaki4deck = prev.chiaki4deck.override {
+      miniupnpc = stable.miniupnpc;
     };
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
