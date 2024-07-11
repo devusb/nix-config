@@ -18,10 +18,6 @@ let
       };
     });
 
-    awscli2 = prev.awscli2.override {
-      python3 = prev.python311;
-    };
-
     sunshine = prev.sunshine.override {
       miniupnpc = stable.miniupnpc;
     };
