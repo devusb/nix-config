@@ -9,5 +9,6 @@
     ];
   };
   programs.gamemode.enable = true;
-  environment.systemPackages = with pkgs; [ steamtinkerlaunch xdotool xorg.xwininfo gamescope ];
+  programs.gamescope.enable = true;
+  environment.systemPackages = with pkgs; [ steamtinkerlaunch xdotool xorg.xwininfo ];
 }
