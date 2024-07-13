@@ -36,7 +36,7 @@ let
         hash = "sha256-+8uojnfx8V8BiYAeUsOaXTXrlcST83z6Eld7qv1oboE=";
       };
       postPatch = old.postPatch + ''
-        substituteInPlace src/Utils/Process.cpp --replace-fail "gamescopereaper" "${prev.lib.getExe' prev.gamescope "gamescopereaper"}"
+        substituteInPlace src/Utils/Process.cpp --replace-fail "gamescopereaper" "$out/bin/gamescopereaper"
       '';
     });
 
