@@ -13,7 +13,10 @@
     };
     plugins = {
       nix.enable = true;
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+        folding = false;
+      };
       telescope = {
         enable = true;
         extensions.fzf-native.enable = true;

@@ -72,7 +72,7 @@
     };
 
     # nixvim
-    nixvim.url = "github:pta2002/nixvim";
+    nixvim.url = "github:nix-community/nixvim";
 
     # disko
     disko.url = "github:nix-community/disko";

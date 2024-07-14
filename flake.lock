@@ -1248,13 +1248,13 @@
       "locked": {
         "lastModified": 1720910388,
         "narHash": "sha256-gCudumUXHH+o0KFemXecDYySVCzjz7jYDGjdJbrN7gA=",
-        "owner": "pta2002",
+        "owner": "nix-community",
         "repo": "nixvim",
         "rev": "ac9a1cbf9c7145687e66a1c033d68fc72eca3fd8",
         "type": "github"
       },
       "original": {
-        "owner": "pta2002",
+        "owner": "nix-community",
         "repo": "nixvim",
         "type": "github"
       }
