@@ -2,7 +2,7 @@
 let
   customPkgs = final: prev: import ../pkgs { inherit final prev; };
 
-  modifications = final: prev: rec {
+  modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
@@ -17,14 +17,6 @@ let
         hash = "sha256-LT40EqBMaG6Wwl9AvhOxLNmolgUPSl5IkryOqIGAOCE=";
       };
     });
-
-    sunshine = prev.sunshine.override {
-      miniupnpc = stable.miniupnpc;
-    };
-
-    chiaki4deck = prev.chiaki4deck.override {
-      miniupnpc = stable.miniupnpc;
-    };
 
     gamescope = prev.gamescope.overrideAttrs (old: rec {
       version = "3.14.24";
