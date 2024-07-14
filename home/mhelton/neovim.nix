@@ -9,13 +9,17 @@
     globals.mapleader = ",";
     opts = {
       number = true;
-      clipboard = "unnamedplus";
+      foldlevelstart = 99;
     };
     plugins = {
       nix.enable = true;
       treesitter = {
         enable = true;
-        folding = false;
+        settings = {
+          indent.enable = true;
+          highlight.enable = true;
+          incremental.selection.enable = true;
+        };
       };
       telescope = {
         enable = true;
@@ -76,19 +80,14 @@
           '';
         };
       };
-      nvim-osc52 = {
+      leap = {
         enable = true;
-        keymaps.enable = true;
+        addDefaultMappings = true;
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
       editorconfig-nvim
-      indent-o-matic
-      leap-nvim
     ];
-    extraConfigLua = ''
-      require('leap').add_default_mappings()
-    '';
     colorschemes = {
       gruvbox.enable = true;
     };
