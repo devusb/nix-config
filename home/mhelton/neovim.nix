@@ -4,6 +4,9 @@
   ];
   programs.nixvim = {
     enable = true;
+    clipboard = {
+      register = "unnamedplus";
+    };
     viAlias = true;
     vimAlias = true;
     globals.mapleader = ",";
