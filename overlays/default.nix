@@ -18,20 +18,6 @@ let
       };
     });
 
-    gamescope = prev.gamescope.overrideAttrs (old: rec {
-      version = "3.14.24";
-      src = prev.fetchFromGitHub {
-        owner = "ValveSoftware";
-        repo = "gamescope";
-        rev = "refs/tags/${version}";
-        fetchSubmodules = true;
-        hash = "sha256-+8uojnfx8V8BiYAeUsOaXTXrlcST83z6Eld7qv1oboE=";
-      };
-      postPatch = old.postPatch + ''
-        substituteInPlace src/Utils/Process.cpp --replace-fail "gamescopereaper" "$out/bin/gamescopereaper"
-      '';
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
