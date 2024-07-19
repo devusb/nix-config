@@ -1,6 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.nix-packages.nixosModules.default
+    inputs.lix-module.nixosModules.default
   ];
 
   nix = {

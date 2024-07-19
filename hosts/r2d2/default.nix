@@ -11,7 +11,6 @@
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
       inputs.disko.nixosModules.disko
       inputs.lanzaboote.nixosModules.lanzaboote
-      inputs.lix-module.nixosModules.default
       (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
       inputs.sops-nix.nixosModules.sops
       ../common/users/mhelton
