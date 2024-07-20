@@ -19,7 +19,6 @@
       treesitter = {
         enable = true;
         settings = {
-          indent.enable = true;
           highlight.enable = true;
           incremental.selection.enable = true;
         };
@@ -40,6 +39,7 @@
       };
       bufferline.enable = true;
       indent-blankline.enable = true;
+      indent-o-matic.enable = true;
       lualine = {
         enable = true;
         theme = "gruvbox-material";
