@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
     ./kitty.nix
-    ./neovim.nix
   ];
 
   home.packages = with pkgs; [
@@ -35,6 +35,10 @@
   programs.home-manager = {
     enable = true;
   };
+
+  programs.nixvim = {
+    enable = true;
+  } // import ./nixvim.nix { inherit pkgs; };
 
   programs.bat = {
     enable = true;
