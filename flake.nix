@@ -94,34 +94,43 @@
     chaotic.url = "github:chaotic-cx/nyx";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
       imports = [
         hercules-ci-effects.flakeModule
         hercules-ci-effects.push-cache-effect
       ];
 
-      perSystem = { system, ... }: rec {
-        legacyPackages =
-          import nixpkgs {
-            inherit system;
-            overlays = builtins.attrValues {
-              default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
-            };
-            config.allowUnfree = true;
-            config.permittedInsecurePackages = [
-              "electron-24.8.6"
-              "electron-25.9.0"
-            ];
+      perSystem = { pkgs, system, ... }:
+        let
+          nixvim' = nixvim.legacyPackages.${system};
+          nixvimModule = {
+            module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
           };
-        _module.args.pkgs = legacyPackages;
+        in
+        rec {
+          legacyPackages =
+            import nixpkgs {
+              inherit system;
+              overlays = builtins.attrValues {
+                default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
+              };
+              config.allowUnfree = true;
+              config.permittedInsecurePackages = [
+                "electron-24.8.6"
+                "electron-25.9.0"
+              ];
+            };
+          _module.args.pkgs = legacyPackages;
 
-        devShells = {
-          default = import ./shell.nix { pkgs = legacyPackages; };
+          devShells = {
+            default = import ./shell.nix { pkgs = legacyPackages; };
+          };
+
+          formatter = legacyPackages.nixpkgs-fmt;
+
+          packages.nvim = nixvim'.makeNixvimWithModule nixvimModule;
         };
-
-        formatter = legacyPackages.nixpkgs-fmt;
-      };
 
       flake = rec {
         overlays = {
