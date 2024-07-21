@@ -103,8 +103,10 @@
 
       perSystem = { pkgs, system, ... }:
         let
+          nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
           nixvimModule = {
+            inherit pkgs;
             module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
           };
         in
@@ -127,9 +129,15 @@
             default = import ./shell.nix { pkgs = legacyPackages; };
           };
 
+          checks = {
+            nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          };
+
           formatter = legacyPackages.nixpkgs-fmt;
 
-          packages.nvim = nixvim'.makeNixvimWithModule nixvimModule;
+          packages = {
+            nvim = nixvim'.makeNixvimWithModule nixvimModule;
+          };
         };
 
       flake = rec {
