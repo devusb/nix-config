@@ -83,6 +83,9 @@
       addDefaultMappings = true;
     };
   };
+  extraPackages = with pkgs; [
+    ripgrep
+  ];
   extraPlugins = with pkgs.vimPlugins; [
     editorconfig-nvim
   ];
