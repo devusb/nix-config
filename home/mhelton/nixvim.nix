@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   clipboard = {
     register = "unnamedplus";
   };
@@ -83,12 +84,8 @@
       addDefaultMappings = true;
     };
   };
-  extraPackages = with pkgs; [
-    ripgrep
-  ];
-  extraPlugins = with pkgs.vimPlugins; [
-    editorconfig-nvim
-  ];
+  extraPackages = with pkgs; [ ripgrep ];
+  extraPlugins = with pkgs.vimPlugins; [ editorconfig-nvim ];
   colorschemes = {
     gruvbox.enable = true;
   };

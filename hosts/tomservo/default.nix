@@ -75,9 +75,7 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    kde-rounded-corners
-  ];
+  environment.systemPackages = with pkgs; [ kde-rounded-corners ];
 
   services.displayManager.autoLogin.user = "mhelton";
 

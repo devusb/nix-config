@@ -1,11 +1,12 @@
 { pkgs, ... }:
 with pkgs;
 let
-  python-packages = pp: with pp; [
-    pyyaml
-    boto3
-    timedb
-  ];
+  python-packages =
+    pp: with pp; [
+      pyyaml
+      boto3
+      timedb
+    ];
   python-with-packages = python3.withPackages python-packages;
 in
 {

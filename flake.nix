@@ -94,25 +94,37 @@
     chaotic.url = "github:chaotic-cx/nyx";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
-      imports = [
-        hercules-ci-effects.flakeModule
-        hercules-ci-effects.push-cache-effect
-      ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      darwin,
+      flake-parts,
+      hercules-ci-effects,
+      nixvim,
+      ...
+    }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { withSystem, ... }:
+      {
+        imports = [
+          hercules-ci-effects.flakeModule
+          hercules-ci-effects.push-cache-effect
+        ];
 
-      perSystem = { pkgs, system, ... }:
-        let
-          nixvimLib = nixvim.lib.${system};
-          nixvim' = nixvim.legacyPackages.${system};
-          nixvimModule = {
-            inherit pkgs;
-            module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
-          };
-        in
-        rec {
-          legacyPackages =
-            import nixpkgs {
+        perSystem =
+          { pkgs, system, ... }:
+          let
+            nixvimLib = nixvim.lib.${system};
+            nixvim' = nixvim.legacyPackages.${system};
+            nixvimModule = {
+              inherit pkgs;
+              module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
+            };
+          in
+          rec {
+            legacyPackages = import nixpkgs {
               inherit system;
               overlays = builtins.attrValues {
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
@@ -123,175 +135,218 @@
                 "electron-25.9.0"
               ];
             };
-          _module.args.pkgs = legacyPackages;
+            _module.args.pkgs = legacyPackages;
 
-          devShells = {
-            default = import ./shell.nix { pkgs = legacyPackages; };
+            devShells = {
+              default = import ./shell.nix { pkgs = legacyPackages; };
+            };
+
+            checks = {
+              nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+            };
+
+            formatter = legacyPackages.nixfmt-rfc-style;
+
+            packages = {
+              nvim = nixvim'.makeNixvimWithModule nixvimModule;
+            };
           };
 
-          checks = {
-            nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+        flake = rec {
+          overlays = {
+            default = import ./overlays { inherit inputs; };
           };
 
-          formatter = legacyPackages.nixpkgs-fmt;
+          nixosModules = import ./modules/nixos;
 
-          packages = {
-            nvim = nixvim'.makeNixvimWithModule nixvimModule;
-          };
-        };
-
-      flake = rec {
-        overlays = {
-          default = import ./overlays { inherit inputs; };
-        };
-
-        nixosModules = import ./modules/nixos;
-
-        nixosConfigurations = {
-          tomservo = withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
-            inherit pkgs;
-            specialArgs = { inherit inputs; };
-            modules = (builtins.attrValues nixosModules) ++ [
-              ./hosts/tomservo
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users.mhelton.imports = [
-                    ./home/mhelton
-                    ./home/mhelton/personal.nix
-                    ./home/mhelton/linux.nix
-                    ./home/mhelton/graphical.nix
-                    ./home/mhelton/gaming.nix
-                  ];
+          nixosConfigurations = {
+            tomservo = withSystem "x86_64-linux" (
+              { pkgs, ... }:
+              nixpkgs.lib.nixosSystem {
+                inherit pkgs;
+                specialArgs = {
+                  inherit inputs;
                 };
+                modules = (builtins.attrValues nixosModules) ++ [
+                  ./hosts/tomservo
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        inherit inputs;
+                      };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/personal.nix
+                        ./home/mhelton/linux.nix
+                        ./home/mhelton/graphical.nix
+                        ./home/mhelton/gaming.nix
+                      ];
+                    };
+                  }
+                ];
               }
-            ];
-          });
+            );
 
-          durandal = withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
-            inherit pkgs;
-            specialArgs = { inherit inputs; };
-            modules = (builtins.attrValues nixosModules) ++ [
-              ./hosts/durandal
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users.mhelton.imports = [
-                    ./home/mhelton
-                    ./home/mhelton/personal.nix
-                    ./home/mhelton/linux.nix
-                    ./home/mhelton/graphical.nix
-                    ./home/mhelton/gaming.nix
-                  ];
+            durandal = withSystem "x86_64-linux" (
+              { pkgs, ... }:
+              nixpkgs.lib.nixosSystem {
+                inherit pkgs;
+                specialArgs = {
+                  inherit inputs;
                 };
+                modules = (builtins.attrValues nixosModules) ++ [
+                  ./hosts/durandal
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        inherit inputs;
+                      };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/personal.nix
+                        ./home/mhelton/linux.nix
+                        ./home/mhelton/graphical.nix
+                        ./home/mhelton/gaming.nix
+                      ];
+                    };
+                  }
+                ];
               }
-            ];
-          });
+            );
 
-          bob =
-            withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
-              inherit pkgs;
-              specialArgs = { inherit inputs; };
-              modules = (builtins.attrValues nixosModules) ++ [
-                ./hosts/bob
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    extraSpecialArgs = { inherit inputs; };
-                    users.mhelton.imports = [
-                      ./home/mhelton
-                      ./home/mhelton/personal.nix
-                      ./home/mhelton/linux.nix
-                      ./home/mhelton/graphical.nix
-                      ./home/mhelton/gaming.nix
-                      ./home/mhelton/deck.nix
-                    ];
-                  };
-                }
-              ];
-            });
-
-          r2d2 =
-            withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
-              inherit pkgs;
-              specialArgs = { inherit inputs; };
-              modules = (builtins.attrValues nixosModules) ++ [
-                ./hosts/r2d2
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    extraSpecialArgs = { inherit inputs; };
-                    users.mhelton.imports = [
-                      ./home/mhelton
-                      ./home/mhelton/personal.nix
-                      ./home/mhelton/linux.nix
-                      ./home/mhelton/graphical.nix
-                      ./home/mhelton/gaming.nix
-                      ./home/mhelton/framework.nix
-                    ];
-                  };
-                }
-              ];
-            });
-        };
-
-        darwinConfigurations = {
-          imubit-morganh-mbp13 = withSystem "aarch64-darwin" ({ pkgs, ... }: darwin.lib.darwinSystem {
-            specialArgs = { inherit inputs; };
-            modules = [
-              { nixpkgs.pkgs = pkgs; }
-              ./hosts/imubit-morganh-mbp13
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users.mhelton.imports = [
-                    ./home/mhelton
-                    ./home/mhelton/work.nix
-                    ./home/mhelton/darwin.nix
-                  ];
+            bob = withSystem "x86_64-linux" (
+              { pkgs, ... }:
+              nixpkgs.lib.nixosSystem {
+                inherit pkgs;
+                specialArgs = {
+                  inherit inputs;
                 };
+                modules = (builtins.attrValues nixosModules) ++ [
+                  ./hosts/bob
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        inherit inputs;
+                      };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/personal.nix
+                        ./home/mhelton/linux.nix
+                        ./home/mhelton/graphical.nix
+                        ./home/mhelton/gaming.nix
+                        ./home/mhelton/deck.nix
+                      ];
+                    };
+                  }
+                ];
               }
-            ];
-          });
-        };
-      };
+            );
 
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
+            r2d2 = withSystem "x86_64-linux" (
+              { pkgs, ... }:
+              nixpkgs.lib.nixosSystem {
+                inherit pkgs;
+                specialArgs = {
+                  inherit inputs;
+                };
+                modules = (builtins.attrValues nixosModules) ++ [
+                  ./hosts/r2d2
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        inherit inputs;
+                      };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/personal.nix
+                        ./home/mhelton/linux.nix
+                        ./home/mhelton/graphical.nix
+                        ./home/mhelton/gaming.nix
+                        ./home/mhelton/framework.nix
+                      ];
+                    };
+                  }
+                ];
+              }
+            );
+          };
 
-      herculesCI = { ... }: {
-        ciSystems = [ "x86_64-linux" ];
-      };
-
-      push-cache-effect =
-        let
-          pushConfigurations = [ "tomservo" "durandal" "bob" "r2d2" ];
-        in
-        {
-          enable = true;
-          attic-client-pkg = nixpkgs.legacyPackages.x86_64-linux.attic-client;
-          caches.r2d2 = {
-            type = "attic";
-            secretName = "attic";
-            packages = map (host: self.nixosConfigurations."${host}".config.system.build.toplevel) pushConfigurations;
+          darwinConfigurations = {
+            imubit-morganh-mbp13 = withSystem "aarch64-darwin" (
+              { pkgs, ... }:
+              darwin.lib.darwinSystem {
+                specialArgs = {
+                  inherit inputs;
+                };
+                modules = [
+                  { nixpkgs.pkgs = pkgs; }
+                  ./hosts/imubit-morganh-mbp13
+                  home-manager.darwinModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        inherit inputs;
+                      };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/work.nix
+                        ./home/mhelton/darwin.nix
+                      ];
+                    };
+                  }
+                ];
+              }
+            );
           };
         };
 
-    });
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+          "aarch64-darwin"
+        ];
+
+        herculesCI =
+          { ... }:
+          {
+            ciSystems = [ "x86_64-linux" ];
+          };
+
+        push-cache-effect =
+          let
+            pushConfigurations = [
+              "tomservo"
+              "durandal"
+              "bob"
+              "r2d2"
+            ];
+          in
+          {
+            enable = true;
+            attic-client-pkg = nixpkgs.legacyPackages.x86_64-linux.attic-client;
+            caches.r2d2 = {
+              type = "attic";
+              secretName = "attic";
+              packages = map (
+                host: self.nixosConfigurations."${host}".config.system.build.toplevel
+              ) pushConfigurations;
+            };
+          };
+
+      }
+    );
 }

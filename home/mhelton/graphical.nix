@@ -1,28 +1,28 @@
-{ pkgs, ... }: {
-  imports = [
-    ./plasma.nix
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ./plasma.nix ];
 
-  home.packages = with pkgs; [
-    xclip
-    wl-clipboard
-    obsidian
-    jellyfin-media-player
-    delfin
-    haruna
-    virt-manager
-    kdePackages.kpmcore
-    kdePackages.partitionmanager
-  ] ++ lib.optionals (!stdenv.isAarch64) [
-    zoom-us
-    cider
-  ];
+  home.packages =
+    with pkgs;
+    [
+      xclip
+      wl-clipboard
+      obsidian
+      jellyfin-media-player
+      delfin
+      haruna
+      virt-manager
+      kdePackages.kpmcore
+      kdePackages.partitionmanager
+    ]
+    ++ lib.optionals (!stdenv.isAarch64) [
+      zoom-us
+      cider
+    ];
 
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = [
-      pkgs.kdePackages.plasma-browser-integration
-    ];
+    nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
   };
 
   xdg.configFile = {

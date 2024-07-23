@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./kitty.nix
@@ -74,9 +75,7 @@
     enable = true;
     settings = {
       keybinds = {
-        unbind = [
-          "Ctrl q"
-        ];
+        unbind = [ "Ctrl q" ];
         session = {
           "bind \"q\"" = {
             Quit = [ ];

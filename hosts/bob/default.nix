@@ -4,21 +4,20 @@
 
 { inputs, config, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.disko.nixosModules.disko
-      (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
-      inputs.jovian.nixosModules.jovian
-      inputs.sops-nix.nixosModules.sops
-      ../common/users/mhelton
-      ../common/nixos.nix
-      ../common/steam.nix
-      ../common/_1password.nix
-      ../common/docker.nix
-      inputs.chaotic.nixosModules.default
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
+    inputs.jovian.nixosModules.jovian
+    inputs.sops-nix.nixosModules.sops
+    ../common/users/mhelton
+    ../common/nixos.nix
+    ../common/steam.nix
+    ../common/_1password.nix
+    ../common/docker.nix
+    inputs.chaotic.nixosModules.default
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -100,4 +99,3 @@
   };
 
 }
-

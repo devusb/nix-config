@@ -1,4 +1,11 @@
-{ inputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [
     inputs.nix-packages.darwinModules.default
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -8,7 +15,11 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
       auto-optimise-store = false;
       warn-dirty = false;
       trusted-users = [ "mhelton" ];
@@ -110,6 +121,8 @@
   };
 
   system.activationScripts.postActivation.text = ''
-    dscl . -create '/Users/${builtins.elemAt (builtins.attrNames config.users.users) 0}' UserShell '${pkgs.zsh}/bin/zsh'
+    dscl . -create '/Users/${
+      builtins.elemAt (builtins.attrNames config.users.users) 0
+    }' UserShell '${pkgs.zsh}/bin/zsh'
   '';
 }

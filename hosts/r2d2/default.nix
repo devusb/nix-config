@@ -2,23 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, lib, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-      inputs.disko.nixosModules.disko
-      inputs.lanzaboote.nixosModules.lanzaboote
-      (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
-      inputs.sops-nix.nixosModules.sops
-      ../common/users/mhelton
-      ../common/nixos.nix
-      ../common/steam.nix
-      ../common/_1password.nix
-      ../common/docker.nix
-    ];
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+    inputs.disko.nixosModules.disko
+    inputs.lanzaboote.nixosModules.lanzaboote
+    (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
+    inputs.sops-nix.nixosModules.sops
+    ../common/users/mhelton
+    ../common/nixos.nix
+    ../common/steam.nix
+    ../common/_1password.nix
+    ../common/docker.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -96,4 +100,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

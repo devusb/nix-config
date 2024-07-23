@@ -1,16 +1,15 @@
 { inputs, pkgs, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.disko.nixosModules.disko
-      ./disko-config.nix
-      ../common/users/mhelton
-      ../common/nixos.nix
-      ../common/steam.nix
-      ../common/_1password.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
+    ../common/users/mhelton
+    ../common/nixos.nix
+    ../common/steam.nix
+    ../common/_1password.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -25,9 +24,7 @@
     enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    nvtopPackages.amd
-  ];
+  environment.systemPackages = with pkgs; [ nvtopPackages.amd ];
 
   system.autoUpgrade = {
     enable = true;
@@ -44,7 +41,11 @@
   services.prometheus.exporters = {
     node = {
       enable = true;
-      enabledCollectors = [ "systemd" "ethtool" "netstat" ];
+      enabledCollectors = [
+        "systemd"
+        "ethtool"
+        "netstat"
+      ];
     };
   };
 
@@ -94,4 +95,3 @@
   services.sleep-on-lan.enable = true;
 
 }
-
