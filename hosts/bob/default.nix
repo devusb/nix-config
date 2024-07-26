@@ -64,7 +64,6 @@
   };
   jovian.devices.steamdeck = {
     enable = true;
-    enableGyroDsuService = true;
   };
   programs.steam.extest.enable = true;
 
@@ -81,8 +80,6 @@
     registrationKeyPath = config.sops.secrets.registration_key.path;
     consoleNickname = "PS5-875";
   };
-
-  services.joycond.enable = true;
 
   services.flatpak = {
     enable = true;
