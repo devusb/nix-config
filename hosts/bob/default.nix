@@ -17,7 +17,6 @@
       ../common/steam.nix
       ../common/_1password.nix
       ../common/docker.nix
-      inputs.chaotic.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -86,15 +85,6 @@
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?
-
-  specialisation = {
-    mesa-git.configuration = {
-      chaotic.mesa-git = {
-        enable = true;
-        fallbackSpecialisation = false;
-      };
-    };
-  };
 
 }
 
