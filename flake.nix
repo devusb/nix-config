@@ -89,9 +89,6 @@
 
     # Jovian-NixOS
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
-
-    # chaotic-nyx
-    chaotic.url = "github:chaotic-cx/nyx";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:

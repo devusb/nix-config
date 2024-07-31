@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,7 +7,6 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
-    inputs.chaotic.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -58,12 +57,6 @@
   };
   hardware.graphics = {
     enable = true;
-  };
-  specialisation.mesa-git.configuration = {
-    chaotic.mesa-git = {
-      enable = true;
-      fallbackSpecialisation = false;
-    };
   };
 
   # Plasma
