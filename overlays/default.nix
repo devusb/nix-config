@@ -18,6 +18,16 @@ let
       };
     });
 
+    chiaki4deck = prev.chiaki4deck.override {
+      libplacebo = prev.libplacebo.overrideAttrs (old: {
+        version = "6.338.2-unstable-2024-01-29";
+        src = old.src.override {
+          rev = "c320f61e601caef2be081ce61138e5d51c1be21d";
+          hash = "sha256-ZlKYgWz/Rkp4IPt6cJ+KNnzBB2s8jGZEamSAOIGyDuE=";
+        };
+      });
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
