@@ -30,6 +30,7 @@
     nix-output-monitor
     tv-sony
     soco-cli
+    iodine
   ];
 
   programs.home-manager = {
