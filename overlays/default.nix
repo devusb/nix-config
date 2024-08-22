@@ -28,6 +28,18 @@ let
       });
     };
 
+    aws-sso-cli = prev.aws-sso-cli.overrideAttrs (old: {
+      checkFlags =
+        let
+          skippedTests = [
+            "TestAWSConsoleUrl"
+            "TestAWSFederatedUrl"
+            "TestServerWithSSL" # https://github.com/synfinatic/aws-sso-cli/issues/1030 -- remove when version >= 2.x
+          ] ++ prev.lib.optionals prev.stdenv.isDarwin [ "TestDetectShellBash" ];
+        in
+        [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
