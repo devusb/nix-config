@@ -7,17 +7,6 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    # joycond
-    joycond = prev.joycond.overrideAttrs (old: {
-      version = "0.1.0-unstable-2023-12-03";
-      src = prev.fetchFromGitHub {
-        owner = "DanielOgorchock";
-        repo = old.pname;
-        rev = "9d1f5098b716681d087cca695ad714218a18d4e8";
-        hash = "sha256-LT40EqBMaG6Wwl9AvhOxLNmolgUPSl5IkryOqIGAOCE=";
-      };
-    });
-
     chiaki4deck = prev.chiaki4deck.override {
       libplacebo = prev.libplacebo.overrideAttrs (old: {
         version = "6.338.2-unstable-2024-01-29";
