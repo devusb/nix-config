@@ -17,6 +17,43 @@ let
       });
     };
 
+    # https://github.com/NixOS/nixpkgs/pull/338033
+    kitty = prev.kitty.overrideAttrs (old: {
+      buildPhase = with prev; let
+        commonOptions = ''
+          --update-check-interval=0 \
+          --shell-integration=enabled\ no-rc
+        '';
+        darwinOptions = ''
+          --disable-link-time-optimization \
+          ${commonOptions}
+        '';
+      in
+      ''
+        runHook preBuild
+
+        # Add the font by hand because fontconfig does not finds it in darwin
+        mkdir ./fonts/
+        cp "${(nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})}/share/fonts/truetype/NerdFonts/SymbolsNerdFontMono-Regular.ttf" ./fonts/
+
+        ${ lib.optionalString (stdenv.isDarwin && stdenv.isx86_64) "export MACOSX_DEPLOYMENT_TARGET=11" }
+        ${if stdenv.isDarwin then ''
+          ${python3.pythonOnBuildForHost.interpreter} setup.py build ${darwinOptions}
+          make docs
+          ${python3.pythonOnBuildForHost.interpreter} setup.py kitty.app ${darwinOptions}
+        '' else ''
+          ${python3.pythonOnBuildForHost.interpreter} setup.py linux-package \
+          --egl-library='${lib.getLib libGL}/lib/libEGL.so.1' \
+          --startup-notification-library='${libstartup_notification}/lib/libstartup-notification-1.so' \
+          --canberra-library='${libcanberra}/lib/libcanberra.so' \
+          --fontconfig-library='${fontconfig.lib}/lib/libfontconfig.so' \
+          ${commonOptions}
+          ${python3.pythonOnBuildForHost.interpreter} setup.py build-launcher
+        ''}
+        runHook postBuild
+      '';
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
