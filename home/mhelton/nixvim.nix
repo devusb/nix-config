@@ -22,6 +22,11 @@
       enable = true;
       extensions.fzf-native.enable = true;
       extensions.fzf-native.settings.fuzzy = true;
+      keymaps = {
+        "<leader>b" = "buffers";
+        "<leader>ft" = "find_files";
+        "<leader>fg" = "live_grep";
+      };
     };
     nvim-autopairs = {
       enable = true;
@@ -93,14 +98,6 @@
   };
   keymaps = [
     {
-      key = "<leader>ft";
-      action = "<CMD>Telescope find_files<CR>";
-    }
-    {
-      key = "<leader>fg";
-      action = "<CMD>Telescope live_grep<CR>";
-    }
-    {
       key = "j";
       action = "gj";
     }
@@ -116,6 +113,14 @@
       mode = "t";
       key = "<esc><esc>";
       action = "<C-\\><C-N>";
+    }
+    {
+      key = "<Tab>";
+      action = "<CMD>bn<CR>";
+    }
+    {
+      key = "<S-Tab>";
+      action = "<CMD>bp<CR>";
     }
   ];
   autoCmd = [
