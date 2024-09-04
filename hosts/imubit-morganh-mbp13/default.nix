@@ -21,6 +21,4 @@
     "/Applications/Slack.app"
   ];
 
-  # nix.linux-builder.enable = true;
-
 }
