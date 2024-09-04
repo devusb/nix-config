@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 with pkgs;
 let
   python-packages = pp: with pp; [
@@ -12,6 +12,11 @@ in
   programs.git = {
     userName = "Morgan Helton";
     userEmail = "morgan@imubit.com";
+    signing = {
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      signByDefault = true;
+    };
+    extraConfig.gpg.format = "ssh";
   };
 
   home.sessionVariables = {
