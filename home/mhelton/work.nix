@@ -60,6 +60,7 @@ in
     presenterm
     presenterm-export
     jira-cli-go
+    clickhouse
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];

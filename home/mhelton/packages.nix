@@ -31,6 +31,7 @@
     tv-sony
     soco-cli
     iodine
+    fastfetch
   ];
 
   programs.home-manager = {
