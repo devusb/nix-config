@@ -72,6 +72,14 @@
         };
       }
     ];
+
+    powerdevil = {
+      AC = {
+        autoSuspend = {
+          action = "nothing";
+        };
+      };
+    };
   };
 
 }
