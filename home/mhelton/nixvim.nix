@@ -42,7 +42,7 @@
     indent-o-matic.enable = true;
     lualine = {
       enable = true;
-      theme = "gruvbox-material";
+      settings.options.theme = "gruvbox-material";
     };
     commentary.enable = true;
     lsp = {
