@@ -21,7 +21,7 @@
     nixpkgs-fmt
     headsetcontrol
     difftastic
-    devenv
+    devenv'
     ouch
     attic-client
     fx

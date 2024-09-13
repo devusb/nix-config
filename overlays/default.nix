@@ -20,6 +20,8 @@ let
       in
       chiaki-ng'.override { libplacebo = prev.libplacebo; };
 
+    devenv' = prev.devenv;
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access

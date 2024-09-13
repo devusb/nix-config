@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, pkgs, ... }: {
   imports = [
     inputs.nix-packages.nixosModules.default
     inputs.lix-module.nixosModules.default
@@ -29,9 +29,6 @@
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
   };
 
   # Set your time zone.
