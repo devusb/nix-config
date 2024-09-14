@@ -92,6 +92,14 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:
+    let
+      patches = [
+        {
+          url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/341219.diff";
+          hash = "sha256-YC5wgMp8QyQbh4RMxuFdjkq4lB9WcQiep/6xKZMbsjo=";
+        }
+      ];
+    in
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
       imports = [
         hercules-ci-effects.flakeModule
@@ -106,10 +114,16 @@
             inherit pkgs;
             module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
           };
+          originPkgs = nixpkgs.legacyPackages."x86_64-linux";
+          patchedPkgs = originPkgs.applyPatches {
+            name = "nixpkgs-patched";
+            src = nixpkgs;
+            patches = map originPkgs.fetchpatch patches;
+          };
         in
         rec {
           legacyPackages =
-            import nixpkgs {
+            import patchedPkgs {
               inherit system;
               overlays = builtins.attrValues {
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
