@@ -8,7 +8,7 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = false;
       warn-dirty = false;
       trusted-users = [ "mhelton" ];
