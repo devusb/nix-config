@@ -86,6 +86,7 @@
       enable = true;
       addDefaultMappings = true;
     };
+    web-devicons.enable = true;
   };
   extraPackages = with pkgs; [
     ripgrep
