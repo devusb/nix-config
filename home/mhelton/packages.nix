@@ -32,6 +32,7 @@
     soco-cli
     iodine
     fastfetch
+    tig
   ];
 
   programs.home-manager = {
