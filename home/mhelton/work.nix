@@ -54,6 +54,7 @@ in
     kubectl-cnpg
     kubent
     kubectl-gadget
+    kubie
     pg_activity
     diffr
     vkv
