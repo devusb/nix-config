@@ -7,6 +7,8 @@ let
     timedb
   ];
   python-with-packages = python3.withPackages python-packages;
+
+  yamlFormat = formats.yaml { };
 in
 {
   programs.git = {
@@ -78,6 +80,12 @@ in
   programs.starship.settings = {
     kubernetes.disabled = false;
     aws.disabled = false;
+  };
+
+  home.file.".kube/kubie.yaml" = {
+    source = yamlFormat.generate "kubie-config" {
+      prompt.disable = true;
+    };
   };
 
 }
