@@ -129,10 +129,6 @@
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
               };
               config.allowUnfree = true;
-              config.permittedInsecurePackages = [
-                "electron-24.8.6"
-                "electron-25.9.0"
-              ];
             };
           _module.args.pkgs = legacyPackages;
 
