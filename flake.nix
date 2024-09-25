@@ -96,7 +96,7 @@
       patches = [
         {
           url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/341219.diff";
-          hash = "sha256-zVXbJCHB+AQcPJdoH9tEjSJkpjrFNFj1iYSZouWynCw=";
+          hash = "sha256-noVfvICOKAtU/v9usLQN8KlQoHSjtHMIRZZduAJ2P/0=";
         }
       ];
     in
