@@ -79,6 +79,12 @@
           action = "nothing";
         };
       };
+      battery = {
+        autoSuspend = {
+          action = "sleep";
+          idleTimeout = 600;
+        };
+      };
     };
   };
 
