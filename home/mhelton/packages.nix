@@ -33,6 +33,7 @@
     iodine
     fastfetch
     tig
+    git-absorb
   ];
 
   programs.home-manager = {
