@@ -98,7 +98,7 @@
         hercules-ci-effects.push-cache-effect
       ];
 
-      perSystem = { pkgs, system, ... }:
+      perSystem = { pkgs, lib, system, ... }:
         let
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
@@ -126,9 +126,25 @@
             default = import ./shell.nix { pkgs = legacyPackages; };
           };
 
-          checks = {
-            nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-          };
+          checks =
+            let
+              machinesPerSystem = {
+                x86_64-linux = [
+                  "tomservo"
+                  "r2d2"
+                  "bob"
+                  "durandal"
+                ];
+              };
+              nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
+                lib.genAttrs (machinesPerSystem.${system} or [ ]) (
+                  name: self.nixosConfigurations.${name}.config.system.build.toplevel
+                )
+              );
+            in
+            {
+              nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+            } // nixosMachines;
 
           formatter = legacyPackages.nixpkgs-fmt;
 
