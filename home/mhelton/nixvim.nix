@@ -53,6 +53,7 @@
         gopls.enable = true;
         pyright.enable = true;
         yamlls.enable = true;
+        typst-lsp.enable = true;
       };
       keymaps.lspBuf = {
         "gd" = "definition";
