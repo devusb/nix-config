@@ -7,19 +7,6 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    chiaki-ng =
-      let
-        chiaki-ng' = prev.chiaki-ng.overrideAttrs (old: {
-          patches = [
-            (prev.fetchpatch2 {
-              url = "https://github.com/streetpea/chiaki-ng/commit/dd6bb01365215290e1325f4822de2f13aceea965.patch";
-              hash = "sha256-gHSaInu3BPpwItc9LjcbxIjE4LeLOJC6waXjPFgJPu0=";
-            })
-          ];
-        });
-      in
-      chiaki-ng'.override { libplacebo = prev.libplacebo; };
-
     devenv' = prev.devenv;
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
