@@ -48,12 +48,12 @@
     lsp = {
       enable = true;
       servers = {
-        nil-ls.enable = true;
+        nil_ls.enable = true;
         terraformls.enable = true;
         gopls.enable = true;
         pyright.enable = true;
         yamlls.enable = true;
-        typst-lsp.enable = true;
+        typst_lsp.enable = true;
       };
       keymaps.lspBuf = {
         "gd" = "definition";
