@@ -32,7 +32,16 @@
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages =  pkgs.linuxPackagesFor (pkgs.linux_testing.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "https://git.kernel.org/torvalds/t/linux-${version}.tar.gz";
+        sha256 = "sha256-Nu+7hl6tOXcfY+yteiat89x96T4nky5Z3agaC9pVa5E=";
+      };
+      version = "6.12-rc2";
+      modDirVersion = "6.12.0-rc2";
+    };
+  });
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
