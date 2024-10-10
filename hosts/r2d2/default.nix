@@ -32,7 +32,7 @@
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=1
   '';
-  boot.kernelPackages =  pkgs.linuxPackagesFor (pkgs.linux_testing.override {
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_testing.override {
     argsOverride = rec {
       src = pkgs.fetchurl {
         url = "https://git.kernel.org/torvalds/t/linux-${version}.tar.gz";
@@ -42,6 +42,13 @@
       modDirVersion = "6.12.0-rc2";
     };
   });
+  boot.kernelPatches = [ {
+    name = "amdgpu-psr-vblank";
+    patch = pkgs.fetchpatch2 {
+      url = "https://gitlab.freedesktop.org/-/project/4522/uploads/fb09dab585cdf987115e330f93a41c23/0001-drm-amd-display-WIP-increase-vblank-off-delay.patch";
+      hash = "sha256-8aAsxHtTgAdm8+bRxOZo/uaCQo9a8rn4snKWV3VWIJY=";
+    };
+  } ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
