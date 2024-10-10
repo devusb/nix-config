@@ -64,6 +64,7 @@
       "rectangle"
       "firefox"
       "aldente"
+      "deskpad"
     ];
   };
 
