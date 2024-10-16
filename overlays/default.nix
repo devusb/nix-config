@@ -9,6 +9,20 @@ let
 
     devenv' = prev.devenv;
 
+    gitlab-ci-local = prev.gitlab-ci-local.overrideAttrs (old: rec {
+      version = "4.54.0-unstable-2024-10-16";
+      src = old.src.override {
+        rev = "b3434b547b2757c2d5af4e1c5d252c1df4699fd5";
+        hash = "sha256-XwTjlZW8urGqMvnF5bvjL1+dt2C08wnbjFNb4mp2jQo=";
+      };
+      npmDepsHash = "sha256-uNjPwh6oBUGR4Pw9ievHFllU8q4pigCwVFOTiyVOwMY=";
+      npmDeps = final.fetchNpmDeps {
+        inherit src;
+        name = "${old.pname}-${version}-npm-deps";
+        hash = npmDepsHash;
+      };
+    });
+
     ripgrep-all = prev.ripgrep-all.overrideAttrs (old:
       let
         path = with prev; [
