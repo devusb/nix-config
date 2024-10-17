@@ -64,6 +64,7 @@ in
     presenterm-export
     jira-cli-go
     clickhouse
+    gitlab-ci-local
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
