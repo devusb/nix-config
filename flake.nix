@@ -11,7 +11,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Core nix flakes
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/162ee4189cf5c0449a642f3f5aa7566faac77476";
     hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
@@ -88,7 +88,7 @@
     sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
 
     # Jovian-NixOS
-    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS/e4f4d7832cc559389b93798c1f0d615e3816f4ef";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:
