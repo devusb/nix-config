@@ -14,6 +14,7 @@
     "dbeaver-community"
     "microsoft-remote-desktop"
     "bruno"
+    "mongodb-compass"
   ];
 
   system.defaults.dock.persistent-apps = [
