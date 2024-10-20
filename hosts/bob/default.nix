@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 {
   imports =
     [
@@ -31,7 +31,10 @@
     wifi.backend = "iwd";
   };
   services.geoclue2.enableWifi = false;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez-5_76;
+  };
 
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";

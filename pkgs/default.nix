@@ -37,6 +37,8 @@ in
     };
   };
 
+  bluez-5_76 = pkgs.callPackage ./bluez { };
+
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
     (
