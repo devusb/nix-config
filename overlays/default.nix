@@ -23,28 +23,6 @@ let
       };
     });
 
-    ripgrep-all = prev.ripgrep-all.overrideAttrs (old:
-      let
-        path = with prev; [
-          ffmpeg
-          pandoc
-          poppler_utils
-          ripgrep
-          zip
-          fzf
-        ];
-      in
-      {
-        postInstall = ''
-          for bin in $out/bin/*; do
-            if [[ $bin != *.dSYM ]]; then
-              wrapProgram $bin \
-                --prefix PATH ":" "${prev.lib.makeBinPath path}"
-            fi
-          done
-        '';
-      });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
