@@ -7,8 +7,6 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    devenv' = prev.devenv;
-
     gitlab-ci-local = prev.gitlab-ci-local.overrideAttrs (old: rec {
       version = "4.54.0-unstable-2024-10-16";
       src = old.src.override {
