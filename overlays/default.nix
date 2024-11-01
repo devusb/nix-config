@@ -21,6 +21,19 @@ let
       };
     });
 
+    delfin = prev.delfin.overrideAttrs (old: rec {
+      version = "0.4.7-unstable-2024-10-27";
+      src = old.src.override {
+        rev = "88c300b1647c95b596846461513c70c357bcf181";
+        hash = "sha256-Fz1TMkgO9dQRRqgTYt/6MzseKlBWB+E1T1trsXQkSm0=";
+      };
+      cargoDeps = prev.rustPlatform.fetchCargoTarball {
+        inherit src;
+        name = "${old.pname}-${version}";
+        hash = "sha256-AXZxnsbkQwl+o/DQyQljfNrienDTt+UYci2CbXLI5oU=";
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
