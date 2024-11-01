@@ -11,7 +11,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Core nix flakes
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
