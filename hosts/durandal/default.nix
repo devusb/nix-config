@@ -29,17 +29,6 @@
     nvtopPackages.amd
   ];
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:devusb/nix-config";
-    dates = "Sat *-*-* 02:30:00";
-    allowReboot = true;
-    rebootWindow = {
-      upper = "04:45";
-      lower = "02:30";
-    };
-  };
-
   # monitoring
   services.prometheus.exporters = {
     node = {
