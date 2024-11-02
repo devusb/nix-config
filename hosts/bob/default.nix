@@ -33,7 +33,16 @@
   services.geoclue2.enableWifi = false;
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluez-5_76;
+    package = pkgs.bluez.overrideAttrs (old: {
+      patches = old.patches ++ [
+        # revert bluez commit that causes https://github.com/Jovian-Experiments/Jovian-NixOS/issues/441
+        (pkgs.fetchpatch2 {
+          url = "https://github.com/bluez/bluez/commit/9cc587947b6ac56a4c94dcc880b273bc72af22a8.patch";
+          hash = "sha256-1m6UHoQ95BH0cMcj7D/gldeNjlTyk/QZCNPnloH5emc=";
+          revert = true;
+        })
+      ];
+    });
   };
 
   fileSystems."/mnt/sdcard" = {
