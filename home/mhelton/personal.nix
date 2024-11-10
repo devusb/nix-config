@@ -9,6 +9,18 @@
     extraConfig.gpg.format = "ssh";
   };
 
+  programs.jujutsu.settings = {
+    user = {
+      name = "Morgan Helton";
+      email = "mhelton@gmail.com";
+    };
+    signing = {
+      sign-all = true;
+      backend = "ssh";
+      key = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
+    };
+  };
+
   home.sessionVariables = {
     VAULT_ADDR = "https://vault.chopper.devusb.us";
   };
