@@ -107,6 +107,16 @@
     };
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      ui = {
+        pager = "${pkgs.lib.getExe pkgs.delta}";
+        diff.tool = [ "${pkgs.lib.getExe pkgs.difftastic}" "--color=always" "--background=light" "--display=side-by-side-show-both" "$left" "$right" ];
+      };
+    };
+  };
+
   programs.fd = {
     enable = true;
   };
