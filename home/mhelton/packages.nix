@@ -34,6 +34,7 @@
     fastfetch
     tig
     git-absorb
+    delta
   ];
 
   programs.home-manager = {
