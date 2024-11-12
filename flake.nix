@@ -52,9 +52,6 @@
     nix-packages.url = "github:devusb/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
 
-    # hercules-ci
-    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
-
     # mpack
     mpack.url = "github:league/mpack";
     mpack.inputs.nixpkgs.follows = "nixpkgs";
@@ -91,13 +88,8 @@
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, hercules-ci-effects, nixvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, flake-parts, nixvim, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
-      imports = [
-        hercules-ci-effects.flakeModule
-        hercules-ci-effects.push-cache-effect
-      ];
-
       perSystem = { pkgs, lib, system, ... }:
         let
           nixvimLib = nixvim.lib.${system};
