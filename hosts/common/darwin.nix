@@ -2,6 +2,7 @@
   imports = [
     inputs.nix-packages.darwinModules.default
     inputs.nix-homebrew.darwinModules.nix-homebrew
+    inputs.lix-module.nixosModules.default
   ];
 
   nixpkgs.system = "aarch64-darwin";
