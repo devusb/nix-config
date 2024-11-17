@@ -11,6 +11,7 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
+    enableNixpkgsReleaseCheck = false;
   };
 
   # https://github.com/nix-community/home-manager/issues/4142
