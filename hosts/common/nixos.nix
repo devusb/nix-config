@@ -2,6 +2,7 @@
   imports = [
     inputs.nix-packages.nixosModules.default
     inputs.lix-module.nixosModules.default
+    ./curl-netrc
   ];
 
   nix = {
