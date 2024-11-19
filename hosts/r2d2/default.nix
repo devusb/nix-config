@@ -32,7 +32,7 @@
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPatches = [{
     name = "amdgpu-psr-vblank";
     patch = pkgs.fetchpatch2 {
