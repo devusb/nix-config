@@ -5,6 +5,8 @@
     ../common/users/mhelton
     ../common/nixos.nix
     ../common/docker.nix
+    inputs.disko.nixosModules.disko
+    (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
     inputs.p81.nixosModules.perimeter81
     # inputs.sentinelone.nixosModules.sentinelone
     inputs.sops-nix.nixosModules.sops
