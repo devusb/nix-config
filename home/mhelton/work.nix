@@ -4,7 +4,7 @@ let
   python-packages = pp: with pp; [
     pyyaml
     boto3
-    # timedb
+    timedb
   ];
   python-with-packages = python3.withPackages python-packages;
 

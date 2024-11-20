@@ -8,7 +8,7 @@
     inputs.disko.nixosModules.disko
     (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
     inputs.p81.nixosModules.perimeter81
-    # inputs.sentinelone.nixosModules.sentinelone
+    inputs.sentinelone.nixosModules.sentinelone
     inputs.sops-nix.nixosModules.sops
   ];
 
@@ -17,13 +17,16 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+
+  services.automatic-timezoned.enable = false;
+  time.timeZone = "US/Central";
 
   services.openssh = {
     enable = true;
@@ -32,17 +35,17 @@
   services.tailscale.enable = lib.mkForce false;
   services.perimeter81.enable = true;
 
-  # sops = {
-  #   secrets.s1_mgmt_token = {
-  #     sopsFile = ../../secrets/sentinelone.yaml;
-  #   };
-  # };
-  # services.sentinelone = {
-  #   enable = true;
-  #   serialNumber = "8908DB3";
-  #   sentinelOneManagementTokenPath = config.sops.secrets.s1_mgmt_token.path;
-  #   email = "morgan.helton@imubit.com";
-  # };
+  sops = {
+    secrets.s1_mgmt_token = {
+      sopsFile = ../../secrets/sentinelone.yaml;
+    };
+  };
+  services.sentinelone = {
+    enable = true;
+    serialNumber = "8908DB3";
+    sentinelOneManagementTokenPath = config.sops.secrets.s1_mgmt_token.path;
+    email = "morgan.helton@imubit.com";
+  };
 
   environment.systemPackages = with pkgs; [
     google-chrome

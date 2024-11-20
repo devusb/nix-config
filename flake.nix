@@ -89,6 +89,10 @@
     # p81
     p81.url = "github:devusb/p81.nix";
     p81.inputs.nixpkgs.follows = "nixpkgs";
+
+    # sentinelone
+    sentinelone.url = "github:devusb/sentinelone.nix";
+    sentinelone.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, nixvim, ... }@inputs:
@@ -269,7 +273,6 @@
                       ./home/mhelton/work.nix
                       ./home/mhelton/linux.nix
                       ./home/mhelton/graphical.nix
-                      ./home/mhelton/gaming.nix
                     ];
                   };
                 }

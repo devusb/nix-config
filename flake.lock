@@ -996,11 +996,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728784485,
-        "narHash": "sha256-aqs6BBdpReCXPITDaJEER0GgeFV6BrZ2w2hI4i72vE4=",
+        "lastModified": 1732127206,
+        "narHash": "sha256-lziSFExL2nIEKW5hM06rFtlVc2JC0k9ZSKFqEIX5tcU=",
         "owner": "devusb",
         "repo": "p81.nix",
-        "rev": "60997f631b91fb9d32003084f346ed074ee3e0e4",
+        "rev": "5bee49750772f07ab994bb19c0374d7b96a275a6",
         "type": "github"
       },
       "original": {
@@ -1083,6 +1083,7 @@
         "nixvim": "nixvim",
         "p81": "p81",
         "plasma-manager": "plasma-manager",
+        "sentinelone": "sentinelone",
         "sops-nix": "sops-nix",
         "utils": "utils"
       }
@@ -1109,6 +1110,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sentinelone": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732133146,
+        "narHash": "sha256-5vs2nWd49fAuQ9ZZo2g6lT3D9tNdW5kQyBI47jkgzUE=",
+        "owner": "devusb",
+        "repo": "sentinelone.nix",
+        "rev": "a6dce93261101f0b89badd6b788dda1fb3216643",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devusb",
+        "repo": "sentinelone.nix",
         "type": "github"
       }
     },
