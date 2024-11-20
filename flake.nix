@@ -85,6 +85,10 @@
 
     # Jovian-NixOS
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    # p81
+    p81.url = "github:devusb/p81.nix";
+    p81.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, nixvim, ... }@inputs:
@@ -242,6 +246,30 @@
                       ./home/mhelton/graphical.nix
                       ./home/mhelton/gaming.nix
                       ./home/mhelton/framework.nix
+                    ];
+                  };
+                }
+              ];
+            });
+
+          imubit-morganh-dell =
+            withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
+              inherit pkgs;
+              specialArgs = { inherit inputs; };
+              modules = (builtins.attrValues nixosModules) ++ [
+                ./hosts/imubit-morganh-dell
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = { inherit inputs; };
+                    users.mhelton.imports = [
+                      ./home/mhelton
+                      ./home/mhelton/work.nix
+                      ./home/mhelton/linux.nix
+                      ./home/mhelton/graphical.nix
+                      ./home/mhelton/gaming.nix
                     ];
                   };
                 }

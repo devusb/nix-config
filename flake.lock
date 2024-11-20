@@ -989,6 +989,26 @@
         "type": "github"
       }
     },
+    "p81": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1728784485,
+        "narHash": "sha256-aqs6BBdpReCXPITDaJEER0GgeFV6BrZ2w2hI4i72vE4=",
+        "owner": "devusb",
+        "repo": "p81.nix",
+        "rev": "60997f631b91fb9d32003084f346ed074ee3e0e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devusb",
+        "repo": "p81.nix",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -1061,6 +1081,7 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixvim": "nixvim",
+        "p81": "p81",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "utils": "utils"
