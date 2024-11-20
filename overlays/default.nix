@@ -34,6 +34,23 @@ let
       };
     });
 
+    # add MIME type for Teams link association
+    teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
+      desktopItems = [
+        (prev.makeDesktopItem {
+          name = old.pname;
+          exec = "${old.pname} %u";
+          icon = old.pname;
+          desktopName = "Microsoft Teams for Linux";
+          comment = old.meta.description;
+          categories = [ "Network" "InstantMessaging" "Chat" ];
+          mimeTypes = [
+            "x-scheme-handler/msteams"
+          ];
+        })
+      ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
