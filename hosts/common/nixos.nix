@@ -30,6 +30,8 @@
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
+
+    channel.enable = false;
   };
 
   # Set your time zone.
