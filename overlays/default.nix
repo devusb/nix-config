@@ -7,6 +7,13 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
+    # fix broken platforms after https://github.com/NixOS/nixpkgs/pull/356326
+    nvtopPackages = prev.nvtopPackages // {
+      amd = prev.nvtopPackages.amd.overrideAttrs (old: {
+        meta = old.meta // { platforms = prev.lib.platforms.linux; };
+      });
+    };
+
     gitlab-ci-local = prev.gitlab-ci-local.overrideAttrs (old: rec {
       version = "4.54.0-unstable-2024-10-16";
       src = old.src.override {
