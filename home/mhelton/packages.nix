@@ -78,16 +78,7 @@
   programs.zellij = {
     enable = true;
     settings = {
-      keybinds = {
-        unbind = [
-          "Ctrl q"
-        ];
-        session = {
-          "bind \"q\"" = {
-            Quit = [ ];
-          };
-        };
-      };
+      default_mode = "locked";
     };
   };
 
