@@ -7,41 +7,6 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    # fix broken platforms after https://github.com/NixOS/nixpkgs/pull/356326
-    nvtopPackages = prev.nvtopPackages // {
-      amd = prev.nvtopPackages.amd.overrideAttrs (old: {
-        meta = old.meta // { platforms = prev.lib.platforms.linux; };
-      });
-    };
-
-    gitlab-ci-local = prev.gitlab-ci-local.overrideAttrs (old: rec {
-      version = "4.54.0-unstable-2024-10-16";
-      src = old.src.override {
-        rev = "b3434b547b2757c2d5af4e1c5d252c1df4699fd5";
-        hash = "sha256-XwTjlZW8urGqMvnF5bvjL1+dt2C08wnbjFNb4mp2jQo=";
-      };
-      npmDepsHash = "sha256-uNjPwh6oBUGR4Pw9ievHFllU8q4pigCwVFOTiyVOwMY=";
-      npmDeps = final.fetchNpmDeps {
-        inherit src;
-        name = "${old.pname}-${version}-npm-deps";
-        hash = npmDepsHash;
-      };
-    });
-
-    delfin = prev.delfin.overrideAttrs (old: rec {
-      version = "0.4.7-unstable-2024-10-27";
-      src = old.src.override {
-        rev = "88c300b1647c95b596846461513c70c357bcf181";
-        hash = "sha256-Fz1TMkgO9dQRRqgTYt/6MzseKlBWB+E1T1trsXQkSm0=";
-      };
-      cargoDeps = prev.rustPlatform.fetchCargoTarball {
-        inherit src;
-        name = "${old.pname}-${version}";
-        hash = "sha256-AXZxnsbkQwl+o/DQyQljfNrienDTt+UYci2CbXLI5oU=";
-      };
-    });
-
-    # add MIME type for Teams link association
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
       desktopItems = [
         (prev.makeDesktopItem {
