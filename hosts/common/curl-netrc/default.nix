@@ -24,7 +24,7 @@
         nix = prev.nix.override {
           inherit git curl;
         };
-        nix-eval-jobs = prev.nix-eval.jobs.override {
+        nix-eval-jobs = prev.nix-eval-jobs.override {
           inherit curl;
         };
       })
