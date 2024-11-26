@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
     ../common/users/mhelton
     ../common/nixos.nix
     ../common/docker.nix
@@ -12,7 +13,7 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
-  networking.hostName = "imubit-morganh-dell";
+  networking.hostName = "L-MHELTON";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

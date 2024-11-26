@@ -256,12 +256,12 @@
               ];
             });
 
-          imubit-morganh-dell =
+          L-MHELTON =
             withSystem "x86_64-linux" ({ pkgs, ... }: nixpkgs.lib.nixosSystem {
               inherit pkgs;
               specialArgs = { inherit inputs; };
               modules = (builtins.attrValues nixosModules) ++ [
-                ./hosts/imubit-morganh-dell
+                ./hosts/L-MHELTON
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
