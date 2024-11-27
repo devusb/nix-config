@@ -16,7 +16,7 @@
     terraform
     unrar
     zsh-nix-shell
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
     nil
     nixpkgs-fmt
     headsetcontrol
