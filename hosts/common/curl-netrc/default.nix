@@ -27,6 +27,13 @@
         nix-eval-jobs = prev.nix-eval-jobs.override {
           inherit curl;
         };
+        devenv = prev.devenv.override {
+          nixVersions = prev.nixVersions // {
+            nix_2_24 = prev.nixVersions.nix_2_24.override {
+              inherit git curl;
+            };
+          };
+        };
       })
   ];
 
