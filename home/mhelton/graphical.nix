@@ -13,6 +13,7 @@
     virt-manager
     kdePackages.kpmcore
     kdePackages.partitionmanager
+    calibre
   ] ++ lib.optionals (!stdenv.isAarch64) [
     zoom-us
     cider
