@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -50,13 +50,20 @@
   services.xserver = {
     enable = true;
     exportConfiguration = true;
-    videoDrivers = [ "modesetting" ];
+    videoDrivers = lib.mkDefault [ "modesetting" ];
     deviceSection = ''
       Option "VariableRefresh" "true"
     '';
   };
   hardware.graphics = {
     enable = true;
+  };
+  specialisation.amdvlk.configuration = {
+    hardware.amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
+    services.xserver.videoDrivers = [ "amdgpu" ];
   };
 
   # Plasma
