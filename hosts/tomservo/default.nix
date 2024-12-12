@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,6 +7,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    inputs.chaotic.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -64,6 +65,12 @@
       support32Bit.enable = true;
     };
     services.xserver.videoDrivers = [ "amdgpu" ];
+  };
+  specialisation.mesa-git.configuration = {
+    chaotic.mesa-git = {
+      enable = true;
+      fallbackSpecialisation = false;
+    };
   };
 
   # Plasma

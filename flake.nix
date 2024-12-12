@@ -93,6 +93,10 @@
     # sentinelone
     sentinelone.url = "github:devusb/sentinelone.nix";
     sentinelone.inputs.nixpkgs.follows = "nixpkgs";
+
+    # chaotic-nyx
+    chaotic.url = "github:chaotic-cx/nyx";
+    chaotic.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, flake-parts, nixvim, ... }@inputs:
