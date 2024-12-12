@@ -58,7 +58,6 @@
 
     # colmena
     colmena.url = "github:zhaofengli/colmena";
-    colmena.inputs.nixpkgs.follows = "nixpkgs";
     colmena.inputs.flake-utils.follows = "utils";
     colmena.inputs.flake-compat.follows = "flake-compat";
 
