@@ -1,0 +1,27 @@
+diff --git a/src/compiler/spirv/vtn_cfg.c b/src/compiler/spirv/vtn_cfg.c
+index 78043e2686c..db9b76c0ba6 100644
+--- a/src/compiler/spirv/vtn_cfg.c
++++ b/src/compiler/spirv/vtn_cfg.c
+@@ -720,6 +720,7 @@ vtn_emit_cf_func_unstructured(struct vtn_builder *b, struct vtn_function *func,
+          break;
+       }
+
++      case SpvOpTerminateInvocation:
+       case SpvOpKill: {
+          nir_discard(&b->nb);
+          nir_goto(&b->nb, b->func->nir_func->impl->end_block);
+diff --git a/src/compiler/spirv/vtn_structured_cfg.c b/src/compiler/spirv/vtn_structured_cfg.c
+index cbd2676e46a..478c28aa90a 100644
+--- a/src/compiler/spirv/vtn_structured_cfg.c
++++ b/src/compiler/spirv/vtn_structured_cfg.c
+@@ -974,9 +974,8 @@ branch_type_for_terminator(struct vtn_builder *b, struct vtn_block *block)
+
+    switch (block->branch[0] & SpvOpCodeMask) {
+    case SpvOpKill:
+-      return vtn_branch_type_discard;
+    case SpvOpTerminateInvocation:
+-      return vtn_branch_type_terminate_invocation;
++      return vtn_branch_type_discard;
+    case SpvOpIgnoreIntersectionKHR:
+       return vtn_branch_type_ignore_intersection;
+    case SpvOpTerminateRayKHR:

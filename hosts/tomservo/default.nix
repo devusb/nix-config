@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,6 +7,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    inputs.chaotic.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
@@ -65,6 +66,26 @@
     };
     services.xserver.videoDrivers = [ "amdgpu" ];
   };
+  specialisation.mesa-git.configuration = {
+    chaotic.mesa-git = {
+      enable = true;
+      fallbackSpecialisation = false;
+    };
+  };
+  nixpkgs.overlays = [
+    (final: prev: {
+      mesa_git = prev.mesa_git.overrideAttrs (old: {
+        patches = old.patches ++ [
+          ./indy-eyes.patch
+        ];
+      });
+      mesa32_git = prev.mesa32_git.overrideAttrs (old: {
+        patches = old.patches ++ [
+          ./indy-eyes.patch
+        ];
+      });
+    })
+  ];
 
   # Plasma
   services.displayManager.sddm = {
