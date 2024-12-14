@@ -59,33 +59,25 @@
   hardware.graphics = {
     enable = true;
   };
-  specialisation.amdvlk.configuration = {
-    hardware.amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
-    services.xserver.videoDrivers = [ "amdgpu" ];
-  };
-  specialisation.mesa-git.configuration = {
-    chaotic.mesa-git = {
-      enable = true;
-      fallbackSpecialisation = false;
-    };
-  };
   nixpkgs.overlays = [
     (final: prev: {
       mesa_git = prev.mesa_git.overrideAttrs (old: {
-        patches = old.patches ++ [
-          ./indy-eyes.patch
-        ];
+        version = "0-unstable-2024-12-13";
+        src = old.src.override {
+          rev = "0f46c53b0ceae4c074110c8e2d9a3c485ea90c39";
+          hash = "sha256-wPj2D1zgv9svdH3is6ECLZ21RT920dkCWzIzl72v6Pg=";
+        };
       });
       mesa32_git = prev.mesa32_git.overrideAttrs (old: {
-        patches = old.patches ++ [
-          ./indy-eyes.patch
-        ];
+        version = "0-unstable-2024-12-13";
+        src = old.src.override {
+          rev = "0f46c53b0ceae4c074110c8e2d9a3c485ea90c39";
+          hash = "sha256-wPj2D1zgv9svdH3is6ECLZ21RT920dkCWzIzl72v6Pg=";
+        };
       });
     })
   ];
+  chaotic.mesa-git.enable = true;
 
   # Plasma
   services.displayManager.sddm = {
