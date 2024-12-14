@@ -39,13 +39,11 @@ in
 
   # python packages
   pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [
-    (
-      self: super: {
-        # timedb
-        timedb = pkgs.python3Packages.callPackage ./timedb { };
+    (self: super: {
+      # timedb
+      timedb = pkgs.python3Packages.callPackage ./timedb { };
 
-      }
-    )
+    })
   ];
 
 }

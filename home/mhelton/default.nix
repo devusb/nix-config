@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./zsh.nix
     ./packages.nix
@@ -7,7 +8,8 @@
   home = {
     username = "mhelton";
     stateVersion = "21.11";
-    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+    homeDirectory =
+      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
     sessionVariables = {
       EDITOR = "nvim";
     };

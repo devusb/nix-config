@@ -1,4 +1,9 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -119,10 +124,12 @@
   services.sunshine =
     let
       sunshine' = pkgs.sunshine.overrideAttrs (old: {
-        postPatch = old.postPatch + ''
-          substituteInPlace src/platform/linux/misc.cpp \
-            --replace-fail '(xdg-open' '(${lib.getExe' pkgs.xdg-utils "xdg-open" }'
-        '';
+        postPatch =
+          old.postPatch
+          + ''
+            substituteInPlace src/platform/linux/misc.cpp \
+              --replace-fail '(xdg-open' '(${lib.getExe' pkgs.xdg-utils "xdg-open"}'
+          '';
       });
     in
     {

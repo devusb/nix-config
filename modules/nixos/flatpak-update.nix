@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.services.flatpak.autoUpdate;
@@ -16,23 +21,22 @@ in
     };
   };
 
-  config =
-    mkIf cfg.enable {
-      systemd.services.flatpak-autoupdate = {
-        description = "updating installed Flatpaks";
-        serviceConfig.Type = "oneshot";
-        script = ''
-          ${pkgs.flatpak}/bin/flatpak update -y
-        '';
-      };
-
-      systemd.timers.flatpak-autoupdate = {
-        description = "updating installed flatpaks";
-        timerConfig = {
-          OnCalendar = cfg.schedule;
-          Persistent = true;
-        };
-        wantedBy = [ "timers.target" ];
-      };
+  config = mkIf cfg.enable {
+    systemd.services.flatpak-autoupdate = {
+      description = "updating installed Flatpaks";
+      serviceConfig.Type = "oneshot";
+      script = ''
+        ${pkgs.flatpak}/bin/flatpak update -y
+      '';
     };
+
+    systemd.timers.flatpak-autoupdate = {
+      description = "updating installed flatpaks";
+      timerConfig = {
+        OnCalendar = cfg.schedule;
+        Persistent = true;
+      };
+      wantedBy = [ "timers.target" ];
+    };
+  };
 }

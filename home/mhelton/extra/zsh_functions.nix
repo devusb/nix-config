@@ -1,4 +1,5 @@
-{ pkgs, ... }: ''
+{ pkgs, ... }:
+''
   nr() {
       local flag_x86 flag_stable
       local usage=(

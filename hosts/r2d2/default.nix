@@ -2,23 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, lib, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-      inputs.disko.nixosModules.disko
-      inputs.lanzaboote.nixosModules.lanzaboote
-      (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
-      inputs.sops-nix.nixosModules.sops
-      ../common/users/mhelton
-      ../common/nixos.nix
-      ../common/steam.nix
-      ../common/_1password.nix
-      ../common/docker.nix
-    ];
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+    inputs.disko.nixosModules.disko
+    inputs.lanzaboote.nixosModules.lanzaboote
+    (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
+    inputs.sops-nix.nixosModules.sops
+    ../common/users/mhelton
+    ../common/nixos.nix
+    ../common/steam.nix
+    ../common/_1password.nix
+    ../common/docker.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -33,13 +37,15 @@
     options snd_hda_intel power_save=1
   '';
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPatches = [{
-    name = "amdgpu-psr-vblank";
-    patch = pkgs.fetchpatch2 {
-      url = "https://gitlab.freedesktop.org/-/project/4522/uploads/fb09dab585cdf987115e330f93a41c23/0001-drm-amd-display-WIP-increase-vblank-off-delay.patch";
-      hash = "sha256-8aAsxHtTgAdm8+bRxOZo/uaCQo9a8rn4snKWV3VWIJY=";
-    };
-  }];
+  boot.kernelPatches = [
+    {
+      name = "amdgpu-psr-vblank";
+      patch = pkgs.fetchpatch2 {
+        url = "https://gitlab.freedesktop.org/-/project/4522/uploads/fb09dab585cdf987115e330f93a41c23/0001-drm-amd-display-WIP-increase-vblank-off-delay.patch";
+        hash = "sha256-8aAsxHtTgAdm8+bRxOZo/uaCQo9a8rn4snKWV3VWIJY=";
+      };
+    }
+  ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
@@ -103,4 +109,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

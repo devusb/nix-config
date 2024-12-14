@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./kitty.nix
@@ -104,7 +105,14 @@
     settings = {
       ui = {
         pager = "${pkgs.lib.getExe pkgs.delta}";
-        diff.tool = [ "${pkgs.lib.getExe pkgs.difftastic}" "--color=always" "--background=light" "--display=side-by-side-show-both" "$left" "$right" ];
+        diff.tool = [
+          "${pkgs.lib.getExe pkgs.difftastic}"
+          "--color=always"
+          "--background=light"
+          "--display=side-by-side-show-both"
+          "$left"
+          "$right"
+        ];
       };
     };
   };

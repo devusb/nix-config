@@ -10,7 +10,6 @@
     chiaki4deck
   ];
 
-
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;

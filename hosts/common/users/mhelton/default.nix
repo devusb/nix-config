@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   users.users = {
     mhelton = {
       isNormalUser = true;
@@ -7,7 +8,15 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHD+tZ4hf4MhEW+akoZbXPN3Zi4cijSkQlX6bZlnV+Aq mhelton@gmail.com"
       ];
       # Be sure to add any other groups you need
-      extraGroups = [ "wheel" "podman" "libvirtd" "networkmanager" "keys" "input" "dialout" ];
+      extraGroups = [
+        "wheel"
+        "podman"
+        "libvirtd"
+        "networkmanager"
+        "keys"
+        "input"
+        "dialout"
+      ];
     };
   };
 }

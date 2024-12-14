@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -7,7 +13,11 @@
     shellAliases = {
       ga-intent = "${pkgs.git}/bin/git add --intent-to-add";
       grm-cache = "${pkgs.git}/bin/git rm --cached";
-      update = if pkgs.stdenv.isDarwin then "darwin-rebuild switch --flake $DOTFILES" else "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
+      update =
+        if pkgs.stdenv.isDarwin then
+          "darwin-rebuild switch --flake $DOTFILES"
+        else
+          "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
       update-boot = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild boot --use-remote-sudo --flake $DOTFILES";
       kb = "${pkgs.kubectl}/bin/kubectl";
       cat = "${pkgs.bat}/bin/bat --paging=always";
@@ -23,19 +33,21 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtra = ''
-      autoload -U +X bashcompinit && bashcompinit
-      complete -o nospace -C vault vault
-      setopt prompt_sp
-      if [ -e ~/.env ]; then
-      source ~/.env
-      fi
-      source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
-      bindkey "\e[1;3D" backward-word
-      bindkey "\e[1;3C" forward-word
-      bindkey "\e[1;5D" backward-word
-      bindkey "\e[1;5C" forward-word
-    '' + import ./extra/zsh_functions.nix { inherit pkgs; };
+    initExtra =
+      ''
+        autoload -U +X bashcompinit && bashcompinit
+        complete -o nospace -C vault vault
+        setopt prompt_sp
+        if [ -e ~/.env ]; then
+        source ~/.env
+        fi
+        source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+        bindkey "\e[1;3D" backward-word
+        bindkey "\e[1;3C" forward-word
+        bindkey "\e[1;5D" backward-word
+        bindkey "\e[1;5C" forward-word
+      ''
+      + import ./extra/zsh_functions.nix { inherit pkgs; };
   };
   programs.keychain = {
     enable = true;

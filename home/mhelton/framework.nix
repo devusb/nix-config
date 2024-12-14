@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   xdg.dataFile = {
     "kwin/scripts/firefoxsize/contents/code/main.js".text = ''
       var firefoxWidth = 1682;
