@@ -1,23 +1,27 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./plasma.nix
   ];
 
-  home.packages = with pkgs; [
-    xclip
-    wl-clipboard
-    obsidian
-    jellyfin-media-player
-    delfin
-    haruna
-    virt-manager
-    kdePackages.kpmcore
-    kdePackages.partitionmanager
-    calibre
-  ] ++ lib.optionals (!stdenv.isAarch64) [
-    zoom-us
-    cider
-  ];
+  home.packages =
+    with pkgs;
+    [
+      xclip
+      wl-clipboard
+      obsidian
+      jellyfin-media-player
+      delfin
+      haruna
+      virt-manager
+      kdePackages.kpmcore
+      kdePackages.partitionmanager
+      calibre
+    ]
+    ++ lib.optionals (!stdenv.isAarch64) [
+      zoom-us
+      cider
+    ];
 
   programs.firefox = {
     enable = true;

@@ -15,7 +15,11 @@ let
           icon = old.pname;
           desktopName = "Microsoft Teams for Linux";
           comment = old.meta.description;
-          categories = [ "Network" "InstantMessaging" "Chat" ];
+          categories = [
+            "Network"
+            "InstantMessaging"
+            "Chat"
+          ];
           mimeTypes = [
             "x-scheme-handler/msteams"
           ];
@@ -38,4 +42,7 @@ let
     ];
   };
 in
-inputs.nixpkgs.lib.composeManyExtensions [ customPkgs modifications ]
+inputs.nixpkgs.lib.composeManyExtensions [
+  customPkgs
+  modifications
+]

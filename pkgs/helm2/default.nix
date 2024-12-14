@@ -1,4 +1,10 @@
-{ lib, stdenvNoCC, version, hash, autoPatchelfHook }:
+{
+  lib,
+  stdenvNoCC,
+  version,
+  hash,
+  autoPatchelfHook,
+}:
 let
   arches = {
     aarch64-darwin = "darwin-amd64";
@@ -25,8 +31,11 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   meta = with lib; {
-    platforms = [ "aarch64-darwin" "x86_64-linux" "x86_64-darwin" ];
+    platforms = [
+      "aarch64-darwin"
+      "x86_64-linux"
+      "x86_64-darwin"
+    ];
     mainProgram = "helm${version}";
   };
 }
-

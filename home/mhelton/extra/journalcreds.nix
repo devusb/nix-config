@@ -1,4 +1,6 @@
-{ pkgs }: with pkgs; ''
+{ pkgs }:
+with pkgs;
+''
   journalcreds() {
       local arg_role=(superuser)
       local usage=(

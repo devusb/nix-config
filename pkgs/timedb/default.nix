@@ -1,15 +1,16 @@
-{ buildPythonPackage
-, pythonRelaxDepsHook
-, psycopg2
-, pandas
-, numpy
-, six
-, pypika
-, yoyo-migrations
-, docopt
-, pytimeparse
-, packaging
-, pbr
+{
+  buildPythonPackage,
+  pythonRelaxDepsHook,
+  psycopg2,
+  pandas,
+  numpy,
+  six,
+  pypika,
+  yoyo-migrations,
+  docopt,
+  pytimeparse,
+  packaging,
+  pbr,
 }:
 
 buildPythonPackage rec {

@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [
     inputs.nix-packages.darwinModules.default
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -9,7 +15,10 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = false;
       warn-dirty = false;
       trusted-users = [ "mhelton" ];
