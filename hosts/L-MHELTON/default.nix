@@ -54,11 +54,6 @@
     email = "morgan.helton@imubit.com";
   };
 
-  environment.systemPackages = with pkgs; [
-    google-chrome
-    slack
-    teams-for-linux
-  ];
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;

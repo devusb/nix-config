@@ -17,6 +17,8 @@
       kdePackages.kpmcore
       kdePackages.partitionmanager
       calibre
+      google-chrome
+      slack
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
