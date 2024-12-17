@@ -103,9 +103,7 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
-  systemd.user.services.sunshine.path = with pkgs; [
-    xdg-utils
-  ];
+  systemd.user.services.sunshine.environment.PATH = lib.mkForce null;
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
