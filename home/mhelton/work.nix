@@ -90,4 +90,18 @@ in
     };
   };
 
+  programs.nixvim = {
+    plugins.codeium-nvim = {
+      enable = true;
+      settings = {
+        virtual_text = {
+          enabled = true;
+        };
+      };
+    };
+    plugins.cmp.settings.sources = [
+      { name = "codeium"; }
+    ];
+  };
+
 }
