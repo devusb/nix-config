@@ -33,7 +33,6 @@
   hardware.bluetooth.enable = true;
 
   services.automatic-timezoned.enable = false;
-  time.timeZone = "US/Central";
 
   services.openssh = {
     enable = true;
