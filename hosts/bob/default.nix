@@ -5,7 +5,6 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }:
 {
@@ -34,10 +33,11 @@
     wifi.powersave = false;
     wifi.backend = "iwd";
   };
-  services.geoclue2.enableWifi = false;
   hardware.bluetooth = {
     enable = true;
   };
+
+  services.automatic-timezoned.enable = false;
 
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";
