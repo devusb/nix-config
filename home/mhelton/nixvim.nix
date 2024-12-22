@@ -128,6 +128,10 @@
       key = "<S-Tab>";
       action = "<CMD>bp<CR>";
     }
+    {
+      key = "<leader>d";
+      action = "<CMD>lua print(vim.inspect(vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })))<CR>";
+    }
   ];
   autoCmd = [
     {
