@@ -7,6 +7,15 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
+    awscli2 = prev.awscli2.overrideAttrs (old: {
+      postPatch =
+        old.postPatch
+        + ''
+          substituteInPlace pyproject.toml \
+            --replace-fail 'flit_core>=3.7.1,<3.9.1' 'flit_core>=3.7.1'
+        '';
+    });
+
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
       desktopItems = [
         (prev.makeDesktopItem {
