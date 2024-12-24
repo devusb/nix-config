@@ -103,14 +103,10 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
-  systemd.user.services.sunshine.environment.PATH = lib.mkForce null;
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
     openFirewall = true;
-    package = pkgs.sunshine.override {
-      boost = pkgs.boost185;
-    };
     applications = {
       env = {
         PATH = "$(PATH):$(HOME)/.local/bin";
