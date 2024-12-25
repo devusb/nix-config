@@ -22,6 +22,12 @@ let
       };
     };
 
+    lutris = prev.lutris.override {
+      lutris-unwrapped = prev.lutris-unwrapped.override {
+        xboxdrv = final.stable.xboxdrv;
+      };
+    };
+
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
       desktopItems = [
         (prev.makeDesktopItem {
