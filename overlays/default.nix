@@ -16,6 +16,12 @@ let
         '';
     });
 
+    heroic = prev.heroic.override {
+      heroic-unwrapped = prev.heroic-unwrapped.override {
+        electron = prev.electron_31-bin;
+      };
+    };
+
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
       desktopItems = [
         (prev.makeDesktopItem {
