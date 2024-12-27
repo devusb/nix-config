@@ -7,15 +7,6 @@ let
     mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
-    awscli2 = prev.awscli2.overrideAttrs (old: {
-      postPatch =
-        old.postPatch
-        + ''
-          substituteInPlace pyproject.toml \
-            --replace-fail 'flit_core>=3.7.1,<3.9.1' 'flit_core>=3.7.1'
-        '';
-    });
-
     heroic = prev.heroic.override {
       heroic-unwrapped = prev.heroic-unwrapped.override {
         electron = prev.electron_31-bin;
