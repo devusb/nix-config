@@ -57,7 +57,6 @@ in
     kubectl-cnpg
     kubent
     kubectl-gadget
-    kubie
     pg_activity
     diffr
     vkv
@@ -82,12 +81,6 @@ in
   programs.starship.settings = {
     kubernetes.disabled = false;
     aws.disabled = false;
-  };
-
-  home.file.".kube/kubie.yaml" = {
-    source = yamlFormat.generate "kubie-config" {
-      prompt.disable = true;
-    };
   };
 
   programs.nixvim = {
