@@ -76,13 +76,6 @@
     enable = true;
   };
 
-  programs.zellij = {
-    enable = true;
-    settings = {
-      default_mode = "locked";
-    };
-  };
-
   programs.tmux = {
     enable = true;
     mouse = true;
