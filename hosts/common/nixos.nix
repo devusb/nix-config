@@ -19,6 +19,7 @@
       ];
       auto-optimise-store = true;
       warn-dirty = false;
+      accept-flake-config = false;
       trusted-users = [ "mhelton" ];
       substituters = [
         "https://nix-community.cachix.org"

@@ -21,6 +21,7 @@
       ];
       auto-optimise-store = false;
       warn-dirty = false;
+      accept-flake-config = false;
       trusted-users = [ "mhelton" ];
     };
 
