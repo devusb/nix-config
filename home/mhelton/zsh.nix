@@ -24,6 +24,8 @@
       ts = "${lib.getExe pkgs.tailscale}";
       gl = "${lib.getExe pkgs.git} log -p --ext-diff";
       watch = "${lib.getExe pkgs.watch} --color ";
+      t = "${lib.getExe pkgs.tmux}";
+      ta = "${lib.getExe pkgs.tmux} attach";
     };
     history = {
       size = 10000;
