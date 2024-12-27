@@ -83,6 +83,11 @@
     };
   };
 
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+  };
+
   programs.git = {
     enable = true;
     extraConfig = {
