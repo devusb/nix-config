@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  clipboard = {
-    register = "unnamedplus";
-  };
   viAlias = true;
   vimAlias = true;
   globals.mapleader = ",";
@@ -131,6 +128,10 @@
     {
       key = "<leader>d";
       action = "<CMD>lua print(vim.inspect(vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })))<CR>";
+    }
+    {
+      key = "<leader>y";
+      action = ''"+y'';
     }
   ];
   autoCmd = [
