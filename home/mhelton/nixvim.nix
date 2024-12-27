@@ -46,7 +46,12 @@
     lsp = {
       enable = true;
       servers = {
-        nil_ls.enable = true;
+        nil_ls = {
+          enable = true;
+          settings = {
+            nix.flake.autoArchive = true;
+          };
+        };
         terraformls.enable = true;
         gopls.enable = true;
         pyright.enable = true;
