@@ -9,7 +9,11 @@ let
 
     heroic = prev.heroic.override {
       heroic-unwrapped = prev.heroic-unwrapped.override {
-        electron = prev.electron_31-bin;
+        electron = prev.electron_31.override {
+          electron-unwrapped = prev.electron_31.unwrapped.overrideAttrs (old: {
+            env.NIX_CFLAGS_COMPILE = "-Wno-unknown-warning-option -Wno-error=incompatible-pointer-types -Wno-error=missing-template-arg-list-after-template-kw";
+          });
+        };
       };
     };
 
