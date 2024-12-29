@@ -91,7 +91,6 @@
 
     # sentinelone
     sentinelone.url = "github:devusb/sentinelone.nix";
-    sentinelone.inputs.nixpkgs.follows = "nixpkgs";
 
     # chaotic-nyx
     chaotic.url = "github:chaotic-cx/nyx";

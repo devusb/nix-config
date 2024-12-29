@@ -1076,6 +1076,18 @@
     },
     "nixpkgs_8": {
       "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-Xi8ST/QiyuYXc3ujnMYOBuRUaMh6p16XWH6BKARa7xQ=",
+        "path": "/nix/store/bnyc9xaix6gvbfc5z2jai1xxms6zamv2-source",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_9": {
+      "locked": {
         "lastModified": 1733097829,
         "narHash": "sha256-9hbb1rqGelllb4kVUCZ307G2k3/UhmA8PPGBoyuWaSw=",
         "owner": "nixos",
@@ -1267,9 +1279,7 @@
     },
     "sentinelone": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1732133146,
@@ -1437,7 +1447,7 @@
     },
     "treefmt-nix_3": {
       "inputs": {
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1735135567,
