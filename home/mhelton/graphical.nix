@@ -18,7 +18,6 @@
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
-      cider
     ];
 
   programs.firefox = {
