@@ -94,7 +94,6 @@
 
     # chaotic-nyx
     chaotic.url = "github:chaotic-cx/nyx";
-    chaotic.inputs.nixpkgs.follows = "nixpkgs";
 
     # treefmt-nix
     treefmt-nix.url = "github:numtide/treefmt-nix";
