@@ -79,6 +79,7 @@
         autoSuspend = {
           action = "nothing";
         };
+        dimDisplay.enable = false;
       };
       battery = {
         autoSuspend = {
