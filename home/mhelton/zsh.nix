@@ -91,6 +91,8 @@
       sync_frequency = "5m";
       search_mode = "fulltext";
       sync.records = true;
+      style = "auto";
+      inline_height = 0;
     };
   };
   programs.direnv = {
