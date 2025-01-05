@@ -8,6 +8,7 @@
     moonlight-qt
     heroic
     chiaki4deck
+    dreamm
   ];
 
   programs.mangohud = {
