@@ -174,7 +174,14 @@
                 };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
                   lib.genAttrs (machinesPerSystem.${system} or [ ]) (
-                    name: self.nixosConfigurations.${name}.config.system.build.toplevel
+                    name:
+                    let
+                      nixosConfiguration = self.nixosConfigurations.${name}.extendModules {
+                        modules = [
+                        ];
+                      };
+                    in
+                    nixosConfiguration.config.system.build.toplevel
                   )
                 );
               in
