@@ -2,7 +2,6 @@
   lib,
   pkgs,
   inputs,
-  config,
   ...
 }:
 {
@@ -14,8 +13,6 @@
     ../common/docker.nix
     inputs.disko.nixosModules.disko
     (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
-    inputs.p81.nixosModules.perimeter81
-    inputs.sentinelone.nixosModules.sentinelone
     inputs.sops-nix.nixosModules.sops
   ];
 
@@ -39,18 +36,11 @@
     openFirewall = false;
   };
   services.tailscale.enable = lib.mkForce false;
-  services.perimeter81.enable = true;
 
-  sops = {
-    secrets.s1_mgmt_token = {
-      sopsFile = ../../secrets/sentinelone.yaml;
-    };
-  };
-  services.sentinelone = {
+  services.work = {
     enable = true;
-    serialNumber = "8908DB3";
-    sentinelOneManagementTokenPath = config.sops.secrets.s1_mgmt_token.path;
-    email = "morgan.helton@imubit.com";
+    sentinelOneSerial = "8908DB3";
+    sentinelOneEmail = "morgan.helton@imubit.com";
   };
 
   environment.systemPackages = with pkgs; [

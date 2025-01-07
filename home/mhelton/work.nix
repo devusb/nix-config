@@ -1,15 +1,21 @@
-{ config, pkgs, ... }:
+{
+  config,
+  osConfig,
+  pkgs,
+  lib,
+  ...
+}:
 with pkgs;
 let
   python-packages =
-    pp: with pp; [
+    pp:
+    with pp;
+    [
       pyyaml
       boto3
-      timedb
-    ];
+    ]
+    ++ lib.optionals osConfig.services.work.enable [ timedb ];
   python-with-packages = python3.withPackages python-packages;
-
-  yamlFormat = formats.yaml { };
 in
 {
   programs.git = {

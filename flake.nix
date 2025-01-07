@@ -170,6 +170,7 @@
                     "r2d2"
                     "bob"
                     "durandal"
+                    "L-MHELTON"
                   ];
                 };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
@@ -178,6 +179,7 @@
                     let
                       nixosConfiguration = self.nixosConfigurations.${name}.extendModules {
                         modules = [
+                          { services.work.enable = lib.mkForce false; }
                         ];
                       };
                     in
