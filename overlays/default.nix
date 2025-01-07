@@ -27,6 +27,15 @@ let
       ];
     });
 
+    # https://github.com/NixOS/nixpkgs/issues/371488
+    zoom-us = prev.zoom-us.overrideAttrs rec {
+      version = "6.2.11.5069";
+      src = prev.fetchurl {
+        url = "https://zoom.us/client/${version}/zoom_x86_64.pkg.tar.xz";
+        hash = "sha256-k8T/lmfgAFxW1nwEyh61lagrlHP5geT2tA7e5j61+qw=";
+      };
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
