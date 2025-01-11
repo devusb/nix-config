@@ -27,6 +27,15 @@ let
       ];
     });
 
+    # https://codeberg.org/avery42/delfin/pulls/142
+    delfin = prev.delfin.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [
+        (prev.fetchpatch2 {
+          url = "https://codeberg.org/avery42/delfin/commit/015e910b6fd2336d1fb153ad9209c7f4f322d37f.diff";
+          hash = "sha256-GQk8bPO6RVW8DuZn837cXAqM7dtcgDNTckf7vngU3YY=";
+        })
+      ];
+    });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
