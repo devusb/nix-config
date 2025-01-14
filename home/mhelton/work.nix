@@ -94,7 +94,7 @@ in
       enable = true;
       settings = {
         virtual_text = {
-          enabled = true;
+          enabled = false;
         };
       };
     };
