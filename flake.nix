@@ -83,7 +83,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Jovian-NixOS
-    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS/greeter-cleanups";
 
     # p81
     p81.url = "github:devusb/p81.nix";
