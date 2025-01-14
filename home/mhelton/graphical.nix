@@ -15,6 +15,7 @@
       haruna
       virt-manager
       calibre
+      kde-rounded-corners
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us

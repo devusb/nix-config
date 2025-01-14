@@ -90,7 +90,6 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kde-rounded-corners
     sbctl
   ];
   programs.kdeconnect.enable = true;
