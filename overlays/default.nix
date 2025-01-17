@@ -37,14 +37,6 @@ let
       ];
     });
 
-    kde-rounded-corners = prev.kde-rounded-corners.overrideAttrs (old: rec {
-      version = "0.7.0";
-      srv = old.src.override {
-        rev = "v${version}";
-        hash = "sha256-6uSgYFY+JV8UCy3j9U/hjk6wJpD1XqpnXBqmKVi/2W0=";
-      };
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
