@@ -37,6 +37,10 @@ let
       ];
     });
 
+    sunshine = prev.sunshine.override {
+      boost = prev.boost186;
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
