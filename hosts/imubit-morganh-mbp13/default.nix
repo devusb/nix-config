@@ -10,6 +10,8 @@
 
   networking.hostName = "imubit-morganh-mbp13";
 
+  services.work.enable = true;
+
   homebrew.casks = [
     "dbeaver-community"
     "microsoft-remote-desktop"

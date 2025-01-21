@@ -203,6 +203,7 @@
           };
 
           nixosModules = import ./modules/nixos;
+          darwinModules = import ./modules/darwin;
 
           nixosConfigurations = {
             tomservo = withSystem "x86_64-linux" (
@@ -342,7 +343,7 @@
               { pkgs, ... }:
               darwin.lib.darwinSystem {
                 specialArgs = { inherit inputs; };
-                modules = [
+                modules = (builtins.attrValues darwinModules) ++ [
                   { nixpkgs.pkgs = pkgs; }
                   ./hosts/imubit-morganh-mbp13
                   home-manager.darwinModules.home-manager
