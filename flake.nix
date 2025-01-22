@@ -164,7 +164,7 @@
 
             checks =
               let
-                machinesPerSystem = {
+                nixosMachinesPerSystem = {
                   x86_64-linux = [
                     "tomservo"
                     "r2d2"
@@ -173,8 +173,13 @@
                     "L-MHELTON"
                   ];
                 };
+                darwinMachinesPerSystem = {
+                  aarch64-darwin = [
+                    "imubit-morganh-mbp13"
+                  ];
+                };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
-                  lib.genAttrs (machinesPerSystem.${system} or [ ]) (
+                  lib.genAttrs (nixosMachinesPerSystem.${system} or [ ]) (
                     name:
                     let
                       nixosConfiguration = self.nixosConfigurations.${name}.extendModules {
@@ -186,11 +191,25 @@
                     nixosConfiguration.config.system.build.toplevel
                   )
                 );
+                darwinMachines = lib.mapAttrs' (n: lib.nameValuePair "darwin-${n}") (
+                  lib.genAttrs (darwinMachinesPerSystem.${system} or [ ]) (
+                    name:
+                    let
+                      darwinConfiguration = self.darwinConfigurations.${name}._module.args.extendModules {
+                        modules = [
+                          { services.work.enable = lib.mkForce false; }
+                        ];
+                      };
+                    in
+                    darwinConfiguration.config.system.build.toplevel
+                  )
+                );
               in
               {
                 nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
               }
-              // nixosMachines;
+              // nixosMachines
+              // darwinMachines;
 
             packages = {
               nvim = nixvim'.makeNixvimWithModule nixvimModule;
