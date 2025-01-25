@@ -94,6 +94,9 @@
     gitblame = {
       enable = true;
     };
+    markview = {
+      enable = true;
+    };
   };
   extraPackages = with pkgs; [
     ripgrep
