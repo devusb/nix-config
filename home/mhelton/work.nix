@@ -71,6 +71,7 @@ in
     jira-cli-go
     clickhouse
     gitlab-ci-local
+    skopeo
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
