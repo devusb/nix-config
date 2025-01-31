@@ -64,8 +64,6 @@
   hardware.graphics = {
     enable = true;
   };
-  chaotic.mesa-git.enable = true;
-
   # Plasma
   services.displayManager.sddm = {
     enable = true;
