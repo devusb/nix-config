@@ -36,6 +36,11 @@
     tig
     git-absorb
     delta
+    kubectl
+    kubernetes-helm
+    k9s
+    kubectx
+    argocd
   ];
 
   programs.home-manager = {
