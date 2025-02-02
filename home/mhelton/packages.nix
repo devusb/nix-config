@@ -37,7 +37,11 @@
     git-absorb
     delta
     kubectl
-    kubernetes-helm
+    (wrapHelm kubernetes-helm {
+      plugins = with kubernetes-helmPlugins; [
+        helm-diff
+      ];
+    })
     k9s
     kubectx
     argocd
