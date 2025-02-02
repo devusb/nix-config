@@ -27,6 +27,14 @@ let
       ];
     });
 
+    # contains fix for https://github.com/derailed/k9s/issues/3044
+    k9s = prev.k9s.overrideAttrs (old: {
+      version = "0.32.7-unstable-2025-02-02";
+      src = old.src.override {
+        rev = "e27e293eb194af2e42898f278dcc16870fba3931";
+        hash = "sha256-Iy2S14pEm2jHgu8Pzscgf0JFaIRmYN55ze6kAd3n1l4=";
+      };
+      vendorHash = "sha256-3gYncdaQIzIa5fKqQbr3zqv9ln/4C3rcIzrwzeUEu5o=";
     });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
