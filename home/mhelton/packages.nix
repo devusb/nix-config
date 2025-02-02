@@ -41,6 +41,7 @@
     k9s
     kubectx
     argocd
+    talosctl
   ];
 
   programs.home-manager = {

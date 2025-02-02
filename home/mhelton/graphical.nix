@@ -15,6 +15,7 @@
       haruna
       virt-manager
       calibre
+      remmina
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us

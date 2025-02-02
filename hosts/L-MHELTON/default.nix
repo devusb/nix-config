@@ -46,7 +46,6 @@
   environment.systemPackages = with pkgs; [
     google-chrome
     slack
-    remmina
   ];
   xdg.portal = {
     enable = true;
