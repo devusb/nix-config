@@ -27,23 +27,15 @@ let
       ];
     });
 
-    # https://codeberg.org/avery42/delfin/pulls/142
-    delfin = prev.delfin.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [
-        (prev.fetchpatch2 {
-          url = "https://codeberg.org/avery42/delfin/commit/015e910b6fd2336d1fb153ad9209c7f4f322d37f.diff";
-          hash = "sha256-GQk8bPO6RVW8DuZn837cXAqM7dtcgDNTckf7vngU3YY=";
-        })
-      ];
+    # contains fix for https://github.com/derailed/k9s/issues/3044
+    k9s = prev.k9s.overrideAttrs (old: {
+      version = "0.32.7-unstable-2025-02-02";
+      src = old.src.override {
+        rev = "e27e293eb194af2e42898f278dcc16870fba3931";
+        hash = "sha256-Iy2S14pEm2jHgu8Pzscgf0JFaIRmYN55ze6kAd3n1l4=";
+      };
+      vendorHash = "sha256-3gYncdaQIzIa5fKqQbr3zqv9ln/4C3rcIzrwzeUEu5o=";
     });
-
-    sunshine = prev.sunshine.override {
-      boost = prev.boost186;
-    };
-
-    cemu = prev.cemu.override {
-      boost = prev.boost186;
-    };
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
