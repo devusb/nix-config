@@ -30,13 +30,16 @@ let
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
-        slack-sdk = super.slack-sdk.overrideAttrs (old: {
+        slack-sdk = super.slack-sdk.overridePythonAttrs (old: {
           disabledTests = old.disabledTests ++ [
             "test_web_client_http_retry"
             "test_web_client_http_retry_connection"
             "test_webhook_http_retry"
             "test_issue_690_oauth_v2_access"
           ];
+        });
+        weasyprint = super.weasyprint.overridePythonAttrs (old: {
+          doCheck = if prev.stdenv.hostPlatform.isDarwin then false else true;
         });
       })
     ];
