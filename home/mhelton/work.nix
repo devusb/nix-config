@@ -62,8 +62,6 @@ in
     pg_activity
     diffr
     vkv
-    presenterm
-    presenterm-export
     jira-cli-go
     clickhouse
     gitlab-ci-local
