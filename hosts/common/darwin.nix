@@ -14,6 +14,7 @@
   nixpkgs.system = "aarch64-darwin";
 
   nix = {
+    enable = true;
     settings = {
       experimental-features = [
         "nix-command"
@@ -78,8 +79,6 @@
       "deskpad"
     ];
   };
-
-  services.nix-daemon.enable = true;
 
   programs.zsh.enable = true;
 
