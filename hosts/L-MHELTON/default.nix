@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   inputs,
   ...
@@ -78,6 +79,9 @@
   # Graphical
   services.xserver = {
     enable = true;
+    videoDrivers = [
+      "modesetting"
+    ] ++ lib.optionals config.services.work.enable [ "displaylink" ];
   };
   hardware.graphics = {
     enable = true;
