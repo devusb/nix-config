@@ -6,8 +6,8 @@
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
       signByDefault = true;
+      format = "ssh";
     };
-    extraConfig.gpg.format = "ssh";
   };
 
   programs.jujutsu.settings = {
