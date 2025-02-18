@@ -100,4 +100,8 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
+  services.avahi = {
+    enable = true;
+  };
+
 }
