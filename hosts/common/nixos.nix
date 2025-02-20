@@ -64,6 +64,9 @@
     bottom
     htop
   ];
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   services.openssh = {
     enable = true;
