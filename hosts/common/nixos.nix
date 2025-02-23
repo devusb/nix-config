@@ -68,6 +68,27 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  services.udev.extraRules =
+    let
+      # swap rudder and throttle order for Wing Commander 3 (and potentially others)
+      remapJoystickAxes = pkgs.writeShellScriptBin "remap-axes.sh" ''
+        ${lib.getExe' pkgs.linuxConsoleTools "jscal"} -u 6,0,1,6,5,16,17,12,288,289,290,291,292,293,294,295,296,297,298,299 $1
+        ${lib.getExe' pkgs.linuxConsoleTools "jscal"} -s 6,1,0,448,574,1394427,1394427,1,0,448,574,1394427,1394427,1,0,112,142,5534582,5534582,1,0,112,142,-5534582,-5534582,1,0,0,0,536854528,536854528,1,0,0,0,536854528,536854528 $1
+      '';
+    in
+    ''
+      # Logitech G533
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a66", TAG+="uaccess"
+
+      # Logitech Extreme 3D pro
+      ACTION=="add", KERNEL=="js[0-9]*", ENV{ID_VENDOR_ID}=="046d", ENV{ID_MODEL_ID}=="c215", RUN+="${lib.getExe remapJoystickAxes} /dev/input/js%n"
+    '';
+
+  # keychron function keys
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
+
   services.openssh = {
     enable = true;
     openFirewall = lib.mkDefault false;
