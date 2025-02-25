@@ -82,7 +82,7 @@
 
   programs.zsh.enable = true;
 
-  security.pam.enableSudoTouchIdAuth = true; # enable TouchID for sudo
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.defaults = {
     dock = {
