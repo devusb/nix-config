@@ -22,6 +22,9 @@
 
   programs.firefox = {
     enable = true;
+    policies = {
+      disablePocket = true;
+    };
     nativeMessagingHosts = [
       pkgs.kdePackages.plasma-browser-integration
     ];
