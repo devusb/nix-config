@@ -19,6 +19,7 @@
         else
           "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
       update-boot = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild boot --use-remote-sudo --flake $DOTFILES";
+      update-test = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild test --use-remote-sudo --flake $DOTFILES";
       kb = "${lib.getExe pkgs.kubectl}";
       cat = "${lib.getExe pkgs.bat} --paging=always";
       ts = "${lib.getExe pkgs.tailscale}";
