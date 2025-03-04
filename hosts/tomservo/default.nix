@@ -14,6 +14,7 @@
     ../common/docker.nix
     ./ollama.nix
     inputs.chaotic.nixosModules.default
+    ../common/chromium-acceleration-revert.nix
   ];
 
   networking.hostName = "tomservo";
