@@ -36,6 +36,10 @@ let
         '';
     });
 
+    tailscale = prev.tailscale.overrideAttrs {
+      doCheck = !prev.stdenv.isDarwin;
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
