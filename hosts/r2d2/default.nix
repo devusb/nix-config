@@ -22,6 +22,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    ../common/chromium-acceleration-revert.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
