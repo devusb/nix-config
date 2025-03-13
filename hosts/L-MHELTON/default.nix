@@ -27,6 +27,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.swtpm.enable = true;
+    sshProxy = false;
+  };
+
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
