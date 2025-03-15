@@ -27,7 +27,15 @@ let
       ];
     });
 
-    });
+    kdePackages = prev.kdePackages.overrideScope (
+      kfinal: kprev: {
+        plasma-workspace = kprev.plasma-workspace.overrideAttrs (old: {
+          qtWrapperArgs = (old.qtWrapperArgs or [ ]) ++ [
+            "--inherit-argv0"
+          ];
+        });
+      }
+    );
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
