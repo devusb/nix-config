@@ -20,7 +20,6 @@
         "nix-command"
         "flakes"
       ];
-      auto-optimise-store = false;
       warn-dirty = false;
       accept-flake-config = false;
       trusted-users = [ "mhelton" ];
@@ -35,6 +34,7 @@
         Minute = 0;
       };
     };
+    optimise.automatic = true;
   };
 
   users.users = {
