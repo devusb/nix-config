@@ -27,18 +27,7 @@ let
       ];
     });
 
-    kitty = prev.kitty.overrideAttrs (old: {
-      preCheck =
-        old.preCheck
-        + ''
-          substituteInPlace kitty_tests/shell_integration.py \
-            --replace-fail test_fish_integration dont_test_fish_integration
-        '';
     });
-
-    tailscale = prev.tailscale.overrideAttrs {
-      doCheck = !prev.stdenv.isDarwin;
-    };
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
