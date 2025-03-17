@@ -27,14 +27,6 @@ let
       ];
     });
 
-    kdePackages = prev.kdePackages.overrideScope (
-      kfinal: kprev: {
-        kinfocenter = prev.kdePackages.kinfocenter.overrideAttrs {
-          qtWrapperArgs = [ "--inherit-argv0" ];
-        };
-      }
-    );
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
