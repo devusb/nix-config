@@ -27,6 +27,11 @@ let
       ];
     });
 
+    # needed for lix until https://gerrit.lix.systems/c/lix/+/2865 is merged
+    editline = prev.editline.overrideAttrs (old: {
+      patches = prev.lib.dropEnd 1 old.patches;
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
