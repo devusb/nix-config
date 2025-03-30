@@ -19,7 +19,6 @@
     zsh-nix-shell
     nerd-fonts.fira-code
     nil
-    nixpkgs-fmt
     headsetcontrol
     difftastic
     devenv
@@ -31,7 +30,6 @@
     nix-output-monitor
     tv-sony
     soco-cli
-    iodine
     fastfetch
     tig
     git-absorb
@@ -106,23 +104,6 @@
     difftastic = {
       enable = true;
       display = "side-by-side-show-both";
-    };
-  };
-
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      ui = {
-        pager = "${pkgs.lib.getExe pkgs.delta}";
-        diff.tool = [
-          "${pkgs.lib.getExe pkgs.difftastic}"
-          "--color=always"
-          "--background=light"
-          "--display=side-by-side-show-both"
-          "$left"
-          "$right"
-        ];
-      };
     };
   };
 
