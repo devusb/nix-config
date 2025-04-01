@@ -66,6 +66,7 @@ in
     clickhouse
     gitlab-ci-local
     skopeo
+    claude-code
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
