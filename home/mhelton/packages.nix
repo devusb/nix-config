@@ -44,6 +44,7 @@
     kubectx
     argocd
     talosctl
+    lnav
   ];
 
   programs.home-manager = {
