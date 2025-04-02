@@ -26,6 +26,12 @@ let
       ];
     });
 
+    mpack = prev.mpack.overrideAttrs (old: {
+      meta = old.meta // {
+        platforms = prev.lib.platforms.all;
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
