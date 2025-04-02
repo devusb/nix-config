@@ -52,10 +52,6 @@
     nix-packages.url = "github:devusb/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
 
-    # mpack
-    mpack.url = "github:league/mpack";
-    mpack.inputs.nixpkgs.follows = "nixpkgs";
-
     # colmena
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.flake-utils.follows = "utils";
@@ -91,9 +87,6 @@
 
     # sentinelone
     sentinelone.url = "github:devusb/sentinelone.nix";
-
-    # chaotic-nyx
-    chaotic.url = "github:chaotic-cx/nyx";
 
     # treefmt-nix
     treefmt-nix.url = "github:numtide/treefmt-nix";
