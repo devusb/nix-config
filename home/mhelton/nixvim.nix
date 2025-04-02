@@ -7,6 +7,9 @@
     number = true;
     foldlevelstart = 99;
   };
+  diagnostics = {
+    virtual_lines = true;
+  };
   plugins = {
     nix.enable = true;
     treesitter = {
@@ -67,6 +70,7 @@
         "K" = "hover";
       };
     };
+    lsp-lines.enable = true;
     luasnip.enable = true;
     cmp = {
       enable = true;
@@ -92,12 +96,8 @@
       addDefaultMappings = true;
     };
     web-devicons.enable = true;
-    gitblame = {
-      enable = true;
-    };
-    markview = {
-      enable = true;
-    };
+    gitblame.enable = true;
+    markview.enable = true;
   };
   extraPackages = with pkgs; [
     ripgrep
