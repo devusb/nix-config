@@ -4,7 +4,6 @@ let
 
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
-    mpack = inputs.mpack.packages.${prev.system}.mpack;
     colmena = inputs.colmena.packages.${prev.system}.colmena;
 
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
@@ -25,6 +24,12 @@ let
           ];
         })
       ];
+    });
+
+    mpack = prev.mpack.overrideAttrs (old: {
+      meta = old.meta // {
+        platforms = prev.lib.platforms.all;
+      };
     });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [

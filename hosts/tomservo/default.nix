@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -13,7 +12,6 @@
     ../common/_1password.nix
     ../common/docker.nix
     ./ollama.nix
-    inputs.chaotic.nixosModules.default
   ];
 
   networking.hostName = "tomservo";
