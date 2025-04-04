@@ -79,19 +79,7 @@
     enable = true;
     autoUpdate.enable = true;
   };
-  services.plex-mpv-shim = {
-    enable = true;
-    package = pkgs.plex-mpv-shim.override {
-      mpv = pkgs.python3.pkgs.mpv.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [
-          (pkgs.fetchpatch {
-            url = "https://github.com/jaseg/python-mpv/commit/12850b34bd3b64704f8abd30341a647a73719267.patch";
-            hash = "sha256-2O7w8PeWinCzrigGX3IV+9PVCtU9KCM2UJ32Y1kE6m0=";
-          })
-        ];
-      });
-    };
-  };
+  services.plex-mpv-shim.enable = true;
   services.nfs-client.enable = true;
 
   networking.interfaces.enp31s0.wakeOnLan.enable = true;
