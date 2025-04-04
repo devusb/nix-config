@@ -67,6 +67,7 @@ in
     gitlab-ci-local
     skopeo
     claude-code
+    mcp-atlassian
   ];
 
   programs.keychain.keys = [ "id_ed25519" ];
