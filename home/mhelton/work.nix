@@ -89,6 +89,7 @@ in
   programs.nixvim = {
     plugins.codeium-nvim = {
       enable = true;
+      package = pkgs.vimPlugins.windsurf-nvim;
       settings = {
         virtual_text = {
           enabled = false;
@@ -96,7 +97,7 @@ in
       };
     };
     plugins.cmp.settings.sources = [
-      { name = "codeium"; }
+      { name = "windsurf"; }
     ];
   };
 
