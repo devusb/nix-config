@@ -37,8 +37,6 @@
     enable = true;
   };
 
-  services.automatic-timezoned.enable = false;
-
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";
     options = [

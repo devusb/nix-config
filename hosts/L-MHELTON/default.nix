@@ -36,8 +36,6 @@
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
-  services.automatic-timezoned.enable = false;
-
   services.openssh = {
     enable = true;
     openFirewall = false;

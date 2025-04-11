@@ -40,9 +40,6 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  services.automatic-timezoned.enable = false;
-  time.timeZone = "US/Central";
-
   networking.hostName = "r2d2"; # Define your hostname.
   networking.networkmanager = {
     enable = true;
