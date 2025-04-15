@@ -32,6 +32,14 @@ let
       };
     });
 
+    calibre = prev.calibre.overrideAttrs (old: rec {
+      version = "8.2.100";
+      src = prev.fetchurl {
+        url = "https://download.calibre-ebook.com/${version}/calibre-${version}.tar.xz";
+        hash = "sha256-lUHnaorIUwoac1YgYimxF8KTJOPSUiJg5BKC+hFy0lc=";
+      };
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
@@ -45,6 +53,11 @@ let
         });
         weasyprint = super.weasyprint.overridePythonAttrs (old: {
           doCheck = if prev.stdenv.hostPlatform.isDarwin then false else true;
+        });
+        mocket = super.mocket.overridePythonAttrs (old: {
+          disabledTests = old.disabledTests ++ [
+            "test_httprettish_httpx_session"
+          ];
         });
       })
     ];
