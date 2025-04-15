@@ -90,6 +90,10 @@
 
     # treefmt-nix
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    # nixos-vfio
+    nixos-vfio.url = "github:j-brn/nixos-vfio";
+    nixos-vfio.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

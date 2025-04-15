@@ -20,6 +20,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.enableContainers = false;
+  boot.loader.timeout = 30;
 
   powerManagement.cpuFreqGovernor = "performance";
 
@@ -27,6 +28,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  virtualisation.libvirtd.enable = true;
 
   networking.firewall.enable = false;
 
@@ -137,4 +140,13 @@
 
   services.nfs-client.enable = true;
 
+  specialisation = {
+    vfio.configuration = {
+      imports = [
+        ./vfio.nix
+      ];
+      services.ollama.enable = lib.mkForce false;
+      services.sunshine.enable = lib.mkForce false;
+    };
+  };
 }
