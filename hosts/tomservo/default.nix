@@ -29,7 +29,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+  };
 
   networking.firewall.enable = false;
 

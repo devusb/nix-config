@@ -47,7 +47,7 @@
   virtualisation.kvmfr = {
     enable = true;
     devices = lib.singleton {
-      size = 64;
+      size = 128;
       permissions = {
         user = "mhelton";
         mode = "0777";
