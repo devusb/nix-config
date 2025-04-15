@@ -54,6 +54,11 @@ let
         weasyprint = super.weasyprint.overridePythonAttrs (old: {
           doCheck = if prev.stdenv.hostPlatform.isDarwin then false else true;
         });
+        mocket = super.mocket.overridePythonAttrs (old: {
+          disabledTests = old.disabledTests ++ [
+            "test_httprettish_httpx_session"
+          ];
+        });
       })
     ];
   };
