@@ -85,6 +85,7 @@
   };
   programs.atuin = {
     enable = true;
+    package = pkgs.stable.atuin;
     enableZshIntegration = true;
     settings = {
       sync_address = "https://atuin.springhare-egret.ts.net";
