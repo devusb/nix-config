@@ -26,12 +26,6 @@ let
       ];
     });
 
-    mpack = prev.mpack.overrideAttrs (old: {
-      meta = old.meta // {
-        platforms = prev.lib.platforms.all;
-      };
-    });
-
     atuin = prev.atuin.overrideAttrs (old: {
       patches = (prev.patches or [ ]) ++ [
         (prev.fetchpatch {
