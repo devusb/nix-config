@@ -87,9 +87,8 @@ in
   };
 
   programs.nixvim = {
-    plugins.codeium-nvim = {
+    plugins.windsurf-nvim = {
       enable = true;
-      package = pkgs.vimPlugins.windsurf-nvim;
       settings = {
         virtual_text = {
           enabled = false;
