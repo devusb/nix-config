@@ -32,7 +32,7 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtra =
+    initContent =
       ''
         autoload -U +X bashcompinit && bashcompinit
         complete -o nospace -C vault vault
