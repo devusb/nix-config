@@ -29,8 +29,8 @@ let
     atuin = prev.atuin.overrideAttrs (old: {
       patches = (prev.patches or [ ]) ++ [
         (prev.fetchpatch {
-          url = "https://patch-diff.githubusercontent.com/raw/atuinsh/atuin/pull/2706.patch";
-          hash = "sha256-TjvMBsdo2y4xM4RVfUacNAO+4E1xubOma7c38VosL94=";
+          url = "https://patch-diff.githubusercontent.com/raw/atuinsh/atuin/pull/2715.patch";
+          hash = "sha256-rhP6IEOv9hYBOzIU4lcXXZXemO9/oGwTxAiAec9Esas=";
         })
       ];
     });
