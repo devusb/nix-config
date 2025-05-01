@@ -7,7 +7,7 @@
     number = true;
     foldlevelstart = 99;
   };
-  diagnostic.config = {
+  diagnostic.settings = {
     virtual_lines = true;
   };
   plugins = {
