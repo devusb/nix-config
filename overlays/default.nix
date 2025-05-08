@@ -36,12 +36,6 @@ let
       ];
     });
 
-    chiaki4deck = prev.chiaki-ng.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [
-        prev.nanopb
-      ];
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
@@ -55,11 +49,6 @@ let
         });
         weasyprint = super.weasyprint.overridePythonAttrs (old: {
           doCheck = if prev.stdenv.hostPlatform.isDarwin then false else true;
-        });
-        mocket = super.mocket.overridePythonAttrs (old: {
-          disabledTests = old.disabledTests ++ [
-            "test_httprettish_httpx_session"
-          ];
         });
       })
     ];
