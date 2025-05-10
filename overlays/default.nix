@@ -26,16 +26,6 @@ let
       ];
     });
 
-    atuin = prev.atuin.overrideAttrs (old: {
-      patches = (prev.patches or [ ]) ++ [
-        # https://github.com/atuinsh/atuin/pull/2715
-        (prev.fetchpatch {
-          url = "https://github.com/atuinsh/atuin/commit/cab77ffc649f62e0ab3bf491c85ddd4dde0841ef.patch";
-          hash = "sha256-Q9PYbPR9EDO94QH2GVa07ngMIbI8qlkaqHXU0bwCPok=";
-        })
-      ];
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
