@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -150,6 +151,15 @@
       ];
       services.ollama.enable = lib.mkForce false;
       services.sunshine.enable = lib.mkForce false;
+    };
+    jovian-radv.configuration = {
+      imports = [
+        inputs.jovian.nixosModules.jovian
+      ];
+      jovian = {
+        hardware.has.amd.gpu = true;
+        steamos.enableVendorRadv = true;
+      };
     };
   };
 }
