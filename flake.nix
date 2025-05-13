@@ -94,6 +94,10 @@
     # nixos-vfio
     nixos-vfio.url = "github:j-brn/nixos-vfio";
     nixos-vfio.inputs.nixpkgs.follows = "nixpkgs";
+
+    # chaotic-nyx
+    chaotic.url = "github:chaotic-cx/nyx";
+    chaotic.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

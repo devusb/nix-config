@@ -60,6 +60,7 @@
   hardware.graphics = {
     enable = true;
   };
+
   # Plasma
   services.displayManager.sddm = {
     enable = true;
@@ -152,6 +153,7 @@
       services.ollama.enable = lib.mkForce false;
       services.sunshine.enable = lib.mkForce false;
     };
+
     jovian-radv.configuration = {
       imports = [
         inputs.jovian.nixosModules.jovian
@@ -160,6 +162,37 @@
         hardware.has.amd.gpu = true;
         steamos.enableVendorRadv = true;
       };
+    };
+
+    mesa-git.configuration = {
+      imports = [
+        inputs.chaotic.nixosModules.default
+      ];
+      chaotic.mesa-git = {
+        enable = true;
+        fallbackSpecialisation = false;
+      };
+      nixpkgs.overlays =
+        let
+          doomPatch = pkgs.fetchpatch {
+            url = "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/34944.patch";
+            hash = "sha256-UOi2KHlNd9JHsy01uNcGWJENJvFCUPMqwpnNiCxbjl4=";
+          };
+        in
+        [
+          (final: prev: {
+            mesa_git = prev.mesa_git.overrideAttrs (old: {
+              patches = old.patches ++ [
+                doomPatch
+              ];
+            });
+            mesa32_git = prev.mesa32_git.overrideAttrs (old: {
+              patches = old.patches ++ [
+                doomPatch
+              ];
+            });
+          })
+        ];
     };
   };
 }
