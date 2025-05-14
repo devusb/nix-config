@@ -172,27 +172,6 @@
         enable = true;
         fallbackSpecialisation = false;
       };
-      nixpkgs.overlays =
-        let
-          doomPatch = pkgs.fetchpatch {
-            url = "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/34944.patch";
-            hash = "sha256-UOi2KHlNd9JHsy01uNcGWJENJvFCUPMqwpnNiCxbjl4=";
-          };
-        in
-        [
-          (final: prev: {
-            mesa_git = prev.mesa_git.overrideAttrs (old: {
-              patches = old.patches ++ [
-                doomPatch
-              ];
-            });
-            mesa32_git = prev.mesa32_git.overrideAttrs (old: {
-              patches = old.patches ++ [
-                doomPatch
-              ];
-            });
-          })
-        ];
     };
   };
 }
