@@ -13,6 +13,8 @@
 
   nixpkgs.system = "aarch64-darwin";
 
+  system.primaryUser = "mhelton";
+
   nix = {
     enable = true;
     settings = {
