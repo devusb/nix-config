@@ -51,6 +51,7 @@
   environment.systemPackages = with pkgs; [
     google-chrome
     slack
+    libreoffice
   ];
   xdg.portal = {
     enable = true;
