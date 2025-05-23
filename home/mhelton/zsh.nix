@@ -51,6 +51,14 @@
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
+    package = pkgs.keychain.overrideAttrs (old: rec {
+      version = "2.8.5";
+
+      src = old.src.override {
+        rev = version;
+        sha256 = "sha256-sg6Um0nsK/IFlsIt2ocmNO8ZeQ6RnXE5lG0tocCjcq4=";
+      };
+    });
   };
   programs.starship = {
     enable = true;
