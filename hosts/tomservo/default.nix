@@ -33,6 +33,7 @@
   virtualisation.libvirtd = {
     enable = true;
     onBoot = "ignore";
+    sshProxy = false;
   };
 
   networking.firewall.enable = false;
