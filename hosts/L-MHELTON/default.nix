@@ -33,6 +33,8 @@
     sshProxy = false;
   };
 
+  programs.ssh.systemd-ssh-proxy.enable = false;
+
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
