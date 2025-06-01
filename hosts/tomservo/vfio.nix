@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.nixos-vfio.nixosModules.vfio
+    ../common/libvirt.nix
   ];
 
   virtualisation.libvirtd = {
