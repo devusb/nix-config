@@ -40,35 +40,40 @@ in
     initContent = pkgs.lib.mkAfter (import ./extra/journalcreds.nix { inherit pkgs; });
   };
 
-  home.packages = with pkgs; [
-    python-with-packages
-    mpack
-    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-    (ansible.override { windowsSupport = true; })
-    postgresql
-    pgcli
-    dive
-    crane
-    helm2_15_1
-    helm2_13_1
-    helm2_16_2
-    helm2_17_0
-    aws-sso-cli
-    pgdiff
-    glab
-    kubectl-cnpg
-    kubent
-    kubectl-gadget
-    pg_activity
-    diffr
-    vkv
-    jira-cli-go
-    clickhouse
-    gitlab-ci-local
-    skopeo
-    claude-code
-    mcp-atlassian
-  ];
+  home.packages =
+    with pkgs;
+    [
+      python-with-packages
+      mpack
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+      (ansible.override { windowsSupport = true; })
+      postgresql
+      pgcli
+      dive
+      crane
+      helm2_15_1
+      helm2_13_1
+      helm2_16_2
+      helm2_17_0
+      aws-sso-cli
+      pgdiff
+      glab
+      kubectl-cnpg
+      kubent
+      kubectl-gadget
+      pg_activity
+      diffr
+      vkv
+      jira-cli-go
+      clickhouse
+      gitlab-ci-local
+      skopeo
+      claude-code
+      mcp-atlassian
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      podman-bootc
+    ];
 
   programs.keychain.keys = [ "id_ed25519" ];
 
