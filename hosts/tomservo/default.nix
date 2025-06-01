@@ -12,6 +12,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    ../common/libvirt.nix
     ./ollama.nix
   ];
 
@@ -29,12 +30,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-    sshProxy = false;
-  };
 
   networking.firewall.enable = false;
 

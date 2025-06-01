@@ -12,6 +12,7 @@
     ../common/users/mhelton
     ../common/nixos.nix
     ../common/docker.nix
+    ../common/libvirt.nix
     inputs.disko.nixosModules.disko
     (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
     inputs.sops-nix.nixosModules.sops
@@ -26,14 +27,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.swtpm.enable = true;
-    sshProxy = false;
-  };
-
-  programs.ssh.systemd-ssh-proxy.enable = false;
 
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
