@@ -26,14 +26,6 @@ let
       ];
     });
 
-    microcode-intel = prev.microcode-intel.overrideAttrs (old: rec {
-      version = "20250211";
-      src = old.src.override {
-        rev = "microcode-${version}";
-        hash = "sha256-XfBVygHmUAV287MyBreoAyGcffGBEY7YKyj6AOytXZ4=";
-      };
-    });
-
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
