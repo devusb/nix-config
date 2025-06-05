@@ -150,16 +150,6 @@
       services.sunshine.enable = lib.mkForce false;
     };
 
-    jovian-radv.configuration = {
-      imports = [
-        inputs.jovian.nixosModules.jovian
-      ];
-      jovian = {
-        hardware.has.amd.gpu = true;
-        steamos.enableVendorRadv = true;
-      };
-    };
-
     mesa-git.configuration = {
       imports = [
         inputs.chaotic.nixosModules.default
