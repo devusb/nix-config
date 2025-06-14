@@ -6,6 +6,6 @@ creation_rules:
   - path_regex: secrets.*$
     key_groups:
       - age:
-          - *admin_mhelton
-          - *L-MHELTON
-          - *bob
+          - *admin_mhelton 
+          - *L-MHELTON 
+          - *bob 
