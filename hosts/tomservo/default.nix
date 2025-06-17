@@ -28,7 +28,7 @@
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.firewall.enable = false;
