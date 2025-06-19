@@ -26,6 +26,18 @@ let
       ];
     });
 
+    # steam input and pipewire support
+    retroarch-joypad-autoconfig = prev.retroarch-joypad-autoconfig.overrideAttrs (old: {
+      postInstall = ''
+        cp $out/share/libretro/autoconfig/udev/'Microsoft X-Box 360 pad.cfg' $out/share/libretro/autoconfig/udev/'Microsoft X-Box 360 pad 0.cfg'
+        substituteInPlace $out/share/libretro/autoconfig/udev/'Microsoft X-Box 360 pad 0.cfg' \
+          --replace-fail "pad" "pad 0"
+      '';
+    });
+    retroarch-bare = prev.retroarch-bare.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ prev.pipewire ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
