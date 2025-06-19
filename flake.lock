@@ -19,20 +19,20 @@
     },
     "chaotic": {
       "inputs": {
-        "fenix": "fenix",
         "flake-schemas": "flake-schemas",
         "home-manager": "home-manager",
         "jovian": "jovian",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1750107975,
-        "narHash": "sha256-5HOEe6JJgwuEtSd9IAuxeSaLutPvhr3Qz27Zkv0v/vQ=",
+        "lastModified": 1750212424,
+        "narHash": "sha256-qVefRn4cmrH3nNjT3sP5U2I9dsCTJKWzl8uDhwfAGFw=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "786c7532222c7de90ba72f57ef4b1760b6d35c83",
+        "rev": "6725337207f86ac50a0ae4075718f47b5cb9174e",
         "type": "github"
       },
       "original": {
@@ -141,28 +141,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "disko",
-        "type": "github"
-      }
-    },
-    "fenix": {
-      "inputs": {
-        "nixpkgs": [
-          "chaotic",
-          "nixpkgs"
-        ],
-        "rust-analyzer-src": "rust-analyzer-src"
-      },
-      "locked": {
-        "lastModified": 1750056063,
-        "narHash": "sha256-PGQjkjaj8XUa19tGZi0GHbnCzol4YHurA4pyifmhrs0=",
-        "owner": "nix-community",
-        "repo": "fenix",
-        "rev": "879b4b73522a78529778ce2eb6f3374d1016cf8f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "fenix",
         "type": "github"
       }
     },
@@ -422,11 +400,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750033262,
-        "narHash": "sha256-TcFN78w6kPspxpbPsxW/8vQ1GAtY8Y3mjBaC+oB8jo4=",
+        "lastModified": 1750127463,
+        "narHash": "sha256-K2xFtlD3PcKAZriOE3LaBLYmVfGQu+rIF4Jr1RFYR0Q=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "66523b0efe93ce5b0ba96dcddcda15d36673c1f0",
+        "rev": "28eef8722d1af18ca13e687dbf485e1c653a0402",
         "type": "github"
       },
       "original": {
@@ -442,11 +420,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750107071,
-        "narHash": "sha256-yfuHCO4m+gu3OBNGnP0/TL5W8nLXrC/EV1fs/+YcoL8=",
+        "lastModified": 1750127463,
+        "narHash": "sha256-K2xFtlD3PcKAZriOE3LaBLYmVfGQu+rIF4Jr1RFYR0Q=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0edffd088e42fdc48598b37d88eb5345e2ca3937",
+        "rev": "28eef8722d1af18ca13e687dbf485e1c653a0402",
         "type": "github"
       },
       "original": {
@@ -474,11 +452,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1750123674,
-        "narHash": "sha256-25aUngRjqJ8/WHsGSbGgUk9Dt+1mNRv8539mJdB4ojI=",
+        "lastModified": 1750232837,
+        "narHash": "sha256-z7kSzR/tc5KW4blJQj5uGa1fOmqLpY4iqjWxUevOiXw=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "593d923568707f3b02fdcf668fbd2169e1b1a455",
+        "rev": "bd87ede6f5f8ab0c14dcdaa04fdd982ccdcdc562",
         "type": "github"
       },
       "original": {
@@ -490,11 +468,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1750123504,
-        "narHash": "sha256-mxX+yavfMGOkW26QY5WokL2DB38G9ceZrmDlivLaXCg=",
+        "lastModified": 1750233061,
+        "narHash": "sha256-uLDLUpOrcpSbDZ1fqC14TjHCeO77HwX1ToUDltneWfs=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "0bc07431a03f91fe9ed1f5655c6a71ccaeafb05c",
+        "rev": "3549c8bda875c32b5b2d60c7bd3c2ce8963d2b57",
         "type": "github"
       },
       "original": {
@@ -540,11 +518,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749627191,
-        "narHash": "sha256-bUv8CDE6Uyxak4UkOvRjx5xj6+msEHSpYGeAjkuTnTs=",
+        "lastModified": 1750172631,
+        "narHash": "sha256-XwqAqM1UmKahdCwzp2UQHTpjnY0b82/VTfA8VpZIR6g=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "f31df4cb6b2eeef6cf0113edb687297be72a69df",
+        "rev": "7de24ceed8c7693191b74a7bda6d89c91f94c8f5",
         "type": "github"
       },
       "original": {
@@ -559,11 +537,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1749627191,
-        "narHash": "sha256-bUv8CDE6Uyxak4UkOvRjx5xj6+msEHSpYGeAjkuTnTs=",
+        "lastModified": 1750230721,
+        "narHash": "sha256-rg/lnazeno/f4VNSv+t2Zwio/OyCYKx5zV9/8hfhfgA=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "f31df4cb6b2eeef6cf0113edb687297be72a69df",
+        "rev": "6c88df8c85ad3f80a5832edc50534a5add255b47",
         "type": "github"
       },
       "original": {
@@ -581,7 +559,7 @@
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1737639419,
@@ -886,11 +864,11 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1749995256,
-        "narHash": "sha256-LEGfcombb0otUf23oAmYCXR4+lMQKa49XmU0G5HItGI=",
+        "lastModified": 1750151854,
+        "narHash": "sha256-3za+1J9FifMetO7E/kwgyW+dp+8pPBNlWKfcBovnn6M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "daa45f10955cc2207ac9c5f0206774d2f757c162",
+        "rev": "ad5c70bcc5cc5178205161b7a7d61a6e80f6d244",
         "type": "github"
       },
       "original": {
@@ -934,11 +912,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1750093821,
-        "narHash": "sha256-rumKjLR6VSoDG8eCiCLmwbuWDI+JnDzxaEWVF7F95OU=",
+        "lastModified": 1750224703,
+        "narHash": "sha256-vE2nxBjq4oYKmiEnyuUJLuENIESR10Cy8tooiHtRCsI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "526945c5798687e32d4a6f8a93660fe2ca152ae2",
+        "rev": "8f30f012b9849fa485dfaed47f39e964e88384b1",
         "type": "github"
       },
       "original": {
@@ -950,11 +928,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1749903597,
-        "narHash": "sha256-jp0D4vzBcRKwNZwfY4BcWHemLGUs4JrS3X9w5k/JYDA=",
+        "lastModified": 1750122687,
+        "narHash": "sha256-zcGClfkXh4pckf4aGOZ18GFv73n1xHbdMWl17cPLouE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "41da1e3ea8e23e094e5e3eeb1e6b830468a7399e",
+        "rev": "c539ae8d21e49776966d714f82fba33b1fca78bc",
         "type": "github"
       },
       "original": {
@@ -1020,11 +998,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1750105753,
-        "narHash": "sha256-reWddMyGkxjackE4VSZ2NjOQlAdfiofhCEWFHapblNI=",
+        "lastModified": 1750204267,
+        "narHash": "sha256-d1Sf8RdT9DmaoF03GAFFSHX8jRu2MciFdAi8Ki26nX8=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "ab0a3682cc40da89029dcb3f467b46ae3b8c0fd1",
+        "rev": "aef7b53979b89cea9f5eaebf96c16d3bdae150e2",
         "type": "github"
       },
       "original": {
@@ -1157,24 +1135,28 @@
         "utils": "utils"
       }
     },
-    "rust-analyzer-src": {
-      "flake": false,
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "chaotic",
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1750005282,
-        "narHash": "sha256-VXLDkb1iOw7wWhgOgBMP9hTcpW6Eo399YbBif5hlxS8=",
-        "owner": "rust-lang",
-        "repo": "rust-analyzer",
-        "rev": "a207299344bf7797e4253c3f6130313e33c2ba6f",
+        "lastModified": 1750127910,
+        "narHash": "sha256-FIgEIS0RAlOyXGqoj/OufTfcKItYq668yPYL4SXdU0M=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "45418795a73b77b7726c62ce265d68cf541ffb49",
         "type": "github"
       },
       "original": {
-        "owner": "rust-lang",
-        "ref": "nightly",
-        "repo": "rust-analyzer",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },
-    "rust-overlay": {
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "lanzaboote",
