@@ -142,6 +142,7 @@
               config.permittedInsecurePackages = [
                 "electron-24.8.6"
                 "electron-25.9.0"
+                "freeimage-3.18.0-unstable-2024-04-18"
               ];
             };
             _module.args.pkgs = legacyPackages;

@@ -5,6 +5,7 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }:
 {
@@ -76,6 +77,11 @@
       owner = config.users.users.mhelton.name;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    retroarch-full
+    emulationstation-de
+  ];
 
   programs.chiaki4deck = {
     enable = true;

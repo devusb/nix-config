@@ -26,6 +26,10 @@ let
       ];
     });
 
+    retroarch-bare = prev.retroarch-bare.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ prev.pipewire ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
