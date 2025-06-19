@@ -80,7 +80,6 @@
 
   environment.systemPackages = with pkgs; [
     retroarch-full
-    emulationstation-de
   ];
 
   programs.chiaki4deck = {
