@@ -28,7 +28,16 @@
 
   system.stateVersion = "21.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.firmware = [
+    (pkgs.linux-firmware.overrideAttrs (old: rec {
+      version = "20250509";
+      src = pkgs.fetchzip {
+        url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz ";
+        hash = "sha256-0FrhgJQyCeRCa3s0vu8UOoN0ZgVCahTQsSH0o6G6hhY=";
+      };
+    }))
+  ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.firewall.enable = false;
