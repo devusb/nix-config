@@ -149,15 +149,5 @@
       services.ollama.enable = lib.mkForce false;
       services.sunshine.enable = lib.mkForce false;
     };
-
-    mesa-git.configuration = {
-      imports = [
-        inputs.chaotic.nixosModules.default
-      ];
-      chaotic.mesa-git = {
-        enable = true;
-        fallbackSpecialisation = false;
-      };
-    };
   };
 }
