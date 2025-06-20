@@ -13,7 +13,6 @@
     ../common/_1password.nix
     ../common/docker.nix
     ../common/libvirt.nix
-    ./ollama.nix
   ];
 
   networking.hostName = "tomservo";
@@ -157,16 +156,6 @@
       ];
       services.ollama.enable = lib.mkForce false;
       services.sunshine.enable = lib.mkForce false;
-    };
-
-    mesa-git.configuration = {
-      imports = [
-        inputs.chaotic.nixosModules.default
-      ];
-      chaotic.mesa-git = {
-        enable = true;
-        fallbackSpecialisation = false;
-      };
     };
   };
 }
