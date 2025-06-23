@@ -43,9 +43,7 @@
     },
     "colmena": {
       "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
+        "flake-compat": "flake-compat",
         "flake-utils": [
           "utils"
         ],
@@ -1110,7 +1108,6 @@
         "colmena": "colmena",
         "darwin": "darwin",
         "disko": "disko",
-        "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "hardware": "hardware",
         "home-manager": "home-manager_2",

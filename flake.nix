@@ -4,10 +4,6 @@
   inputs = {
     # Utilities for building flakes
     utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Core nix flakes
@@ -55,7 +51,6 @@
     # colmena
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.flake-utils.follows = "utils";
-    colmena.inputs.flake-compat.follows = "flake-compat";
 
     # lix
     lix-module = {
