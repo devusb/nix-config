@@ -54,7 +54,7 @@
 
     # lix
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/cd2a9c028df820a83ca2807dc6c6e7abc3dfa7fc.tar.gz"; # v2.93.0
+      url = "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/c3c78a32273e89d28367d8605a4c880f0b6607e3.tar.gz"; # 2.93.1
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
