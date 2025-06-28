@@ -10,6 +10,7 @@
     workspace = {
       lookAndFeel = "org.kde.breezedark.desktop";
       wallpaperPictureOfTheDay.provider = "bing";
+      wallpaperFillMode = "preserveAspectCrop";
     };
 
     kwin = {
