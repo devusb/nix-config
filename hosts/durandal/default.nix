@@ -24,6 +24,10 @@
   hardware.bluetooth = {
     enable = true;
   };
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
