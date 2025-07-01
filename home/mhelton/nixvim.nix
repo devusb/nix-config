@@ -98,6 +98,12 @@
     web-devicons.enable = true;
     gitblame.enable = true;
     markview.enable = true;
+    hardtime = {
+      enable = true;
+      settings = {
+        disable_mouse = false;
+      };
+    };
   };
   extraPackages = with pkgs; [
     ripgrep
