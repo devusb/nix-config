@@ -17,7 +17,7 @@
         if pkgs.stdenv.isDarwin then
           "darwin-rebuild switch --flake $DOTFILES"
         else
-          "nixos-rebuild switch --use-remote-sudo --flake $DOTFILES";
+          "nixos-rebuild switch --sudo --flake $DOTFILES";
       update-boot = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild boot --sudo --flake $DOTFILES";
       update-test = lib.mkIf pkgs.stdenv.isLinux "nixos-rebuild test --sudo --flake $DOTFILES";
       kb = "${lib.getExe pkgs.kubectl}";
