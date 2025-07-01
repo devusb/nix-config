@@ -61,6 +61,11 @@
         pyright.enable = true;
         yamlls.enable = true;
         tinymist.enable = true;
+        rust_analyzer = {
+          enable = true;
+          installRustc = true;
+          installCargo = true;
+        };
       };
       keymaps.lspBuf = {
         "gd" = "definition";
