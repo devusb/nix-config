@@ -5,6 +5,7 @@ let
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     colmena = inputs.colmena.packages.${prev.system}.colmena;
+    flox = inputs.flox.packages.${prev.system}.flox;
 
     teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
       desktopItems = [

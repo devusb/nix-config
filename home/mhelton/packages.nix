@@ -45,6 +45,7 @@
     argocd
     talosctl
     lnav
+    flox
   ];
 
   programs.home-manager = {

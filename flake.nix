@@ -93,6 +93,9 @@
     # chaotic-nyx
     chaotic.url = "github:chaotic-cx/nyx";
     chaotic.inputs.nixpkgs.follows = "nixpkgs";
+
+    # flox
+    flox.url = "github:flox/flox/v1.5.0";
   };
 
   outputs =
