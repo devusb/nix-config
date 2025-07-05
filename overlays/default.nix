@@ -35,9 +35,6 @@ let
           --replace-fail "pad" "pad 0"
       '';
     });
-    retroarch-bare = prev.retroarch-bare.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [ prev.pipewire ];
-    });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
