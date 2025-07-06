@@ -76,13 +76,6 @@
     # Jovian-NixOS
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    # p81
-    p81.url = "github:devusb/p81.nix";
-    p81.inputs.nixpkgs.follows = "nixpkgs";
-
-    # sentinelone
-    sentinelone.url = "github:devusb/sentinelone.nix";
-
     # treefmt-nix
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
@@ -174,7 +167,6 @@
                 };
                 darwinMachinesPerSystem = {
                   aarch64-darwin = [
-                    "imubit-morganh-mbp13"
                   ];
                 };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
@@ -359,29 +351,6 @@
           };
 
           darwinConfigurations = {
-            imubit-morganh-mbp13 = withSystem "aarch64-darwin" (
-              { pkgs, ... }:
-              darwin.lib.darwinSystem {
-                specialArgs = { inherit inputs; };
-                modules = (builtins.attrValues darwinModules) ++ [
-                  { nixpkgs.pkgs = pkgs; }
-                  ./hosts/imubit-morganh-mbp13
-                  home-manager.darwinModules.home-manager
-                  {
-                    home-manager = {
-                      useGlobalPkgs = true;
-                      useUserPackages = true;
-                      extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
-                        ./home/mhelton
-                        ./home/mhelton/work.nix
-                        ./home/mhelton/darwin.nix
-                      ];
-                    };
-                  }
-                ];
-              }
-            );
           };
         };
 
