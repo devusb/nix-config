@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
     inputs.disko.nixosModules.disko
-    # inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.lanzaboote.nixosModules.lanzaboote
     (import ./disko-config.nix { disks = [ "/dev/nvme0n1" ]; })
     inputs.sops-nix.nixosModules.sops
     ../common/users/mhelton
@@ -24,14 +24,12 @@
     ../common/docker.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.lanzaboote = {
-  #   enable = true;
-  #   pkiBundle = "/etc/secureboot";
-  # };
-  boot.loader.systemd-boot.enable = true;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
   boot.blacklistedKernelModules = [ "hid_sensor_hub" ];
   boot.extraModprobeConfig = ''
