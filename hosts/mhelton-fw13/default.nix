@@ -88,6 +88,7 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
+    slack
   ];
   programs.kdeconnect.enable = true;
 
@@ -101,6 +102,8 @@
     enable = true;
     drivers = with pkgs; [ gutenprint ];
   };
+
+  services.avahi.enable = true;
 
   system.stateVersion = "25.11"; # Did you read the comment?
 
