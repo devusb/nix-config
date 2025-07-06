@@ -169,7 +169,7 @@
                     "r2d2"
                     "bob"
                     "durandal"
-                    "L-MHELTON"
+                    "mhelton-fw13"
                   ];
                 };
                 darwinMachinesPerSystem = {
@@ -330,13 +330,13 @@
               }
             );
 
-            L-MHELTON = withSystem "x86_64-linux" (
+            mhelton-fw13 = withSystem "x86_64-linux" (
               { pkgs, ... }:
               nixpkgs.lib.nixosSystem {
                 inherit pkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
-                  ./hosts/L-MHELTON
+                  ./hosts/mhelton-fw13
                   home-manager.nixosModules.home-manager
                   {
                     home-manager = {
@@ -345,9 +345,11 @@
                       extraSpecialArgs = { inherit inputs; };
                       users.mhelton.imports = [
                         ./home/mhelton
-                        ./home/mhelton/work.nix
+                        ./home/mhelton/personal.nix
                         ./home/mhelton/linux.nix
                         ./home/mhelton/graphical.nix
+                        ./home/mhelton/gaming.nix
+                        ./home/mhelton/framework.nix
                       ];
                     };
                   }
