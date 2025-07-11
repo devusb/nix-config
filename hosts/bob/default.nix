@@ -79,7 +79,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    retroarch-full
+    retroarch-free
   ];
 
   programs.chiaki4deck = {
