@@ -147,6 +147,7 @@
                 ".gitignore"
                 "flake.lock"
                 "secrets/*"
+                ".sops.yaml"
               ];
             };
 
