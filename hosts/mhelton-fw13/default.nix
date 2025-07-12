@@ -59,13 +59,6 @@
   hardware.sensor.iio.enable = false;
   hardware.enableAllFirmware = true;
 
-  # power management
-  services.udev.extraRules = ''
-    # swap between 60Hz and 120Hz on battery/AC
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --user --machine mhelton@ ${lib.getExe' pkgs.kdePackages.libkscreen "kscreen-doctor"} output.eDP-1.mode.2880x1920@60"
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="${pkgs.systemd}/bin/systemd-run --user --machine mhelton@ ${lib.getExe' pkgs.kdePackages.libkscreen "kscreen-doctor"} output.eDP-1.mode.2880x1920@120"
-  '';
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
