@@ -6,6 +6,7 @@
 {
   programs.git = {
     userName = "Morgan Helton";
+    userEmail = "morgan@flox.dev";
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       signByDefault = true;
@@ -20,13 +21,9 @@
     crane
     aws-sso-cli
     pgdiff
-    glab
-    kubent
-    kubectl-gadget
     pg_activity
     diffr
     skopeo
-    claude-code
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
@@ -40,7 +37,6 @@
   };
 
   programs.starship.settings = {
-    kubernetes.disabled = false;
     aws.disabled = false;
   };
 
