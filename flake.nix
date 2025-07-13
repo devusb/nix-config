@@ -332,10 +332,9 @@
                       extraSpecialArgs = { inherit inputs; };
                       users.mhelton.imports = [
                         ./home/mhelton
-                        ./home/mhelton/personal.nix
+                        ./home/mhelton/work.nix
                         ./home/mhelton/linux.nix
                         ./home/mhelton/graphical.nix
-                        ./home/mhelton/gaming.nix
                         ./home/mhelton/framework.nix
                       ];
                     };
