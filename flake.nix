@@ -309,7 +309,6 @@
                         ./home/mhelton/linux.nix
                         ./home/mhelton/graphical.nix
                         ./home/mhelton/gaming.nix
-                        ./home/mhelton/framework.nix
                       ];
                     };
                   }
@@ -335,7 +334,6 @@
                         ./home/mhelton/work.nix
                         ./home/mhelton/linux.nix
                         ./home/mhelton/graphical.nix
-                        ./home/mhelton/framework.nix
                       ];
                     };
                   }
