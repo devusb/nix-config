@@ -83,6 +83,7 @@
   environment.systemPackages = with pkgs; [
     sbctl
     slack
+    drsprinto
   ];
   programs.kdeconnect.enable = true;
 
