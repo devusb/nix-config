@@ -46,6 +46,7 @@
     talosctl
     lnav
     flox
+    parallel
   ];
 
   programs.home-manager = {
