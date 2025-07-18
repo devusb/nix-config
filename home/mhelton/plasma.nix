@@ -9,7 +9,7 @@
 
     workspace = {
       lookAndFeel = "org.kde.breezedark.desktop";
-      wallpaperPictureOfTheDay.provider = "bing";
+      wallpaperPictureOfTheDay.provider = "apod";
       wallpaperFillMode = "preserveAspectCrop";
     };
 
