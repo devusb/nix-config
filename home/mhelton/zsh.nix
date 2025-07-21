@@ -40,7 +40,7 @@
         if [ -e ~/.env ]; then
         source ~/.env
         fi
-        source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+        ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
         bindkey "\e[1;3D" backward-word
         bindkey "\e[1;3C" forward-word
         bindkey "\e[1;5D" backward-word
