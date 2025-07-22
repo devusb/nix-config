@@ -56,7 +56,8 @@
   programs.nixvim = {
     enable = true;
     nixpkgs.useGlobalPackages = true;
-  } // import ./nixvim.nix { inherit pkgs; };
+  }
+  // import ./nixvim.nix { inherit pkgs; };
 
   programs.bat = {
     enable = true;
