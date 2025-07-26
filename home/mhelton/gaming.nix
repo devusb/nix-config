@@ -6,7 +6,6 @@
     theforceengine
     ryujinx
     moonlight-qt
-    heroic
     chiaki4deck
     dreamm
     Starship
