@@ -8,7 +8,6 @@
     moonlight-qt
     chiaki4deck
     dreamm
-    Starship
   ];
 
   programs.mangohud = {
