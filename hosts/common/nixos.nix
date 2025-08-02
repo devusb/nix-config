@@ -7,7 +7,7 @@
 {
   imports = [
     inputs.nix-packages.nixosModules.default
-    inputs.lix-module.nixosModules.default
+    inputs.lix-module.nixosModules.lixFromNixpkgs
   ];
 
   nix = {
