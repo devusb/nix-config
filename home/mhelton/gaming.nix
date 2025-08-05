@@ -4,7 +4,7 @@
     lutris
     lm_sensors
     theforceengine
-    ryujinx
+    ryubing
     moonlight-qt
     chiaki4deck
     dreamm
