@@ -105,6 +105,8 @@
     updater.enable = true;
   };
 
+  services.flatpak.enable = true;
+
   system.stateVersion = "25.11";
 
   specialisation.personal.configuration = {
