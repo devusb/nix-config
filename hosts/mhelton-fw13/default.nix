@@ -98,8 +98,8 @@
   services.avahi.enable = true;
 
   services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
+    daemon.enable = false;
+    updater.enable = false;
   };
 
   services.flatpak.enable = true;
