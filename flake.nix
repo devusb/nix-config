@@ -87,7 +87,7 @@
     chaotic.inputs.nixpkgs.follows = "nixpkgs";
 
     # flox
-    flox.url = "github:flox/flox/v1.6.1";
+    flox.url = "github:flox/flox";
   };
 
   outputs =
@@ -129,6 +129,9 @@
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
               };
               config.allowUnfree = true;
+              config.permittedInsecurePackages = [
+                "qtwebengine-5.15.19"
+              ];
             };
             _module.args.pkgs = legacyPackages;
 
