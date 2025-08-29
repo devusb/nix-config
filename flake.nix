@@ -129,6 +129,9 @@
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
               };
               config.allowUnfree = true;
+              config.permittedInsecurePackages = [
+                "qtwebengine-5.15.19"
+              ];
             };
             _module.args.pkgs = legacyPackages;
 
