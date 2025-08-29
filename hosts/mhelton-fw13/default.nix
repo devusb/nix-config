@@ -19,6 +19,11 @@
     ../common/docker.nix
   ];
 
+  networking.hosts = {
+    "100.64.0.3" = [ "metrics" ];
+    "52.20.31.100" = [ "netserver" ];
+  };
+
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.lanzaboote = {
