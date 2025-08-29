@@ -87,7 +87,7 @@
     chaotic.inputs.nixpkgs.follows = "nixpkgs";
 
     # flox
-    flox.url = "github:flox/flox/v1.6.1";
+    flox.url = "github:flox/flox";
   };
 
   outputs =
