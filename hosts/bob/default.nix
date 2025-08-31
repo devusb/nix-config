@@ -58,6 +58,7 @@
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
+    KWIN_IM_SHOW_ALWAYS = "1";
   };
 
   jovian.steam = {
