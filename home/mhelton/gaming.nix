@@ -8,6 +8,7 @@
     moonlight-qt
     chiaki4deck
     dreamm
+    azahar
   ];
 
   programs.mangohud = {
