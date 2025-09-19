@@ -8,10 +8,10 @@
 
 let
   pname = "drsprinto";
-  version = "4.0.7";
+  version = "4.0.8";
   src = fetchurl {
     url = "https://static.sprinto.com/drsprinto/DrSprinto-${version}.AppImage";
-    hash = "sha256-o6WYoA9qZYkl/H2WMhv/acNoiuTfIlbj78E0jK+SQG0=";
+    hash = "sha256-jZH6Wpwy7e/buYBXnV7D9gSYesNNlefgVKKFtfdzAi8=";
   };
 
   appimage = appimageTools.wrapType2 {
