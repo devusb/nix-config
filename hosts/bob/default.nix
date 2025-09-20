@@ -70,6 +70,12 @@
   jovian.devices.steamdeck = {
     enable = true;
   };
+  jovian.decky-loader = {
+    enable = true;
+    extraPackages = with pkgs; [
+      tailscale
+    ];
+  };
   programs.steam.extest.enable = true;
 
   sops = {
