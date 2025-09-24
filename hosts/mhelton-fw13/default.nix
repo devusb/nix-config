@@ -73,8 +73,14 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
-    slack
     drsprinto
+    (slack.overrideAttrs {
+      version = "4.45.64";
+      src = fetchurl {
+        url = "https://downloads.slack-edge.com/desktop-releases/linux/x64/4.45.64/slack-desktop-4.45.64-amd64.deb";
+        hash = "sha256-fGr4arHVd4rskw1OfXe5+ZSKg6h+hFjoIdb56N/tGA8=";
+      };
+    })
   ];
   programs.kdeconnect.enable = true;
 
