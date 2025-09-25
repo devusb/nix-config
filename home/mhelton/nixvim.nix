@@ -108,6 +108,7 @@
       settings = {
         disable_mouse = false;
         restriction_mode = "hint";
+        notiifcation = false;
       };
     };
   };
