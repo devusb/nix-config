@@ -47,6 +47,7 @@
     lnav
     flox
     parallel
+    dasel
   ];
 
   programs.home-manager = {
