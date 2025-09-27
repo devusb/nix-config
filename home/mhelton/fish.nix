@@ -23,6 +23,10 @@
     interactiveShellInit = ''
       set fish_greeting
     '';
+    functions = {
+      nr = import ./extra/fish/nr.nix { inherit pkgs lib; };
+      ns = import ./extra/fish/ns.nix { inherit pkgs lib; };
+    };
   };
 
   programs.keychain.enableFishIntegration = true;
