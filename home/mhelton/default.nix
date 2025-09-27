@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./zsh.nix
     ./packages.nix
+    ./fish.nix
   ];
 
   home = {
