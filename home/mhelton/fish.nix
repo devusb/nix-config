@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -19,62 +20,16 @@
       t = "${lib.getExe pkgs.tmux}";
       ta = "${lib.getExe pkgs.tmux} attach";
     };
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
   };
-  programs.keychain = {
-    enable = true;
-    enableFishIntegration = true;
-    package = pkgs.keychain.overrideAttrs (old: rec {
-      version = "2.8.5";
 
-      src = old.src.override {
-        rev = version;
-        sha256 = "sha256-sg6Um0nsK/IFlsIt2ocmNO8ZeQ6RnXE5lG0tocCjcq4=";
-      };
-    });
-  };
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    settings = {
-      add_newline = false;
-      gcloud.disabled = true;
-      shlvl.disabled = false;
-      command_timeout = 5000;
-      kubernetes.contexts = [
-        {
-          context_pattern = "gke_.*_(?P<var_cluster>[\\w-]+)";
-          context_alias = "gke-$var_cluster";
-        }
-        {
-          context_pattern = "arn:.*/(?P<var_cluster>[\\w-]+)";
-          context_alias = "aws-$var_cluster";
-        }
-      ];
-      env_var = {
-        DATABASE_URI = {
-          style = "yellow bold";
-          format = "with [$symbol$env_value]($style) ";
-          symbol = "⛁ ";
-        };
-      };
-    };
-  };
-  programs.fzf = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-  programs.atuin = {
-    enable = true;
-    enableFishIntegration = true;
-    settings = {
-      sync_address = "https://atuin.springhare-egret.ts.net";
-      auto_sync = true;
-      sync_frequency = "5m";
-      search_mode = "fulltext";
-      sync.records = true;
-      style = "auto";
-      inline_height = 0;
-    };
-  };
+  programs.keychain.enableFishIntegration = true;
+  programs.starship.enableFishIntegration = true;
+  programs.fzf.enableFishIntegration = true;
+  programs.atuin.enableFishIntegration = true;
+  programs.nix-index.enableFishIntegration = true;
+  programs.eza.enableFishIntegration = true;
 
 }
