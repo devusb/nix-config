@@ -22,6 +22,7 @@
     };
     interactiveShellInit = ''
       set fish_greeting
+      fish_vi_key_bindings
     '';
     functions = {
       nr = import ./extra/fish/nr.nix { inherit pkgs lib; };
