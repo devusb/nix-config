@@ -6,6 +6,7 @@
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
+      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
     functions = {
       nr = import ./extra/fish/nr.nix { inherit pkgs lib; };
