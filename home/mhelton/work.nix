@@ -34,6 +34,9 @@
       "*" = {
         user = "morgan";
       };
+      "github.com" = {
+        user = "git";
+      };
     };
   };
 
