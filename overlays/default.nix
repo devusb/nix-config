@@ -29,9 +29,6 @@ let
             "test_issue_690_oauth_v2_access"
           ];
         });
-        weasyprint = super.weasyprint.overridePythonAttrs (old: {
-          doCheck = if prev.stdenv.hostPlatform.isDarwin then false else true;
-        });
       })
     ];
   };
