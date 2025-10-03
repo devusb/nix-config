@@ -7,26 +7,6 @@ let
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     flox = inputs.flox.packages.${prev.system}.flox;
 
-    teams-for-linux = prev.teams-for-linux.overrideAttrs (old: {
-      desktopItems = [
-        (prev.makeDesktopItem {
-          name = old.pname;
-          exec = "${old.pname} %u";
-          icon = old.pname;
-          desktopName = "Microsoft Teams for Linux";
-          comment = old.meta.description;
-          categories = [
-            "Network"
-            "InstantMessaging"
-            "Chat"
-          ];
-          mimeTypes = [
-            "x-scheme-handler/msteams"
-          ];
-        })
-      ];
-    });
-
     # steam input and pipewire support
     retroarch-joypad-autoconfig = prev.retroarch-joypad-autoconfig.overrideAttrs (old: {
       postInstall = ''
