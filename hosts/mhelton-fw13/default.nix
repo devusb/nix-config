@@ -73,7 +73,6 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
-    drsprinto
     (slack.overrideAttrs {
       version = "4.45.64";
       src = fetchurl {
@@ -97,11 +96,6 @@
 
   services.avahi.enable = true;
 
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
-
   services.flatpak.enable = true;
 
   system.stateVersion = "25.11";
@@ -113,6 +107,15 @@
 
     home-manager.users.mhelton.imports = [
       ../../home/mhelton/gaming.nix
+    ];
+  };
+  specialisation.compliance.configuration = {
+    services.clamav = {
+      daemon.enable = true;
+      updater.enable = true;
+    };
+    environment.systemPackages = with pkgs; [
+      drsprinto
     ];
   };
 
