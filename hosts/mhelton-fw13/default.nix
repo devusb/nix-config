@@ -98,6 +98,14 @@
 
   services.flatpak.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.swtpm.enable = true;
+  };
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  services.usbmuxd.enable = true;
+
   system.stateVersion = "25.11";
 
   specialisation.personal.configuration = {
