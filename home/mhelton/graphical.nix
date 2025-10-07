@@ -15,6 +15,7 @@
       virt-manager
       calibre
       remmina
+      ktailctl
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
