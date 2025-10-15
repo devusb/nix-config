@@ -12,7 +12,6 @@
     ../common/_1password.nix
     ../common/docker.nix
     ../common/libvirt.nix
-    ./ollama.nix
   ];
 
   networking.hostName = "tomservo";
