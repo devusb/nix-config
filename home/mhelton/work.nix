@@ -25,6 +25,7 @@
     diffr
     skopeo
     claude-code
+    dbeaver-bin
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
