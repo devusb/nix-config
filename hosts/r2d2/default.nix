@@ -36,7 +36,7 @@
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
