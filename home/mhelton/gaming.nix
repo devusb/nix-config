@@ -9,6 +9,7 @@
     chiaki4deck
     dreamm
     azahar
+    duckstation
   ];
 
   programs.mangohud = {
