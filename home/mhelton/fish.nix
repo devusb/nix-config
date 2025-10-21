@@ -7,6 +7,9 @@
       set fish_greeting
       fish_vi_key_bindings
       ${lib.getExe pkgs.nix-your-shell} fish | source
+      if test -e ~/.env
+        source ~/.env
+      end
     '';
     functions = {
       nr = import ./extra/fish/nr.nix { inherit pkgs lib; };
