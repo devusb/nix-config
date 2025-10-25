@@ -28,12 +28,25 @@ let
       ];
     });
 
+    # qt 6.10 fixups
     chiaki-ng = prev.chiaki-ng.overrideAttrs {
-      postPatch = ''
-        substituteInPlace gui/CMakeLists.txt \
-          --replace-fail 'Qt6 REQUIRED COMPONENTS Core Gui' 'Qt6 REQUIRED COMPONENTS Core Gui GuiPrivate'
-      '';
+      patches = [
+        (prev.fetchpatch {
+          url = "https://github.com/streetpea/chiaki-ng/commit/fe5bfd87998c7ca67ade76436e31ab9924000c8b.patch";
+          hash = "sha256-7Eo5tcmhgbQszBrgtTGrnH34GewJXXAYSKqvqGN/viI=";
+        })
+      ];
     };
+    azahar = prev.azahar.overrideAttrs (old: {
+      version = "2133.3-unstable-2025-10-21";
+      src = prev.fetchFromGitHub {
+        owner = "azahar-emu";
+        repo = "azahar";
+        rev = "67f6735f02055c3ef7c524b3df364b821b061d8a";
+        hash = "sha256-7xJL0EcVKCVsqoM7NPdRuXdpCo1NBwNWOTnnRGF4G+Q=";
+        fetchSubmodules = true;
+      };
+    });
 
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
