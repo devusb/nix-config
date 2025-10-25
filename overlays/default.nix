@@ -28,6 +28,13 @@ let
       ];
     });
 
+    chiaki-ng = prev.chiaki-ng.overrideAttrs {
+      postPatch = ''
+        substituteInPlace gui/CMakeLists.txt \
+          --replace-fail 'Qt6 REQUIRED COMPONENTS Core Gui' 'Qt6 REQUIRED COMPONENTS Core Gui GuiPrivate'
+      '';
+    };
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (self: super: {
         # skip additional tests that seem to require network access
