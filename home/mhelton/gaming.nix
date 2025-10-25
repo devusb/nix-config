@@ -8,8 +8,10 @@
     moonlight-qt
     chiaki4deck
     dreamm
-    azahar
-    duckstation
+
+    ## broken with Qt 6.10
+    # azahar
+    # duckstation
   ];
 
   programs.mangohud = {
