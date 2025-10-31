@@ -91,6 +91,7 @@
 
   programs.chiaki4deck = {
     enable = true;
+    package = pkgs.chiaki-ng;
     consoleAddress = "192.168.10.50";
     registrationKeyPath = config.sops.secrets.registration_key.path;
     consoleNickname = "PS5-875";
