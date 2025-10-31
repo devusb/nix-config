@@ -6,7 +6,7 @@
     theforceengine
     ryubing
     moonlight-qt
-    chiaki4deck
+    chiaki-ng
     dreamm
     azahar
   ];
