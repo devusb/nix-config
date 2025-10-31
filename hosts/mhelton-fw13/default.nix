@@ -71,6 +71,13 @@
   ];
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-source-record
+    ];
+  };
+
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
   };
