@@ -61,27 +61,15 @@
 
   hardware.graphics.enable = true;
 
-  # Plasma
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  security.pam.services.login.fprintAuth = false;
-
-  services.displayManager.defaultSession = "plasma";
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
     sbctl
-    (slack.overrideAttrs {
-      version = "4.45.64";
-      src = fetchurl {
-        url = "https://downloads.slack-edge.com/desktop-releases/linux/x64/4.45.64/slack-desktop-4.45.64-amd64.deb";
-        hash = "sha256-fGr4arHVd4rskw1OfXe5+ZSKg6h+hFjoIdb56N/tGA8=";
-      };
-    })
+    slack
+    pkgs.gnomeExtensions.appindicator
   ];
-  programs.kdeconnect.enable = true;
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";

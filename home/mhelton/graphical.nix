@@ -1,6 +1,14 @@
-{ pkgs, ... }:
 {
-  imports = [
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
+let
+  withPlasma = osConfig.services.desktopManager.plasma6.enable;
+in
+{
+  imports = lib.optionals withPlasma [
     ./plasma.nix
   ];
 
@@ -26,7 +34,7 @@
     policies = {
       disablePocket = true;
     };
-    nativeMessagingHosts = [
+    nativeMessagingHosts = lib.optionals withPlasma [
       pkgs.kdePackages.plasma-browser-integration
     ];
   };
