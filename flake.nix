@@ -91,6 +91,10 @@
 
     # flox
     flox.url = "github:flox/flox";
+
+    # wolweb-cli
+    wolweb-cli.url = "github:devusb/wolweb-cli";
+    wolweb-cli.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

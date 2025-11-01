@@ -48,6 +48,7 @@
     flox
     parallel
     dasel
+    wolweb-cli
   ];
 
   programs.home-manager = {
@@ -193,6 +194,10 @@
       inline_height = 0;
       update_check = false;
     };
+  };
+
+  xdg.configFile."wolweb-cli.yaml".text = builtins.toJSON {
+    server = "http://sophia:8089";
   };
 
 }

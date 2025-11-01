@@ -6,6 +6,7 @@ let
     stable = import inputs.nixpkgs-stable { system = prev.system; };
     colmena = inputs.colmena.packages.${prev.system}.colmena;
     flox = inputs.flox.packages.${prev.system}.flox;
+    wolweb-cli = inputs.wolweb-cli.packages.${prev.system}.wolweb-cli;
 
     # steam input and pipewire support
     retroarch-joypad-autoconfig = prev.retroarch-joypad-autoconfig.overrideAttrs (old: {

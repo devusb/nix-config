@@ -1250,7 +1250,8 @@
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix_3",
-        "utils": "utils"
+        "utils": "utils",
+        "wolweb-cli": "wolweb-cli"
       }
     },
     "rust-analyzer-src": {
@@ -1480,6 +1481,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wolweb-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762032092,
+        "narHash": "sha256-eS9gQyu3tkR+POOKaonuIkt64euHO2FowFUgv/5rxgs=",
+        "owner": "devusb",
+        "repo": "wolweb-cli",
+        "rev": "d371f03fd58cac249f84f01300416d41e6de952c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devusb",
+        "repo": "wolweb-cli",
         "type": "github"
       }
     }
