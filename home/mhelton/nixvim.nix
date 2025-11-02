@@ -98,7 +98,7 @@
     };
     leap = {
       enable = true;
-      addDefaultMappings = true;
+      addDefaultMappings = false;
     };
     web-devicons.enable = true;
     gitblame.enable = true;
@@ -112,6 +112,10 @@
       };
     };
   };
+  extraConfigLua = ''
+    vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+    vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+  '';
   extraPackages = with pkgs; [
     ripgrep
   ];
