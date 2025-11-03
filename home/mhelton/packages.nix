@@ -20,7 +20,6 @@
     nerd-fonts.fira-code
     nil
     headsetcontrol
-    difftastic
     devenv
     ouch
     attic-client
@@ -98,7 +97,7 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    extraConfig = {
+    settings = {
       push = {
         default = "simple";
         autoSetupRemote = true;
@@ -107,8 +106,12 @@
         autocorrect = "10";
       };
     };
-    difftastic = {
-      enable = true;
+  };
+
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+    options = {
       display = "side-by-side-show-both";
     };
   };
@@ -175,6 +178,23 @@
           symbol = "⛁ ";
         };
       };
+    };
+  };
+
+  programs.ssh = {
+    # default is below, suppresses warnings
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no";
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
     };
   };
 
