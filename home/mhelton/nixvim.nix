@@ -98,7 +98,6 @@
     };
     leap = {
       enable = true;
-      addDefaultMappings = false;
     };
     web-devicons.enable = true;
     gitblame.enable = true;
