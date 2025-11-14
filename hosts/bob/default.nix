@@ -5,6 +5,7 @@
 {
   inputs,
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -100,6 +101,8 @@
   services.flatpak = {
     enable = true;
   };
+
+  services.orca.enable = lib.mkForce false;
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
