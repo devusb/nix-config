@@ -24,17 +24,6 @@ let
 
       lix = prev.lixPackageSets.latest.lix;
 
-      # https://github.com/atuinsh/atuin/pull/2902
-      atuin = prev.atuin.overrideAttrs (old: {
-        patches = [
-          (prev.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/atuinsh/atuin/pull/2902.diff";
-            hash = "sha256-V/mSaUxn6RJwwaPwoYeyxt2b8cj5f7pU5oUE88k76M8=";
-          })
-        ];
-      });
-
-      # qt 6.10 fixups
       chiaki-ng = prev.chiaki-ng.overrideAttrs {
         patches = [
           (prev.fetchpatch {
