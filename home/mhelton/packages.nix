@@ -3,6 +3,7 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./kitty.nix
+    ./ghostty.nix
   ];
 
   home.packages = with pkgs; [
