@@ -18,7 +18,7 @@ in
       xclip
       wl-clipboard
       obsidian
-      jellyfin-media-player
+      # jellyfin-media-player
       haruna
       virt-manager
       calibre
