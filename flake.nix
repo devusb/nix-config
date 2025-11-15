@@ -65,11 +65,8 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # lanzaboote
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-    lanzaboote.inputs.rust-overlay.follows = "rust-overlay";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
     # sops-nix
     sops-nix.url = "github:Mic92/sops-nix";
