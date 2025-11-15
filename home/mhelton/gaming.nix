@@ -9,6 +9,7 @@
     chiaki-ng
     dreamm
     azahar
+    dolphin-emu
   ];
 
   programs.mangohud = {
