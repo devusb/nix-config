@@ -50,7 +50,7 @@
     devices = lib.singleton {
       size = 128;
       permissions = {
-        user = "mhelton";
+        group = "libvirtd";
         mode = "0777";
       };
     };
