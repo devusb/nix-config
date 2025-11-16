@@ -52,11 +52,6 @@
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.flake-utils.follows = "utils";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # nixvim
     nixvim.url = "github:nix-community/nixvim";
 

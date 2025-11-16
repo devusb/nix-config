@@ -22,8 +22,6 @@ let
         '';
       });
 
-      lix = prev.lixPackageSets.latest.lix;
-
       chiaki-ng = prev.chiaki-ng.overrideAttrs {
         patches = [
           (prev.fetchpatch {
