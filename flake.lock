@@ -1063,6 +1063,18 @@
         "type": "github"
       }
     },
+    "patch-librepods": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-u5ohLyDc/YzfwDhsgMdaHi8kjvzyydRJN8EpytI4FJI=",
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/444137.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/444137.patch"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -1158,6 +1170,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
+        "patch-librepods": "patch-librepods",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix_2",

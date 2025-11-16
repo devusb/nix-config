@@ -92,6 +92,12 @@
     # wolweb-cli
     wolweb-cli.url = "github:devusb/wolweb-cli";
     wolweb-cli.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nixpkgs PRs
+    patch-librepods = {
+      url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/444137.patch";
+      flake = false;
+    };
   };
 
   outputs =
@@ -125,9 +131,16 @@
               inherit pkgs;
               module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
             };
+
+            nixpkgs' = import nixpkgs { inherit system; };
+            nixpkgsPatched = nixpkgs'.applyPatches {
+              name = "nixpkgs-patched";
+              src = nixpkgs;
+              patches = [ inputs.patch-librepods ];
+            };
           in
           rec {
-            legacyPackages = import nixpkgs {
+            legacyPackages = import nixpkgsPatched {
               inherit system;
               overlays = builtins.attrValues {
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
@@ -144,6 +157,7 @@
             };
 
             treefmt = {
+              pkgs = import nixpkgs { inherit system; };
               programs.nixfmt.enable = true;
               programs.nixfmt.package = pkgs.nixfmt-rfc-style;
               programs.yamlfmt.enable = true;
