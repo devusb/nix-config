@@ -67,6 +67,8 @@
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
+  programs.librepods.enable = true;
+
   services.udev.extraRules =
     let
       # swap rudder and throttle order for Wing Commander 3 (and potentially others)
