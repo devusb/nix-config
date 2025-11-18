@@ -83,6 +83,7 @@
 
     # flox
     flox.url = "github:flox/flox";
+    flox.inputs.nixpkgs.follows = "nixpkgs";
 
     # wolweb-cli
     wolweb-cli.url = "github:devusb/wolweb-cli";
