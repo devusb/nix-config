@@ -18,15 +18,16 @@ in
       xclip
       wl-clipboard
       obsidian
-      # jellyfin-media-player
-      haruna
       virt-manager
       calibre
       remmina
-      ktailctl
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
+    ]
+    ++ lib.optionals withPlasma [
+      ktailctl
+      haruna
     ];
 
   programs.firefox = {
