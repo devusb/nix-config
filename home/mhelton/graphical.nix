@@ -40,6 +40,8 @@ in
     ];
   };
 
+  programs.keychain.enable = lib.mkForce withPlasma;
+
   xdg.configFile = {
     "autostart/1password.desktop".text = ''
       [Desktop Entry]
