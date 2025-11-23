@@ -22,15 +22,6 @@ let
         '';
       });
 
-      chiaki-ng = prev.chiaki-ng.overrideAttrs {
-        patches = [
-          (prev.fetchpatch {
-            url = "https://github.com/streetpea/chiaki-ng/commit/fe5bfd87998c7ca67ade76436e31ab9924000c8b.patch";
-            hash = "sha256-7Eo5tcmhgbQszBrgtTGrnH34GewJXXAYSKqvqGN/viI=";
-          })
-        ];
-      };
-
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
