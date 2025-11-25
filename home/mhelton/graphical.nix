@@ -26,7 +26,6 @@ in
       zoom-us
     ]
     ++ lib.optionals withPlasma [
-      ktailctl
       haruna
     ];
 

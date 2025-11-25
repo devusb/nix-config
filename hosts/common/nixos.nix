@@ -101,6 +101,15 @@
     enable = true;
     useRoutingFeatures = "both";
   };
+  systemd.user.services.tailscale-systray = {
+    description = "Tailscale System Tray";
+    after = [ "systemd.service" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${lib.getExe pkgs.tailscale} systray";
+    };
+  };
 
   # enable passwordless sudo
   security.sudo.wheelNeedsPassword = false;
