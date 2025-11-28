@@ -22,6 +22,15 @@ let
         '';
       });
 
+      gamescope = prev.gamescope.overrideAttrs (old: {
+        version = "3.16.17-unstable-2025-11-24";
+        src = old.src.override {
+          tag = null;
+          rev = "5c58b15c0c2d609271151141a1ad7e97911cf10f";
+          hash = "sha256-iTIGzibhHeL/yfUVARRpUwzcnTnOSGdxqr2vvATLkX0=";
+        };
+      });
+
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
