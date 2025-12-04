@@ -12,8 +12,6 @@
     font.size = 12;
   };
 
-  services.syncthing.enable = true;
-
   home.sessionVariables = {
     DOTFILES = "/dotfiles/";
   };
