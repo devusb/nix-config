@@ -11,6 +11,13 @@
     hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    # nixpkgs-patcher + patches
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+    nixpkgs-patch-jellyfin-media-player = {
+      url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/465340.diff";
+      flake = false;
+    };
+
     # Home manager flake
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -98,6 +105,7 @@
       flake-parts,
       nixvim,
       treefmt-nix,
+      nixpkgs-patcher,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -120,17 +128,17 @@
               inherit pkgs;
               module = import ./home/mhelton/nixvim.nix { inherit pkgs; };
             };
+            nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs {
+              inherit inputs system;
+            };
           in
           rec {
-            legacyPackages = import nixpkgs {
+            legacyPackages = import nixpkgs-patched {
               inherit system;
               overlays = builtins.attrValues {
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
               };
               config.allowUnfree = true;
-              config.permittedInsecurePackages = [
-                "qtwebengine-5.15.19"
-              ];
             };
             _module.args.pkgs = legacyPackages;
 
@@ -214,8 +222,9 @@
           nixosConfigurations = {
             tomservo = withSystem "x86_64-linux" (
               { pkgs, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixpkgs-patcher.lib.nixosSystem {
                 inherit pkgs;
+                nixpkgsPatcher.nixpkgs = nixpkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
                   ./hosts/tomservo
@@ -240,8 +249,9 @@
 
             durandal = withSystem "x86_64-linux" (
               { pkgs, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixpkgs-patcher.lib.nixosSystem {
                 inherit pkgs;
+                nixpkgsPatcher.nixpkgs = nixpkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
                   ./hosts/durandal
@@ -266,8 +276,9 @@
 
             bob = withSystem "x86_64-linux" (
               { pkgs, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixpkgs-patcher.lib.nixosSystem {
                 inherit pkgs;
+                nixpkgsPatcher.nixpkgs = nixpkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
                   ./hosts/bob
@@ -293,8 +304,9 @@
 
             r2d2 = withSystem "x86_64-linux" (
               { pkgs, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixpkgs-patcher.lib.nixosSystem {
                 inherit pkgs;
+                nixpkgsPatcher.nixpkgs = nixpkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
                   ./hosts/r2d2
@@ -319,8 +331,9 @@
 
             mhelton-fw13 = withSystem "x86_64-linux" (
               { pkgs, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixpkgs-patcher.lib.nixosSystem {
                 inherit pkgs;
+                nixpkgsPatcher.nixpkgs = nixpkgs;
                 specialArgs = { inherit inputs; };
                 modules = (builtins.attrValues nixosModules) ++ [
                   ./hosts/mhelton-fw13

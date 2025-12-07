@@ -21,6 +21,7 @@ in
       virt-manager
       calibre
       remmina
+      jellyfin-media-player
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
