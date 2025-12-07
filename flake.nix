@@ -12,7 +12,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     # nixpkgs-patcher + patches
-    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+    nixpkgs-patcher.url = "github:devusb/nixpkgs-patcher/breakpoint-darwin";
     nixpkgs-patch-jellyfin-media-player = {
       url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/465340.diff";
       flake = false;

@@ -807,15 +807,16 @@
     },
     "nixpkgs-patcher": {
       "locked": {
-        "lastModified": 1764966487,
-        "narHash": "sha256-5brA0aDcqcInKHq+KqxkHf25y1SR9GM+vEHlosU2O8k=",
-        "owner": "gepbird",
+        "lastModified": 1765147129,
+        "narHash": "sha256-H2C5UgIo3nkB2aHnvePZxOMn1GeWM3RTXLjBUT1z/I0=",
+        "owner": "devusb",
         "repo": "nixpkgs-patcher",
-        "rev": "28b3e9a52830cc9ebadb64749aea2e5ba3a07d89",
+        "rev": "d6a15738b656eb3986f74f879859e0a999c777cc",
         "type": "github"
       },
       "original": {
-        "owner": "gepbird",
+        "owner": "devusb",
+        "ref": "breakpoint-darwin",
         "repo": "nixpkgs-patcher",
         "type": "github"
       }
