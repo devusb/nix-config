@@ -17,7 +17,6 @@ in
     [
       xclip
       wl-clipboard
-      obsidian
       virt-manager
       calibre
       remmina

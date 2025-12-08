@@ -72,8 +72,6 @@
       autoUpdate = false;
     };
     casks = [
-      "obsidian"
-      "mimestream"
       "rectangle"
       "firefox"
       "aldente"
