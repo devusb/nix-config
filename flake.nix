@@ -119,6 +119,7 @@
             pkgs,
             lib,
             system,
+            inputs',
             ...
           }:
           let
@@ -147,6 +148,7 @@
             };
 
             treefmt = {
+              pkgs = inputs'.nixpkgs.legacyPackages;
               programs.nixfmt.enable = true;
               programs.nixfmt.package = pkgs.nixfmt-rfc-style;
               programs.yamlfmt.enable = true;
