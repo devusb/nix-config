@@ -793,34 +793,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-jellyfin-media-player": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-SoOSPQ6CoynNUnbZyMp5rML4qIJgh9kfiT/eezqHLqY=",
-        "type": "file",
-        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/465340.diff"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/465340.diff"
-      }
-    },
-    "nixpkgs-patcher": {
-      "locked": {
-        "lastModified": 1765147129,
-        "narHash": "sha256-H2C5UgIo3nkB2aHnvePZxOMn1GeWM3RTXLjBUT1z/I0=",
-        "owner": "devusb",
-        "repo": "nixpkgs-patcher",
-        "rev": "d6a15738b656eb3986f74f879859e0a999c777cc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "devusb",
-        "ref": "breakpoint-darwin",
-        "repo": "nixpkgs-patcher",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1751274312,
@@ -1045,8 +1017,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-vfio": "nixos-vfio",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-patch-jellyfin-media-player": "nixpkgs-patch-jellyfin-media-player",
-        "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
         "plasma-manager": "plasma-manager",
