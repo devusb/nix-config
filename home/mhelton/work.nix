@@ -20,7 +20,6 @@
 
   home.packages = with pkgs; [
     postgresql
-    pgcli
     dive
     crane
     aws-sso-cli
@@ -47,6 +46,13 @@
 
   programs.starship.settings = {
     aws.disabled = false;
+  };
+
+  programs.pgcli = {
+    enable = true;
+    settings = {
+      main.use_local_timezone = false;
+    };
   };
 
 }
