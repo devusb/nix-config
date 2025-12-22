@@ -33,6 +33,16 @@
   '';
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelPatches = [
+    {
+      name = "drm/amd/display: Increase DCN35 SR enter/exit latency by 3us";
+      patch = pkgs.fetchpatch {
+        url = "https://gitlab.freedesktop.org/-/project/4522/uploads/daad272f57fc56572461d789bc105809/0001-drm-amd-display-Increase-DCN35-SR-latency-by-3us.patch";
+        sha256 = "sha256-84FgDHdqQ4OD4a5a3UoUGGC0Ip/oMug+t2FDpTHhzbc=";
+      };
+    }
+  ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "mhelton-fw13"; # Define your hostname.
