@@ -58,6 +58,7 @@
   programs.nixvim = {
     enable = true;
     nixpkgs.useGlobalPackages = true;
+    defaultEditor = true;
   }
   // import ./nixvim.nix { inherit pkgs; };
 
