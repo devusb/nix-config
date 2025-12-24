@@ -78,8 +78,20 @@
     sbctl
     slack
     pkgs.gnomeExtensions.appindicator
+    gnome-network-displays
   ];
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
+
+  networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
+
+  networking.firewall.allowedTCPPorts = [
+    7236
+    7250
+  ];
+  networking.firewall.allowedUDPPorts = [
+    7236
+    5353
+  ];
 
   programs.obs-studio = {
     enable = true;
