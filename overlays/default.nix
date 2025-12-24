@@ -31,6 +31,19 @@ let
         };
       });
 
+      gnome-network-displays = prev.gnome-network-displays.overrideAttrs (oldAttrs: {
+        postPatch = (oldAttrs.postPatch or "") + ''
+          # Find the nd-stream.c file and patch it
+          echo "Looking for nd-stream.c file..."
+          find . -name "nd-stream.c" -type f | while read -r file; do
+            echo "Found file at: $file"
+            substituteInPlace "$file" \
+              --replace "XDP_OUTPUT_MONITOR | XDP_OUTPUT_WINDOW | XDP_OUTPUT_VIRTUAL" \
+                        "XDP_OUTPUT_MONITOR"
+          done
+        '';
+      });
+
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
