@@ -1,14 +1,19 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.git = {
     settings = {
       user = {
         name = "Morgan Helton";
-        email = "mhelton@gmail.com";
+        email = lib.mkForce "mhelton@gmail.com";
       };
     };
     signing = {
-      key = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
+      key = lib.mkForce "${config.home.homeDirectory}/.ssh/id_rsa.pub";
       signByDefault = true;
       format = "ssh";
     };
@@ -34,7 +39,7 @@
   programs.keychain.keys = [ "id_rsa" ];
 
   programs.starship.settings = {
-    aws.disabled = true;
+    aws.disabled = lib.mkForce true;
   };
 
 }

@@ -120,6 +120,7 @@
 
     home-manager.users.mhelton.imports = [
       ../../home/mhelton/gaming.nix
+      ../../home/mhelton/personal.nix
     ];
   };
   specialisation.compliance.configuration = {
