@@ -26,6 +26,8 @@
   nix.settings = {
     builders = [
       "ssh-ng://mhelton@chopper x86_64-linux,i686-linux - 6 - big-parallel,nixos-test,benchmark,kvm - -"
+      "ssh-ng://mhelton@superintendent aarch64-linux - 6 - benchmark,big-parallel,nixos-test,kvm - -"
+      "ssh-ng://mhelton@cortana aarch64-darwin - - - big-parallel,kvm"
     ];
   };
 
