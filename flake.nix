@@ -73,6 +73,10 @@
     # treefmt-nix
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
+    # git-hooks
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     # nixos-vfio
     nixos-vfio.url = "github:j-brn/nixos-vfio";
     nixos-vfio.inputs.nixpkgs.follows = "nixpkgs";
@@ -105,6 +109,7 @@
       {
         imports = [
           treefmt-nix.flakeModule
+          inputs.git-hooks-nix.flakeModule
         ];
         perSystem =
           {
@@ -148,6 +153,15 @@
                 "secrets/*"
                 ".sops.yaml"
               ];
+              flakeCheck = false;
+            };
+
+            pre-commit = {
+              check.enable = true;
+              settings.hooks = {
+                ripsecrets.enable = true;
+                treefmt.enable = true;
+              };
             };
 
             checks =
