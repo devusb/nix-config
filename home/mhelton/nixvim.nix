@@ -14,7 +14,7 @@
     nix.enable = true;
     treesitter = {
       enable = true;
-      folding = true;
+      folding.enable = true;
       settings = {
         highlight.enable = true;
         incremental.selection.enable = true;
