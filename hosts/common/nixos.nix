@@ -48,6 +48,10 @@
   services.fstrim.enable = true;
   boot.swraid.enable = lib.mkDefault false;
 
+  boot.kernelParams = [
+    "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
+  ];
+
   services.earlyoom = {
     enable = true;
   };
