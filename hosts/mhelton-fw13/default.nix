@@ -43,6 +43,10 @@
     }
   ];
 
+  boot.kernelParams = [
+    "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
+  ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "mhelton-fw13"; # Define your hostname.
