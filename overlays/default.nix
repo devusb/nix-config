@@ -22,12 +22,6 @@ let
         '';
       });
 
-      chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
-        cmakeFlags = (old.cmakeFlags or [ ]) ++ [
-          (prev.lib.cmakeBool "CHIAKI_ENABLE_TESTS" false)
-        ];
-      });
-
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
