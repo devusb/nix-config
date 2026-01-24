@@ -35,6 +35,7 @@
     git-absorb
     delta
     kubectl
+    claude-code
     (wrapHelm kubernetes-helm {
       plugins = with kubernetes-helmPlugins; [
         helm-diff
