@@ -21,6 +21,7 @@ in
       calibre
       remmina
       jellyfin-media-player
+      bluebubbles
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
