@@ -50,6 +50,7 @@
     parallel
     dasel
     wolweb-cli
+    agent-deck
   ];
 
   programs.home-manager = {
