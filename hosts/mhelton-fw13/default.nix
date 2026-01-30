@@ -45,6 +45,7 @@
 
   boot.kernelParams = [
     "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
+    "amdgpu.mes=0"
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
