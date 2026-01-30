@@ -41,12 +41,20 @@
         sha256 = "sha256-84FgDHdqQ4OD4a5a3UoUGGC0Ip/oMug+t2FDpTHhzbc=";
       };
     }
+    {
+      name = "Revert drm/amdgpu: Enable MES lr_compute_wa by default";
+      patch = pkgs.fetchpatch {
+        url = "https://github.com/torvalds/linux/commit/1fb710793ce26.patch";
+        hash = "sha256-rOvOT626umgcmh9HPPGwC3eDNvO2Du5czeOnMR5Adx4=";
+        revert = true;
+      };
+    }
   ];
 
-  boot.kernelParams = [
-    "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
-    "amdgpu.mes=0"
-  ];
+  # boot.kernelParams = [
+  #   "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
+  #   "amdgpu.mes=0"
+  # ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
