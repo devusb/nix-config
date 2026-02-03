@@ -36,6 +36,7 @@
     delta
     kubectl
     claude-code
+    nchat
     (wrapHelm kubernetes-helm {
       plugins = with kubernetes-helmPlugins; [
         helm-diff
