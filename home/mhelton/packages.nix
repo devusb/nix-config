@@ -52,6 +52,7 @@
     dasel
     wolweb-cli
     llm-agents.agent-deck
+    llm-agents.handy
   ];
 
   programs.home-manager = {
