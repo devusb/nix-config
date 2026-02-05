@@ -116,6 +116,8 @@
 
   services.usbmuxd.enable = true;
 
+  programs.ydotool.enable = true;
+
   system.stateVersion = "25.11";
 
   specialisation.personal.configuration = {
