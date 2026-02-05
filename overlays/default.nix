@@ -54,4 +54,5 @@ in
 inputs.nixpkgs.lib.composeManyExtensions [
   customPkgs
   modifications
+  inputs.llm-agents.overlays.default
 ]

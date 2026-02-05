@@ -16,6 +16,7 @@
         "keys"
         "input"
         "dialout"
+        "ydotool"
       ];
     };
   };
