@@ -87,6 +87,9 @@
     # wolweb-cli
     wolweb-cli.url = "github:devusb/wolweb-cli";
     wolweb-cli.inputs.nixpkgs.follows = "nixpkgs";
+
+    # llm-agents
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =

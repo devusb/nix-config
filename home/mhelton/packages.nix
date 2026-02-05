@@ -35,7 +35,7 @@
     git-absorb
     delta
     kubectl
-    claude-code
+    llm-agents.claude-code
     nchat
     (wrapHelm kubernetes-helm {
       plugins = with kubernetes-helmPlugins; [
@@ -51,7 +51,7 @@
     parallel
     dasel
     wolweb-cli
-    agent-deck
+    llm-agents.agent-deck
   ];
 
   programs.home-manager = {
