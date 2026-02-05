@@ -14,6 +14,7 @@
     functions = {
       nr = import ./extra/fish/nr.nix { inherit pkgs lib; };
       ns = import ./extra/fish/ns.nix { inherit pkgs lib; };
+      "4to6" = import ./extra/fish/4to6.nix { inherit pkgs lib; };
     };
   };
 
