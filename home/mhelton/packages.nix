@@ -44,7 +44,6 @@
     })
     k9s
     kubectx
-    argocd
     talosctl
     lnav
     flox
