@@ -31,7 +31,7 @@
     options snd_hda_intel power_save=1
     options cros_charge-control probe_with_fwk_charge_control=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   boot.kernelPatches = [
     {
