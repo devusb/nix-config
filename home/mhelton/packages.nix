@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
@@ -57,6 +62,12 @@
 
   programs.home-manager = {
     enable = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    osFlake = "/dotfiles";
+    darwinFlake = "${config.home.homeDirectory}/code/nix-config";
   };
 
   programs.nixvim = {
