@@ -22,20 +22,6 @@ let
         '';
       });
 
-      git-absorb = prev.git-absorb.overrideAttrs (old: rec {
-        version = "0.8.0-unstable-2026-01-22";
-        src = old.src.override {
-          tag = null;
-          rev = "ddda0b7db025a62db54621016c355e3982b4245e";
-          hash = "sha256-cNKqmqZufiTMOPFrbn4M9yRINstTolNsCYeCj2mBagQ=";
-        };
-        cargoDeps = old.cargoDeps.overrideAttrs {
-          inherit src;
-          outputHashMode = "recursive";
-          outputHash = "sha256-03vHVC3PSmHMLouQSirPlIG5o7BpvgWjFCtKLAGnxg8=";
-        };
-      });
-
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
