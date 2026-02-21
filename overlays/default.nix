@@ -24,7 +24,7 @@ let
 
       bluebubbles = prev.bluebubbles.overrideAttrs (old: {
         postInstall = old.postInstall + ''
-          install -Dm0644 assets/icon/bb-icon.svg $out/share/icons/hicolor/scalable/apps/bluebubbles.svg
+          install -Dm0644 flatpak/icon/128x128.png $out/share/icons/hicolor/128x128/apps/bluebubbles.png
         '';
       });
 
