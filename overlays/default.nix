@@ -22,6 +22,12 @@ let
         '';
       });
 
+      bluebubbles = prev.bluebubbles.overrideAttrs (old: {
+        postInstall = old.postInstall + ''
+          install -Dm0644 assets/icon/bb-icon.svg $out/share/icons/hicolor/scalable/apps/bluebubbles.svg
+        '';
+      });
+
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access
