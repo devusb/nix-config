@@ -18,7 +18,6 @@ in
       xclip
       wl-clipboard
       virt-manager
-      calibre
       remmina
       jellyfin-media-player
       bluebubbles
