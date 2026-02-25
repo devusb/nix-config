@@ -42,18 +42,13 @@
       };
     }
     {
-      name = "Revert drm/amdgpu: Enable MES lr_compute_wa by default";
+      name = "Revert drm/amd/amdgpu: reserve vm invalidation engine for uni_mes";
       patch = pkgs.fetchpatch {
-        url = "https://github.com/torvalds/linux/commit/1fb710793ce2619223adffaf981b1ff13cd48f17.patch";
-        sha256 = "sha256-rOvOT626umgcmh9HPPGwC3eDNvO2Du5czeOnMR5Adx4=";
+        url = "https://github.com/torvalds/linux/commit/418ec6670bc2.patch";
+        sha256 = "sha256-ezCiuzjc//X6Wec768yWolvzcsEXew3THQSjImBloqg=";
         revert = true;
       };
     }
-  ];
-
-  boot.kernelParams = [
-    "amdgpu.cwsr_enable=0" # avoid amdgpu crashes
-    "amdgpu.mes=0"
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
