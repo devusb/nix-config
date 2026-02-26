@@ -58,6 +58,7 @@
     wolweb-cli
     llm-agents.agent-deck
     llm-agents.handy
+    llm-agents.tuicr
   ];
 
   programs.home-manager = {
