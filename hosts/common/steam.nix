@@ -13,6 +13,6 @@
   environment.systemPackages = with pkgs; [
     steamtinkerlaunch
     xdotool
-    xorg.xwininfo
+    xwininfo
   ];
 }
