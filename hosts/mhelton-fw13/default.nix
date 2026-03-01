@@ -87,7 +87,15 @@
     slack
     gnomeExtensions.appindicator
     gnomeExtensions.just-perfection
-    gnomeExtensions.nasa-apod
+    (gnomeExtensions.nasa-apod.overrideAttrs {
+      version = "47-unstable-2026-01-12";
+      src = pkgs.fetchFromGitHub {
+        owner = "Elinvention";
+        repo = "gnome-shell-extension-nasa-apod";
+        rev = "887fc40be3c8621385ca7fd1e65bfda48137f253";
+        hash = "sha256-uy/zOPiyugjNq9YWc712gjtl4NwnjsMtSd5ktHLoB0c=";
+      } + "/nasa_apod@elinvention.ovh";
+    })
   ];
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
