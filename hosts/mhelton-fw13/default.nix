@@ -85,7 +85,9 @@
   environment.systemPackages = with pkgs; [
     sbctl
     slack
-    pkgs.gnomeExtensions.appindicator
+    gnomeExtensions.appindicator
+    gnomeExtensions.just-perfection
+    gnomeExtensions.nasa-apod
   ];
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
