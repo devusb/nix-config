@@ -31,24 +31,20 @@
     options snd_hda_intel power_save=1
     options cros_charge-control probe_with_fwk_charge_control=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernelPatches = [
-    {
-      name = "drm/amd/display: Increase DCN35 SR enter/exit latency by 3us";
-      patch = pkgs.fetchpatch {
-        url = "https://gitlab.freedesktop.org/-/project/4522/uploads/daad272f57fc56572461d789bc105809/0001-drm-amd-display-Increase-DCN35-SR-latency-by-3us.patch";
-        sha256 = "sha256-84FgDHdqQ4OD4a5a3UoUGGC0Ip/oMug+t2FDpTHhzbc=";
-      };
-    }
-    {
-      name = "Revert drm/amd/amdgpu: reserve vm invalidation engine for uni_mes";
-      patch = pkgs.fetchpatch {
-        url = "https://github.com/torvalds/linux/commit/418ec6670bc2.patch";
-        sha256 = "sha256-ezCiuzjc//X6Wec768yWolvzcsEXew3THQSjImBloqg=";
-        revert = true;
-      };
-    }
+  nixpkgs.overlays = [
+    (final: prev: {
+      linux-firmware = prev.linux-firmware.overrideAttrs (old: {
+        version = "20260221-unstable-2026-02-26";
+        src = prev.fetchFromGitLab {
+          owner = "kernel-firmware";
+          repo = "linux-firmware";
+          rev = "d8e138dd8970ffc9f5f879e2d62938abe6cd3f22";
+          hash = "sha256-/OkEh1xB8dud4Jun3eX3QjGeByJkfHxXNSVIctgoMyQ=";
+        };
+      });
+    })
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
