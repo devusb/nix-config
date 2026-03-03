@@ -21,6 +21,7 @@ in
       remmina
       jellyfin-media-player
       bluebubbles
+      signal-desktop
     ]
     ++ lib.optionals (!stdenv.isAarch64) [
       zoom-us
