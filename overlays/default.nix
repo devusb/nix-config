@@ -12,6 +12,7 @@ let
       colmena = inputs.colmena.packages.${system}.colmena;
       flox = inputs.flox.packages.${system}.flox;
       wolweb-cli = inputs.wolweb-cli.packages.${system}.wolweb-cli;
+      ghostty-git = inputs.ghostty.packages.${system}.default;
 
       # steam input and pipewire support
       retroarch-joypad-autoconfig = prev.retroarch-joypad-autoconfig.overrideAttrs (old: {
