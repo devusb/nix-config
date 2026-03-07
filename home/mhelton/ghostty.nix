@@ -1,9 +1,10 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
     enableFishIntegration = config.programs.fish.enable;
     enableZshIntegration = config.programs.zsh.enable;
+    package = pkgs.ghostty-git;
     settings = {
       window-height = 45;
       window-width = 170;
