@@ -119,12 +119,6 @@
 
   services.flatpak.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.swtpm.enable = true;
-  };
-  virtualisation.spiceUSBRedirection.enable = true;
-
   services.usbmuxd.enable = true;
 
   programs.ydotool.enable = true;
