@@ -23,10 +23,14 @@ let
         '';
       });
 
-      bluebubbles = prev.bluebubbles.overrideAttrs (old: {
-        postInstall = old.postInstall + ''
-          install -Dm0644 flatpak/icon/128x128.png $out/share/icons/hicolor/128x128/apps/bluebubbles.png
-        '';
+      chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
+        version = "1.9.9-unstable-2026-01-22";
+        src = old.src.override {
+          tag = null;
+          rev = "af569df00a566d3669e944ee8cb09e195602cfea";
+          hash = "sha256-FEzYBb68uhmhcTuelOFm1rL6eXfYodEsvLKlyqT6nrc=";
+        };
+        patches = [ ];
       });
 
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
