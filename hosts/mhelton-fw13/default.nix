@@ -33,19 +33,23 @@
   '';
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      linux-firmware = prev.linux-firmware.overrideAttrs (old: {
-        version = "20260221-unstable-2026-02-26";
-        src = prev.fetchFromGitLab {
-          owner = "kernel-firmware";
-          repo = "linux-firmware";
-          rev = "d8e138dd8970ffc9f5f879e2d62938abe6cd3f22";
-          hash = "sha256-/OkEh1xB8dud4Jun3eX3QjGeByJkfHxXNSVIctgoMyQ=";
-        };
-        patches = [ ];
-      });
-    })
+  boot.kernelPatches = [
+    {
+      name = "Revert drm/amd/amdgpu: reserve vm invalidation engine for uni_mes";
+      patch = pkgs.fetchpatch {
+        url = "https://github.com/torvalds/linux/commit/418ec6670bc2.patch";
+        sha256 = "sha256-ezCiuzjc//X6Wec768yWolvzcsEXew3THQSjImBloqg=";
+        revert = true;
+      };
+    }
+    {
+      name = "Revert drm/amdgpu: attach tlb fence to the PTs update";
+      patch = pkgs.fetchpatch {
+        url = "https://github.com/torvalds/linux/commit/23316ed02c22.patch";
+        sha256 = "sha256-deDQf2h+nZlvXR/698YeizT7hyZ82LKZIChvqyCJxGA=";
+        revert = true;
+      };
+    }
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
