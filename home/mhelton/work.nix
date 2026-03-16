@@ -28,6 +28,7 @@
     diffr
     skopeo
     dbeaver-bin
+    vibetyper
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
