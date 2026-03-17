@@ -29,7 +29,7 @@
     skopeo
     dbeaver-bin
     llm-agents.opencode
-    zed-editor
+    zed-editor-fhs
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
