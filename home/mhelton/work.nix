@@ -28,6 +28,8 @@
     diffr
     skopeo
     dbeaver-bin
+    llm-agents.opencode
+    zed-editor
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
