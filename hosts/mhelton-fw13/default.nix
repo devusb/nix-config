@@ -35,19 +35,10 @@
 
   boot.kernelPatches = [
     {
-      name = "Revert drm/amd/amdgpu: reserve vm invalidation engine for uni_mes";
+      name = "drm/amdgpu: rework how we handle TLB fences";
       patch = pkgs.fetchpatch {
-        url = "https://github.com/torvalds/linux/commit/418ec6670bc2.patch";
-        sha256 = "sha256-ezCiuzjc//X6Wec768yWolvzcsEXew3THQSjImBloqg=";
-        revert = true;
-      };
-    }
-    {
-      name = "Revert drm/amdgpu: attach tlb fence to the PTs update";
-      patch = pkgs.fetchpatch {
-        url = "https://github.com/torvalds/linux/commit/23316ed02c22.patch";
-        sha256 = "sha256-deDQf2h+nZlvXR/698YeizT7hyZ82LKZIChvqyCJxGA=";
-        revert = true;
+        url = "https://patchwork.freedesktop.org/patch/712133/raw/";
+        sha256 = "sha256-astNFsyt31GLkOPSTKnuTl4Hj5/XcNMpDN2IKXWRI1g=";
       };
     }
   ];
