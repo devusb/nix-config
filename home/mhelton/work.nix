@@ -29,11 +29,22 @@
     skopeo
     dbeaver-bin
     zed-editor
+    (brev-cli.overrideAttrs {
+      patches = [
+        (fetchpatch {
+          url = "https://github.com/devusb/brev-cli/commit/057012b9.patch";
+          hash = "sha256-kwL1QNce8/IuIXPbLIONyLRqJne1L9YEqqsl4bLHD00=";
+        })
+      ];
+    })
   ];
   programs.keychain.keys = [ "id_ed25519" ];
 
   programs.ssh = {
     enable = true;
+    includes = [
+      ''"${config.home.homeDirectory}/.brev/ssh_config"''
+    ];
     matchBlocks = {
       "*" = {
         user = "morgan";
