@@ -33,16 +33,6 @@
   '';
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernelPatches = [
-    {
-      name = "drm/amdgpu: rework how we handle TLB fences";
-      patch = pkgs.fetchpatch {
-        url = "https://patchwork.freedesktop.org/patch/712133/raw/";
-        sha256 = "sha256-astNFsyt31GLkOPSTKnuTl4Hj5/XcNMpDN2IKXWRI1g=";
-      };
-    }
-  ];
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "mhelton-fw13"; # Define your hostname.
