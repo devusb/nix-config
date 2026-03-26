@@ -120,6 +120,7 @@
   ];
   extraPlugins = with pkgs.vimPlugins; [
     editorconfig-nvim
+    plenary-nvim
   ];
   colorschemes = {
     gruvbox.enable = true;
