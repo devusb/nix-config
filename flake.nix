@@ -90,6 +90,7 @@
 
     # llm-agents
     llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
 
     # ghostty
     ghostty.url = "github:ghostty-org/ghostty";
