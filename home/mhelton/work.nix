@@ -29,6 +29,7 @@
     skopeo
     dbeaver-bin
     zed-editor
+    sox
     (brev-cli.overrideAttrs {
       patches = [
         (fetchpatch {
