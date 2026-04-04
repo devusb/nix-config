@@ -26,7 +26,6 @@
     nerd-fonts.fira-code
     nil
     headsetcontrol
-    devenv
     ouch
     attic-client
     fx
