@@ -40,6 +40,7 @@
     delta
     kubectl
     llm-agents.claude-code
+    sox
     nchat
     gurk-rs
     (wrapHelm kubernetes-helm {
