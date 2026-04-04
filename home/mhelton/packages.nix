@@ -26,7 +26,6 @@
     nerd-fonts.fira-code
     nil
     headsetcontrol
-    devenv
     ouch
     attic-client
     fx
@@ -41,6 +40,7 @@
     delta
     kubectl
     llm-agents.claude-code
+    sox
     nchat
     gurk-rs
     (wrapHelm kubernetes-helm {
