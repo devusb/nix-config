@@ -24,11 +24,11 @@ let
       });
 
       chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
-        version = "1.9.9-unstable-2026-01-22";
+        version = "1.10.0-unstable-2026-04-04";
         src = old.src.override {
           tag = null;
-          rev = "af569df00a566d3669e944ee8cb09e195602cfea";
-          hash = "sha256-FEzYBb68uhmhcTuelOFm1rL6eXfYodEsvLKlyqT6nrc=";
+          rev = "78b16ad8df158d46974bccdca50073008628ea87";
+          hash = "sha256-cu3LUWgpiQO/hecU/zcjcJBXypw2qHnQ9ERiEhzGAnA=";
         };
         patches = [ ];
       });
