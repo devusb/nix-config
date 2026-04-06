@@ -41,6 +41,7 @@
 
   fileSystems."/mnt/sdcard" = {
     device = "/dev/mmcblk0p1";
+    fsType = "ext4";
     options = [
       "rw"
       "user"
