@@ -56,13 +56,7 @@
     parallel
     dasel
     wolweb-cli
-    (llm-agents.agent-deck.overrideAttrs (old: rec {
-      version = "1.4.2";
-      src = old.src.override {
-        rev = "v${version}";
-        hash = "sha256-uePkJORLS68p6P5bN/60jwTj96yvVupXma4Yy+uma3c=";
-      };
-    }))
+    llm-agents.agent-deck
     llm-agents.handy
     llm-agents.tuicr
   ];
