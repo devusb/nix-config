@@ -24,13 +24,12 @@ let
       });
 
       chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
-        version = "1.10.0-unstable-2026-04-04";
+        version = "1.10.0-unstable-2026-04-07";
         src = old.src.override {
           tag = null;
-          rev = "78b16ad8df158d46974bccdca50073008628ea87";
-          hash = "sha256-cu3LUWgpiQO/hecU/zcjcJBXypw2qHnQ9ERiEhzGAnA=";
+          rev = "ec3cbecb9830c09ae65890b47744a8700cc7e2c5";
+          hash = "sha256-nE2D93jNFs8MWsM11Vn6MT7yC+H7eDG4T3WtsboiDY0=";
         };
-        patches = [ ];
       });
 
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
