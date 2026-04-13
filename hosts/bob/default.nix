@@ -27,7 +27,9 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
   boot.initrd.deckbd.enable = true;
+  boot.initrd.systemd.enable = false; # disabled until deckbd is fixed to support it
 
   networking.hostName = "bob"; # Define your hostname.
   networking.networkmanager = {
