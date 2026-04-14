@@ -56,7 +56,14 @@
     parallel
     dasel
     wolweb-cli
-    llm-agents.agent-deck
+    (llm-agents.agent-deck.overrideAttrs (old: {
+      patches = [
+        (fetchpatch {
+          url = "https://github.com/asheshgoplani/agent-deck/commit/ed069fef138cbab6693e1a6dace9dc2ad9f8e140.patch";
+          hash = "sha256-Iue+d+BUSx5U8hKbBYf4HuiNURqWTvAO1WylU7j/Pg4=";
+        })
+      ];
+    }))
     llm-agents.handy
     llm-agents.tuicr
   ];
