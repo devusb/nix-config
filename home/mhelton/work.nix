@@ -29,6 +29,7 @@
     skopeo
     dbeaver-bin
     zed-editor
+    llm-agents.codex
     (brev-cli.overrideAttrs {
       patches = [
         (fetchpatch {
