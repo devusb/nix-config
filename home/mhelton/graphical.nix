@@ -38,6 +38,7 @@ in
     nativeMessagingHosts = lib.optionals withPlasma [
       pkgs.kdePackages.plasma-browser-integration
     ];
+    configPath = ".mozilla/firefox";
   };
 
   programs.keychain.enable = lib.mkForce withPlasma;
