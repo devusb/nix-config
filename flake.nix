@@ -145,7 +145,7 @@
 
             treefmt = {
               programs.nixfmt.enable = true;
-              programs.nixfmt.package = pkgs.nixfmt-rfc-style;
+              programs.nixfmt.package = pkgs.nixfmt;
               programs.yamlfmt.enable = true;
               settings.excludes = [
                 ".editorconfig"
