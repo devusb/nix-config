@@ -11,6 +11,7 @@
       extraGroups = [
         "wheel"
         "podman"
+        "docker"
         "libvirtd"
         "networkmanager"
         "keys"
