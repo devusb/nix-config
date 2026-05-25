@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  version.enableNixpkgsReleaseCheck = false;
+
   viAlias = true;
   vimAlias = true;
   globals.mapleader = ",";
