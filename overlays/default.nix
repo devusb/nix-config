@@ -46,6 +46,10 @@ let
         doCheck = false;
       });
 
+      openldap = prev.openldap.overrideAttrs {
+        doCheck = !prev.stdenv.hostPlatform.isi686;
+      };
+
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (self: super: {
           # skip additional tests that seem to require network access

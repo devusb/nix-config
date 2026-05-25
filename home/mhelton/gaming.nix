@@ -9,6 +9,7 @@
     dreamm
     azahar
     dolphin-emu
+    lutris
   ];
 
   programs.mangohud = {
