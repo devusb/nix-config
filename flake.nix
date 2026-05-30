@@ -169,6 +169,7 @@
                 };
                 darwinMachinesPerSystem = {
                   aarch64-darwin = [
+                    "mhelton-mbp14"
                   ];
                 };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
@@ -348,6 +349,29 @@
           };
 
           darwinConfigurations = {
+            mhelton-mbp14 = withSystem "aarch64-darwin" (
+              { pkgs, ... }:
+              darwin.lib.darwinSystem {
+                specialArgs = { inherit inputs; };
+                modules = (builtins.attrValues darwinModules) ++ [
+                  { nixpkgs.pkgs = pkgs; }
+                  ./hosts/mhelton-mbp14
+                  home-manager.darwinModules.home-manager
+                  {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = { inherit inputs; };
+                      users.mhelton.imports = [
+                        ./home/mhelton
+                        ./home/mhelton/work.nix
+                        ./home/mhelton/darwin.nix
+                      ];
+                    };
+                  }
+                ];
+              }
+            );
           };
         };
 

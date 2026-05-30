@@ -8,7 +8,10 @@ let
   withPlasma = osConfig.services.desktopManager.plasma6.enable;
 in
 {
-  imports = lib.optionals withPlasma [
+  imports = [
+    ./ghostty.nix
+  ]
+  ++ lib.optionals withPlasma [
     ./plasma.nix
   ];
 
