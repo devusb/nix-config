@@ -33,19 +33,6 @@ let
         patches = [ ];
       });
 
-      aws-sso-cli = prev.aws-sso-cli.overrideAttrs (old: rec {
-        version = "2.2.2";
-        src = old.src.override {
-          rev = "v${version}";
-          hash = "sha256-xUq9rUSDV/FY4eHfx2afBW8Rvu/RI9vOhCRnWOJEY0k=";
-        };
-        vendorHash = "sha256-euqhgbyz8H/fQ1RAP0k4GMOjOu7gVeYzQv75tjCh5z0=";
-        postPatch = (old.postPatch or "") + ''
-          substituteInPlace go.mod --replace "go 1.26.3" "go 1.26.2"
-        '';
-        doCheck = false;
-      });
-
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
