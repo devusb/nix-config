@@ -28,7 +28,6 @@
     diffr
     skopeo
     dbeaver-bin
-    zed-editor
     llm-agents.codex
     (brev-cli.overrideAttrs {
       patches = [
@@ -65,11 +64,6 @@
     settings = {
       main.use_local_timezone = false;
     };
-  };
-
-  programs.opencode = {
-    enable = true;
-    package = pkgs.llm-agents.opencode;
   };
 
 }
