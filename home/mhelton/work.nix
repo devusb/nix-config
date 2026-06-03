@@ -29,6 +29,7 @@
     skopeo
     dbeaver-bin
     llm-agents.codex
+    mcp-grafana
     (brev-cli.overrideAttrs {
       patches = [
         (fetchpatch {
