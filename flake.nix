@@ -60,7 +60,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # lanzaboote
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
+    lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # sops-nix
