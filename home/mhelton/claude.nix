@@ -1,0 +1,144 @@
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  inherit (lib) getExe getExe' genAttrs;
+
+  toLang = lang: exts: genAttrs exts (_: lang);
+in
+{
+  programs.claude-code = {
+    enable = true;
+    package = pkgs.llm-agents.claude-code;
+
+    marketplaces = {
+      claude-plugins-official = inputs.claude-plugins-official;
+      superpowers-dev = inputs.superpowers;
+      flox-agentic = inputs.flox-agentic;
+    };
+
+    lspServers = {
+      gopls = {
+        command = getExe pkgs.gopls;
+        extensionToLanguage = {
+          ".go" = "go";
+          ".mod" = "go.mod";
+          ".sum" = "go.sum";
+        };
+      };
+      nixd = {
+        command = getExe pkgs.nixd;
+        extensionToLanguage = toLang "nix" [ ".nix" ];
+      };
+      rust-analyzer = {
+        command = getExe pkgs.rust-analyzer;
+        extensionToLanguage = toLang "rust" [ ".rs" ];
+      };
+      pyright = {
+        command = getExe' pkgs.pyright "pyright-langserver";
+        args = [ "--stdio" ];
+        extensionToLanguage = toLang "python" [
+          ".py"
+          ".pyi"
+          ".pyw"
+        ];
+      };
+      fish-lsp = {
+        command = getExe pkgs.fish-lsp;
+        args = [ "start" ];
+        extensionToLanguage = toLang "fish" [ ".fish" ];
+      };
+      cmake-language-server = {
+        command = getExe pkgs.cmake-language-server;
+        extensionToLanguage = toLang "cmake" [ ".cmake" ];
+      };
+      typescript = {
+        command = getExe pkgs.typescript-language-server;
+        args = [ "--stdio" ];
+        extensionToLanguage = {
+          ".ts" = "typescript";
+          ".tsx" = "typescriptreact";
+          ".js" = "javascript";
+          ".jsx" = "javascriptreact";
+          ".mjs" = "javascript";
+          ".cjs" = "javascript";
+          ".mts" = "typescript";
+          ".cts" = "typescript";
+        };
+      };
+      yamlls = {
+        command = getExe pkgs.yaml-language-server;
+        args = [ "--stdio" ];
+        extensionToLanguage = toLang "yaml" [
+          ".yaml"
+          ".yml"
+        ];
+      };
+      jsonls = {
+        command = getExe' pkgs.vscode-langservers-extracted "vscode-json-language-server";
+        args = [ "--stdio" ];
+        extensionToLanguage = {
+          ".json" = "json";
+          ".jsonc" = "jsonc";
+        };
+      };
+    };
+
+    context = ''
+      ### Running commands
+      - The user's shell is fish, any recommendations to run manually should be fish syntax.
+      - Ask once per session if the user would rather you run commands, or if they'd rather run themselves.
+      - If a command is not available, fall back to nix shell via "nix shell nixpkgs#<package> --command <command>" or '--command sh -c "cd src && make"' for multiples.
+
+      ### Writing code
+      - Always match the comment style of surrounding code; if no comments exist, don't start adding them.
+      - Write comments as simple, plain factual statements. Do not include "archaeology" of how something came to be, but only a very simple statement of what it is/what it does. Nothing about what edge case it avoids, or any rationale or narrative or root causes.
+      - Prefer no comment to a simple one on something obvious.
+
+      ### Working in projects
+      - Always start new features in a new branch+worktree in the .worktrees directory of the project repo folder and apply edits there, never in the main worktree.
+      - Commit in logical pieces with the goal of each commit working, and being an atomic unit of work.
+      - Write commit messages in prose, explaining clearly and simply the purpose of a change, not a longwinded rationale statement or story.
+    '';
+
+    settings = {
+      enabledPlugins = {
+        "code-review@claude-plugins-official" = true;
+        "superpowers@superpowers-dev" = true;
+        "frontend-design@claude-plugins-official" = true;
+        "flox@flox-agentic" = true;
+      };
+
+      env = {
+        CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
+      };
+
+      attribution = {
+        commit = "";
+        pr = "";
+      };
+
+      hooks = {
+        SessionStart = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "if [ -d .flox ]; then echo 'This project uses Flox. Run `flox activate` in your shell before running any commands to ensure the correct environment is loaded.'; fi";
+              }
+            ];
+          }
+        ];
+      };
+
+      effortLevel = "xhigh";
+      autoDreamEnabled = true;
+      skipDangerousModePermissionPrompt = true;
+      skipAutoPermissionPrompt = true;
+      voiceEnabled = true;
+    };
+  };
+}

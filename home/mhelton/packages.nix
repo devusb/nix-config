@@ -9,6 +9,7 @@
     inputs.nixvim.homeModules.nixvim
     ./kitty.nix
     ./ghostty.nix
+    ./claude.nix
   ];
 
   home.packages = with pkgs; [
@@ -39,7 +40,6 @@
     git-absorb
     delta
     kubectl
-    llm-agents.claude-code
     sox
     nchat
     gurk-rs
@@ -56,7 +56,6 @@
     parallel
     dasel
     wolweb-cli
-    llm-agents.agent-deck
     llm-agents.handy
     llm-agents.tuicr
   ];
@@ -231,6 +230,24 @@
       style = "auto";
       inline_height = 0;
       update_check = false;
+    };
+  };
+
+  programs.agent-deck = {
+    enable = true;
+    package = pkgs.llm-agents.agent-deck;
+    claudeCodeHooks.enable = true;
+    settings = {
+      default_tool = "claude";
+      theme = "dark";
+
+      claude = {
+        dangerous_mode = false;
+        allow_dangerous_mode = true;
+        auto_mode = true;
+        use_chrome = false;
+        use_teammate_mode = true;
+      };
     };
   };
 
