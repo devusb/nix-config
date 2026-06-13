@@ -67,4 +67,36 @@
     };
   };
 
+  programs.agent-deck.enableMcpIntegration = true;
+
+  programs.mcp = {
+    enable = true;
+    servers = {
+      fellow = {
+        description = "Fellow MCP Server";
+        url = "https://fellow.app/mcp";
+      };
+      grafana = {
+        command = "mcp-grafana";
+        description = "Grafana MCP Server";
+        env = {
+          GRAFANA_SERVICE_ACCOUNT_TOKEN = "";
+          GRAFANA_URL = "https://floxdev.grafana.net";
+        };
+      };
+      linear = {
+        description = "Linear MCP Server";
+        url = "https://mcp.linear.app/mcp";
+      };
+      notion = {
+        description = "Notion MCP Server";
+        url = "https://mcp.notion.com/mcp";
+      };
+      sentry = {
+        description = "Sentry MCP Server";
+        url = "https://mcp.sentry.dev/mcp";
+      };
+    };
+  };
+
 }

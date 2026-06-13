@@ -94,6 +94,20 @@
     # ghostty
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
+
+    # skills marketplaces
+    claude-plugins-official = {
+      url = "github:anthropics/claude-plugins-official";
+      flake = false;
+    };
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
+    };
+    flox-agentic = {
+      url = "github:flox/flox-agentic";
+      flake = false;
+    };
   };
 
   outputs =
@@ -214,6 +228,7 @@
 
           nixosModules = import ./modules/nixos;
           darwinModules = import ./modules/darwin;
+          homeModules = import ./modules/home-manager;
 
           nixosConfigurations = {
             tomservo = withSystem "x86_64-linux" (
@@ -229,7 +244,7 @@
                       useGlobalPkgs = true;
                       useUserPackages = true;
                       extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
+                      users.mhelton.imports = (builtins.attrValues self.homeModules) ++ [
                         ./home/mhelton
                         ./home/mhelton/personal.nix
                         ./home/mhelton/linux.nix
@@ -255,7 +270,7 @@
                       useGlobalPkgs = true;
                       useUserPackages = true;
                       extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
+                      users.mhelton.imports = (builtins.attrValues self.homeModules) ++ [
                         ./home/mhelton
                         ./home/mhelton/personal.nix
                         ./home/mhelton/linux.nix
@@ -281,7 +296,7 @@
                       useGlobalPkgs = true;
                       useUserPackages = true;
                       extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
+                      users.mhelton.imports = (builtins.attrValues self.homeModules) ++ [
                         ./home/mhelton
                         ./home/mhelton/personal.nix
                         ./home/mhelton/linux.nix
@@ -308,7 +323,7 @@
                       useGlobalPkgs = true;
                       useUserPackages = true;
                       extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
+                      users.mhelton.imports = (builtins.attrValues self.homeModules) ++ [
                         ./home/mhelton
                         ./home/mhelton/personal.nix
                         ./home/mhelton/linux.nix
@@ -334,7 +349,7 @@
                       useGlobalPkgs = true;
                       useUserPackages = true;
                       extraSpecialArgs = { inherit inputs; };
-                      users.mhelton.imports = [
+                      users.mhelton.imports = (builtins.attrValues self.homeModules) ++ [
                         ./home/mhelton
                         ./home/mhelton/work.nix
                         ./home/mhelton/linux.nix

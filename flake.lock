@@ -100,6 +100,22 @@
         "type": "github"
       }
     },
+    "claude-plugins-official": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781374039,
+        "narHash": "sha256-JNMckizfGrTOwjir5rzovhXbtYqtBT8l+jj8xuroy4M=",
+        "owner": "anthropics",
+        "repo": "claude-plugins-official",
+        "rev": "3d2f32464dfa0593330ab2120c88db54195414bf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "claude-plugins-official",
+        "type": "github"
+      }
+    },
     "colmena": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -430,6 +446,22 @@
       "original": {
         "owner": "flox",
         "repo": "flox",
+        "type": "github"
+      }
+    },
+    "flox-agentic": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776443187,
+        "narHash": "sha256-+prUM8xsydY7eNozDwf/dmhny/ZBU+obbgQJBkmoPx0=",
+        "owner": "flox",
+        "repo": "flox-agentic",
+        "rev": "5f851be895cf90ccc40f177d3f78693b5b18e2d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "flox",
+        "repo": "flox-agentic",
         "type": "github"
       }
     },
@@ -1209,11 +1241,13 @@
     "root": {
       "inputs": {
         "chaotic": "chaotic",
+        "claude-plugins-official": "claude-plugins-official",
         "colmena": "colmena",
         "darwin": "darwin",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "flox": "flox",
+        "flox-agentic": "flox-agentic",
         "ghostty": "ghostty",
         "hardware": "hardware",
         "home-manager": "home-manager_3",
@@ -1232,6 +1266,7 @@
         "nixvim": "nixvim",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
+        "superpowers": "superpowers",
         "treefmt-nix": "treefmt-nix_4",
         "utils": "utils",
         "wolweb-cli": "wolweb-cli"
@@ -1329,6 +1364,22 @@
         "owner": "NixOS",
         "ref": "nixos-25.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "superpowers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780085125,
+        "narHash": "sha256-P/FD8HTQO+QzvMe3A/B2v2vjs8T6ZmIYH3MPp79dSzo=",
+        "owner": "obra",
+        "repo": "superpowers",
+        "rev": "6fd4507659784c351abbd2bc264c7162cfd386dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "obra",
+        "repo": "superpowers",
         "type": "github"
       }
     },
