@@ -102,6 +102,7 @@ in
       - Always start new features in a new branch+worktree in the .worktrees directory of the project repo folder and apply edits there, never in the main worktree.
       - Commit in logical pieces with the goal of each commit working, and being an atomic unit of work.
       - Write commit messages in prose, explaining clearly and simply the purpose of a change, not a longwinded rationale statement or story.
+      - Don't commit specs (e.g. from superpowers) unless there's already an established pattern in the repo for committing design specs (e.g. an existing docs/specs dir).
     '';
 
     settings = {
