@@ -97,6 +97,7 @@ in
       - Always match the comment style of surrounding code; if no comments exist, don't start adding them.
       - Write comments as simple, plain factual statements. Do not include "archaeology" of how something came to be, but only a very simple statement of what it is/what it does. Nothing about what edge case it avoids, or any rationale or narrative or root causes.
       - Prefer no comment to a simple one on something obvious.
+      - When making docs updates, also do not include history or rationale for why something was done a particular way, only include how it works and examples if relevant and consistent with the existing content.
 
       ### Working in projects
       - Always start new features in a new branch+worktree in the .worktrees directory of the project repo folder and apply edits there, never in the main tree.
