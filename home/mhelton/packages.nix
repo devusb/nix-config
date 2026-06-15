@@ -235,7 +235,14 @@
 
   programs.agent-deck = {
     enable = true;
-    package = pkgs.llm-agents.agent-deck;
+    package = pkgs.llm-agents.agent-deck.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [
+        (pkgs.fetchpatch {
+          url = "https://github.com/devusb/agent-deck/compare/048bae91...1a1d500f.patch";
+          hash = "sha256-CNL/dam7Oc8SjxDDeULhrWAdN4XF63mml+HEtOQPJT4=";
+        })
+      ];
+    });
     claudeCodeHooks.enable = true;
     settings = {
       default_tool = "claude";

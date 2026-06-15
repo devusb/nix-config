@@ -67,7 +67,24 @@
     };
   };
 
-  programs.agent-deck.enableMcpIntegration = true;
+  programs.agent-deck = {
+    enableMcpIntegration = true;
+    settings.groups =
+      let
+        mkGroup = repo: {
+          create = true;
+          default_path = "${config.home.homeDirectory}/code/${repo}";
+        };
+      in
+      {
+        floxhub = mkGroup "floxhub";
+        forge = mkGroup "forge";
+        deltaops = mkGroup "deltaops";
+        metrics = mkGroup "metrics";
+        flox-installers = mkGroup "flox-installers";
+        flox = mkGroup "flox";
+      };
+  };
 
   programs.mcp = {
     enable = true;
