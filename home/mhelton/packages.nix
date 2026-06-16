@@ -247,6 +247,12 @@
     settings = {
       default_tool = "claude";
       theme = "dark";
+      updates = {
+        auto_update = false;
+        check_enabled = false;
+        notify_in_cli = false;
+      };
+      worktree.default_location = "subdirectory";
 
       claude = {
         dangerous_mode = false;
