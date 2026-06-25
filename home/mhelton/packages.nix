@@ -42,7 +42,6 @@
     kubectl
     sox
     nchat
-    gurk-rs
     (wrapHelm kubernetes-helm {
       plugins = with kubernetes-helmPlugins; [
         helm-diff
