@@ -150,6 +150,9 @@
                 default = nixpkgs.lib.composeManyExtensions [ (import ./overlays { inherit inputs; }) ];
               };
               config.allowUnfree = true;
+              config.permittedInsecurePackages = [
+                "pnpm-9.15.9"
+              ];
             };
             _module.args.pkgs = legacyPackages;
 
