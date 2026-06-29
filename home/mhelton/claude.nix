@@ -106,6 +106,7 @@ in
       - Commit in logical pieces with the goal of each commit working, and being an atomic unit of work.
       - Write commit messages in prose, explaining clearly and simply the purpose of a change, not a longwinded rationale statement or story.
       - Don't commit specs (e.g. from superpowers) unless there's already an established pattern in the repo for committing design specs (e.g. an existing docs/specs dir).
+      - Use the "conventional commits" pattern for messages, erring towards "feat," "fix," and "chore" unless others make significantly more contextual sense or match repo norms better.
 
       ### Doing research
       - Do not make definitive statements without backing evidence.
