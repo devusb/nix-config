@@ -247,6 +247,9 @@
     settings = {
       default_tool = "claude";
       theme = "dark";
+      fork = {
+        worktree = false;
+      };
       updates = {
         auto_update = false;
         check_enabled = false;
