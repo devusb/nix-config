@@ -10,6 +10,7 @@
     azahar
     dolphin-emu
     lutris
+    am2rlauncher
   ];
 
   programs.mangohud = {
