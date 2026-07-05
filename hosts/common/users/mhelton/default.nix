@@ -18,6 +18,7 @@
         "input"
         "dialout"
         "ydotool"
+        "disk"
       ];
     };
   };
