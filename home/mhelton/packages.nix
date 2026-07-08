@@ -216,6 +216,7 @@
 
   programs.fzf = {
     enable = true;
+    historyWidget.command = "";
   };
 
   programs.atuin = {
