@@ -22,6 +22,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    ../common/mesa-git.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
