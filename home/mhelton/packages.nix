@@ -237,16 +237,21 @@
   programs.agent-deck = {
     enable = true;
     package = pkgs.llm-agents.agent-deck.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [
-        (pkgs.fetchpatch {
-          url = "https://github.com/devusb/agent-deck/compare/048bae91...1a1d500f.patch";
-          hash = "sha256-CNL/dam7Oc8SjxDDeULhrWAdN4XF63mml+HEtOQPJT4=";
-        })
-      ];
+      version = "1.9.73-unstable-2026-07-13";
+      src = old.src.override {
+        tag = null;
+        rev = "350a640649d9c4d6b52524030f63d426dcd309d0";
+        hash = "sha256-jUXkCZNYNQnik+aa9dQg5HTXXX7IaoqbUcC5NWzPw4I=";
+      };
+
+      vendorHash = "sha256-ouZKH2NEmoyEYe3+zbfw8YjvrkWhraGQN/d/UAMBA1A";
+
+      nativeInstallCheckInputs = [ ];
     });
     claudeCodeHooks.enable = true;
     settings = {
       default_tool = "claude";
+      sync_title = false;
       theme = "dark";
       fork = {
         worktree = false;
