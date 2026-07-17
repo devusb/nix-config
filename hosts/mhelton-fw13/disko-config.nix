@@ -32,6 +32,7 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
+                  bypassWorkqueues = true;
                 };
                 content = {
                   type = "btrfs";
