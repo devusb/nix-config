@@ -94,11 +94,10 @@
         url = "https://fellow.app/mcp";
       };
       grafana = {
-        command = "mcp-grafana";
         description = "Grafana MCP Server";
-        env = {
-          GRAFANA_SERVICE_ACCOUNT_TOKEN = "";
-          GRAFANA_URL = "https://floxdev.grafana.net";
+        url = "https://mcp.grafana.com/mcp";
+        headers = {
+          "X-Grafana-URL" = "https://floxdev.grafana.net";
         };
       };
       linear = {
