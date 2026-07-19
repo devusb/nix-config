@@ -236,18 +236,7 @@
 
   programs.agent-deck = {
     enable = true;
-    package = pkgs.llm-agents.agent-deck.overrideAttrs (old: {
-      version = "1.9.73-unstable-2026-07-13";
-      src = old.src.override {
-        tag = null;
-        rev = "350a640649d9c4d6b52524030f63d426dcd309d0";
-        hash = "sha256-jUXkCZNYNQnik+aa9dQg5HTXXX7IaoqbUcC5NWzPw4I=";
-      };
-
-      vendorHash = "sha256-ouZKH2NEmoyEYe3+zbfw8YjvrkWhraGQN/d/UAMBA1A";
-
-      nativeInstallCheckInputs = [ ];
-    });
+    package = pkgs.llm-agents.agent-deck;
     claudeCodeHooks.enable = true;
     settings = {
       default_tool = "claude";
