@@ -83,6 +83,8 @@
   };
   programs.steam.extest.enable = true;
 
+  programs.reversepuck.enable = true;
+
   sops = {
     secrets.registration_key = {
       sopsFile = ../../secrets/playstation.yaml;
