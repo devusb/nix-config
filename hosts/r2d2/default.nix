@@ -57,7 +57,16 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    raopOpenFirewall = true;
   };
+
+  services.pipewire.extraConfig.pipewire."50-raop" = {
+    "context.modules" = [
+      { name = "libpipewire-module-raop-discover"; }
+    ];
+  };
+
+  services.avahi.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
