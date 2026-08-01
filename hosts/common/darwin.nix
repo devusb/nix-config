@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }:
@@ -38,9 +37,12 @@
     optimise.automatic = true;
   };
 
+  users.knownUsers = [ "mhelton" ];
   users.users = {
     mhelton = {
       home = "/Users/mhelton";
+      shell = pkgs.fish;
+      uid = 501;
     };
   };
 
@@ -72,14 +74,11 @@
       autoUpdate = false;
     };
     casks = [
-      "rectangle"
       "firefox"
-      "aldente"
-      "deskpad"
     ];
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
@@ -94,13 +93,11 @@
       tilesize = 57;
       show-recents = false;
       persistent-apps = [
-        "/System/Applications/Launchpad.app"
+        "/System/Applications/Apps.app"
         "/Applications/Firefox.app"
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
-        "/Applications/Mimestream.app"
         "${pkgs.kitty}/Applications/kitty.app"
-        "/Applications/Obsidian.app"
         "/System/Applications/System\ Settings.app"
       ];
     };
@@ -112,11 +109,13 @@
       "com.apple.trackpad.scaling" = 1.0;
       "NSAutomaticCapitalizationEnabled" = false;
       "NSAutomaticSpellingCorrectionEnabled" = false;
-      "AppleInterfaceStyleSwitchesAutomatically" = true;
+      "AppleInterfaceStyleSwitchesAutomatically" = false;
+      "AppleInterfaceStyle" = "Dark";
+    };
+    WindowManager = {
+      EnableStandardClickToShowDesktop = false;
+      StandardHideWidgets = true;
     };
   };
 
-  system.activationScripts.postActivation.text = ''
-    dscl . -create '/Users/${builtins.elemAt (builtins.attrNames config.users.users) 0}' UserShell '${pkgs.zsh}/bin/zsh'
-  '';
 }

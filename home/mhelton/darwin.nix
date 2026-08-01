@@ -7,6 +7,7 @@
     gnugrep
     gawk
     watch
+    tart
   ];
 
   programs.zsh = {
