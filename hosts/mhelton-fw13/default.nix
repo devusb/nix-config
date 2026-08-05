@@ -17,6 +17,7 @@
     ../common/nixos.nix
     ../common/_1password.nix
     ../common/docker.nix
+    inputs.dcwifi.nixosModules.default
   ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
