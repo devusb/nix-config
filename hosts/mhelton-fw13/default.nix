@@ -102,7 +102,7 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
-  services.avahi.enable = true;
+  services.avahi.enable = lib.mkForce false;
 
   services.flatpak.enable = true;
 
