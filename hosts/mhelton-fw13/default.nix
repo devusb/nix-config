@@ -103,6 +103,8 @@
   };
 
   services.avahi.enable = lib.mkForce false;
+  programs.steam.remotePlay.openFirewall = lib.mkForce false;
+  programs.steam.dedicatedServer.openFirewall = lib.mkForce false;
 
   services.flatpak.enable = true;
 
