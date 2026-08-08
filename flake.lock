@@ -170,11 +170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785228046,
-        "narHash": "sha256-I/8S2bRfNPSvn5G1Di3Qu7cICmPE/qRIGicB79sMO+Y=",
+        "lastModified": 1786051522,
+        "narHash": "sha256-erhj30bvdxm5FBZ9pb+ZDxQDXPjhzsNDv+jj2rtdYzQ=",
         "owner": "NixVegas",
         "repo": "dcwifi",
-        "rev": "57e84adf92c0eb4eb713e411198a2d2b1c130572",
+        "rev": "1b51c8a0681975db9b2f01d8c14a4c54a106e1b0",
         "type": "github"
       },
       "original": {

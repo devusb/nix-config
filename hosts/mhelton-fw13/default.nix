@@ -39,7 +39,6 @@
   networking.hostName = "mhelton-fw13"; # Define your hostname.
   networking.networkmanager = {
     enable = true;
-    wifi.backend = "iwd";
   };
 
   hardware.bluetooth.enable = true;
