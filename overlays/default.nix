@@ -25,16 +25,16 @@ let
 
       chiaki-ng =
         (prev.chiaki-ng.overrideAttrs (old: {
-          version = "1.10.0-unstable-2026-05-17";
+          version = "1.10.0-unstable-2026-07-04";
           src = old.src.override {
             tag = null;
-            rev = "4a0115e1b3fd3dd98384962b9779dea866122ba5";
-            hash = "sha256-+zQbdLSlhxXYnocVbSbHTysQu8LdQnobKwrD9qAjuMg=";
+            rev = "6547d8aed03503646fe1043512616e26c03fa9db";
+            hash = "sha256-Eb7LCfb58TT7zTSl+/j5/ImP+4LDJdcbODPmgJ/YXK0=";
           };
           patches = [ ];
         })).override
           {
-            ffmpeg = prev.ffmpeg_7;
+            ffmpeg = prev.ffmpeg_8;
           };
 
       azahar = prev.azahar.overrideAttrs (old: rec {
