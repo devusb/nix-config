@@ -23,14 +23,26 @@ let
         '';
       });
 
-      chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
-        version = "1.10.0-unstable-2026-05-17";
+      chiaki-ng =
+        (prev.chiaki-ng.overrideAttrs (old: {
+          version = "1.10.0-unstable-2026-05-17";
+          src = old.src.override {
+            tag = null;
+            rev = "4a0115e1b3fd3dd98384962b9779dea866122ba5";
+            hash = "sha256-+zQbdLSlhxXYnocVbSbHTysQu8LdQnobKwrD9qAjuMg=";
+          };
+          patches = [ ];
+        })).override
+          {
+            ffmpeg = prev.ffmpeg_7;
+          };
+
+      azahar = prev.azahar.overrideAttrs (old: rec {
+        version = "2126.0";
         src = old.src.override {
-          tag = null;
-          rev = "4a0115e1b3fd3dd98384962b9779dea866122ba5";
-          hash = "sha256-+zQbdLSlhxXYnocVbSbHTysQu8LdQnobKwrD9qAjuMg=";
+          tag = version;
+          hash = "sha256-/ON5YbwIHZmstjt3zAbw/uns9DVicjyJD3eDcY6JX24=";
         };
-        patches = [ ];
       });
 
       openldap = prev.openldap.overrideAttrs {
