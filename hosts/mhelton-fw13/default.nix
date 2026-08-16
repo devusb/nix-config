@@ -45,6 +45,8 @@
   hardware.sensor.iio.enable = false;
   hardware.enableAllFirmware = true;
 
+  nix.settings.auto-optimise-store = lib.mkForce false;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
