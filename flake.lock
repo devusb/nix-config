@@ -421,19 +421,19 @@
         "type": "github"
       }
     },
-    "flox-agentic": {
+    "flox-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1782432304,
-        "narHash": "sha256-N1sBsQPlQaU6ES1poT7pN4/6ZOEeePcgs8IfiEvFoeU=",
+        "lastModified": 1786628573,
+        "narHash": "sha256-529uxwwFrl5RAnnkoFFBV6LwPrHFY+vXz3pyCeCkJ44=",
         "owner": "flox",
-        "repo": "flox-agentic",
-        "rev": "84ba858ad58d204c5b93d1d7fce17ae75d147925",
+        "repo": "flox-skills",
+        "rev": "afcd72521b594287cce8c94cb22f344d01c56380",
         "type": "github"
       },
       "original": {
         "owner": "flox",
-        "repo": "flox-agentic",
+        "repo": "flox-skills",
         "type": "github"
       }
     },
@@ -1127,7 +1127,7 @@
         "disko": "disko",
         "flake-parts": "flake-parts",
         "flox": "flox",
-        "flox-agentic": "flox-agentic",
+        "flox-skills": "flox-skills",
         "ghostty": "ghostty",
         "hardware": "hardware",
         "home-manager": "home-manager_3",

@@ -15,9 +15,9 @@ in
     package = pkgs.llm-agents.claude-code;
 
     marketplaces = {
-      claude-plugins-official = inputs.claude-plugins-official;
+      claude-plugins-official-flake = inputs.claude-plugins-official;
       superpowers-dev = inputs.superpowers;
-      flox-agentic = inputs.flox-agentic;
+      flox-skills = inputs.flox-skills;
     };
 
     lspServers = {
@@ -114,10 +114,10 @@ in
 
     settings = {
       enabledPlugins = {
-        "code-review@claude-plugins-official" = true;
+        "code-review@claude-plugins-official-flake" = true;
         "superpowers@superpowers-dev" = true;
-        "frontend-design@claude-plugins-official" = true;
-        "flox@flox-agentic" = true;
+        "frontend-design@claude-plugins-official-flake" = true;
+        "flox@flox-skills" = true;
       };
 
       env = {

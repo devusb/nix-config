@@ -104,8 +104,8 @@
       url = "github:obra/superpowers";
       flake = false;
     };
-    flox-agentic = {
-      url = "github:flox/flox-agentic";
+    flox-skills = {
+      url = "github:flox/flox-skills";
       flake = false;
     };
   };
