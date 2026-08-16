@@ -108,10 +108,6 @@
       url = "github:flox/flox-agentic";
       flake = false;
     };
-
-    # dcwifi
-    dcwifi.url = "github:NixVegas/dcwifi/dc34";
-    dcwifi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

@@ -163,27 +163,6 @@
         "type": "github"
       }
     },
-    "dcwifi": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786051522,
-        "narHash": "sha256-erhj30bvdxm5FBZ9pb+ZDxQDXPjhzsNDv+jj2rtdYzQ=",
-        "owner": "NixVegas",
-        "repo": "dcwifi",
-        "rev": "1b51c8a0681975db9b2f01d8c14a4c54a106e1b0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixVegas",
-        "ref": "dc34",
-        "repo": "dcwifi",
-        "type": "github"
-      }
-    },
     "deckbd": {
       "inputs": {
         "nixpkgs": [
@@ -1145,7 +1124,6 @@
         "claude-plugins-official": "claude-plugins-official",
         "colmena": "colmena",
         "darwin": "darwin",
-        "dcwifi": "dcwifi",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "flox": "flox",
