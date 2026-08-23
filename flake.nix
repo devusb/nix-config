@@ -108,6 +108,9 @@
       url = "github:flox/flox-skills";
       flake = false;
     };
+
+    # gog-nix
+    gog-nix.url = "github:xiro-codes/gog.nix";
   };
 
   outputs =

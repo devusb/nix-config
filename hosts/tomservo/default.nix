@@ -13,6 +13,7 @@
     ../common/docker.nix
     ../common/libvirt.nix
     ../common/mesa-git.nix
+    ../common/gog.nix
   ];
 
   networking.hostName = "tomservo";
