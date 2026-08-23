@@ -23,6 +23,14 @@ let
         '';
       });
 
+      # needed until https://github.com/NixOS/nixpkgs/pull/555604 lands
+      tmux = prev.tmux.overrideAttrs (old: {
+        buildInputs =
+          old.buildInputs ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [ prev.jemalloc ];
+        configureFlags =
+          old.configureFlags ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [ "--enable-jemalloc" ];
+      });
+
       chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
         version = "1.10.0-unstable-2026-07-04";
         src = old.src.override {
