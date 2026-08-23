@@ -26,7 +26,7 @@ in
       bluebubbles
       signal-desktop
     ]
-    ++ lib.optionals (!stdenv.isAarch64) [
+    ++ lib.optionals (!stdenv.hostPlatform.isAarch64) [
       zoom-us
     ]
     ++ lib.optionals withPlasma [

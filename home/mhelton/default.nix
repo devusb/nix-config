@@ -9,7 +9,10 @@
     username = "mhelton";
     stateVersion = "21.11";
     homeDirectory =
-      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        "/Users/${config.home.username}"
+      else
+        "/home/${config.home.username}";
   };
 
   # https://github.com/nix-community/home-manager/issues/4142
