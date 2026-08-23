@@ -5,7 +5,6 @@
 {
   inputs,
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -22,7 +21,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
-    ../common/mesa-git.nix
+    ../common/gog.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
