@@ -102,6 +102,7 @@ in
           natural-scroll = { };
           click-method = "clickfinger";
         };
+        mouse.natural-scroll = { };
       };
 
       layout = {
