@@ -22,6 +22,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
+    ../common/niri.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -76,20 +77,11 @@
 
   hardware.graphics.enable = true;
 
-  # Plasma
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
   security.pam.services.login.fprintAuth = false;
-
-  services.displayManager.defaultSession = "plasma";
-  services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
     sbctl
   ];
-  programs.kdeconnect.enable = true;
 
   environment.variables = {
     VDPAU_DRIVER = "radeonsi";
