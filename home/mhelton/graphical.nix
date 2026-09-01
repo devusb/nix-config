@@ -6,6 +6,7 @@
 }:
 let
   withPlasma = osConfig.services.desktopManager.plasma6.enable;
+  withNiri = osConfig.programs.niri.enable;
 in
 {
   imports = [
@@ -13,6 +14,9 @@ in
   ]
   ++ lib.optionals withPlasma [
     ./plasma.nix
+  ]
+  ++ lib.optionals withNiri [
+    ./niri.nix
   ];
 
   home.packages =
@@ -55,7 +59,7 @@ in
           desktopName = "1Password";
           comment = "Password manager and secure wallet";
           icon = "1password";
-          exec = "1password %U --silent";
+          exec = "1password${lib.optionalString withNiri " --password-store=gnome-libsecret"} %U --silent";
           terminal = false;
           startupNotify = true;
           startupWMClass = "1Password";
