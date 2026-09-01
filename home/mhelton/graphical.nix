@@ -6,6 +6,7 @@
 }:
 let
   withPlasma = osConfig.services.desktopManager.plasma6.enable;
+  withNiri = osConfig.programs.niri.enable;
 in
 {
   imports = [
@@ -13,6 +14,9 @@ in
   ]
   ++ lib.optionals withPlasma [
     ./plasma.nix
+  ]
+  ++ lib.optionals withNiri [
+    ./niri.nix
   ];
 
   home.packages =
@@ -46,28 +50,26 @@ in
 
   programs.keychain.enable = lib.mkForce withPlasma;
 
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${
+        pkgs.makeDesktopItem {
+          name = "1password";
+          desktopName = "1Password";
+          comment = "Password manager and secure wallet";
+          icon = "1password";
+          exec = "1password${lib.optionalString withNiri " --password-store=gnome-libsecret"} %U --silent";
+          terminal = false;
+          startupNotify = true;
+          startupWMClass = "1Password";
+          categories = [ "Office" ];
+        }
+      }/share/applications/1password.desktop"
+    ];
+  };
+
   xdg.configFile = {
-    "autostart/1password.desktop".text = ''
-      [Desktop Entry]
-      Categories=Office;
-      Comment[en_US]=Password manager and secure wallet
-      Comment=Password manager and secure wallet
-      Exec=1password %U --silent
-      GenericName[en_US]=
-      GenericName=
-      Icon=1password
-      MimeType=
-      Name[en_US]=1Password
-      Name=1Password
-      Path=
-      StartupNotify=true
-      StartupWMClass=1Password
-      Terminal=false
-      TerminalOptions=
-      Type=Application
-      X-KDE-SubstituteUID=false
-      X-KDE-Username=
-    '';
     "plex-mpv-shim/mpv.conf".text = ''
       fs=yes
       hwdec=vaapi
