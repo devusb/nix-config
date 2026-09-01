@@ -92,7 +92,6 @@ in
 
     settings = {
       prefer-no-csd = { };
-      screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png";
       hotkey-overlay.skip-at-startup = { };
 
       input = {
@@ -343,6 +342,9 @@ in
         "Mod+Shift+Minus".set-window-height = "-10%";
         "Mod+Shift+Equal".set-window-height = "+10%";
 
+        "Mod+Shift+S" = titled "Screenshot: Region" (screenshot [ ]);
+        "Mod+Ctrl+Shift+S" = titled "Screenshot: Full Screen" (screenshot [ "full" ]);
+        "Mod+Alt+Shift+S" = titled "Screenshot: Window" (screenshot [ "window" ]);
         "Print" = titled "Screenshot: Region" (screenshot [ ]);
         "Ctrl+Print" = titled "Screenshot: Full Screen" (screenshot [ "full" ]);
         "Alt+Print" = titled "Screenshot: Window" (screenshot [ "window" ]);
