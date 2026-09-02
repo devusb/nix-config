@@ -95,6 +95,10 @@
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
 
+    # dank-material-shell
+    dank-material-shell.url = "github:AvengeMedia/DankMaterialShell";
+    dank-material-shell.inputs.nixpkgs.follows = "nixpkgs";
+
     # skills marketplaces
     claude-plugins-official = {
       url = "github:anthropics/claude-plugins-official";
