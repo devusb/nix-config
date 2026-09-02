@@ -24,6 +24,7 @@
     unrar
     zsh-nix-shell
     nerd-fonts.fira-code
+    hack-font
     nil
     headsetcontrol
     ouch

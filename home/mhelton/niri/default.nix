@@ -12,7 +12,10 @@
   ];
 
   fonts.fontconfig.defaultFonts = {
-    monospace = [ "FiraCode Nerd Font Mono" ];
+    monospace = [
+      "FiraCode Nerd Font Mono"
+      "Hack"
+    ];
     sansSerif = [ "Noto Sans" ];
     serif = [ "Noto Serif" ];
     emoji = [ "Noto Color Emoji" ];
