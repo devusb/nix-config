@@ -63,6 +63,12 @@
           }
         ];
       }
+      {
+        window-rule._children = [
+          { match._props.app-id = "^bluebubbles$"; }
+          { default-column-width.proportion = 0.33333; }
+        ];
+      }
     ];
   };
 }
