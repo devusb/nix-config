@@ -2,6 +2,7 @@
 {
   imports = [
     ./binds.nix
+    ./dms.nix
   ];
 
   home.packages = with pkgs; [
