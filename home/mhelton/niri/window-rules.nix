@@ -23,18 +23,15 @@
       }
       {
         window-rule._children = [
-          {
-            match._props = {
-              app-id = "^zoom$";
-              title = "^zoom_linux_float_video_window$";
-            };
-          }
+          { match._props.app-id = "^zoom$"; }
+          { exclude._props.title = "^Meeting$"; }
+          { exclude._props.title = "^Zoom Workplace"; }
           { open-floating = true; }
           {
             default-floating-position._props = {
               x = 16;
               y = 16;
-              relative-to = "bottom-right";
+              relative-to = "top-right";
             };
           }
         ];
@@ -44,21 +41,14 @@
           {
             match._props = {
               app-id = "^zoom$";
-              title = "^as_toolbar$";
+              title = "^zoom_linux_float_video_window$";
             };
           }
-          {
-            match._props = {
-              app-id = "^zoom$";
-              title = "^as_preview$";
-            };
-          }
-          { open-floating = true; }
           {
             default-floating-position._props = {
               x = 16;
               y = 16;
-              relative-to = "top-right";
+              relative-to = "bottom-right";
             };
           }
         ];
