@@ -1,5 +1,5 @@
 # Transcribed from DankMaterialShell's core/internal/config/embedded/niri-binds.kdl
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   dms = args: {
     spawn = [
@@ -282,6 +282,13 @@ in
         toggle-keyboard-shortcuts-inhibit = { };
       };
       "Mod+Shift+P".power-off-monitors = { };
+
+      "Ctrl+Alt+Shift+H" = titled "Toggle Handy Transcription" {
+        spawn = [
+          "${lib.getExe pkgs.llm-agents.handy}"
+          "--toggle-transcription"
+        ];
+      };
     };
   };
 }
