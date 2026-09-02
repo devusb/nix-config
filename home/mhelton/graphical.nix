@@ -16,7 +16,7 @@ in
     ./plasma.nix
   ]
   ++ lib.optionals withNiri [
-    ./niri.nix
+    ./niri
   ];
 
   home.packages =
