@@ -1,8 +1,14 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   programs.niri.enable = true;
 
-  programs.dms-shell.enable = true;
+  programs.dms-shell = {
+    enable = true;
+  };
 
   services.upower.enable = true;
 
