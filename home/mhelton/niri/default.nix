@@ -21,6 +21,21 @@
     emoji = [ "Noto Color Emoji" ];
   };
 
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+  };
+
+  home.pointerCursor = {
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
+    gtk.enable = true;
+  };
+
   programs.ghostty.settings.window-decoration = "client";
 
   # electron only picks a secret store for desktops it recognises
