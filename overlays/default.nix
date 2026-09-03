@@ -33,6 +33,16 @@ let
         patches = [ ];
       });
 
+      # without this the xwayland screen size lags behind output mode changes
+      xwayland-satellite = prev.xwayland-satellite.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [
+          (prev.fetchpatch {
+            url = "https://github.com/devusb/xwayland-satellite/commit/6df3012.patch";
+            hash = "sha256-Icc+VFPBKkrhso3cIZiUiul7Qvna4ITNleDanmWXsj4=";
+          })
+        ];
+      });
+
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
