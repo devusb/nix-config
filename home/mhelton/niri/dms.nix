@@ -31,6 +31,8 @@ in
       batteryChargeLimit = 80;
       lockBeforeSuspend = true;
 
+      displayProfileAutoSelect = true;
+
       enableFprint = true;
       greeterEnableFprint = true;
 
