@@ -1,4 +1,12 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  osConfig,
+  pkgs,
+  ...
+}:
+let
+  withSunshine = osConfig.services.sunshine.enable;
+in
 {
   imports = [
     inputs.dank-material-shell.homeModules.dank-material-shell
@@ -14,7 +22,7 @@
       currentThemeCategory = "dynamic";
 
       acMonitorTimeout = 600;
-      acLockTimeout = 600;
+      acLockTimeout = if withSunshine then 0 else 600;
       acPostLockMonitorTimeout = 30;
       batteryMonitorTimeout = 300;
       batteryLockTimeout = 300;
