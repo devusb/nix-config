@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -13,6 +14,7 @@
     ../common/docker.nix
     ../common/libvirt.nix
     ../common/mesa-git.nix
+    ../common/niri.nix
   ];
 
   networking.hostName = "tomservo";
@@ -56,15 +58,6 @@
     enable = true;
   };
 
-  # Plasma
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  services.displayManager.defaultSession = "plasma";
-  services.desktopManager.plasma6.enable = true;
-  programs.kdeconnect.enable = true;
-
   services.displayManager.autoLogin.user = "mhelton";
 
   services.avahi = {
@@ -102,8 +95,8 @@
           name = "1440p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.2560x1440@60";
-              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${config.programs.niri.package}/bin/niri msg output DP-4 mode 2560x1440";
+              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
             }
           ];
           exclude-global-prep-cmd = "false";
@@ -113,8 +106,8 @@
           name = "1080p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1920x1080@60";
-              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${config.programs.niri.package}/bin/niri msg output DP-4 mode 1920x1080";
+              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
             }
           ];
           exclude-global-prep-cmd = "false";
@@ -124,8 +117,8 @@
           name = "800p Desktop";
           prep-cmd = [
             {
-              do = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.1280x800@60";
-              undo = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor output.DP-4.mode.3440x1440@144";
+              do = "${config.programs.niri.package}/bin/niri msg output DP-4 custom-mode 1280x800@60";
+              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
             }
           ];
           exclude-global-prep-cmd = "false";
