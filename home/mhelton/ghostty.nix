@@ -6,6 +6,7 @@
     enableZshIntegration = config.programs.zsh.enable;
     package = pkgs.ghostty-git;
     settings = {
+      font-family = config.fonts.fontconfig.defaultFonts.monospace;
       window-height = 45;
       window-width = 170;
       shell-integration-features = "ssh-env";
