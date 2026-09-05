@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -15,6 +14,7 @@
     ../common/libvirt.nix
     ../common/mesa-git.nix
     ../common/niri.nix
+    ./sunshine.nix
   ];
 
   networking.hostName = "tomservo";
@@ -80,52 +80,6 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [ gutenprint ];
-  };
-
-  services.sunshine = {
-    enable = true;
-    capSysAdmin = true;
-    openFirewall = true;
-    applications = {
-      env = {
-        PATH = "$(PATH):$(HOME)/.local/bin";
-      };
-      apps = [
-        {
-          name = "1440p Desktop";
-          prep-cmd = [
-            {
-              do = "${config.programs.niri.package}/bin/niri msg output DP-4 mode 2560x1440";
-              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
-            }
-          ];
-          exclude-global-prep-cmd = "false";
-          auto-detach = "true";
-        }
-        {
-          name = "1080p Desktop";
-          prep-cmd = [
-            {
-              do = "${config.programs.niri.package}/bin/niri msg output DP-4 mode 1920x1080";
-              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
-            }
-          ];
-          exclude-global-prep-cmd = "false";
-          auto-detach = "true";
-        }
-        {
-          name = "800p Desktop";
-          prep-cmd = [
-            {
-              do = "${config.programs.niri.package}/bin/niri msg output DP-4 custom-mode 1280x800@60";
-              undo = "${config.programs.niri.package}/bin/niri msg output DP-4 mode auto";
-            }
-          ];
-          exclude-global-prep-cmd = "false";
-          auto-detach = "true";
-        }
-      ];
-    };
   };
 
   networking.interfaces.enp6s0.wakeOnLan.enable = true;
