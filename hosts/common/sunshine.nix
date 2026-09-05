@@ -36,6 +36,13 @@ let
     };
 in
 {
+  assertions = [
+    {
+      assertion = !(withNiri && withPlasma);
+      message = "sunshine prep-cmds cannot target both niri and plasma6";
+    }
+  ];
+
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
