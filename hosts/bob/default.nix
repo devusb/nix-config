@@ -39,6 +39,7 @@
   };
   hardware.bluetooth = {
     enable = true;
+    powerOnBoot = false;
   };
 
   fileSystems."/mnt/sdcard" = {
