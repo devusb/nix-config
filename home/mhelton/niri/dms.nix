@@ -29,7 +29,7 @@ in
       batterySuspendTimeout = 600;
       batteryPostLockMonitorTimeout = 30;
       batteryChargeLimit = 80;
-      lockBeforeSuspend = true;
+      lockBeforeSuspend = if withSunshine then false else true;
 
       displayProfileAutoSelect = true;
 
