@@ -10,6 +10,7 @@ let
 
   output = "DP-4";
   nativeMode = "3440x1440@144";
+  refresh = "60";
 
   kscreen-doctor = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor";
   niri = "${config.programs.niri.package}/bin/niri";
@@ -17,18 +18,20 @@ let
   desktop =
     {
       name,
-      plasmaMode,
-      niriMode,
+      resolution,
+      custom ? false,
     }:
     {
       inherit name;
       prep-cmd =
         lib.optional withNiri {
-          do = "${niri} msg output ${output} ${niriMode}";
+          do = "${niri} msg output ${output} ${
+            if custom then "custom-mode ${resolution}@${refresh}" else "mode ${resolution}"
+          }";
           undo = "${niri} msg output ${output} mode auto";
         }
         ++ lib.optional withPlasma {
-          do = "${kscreen-doctor} output.${output}.mode.${plasmaMode}";
+          do = "${kscreen-doctor} output.${output}.mode.${resolution}@${refresh}";
           undo = "${kscreen-doctor} output.${output}.mode.${nativeMode}";
         };
       exclude-global-prep-cmd = "false";
@@ -54,18 +57,16 @@ in
       apps = [
         (desktop {
           name = "1440p Desktop";
-          plasmaMode = "2560x1440@60";
-          niriMode = "mode 2560x1440";
+          resolution = "2560x1440";
         })
         (desktop {
           name = "1080p Desktop";
-          plasmaMode = "1920x1080@60";
-          niriMode = "mode 1920x1080";
+          resolution = "1920x1080";
         })
         (desktop {
           name = "800p Desktop";
-          plasmaMode = "1280x800@60";
-          niriMode = "custom-mode 1280x800@60";
+          resolution = "1280x800";
+          custom = true;
         })
       ];
     };
