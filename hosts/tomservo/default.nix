@@ -14,7 +14,7 @@
     ../common/libvirt.nix
     ../common/mesa-git.nix
     ../common/niri.nix
-    ../common/sunshine.nix
+    ./sunshine.nix
   ];
 
   networking.hostName = "tomservo";
