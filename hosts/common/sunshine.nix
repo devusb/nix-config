@@ -19,15 +19,12 @@ let
     {
       name,
       resolution,
-      custom ? false,
     }:
     {
       inherit name;
       prep-cmd =
         lib.optional withNiri {
-          do = "${niri} msg output ${output} ${
-            if custom then "custom-mode ${resolution}@${refresh}" else "mode ${resolution}"
-          }";
+          do = "${niri} msg output ${output} custom-mode ${resolution}@${refresh}";
           undo = "${niri} msg output ${output} mode auto";
         }
         ++ lib.optional withPlasma {
@@ -66,7 +63,6 @@ in
         (desktop {
           name = "800p Desktop";
           resolution = "1280x800";
-          custom = true;
         })
       ];
     };
