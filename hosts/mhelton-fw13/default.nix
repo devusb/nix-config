@@ -18,6 +18,7 @@
     ../common/_1password.nix
     ../common/docker.nix
     ../common/niri.nix
+    ../common/tether.nix
   ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -89,7 +90,6 @@
     drivers = with pkgs; [ gutenprint ];
   };
 
-  services.avahi.enable = lib.mkForce false;
   programs.steam.remotePlay.openFirewall = lib.mkForce false;
   programs.steam.dedicatedServer.openFirewall = lib.mkForce false;
 

@@ -1238,6 +1238,7 @@
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "superpowers": "superpowers",
+        "tether": "tether",
         "treefmt-nix": "treefmt-nix_3",
         "utils": "utils",
         "wolweb-cli": "wolweb-cli"
@@ -1393,6 +1394,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tether": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788707309,
+        "narHash": "sha256-ngf2EvkEM5XcuwWm5fYXIGMnOzMDoMvaxU0CGE5caAM=",
+        "owner": "zackb",
+        "repo": "tether",
+        "rev": "ec6d731a25ec675e641d7abbc4364d329847ea7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zackb",
+        "repo": "tether",
         "type": "github"
       }
     },

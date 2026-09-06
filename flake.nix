@@ -115,6 +115,10 @@
 
     # gog-nix
     gog-nix.url = "github:xiro-codes/gog.nix";
+
+    # tether
+    tether.url = "github:zackb/tether";
+    tether.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
