@@ -32,6 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
+    ktailctl
   ];
 
   # monitoring
