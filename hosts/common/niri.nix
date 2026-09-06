@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   ...
 }:
 {
@@ -11,8 +10,6 @@
   };
 
   services.upower.enable = true;
-
-  services.displayManager.sddm.enable = lib.mkForce false;
 
   # niri-session imports the login shell's environment wholesale
   systemd.user.services.niri.serviceConfig.UnsetEnvironment = "SHLVL";
