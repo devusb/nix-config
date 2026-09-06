@@ -63,6 +63,7 @@
         window-rule._children = [
           { match._props.app-id = "^steam_app_"; }
           { open-fullscreen = true; }
+          { variable-refresh-rate = true; }
         ];
       }
     ];
