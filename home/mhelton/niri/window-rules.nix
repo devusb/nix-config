@@ -59,6 +59,12 @@
           { default-column-width.proportion = 0.33333; }
         ];
       }
+      {
+        window-rule._children = [
+          { match._props.app-id = "^steam_app_"; }
+          { open-fullscreen = true; }
+        ];
+      }
     ];
   };
 }
