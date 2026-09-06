@@ -10,6 +10,7 @@
     ../common/steam.nix
     ../common/_1password.nix
     ./wake.nix
+    ./bigscreen.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -56,7 +57,6 @@
     wayland.enable = true;
   };
   services.displayManager = {
-    defaultSession = "plasma";
     autoLogin = {
       enable = true;
       user = "mhelton";
