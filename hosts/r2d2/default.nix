@@ -23,6 +23,7 @@
     ../common/_1password.nix
     ../common/docker.nix
     ../common/niri.nix
+    ../common/tether.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -48,10 +49,7 @@
     wifi.backend = "iwd";
   };
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
+  hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = false;
   hardware.enableAllFirmware = true;
 
