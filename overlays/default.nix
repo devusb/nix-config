@@ -36,12 +36,17 @@ let
         patches = [ ];
       });
 
-      # without this the xwayland screen size lags behind output mode changes
       xwayland-satellite = prev.xwayland-satellite.overrideAttrs (old: {
         patches = (old.patches or [ ]) ++ [
+          # fix for xwayland screen size lagging behind output mode changes: https://github.com/Supreeeme/xwayland-satellite/pull/495
           (prev.fetchpatch {
-            url = "https://github.com/devusb/xwayland-satellite/commit/6df3012.patch";
-            hash = "sha256-Icc+VFPBKkrhso3cIZiUiul7Qvna4ITNleDanmWXsj4=";
+            url = "https://patch-diff.githubusercontent.com/raw/Supreeeme/xwayland-satellite/pull/495.patch";
+            hash = "sha256-XqxdSAiX7lPduZw4WtfCDyJbpHKEDcJgYwaUr3ZVa7w=";
+          })
+          # fix for steam menu not staying open: https://github.com/Supreeeme/xwayland-satellite/pull/494
+          (prev.fetchpatch {
+            url = "https://patch-diff.githubusercontent.com/raw/Supreeeme/xwayland-satellite/pull/494.patch";
+            hash = "sha256-efUsFsMCDp9Oj0lQJGc2yBDJzIahh7G9QZwlZ8hanJQ=";
           })
         ];
       });
