@@ -11,8 +11,8 @@ let
   output = "DP-4";
   nativeMode = "3440x1440@144";
 
-  kscreen-doctor = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor";
-  niri = "${config.programs.niri.package}/bin/niri";
+  kscreen-doctor = "${lib.getExe pkgs.kdePackages.libkscreen}";
+  niri = "${lib.getExe config.programs.niri.package}";
 
   niriPrep = mode: {
     do = "${niri} msg output ${output} ${mode}";
