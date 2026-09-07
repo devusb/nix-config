@@ -36,6 +36,11 @@ in
     enable = true;
     capSysAdmin = true;
     openFirewall = true;
+    settings = {
+      global_prep_cmd = lib.mkIf withNiri (
+        builtins.toJSON (lib.singleton { do = "${niri} msg action power-on-monitors"; })
+      );
+    };
     applications = {
       env = {
         PATH = "$(PATH):$(HOME)/.local/bin";
