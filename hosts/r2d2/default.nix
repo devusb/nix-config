@@ -49,7 +49,10 @@
     wifi.backend = "iwd";
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
   hardware.sensor.iio.enable = false;
   hardware.enableAllFirmware = true;
 
