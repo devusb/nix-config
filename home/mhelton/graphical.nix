@@ -26,7 +26,7 @@ in
       wl-clipboard
       virt-manager
       remmina
-      jellyfin-media-player
+      jellium-desktop
       bluebubbles
       signal-desktop
     ]
