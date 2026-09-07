@@ -41,4 +41,9 @@ in
       soundNewNotification = false;
     };
   };
+
+  xdg.configFile."systemd/user/app-@autostart.service.d/overrides.conf".text = ''
+    [Unit]
+    After=dms.service
+  '';
 }
