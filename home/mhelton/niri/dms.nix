@@ -44,7 +44,10 @@ in
 
     managePluginSettings = true;
     plugins = {
-      calculator.enable = true;
+      calculator = {
+        enable = true;
+      };
+      dankNotepadModule.enable = true;
     };
   };
 
