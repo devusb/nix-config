@@ -10,6 +10,7 @@ in
 {
   imports = [
     inputs.dank-material-shell.homeModules.dank-material-shell
+    inputs.dms-plugin-registry.homeModules.dms-plugin-registry
   ];
 
   programs.dank-material-shell = {
@@ -39,6 +40,11 @@ in
       useFahrenheit = true;
       useAutoLocation = true;
       soundNewNotification = false;
+    };
+
+    managePluginSettings = true;
+    plugins = {
+      calculator.enable = true;
     };
   };
 
