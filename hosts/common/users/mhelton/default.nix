@@ -19,6 +19,7 @@
         "dialout"
         "ydotool"
         "disk"
+        "video"
       ];
     };
   };
