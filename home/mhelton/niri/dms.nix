@@ -40,6 +40,40 @@ in
       useFahrenheit = true;
       useAutoLocation = true;
       soundNewNotification = false;
+
+      barConfigs = [
+        {
+          id = "default";
+          name = "Main Bar";
+          enabled = true;
+          position = 0;
+          screenPreferences = [ "all" ];
+          showOnLastDisplay = true;
+          leftWidgets = [
+            "launcherButton"
+            "workspaceSwitcher"
+            "focusedWindow"
+          ];
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+          ];
+          rightWidgets = [
+            "systemTray"
+            "clipboard"
+            "cpuUsage"
+            "memUsage"
+            "notificationButton"
+            {
+              id = "caffeineRedesigned";
+              enabled = true;
+            }
+            "battery"
+            "controlCenterButton"
+          ];
+        }
+      ];
     };
 
     managePluginSettings = true;
@@ -48,6 +82,7 @@ in
         enable = true;
       };
       dankNotepadModule.enable = true;
+      caffeineRedesigned.enable = true;
     };
   };
 
