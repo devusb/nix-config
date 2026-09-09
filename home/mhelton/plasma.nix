@@ -55,6 +55,14 @@
       kwin = {
         "ExposeAll" = "Ctrl+Alt+Tab";
       };
+      plasmashell = {
+        "activate application launcher" = [
+          "Meta"
+          "Alt+F1"
+          "Menu"
+        ];
+        "Toggle Bigscreen Tasks Overview" = [ ];
+      };
     };
 
     window-rules = [
