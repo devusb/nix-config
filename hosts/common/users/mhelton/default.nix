@@ -16,6 +16,7 @@
         "networkmanager"
         "keys"
         "input"
+        "video"
         "dialout"
         "ydotool"
         "disk"
