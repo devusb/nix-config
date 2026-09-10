@@ -26,6 +26,15 @@ let
         '';
       });
 
+      # 8.x detects CEC device node removal and no longer pins /dev/cec0: https://github.com/Pulse-Eight/libcec/issues/668
+      libcec = prev.libcec.overrideAttrs (old: rec {
+        version = "8.1.7";
+        src = old.src.override {
+          rev = "libcec-${version}";
+          sha256 = "sha256-teh4w6pDn0HJ9W0FnqhnMYFBd6JxgK9QYfVqYHXviiI=";
+        };
+      });
+
       chiaki-ng = prev.chiaki-ng.overrideAttrs (old: {
         version = "1.10.0-unstable-2026-07-04";
         src = old.src.override {
