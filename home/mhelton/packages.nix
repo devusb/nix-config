@@ -8,7 +8,7 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./kitty.nix
-    ./claude.nix
+    ./agents
   ];
 
   home.packages = with pkgs; [
