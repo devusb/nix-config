@@ -43,4 +43,20 @@ in
       ExecStart = "-${machinectl} shell ${user}@ ${systemd-run} --user --unit=bigscreen-inputhandler --collect --setenv=QT_QPA_PLATFORM=offscreen ${inputhandler}";
     };
   };
+
+  systemd.services.bigscreen-cec-resume = {
+    description = "Restart the Plasma Bigscreen input handler after resume";
+    unitConfig = {
+      DefaultDependencies = "no";
+      StopWhenUnneeded = "yes";
+      Before = "sleep.target";
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+
+      ExecStop = "${pkgs.lib.getExe' pkgs.systemd "machinectl"} shell ${user}@ ${pkgs.lib.getExe' pkgs.systemd "systemctl"} --user restart bigscreen-inputhandler";
+    };
+    wantedBy = [ "sleep.target" ];
+  };
 }
