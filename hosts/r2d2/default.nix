@@ -85,6 +85,7 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
+    slack
   ];
 
   environment.variables = {
