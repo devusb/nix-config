@@ -66,7 +66,7 @@ in
             "memUsage"
             "notificationButton"
             {
-              id = "caffeineRedesigned";
+              id = "idleInhibitor";
               enabled = true;
             }
             "battery"
@@ -82,7 +82,6 @@ in
         enable = true;
       };
       dankNotepadModule.enable = true;
-      caffeineRedesigned.enable = true;
     };
   };
 
