@@ -8,10 +8,6 @@ let
   });
 
   user = "mhelton";
-  machinectl = pkgs.lib.getExe' pkgs.systemd "machinectl";
-  systemd-run = pkgs.lib.getExe' pkgs.systemd "systemd-run";
-  pkill = pkgs.lib.getExe' pkgs.procps "pkill";
-  inputhandler = "/run/current-system/sw/bin/plasma-bigscreen-inputhandler";
 in
 {
   environment.systemPackages = [ plasma-bigscreen ];
@@ -32,15 +28,9 @@ in
 
   systemd.services.bigscreen-cec-reattach = {
     description = "Reattach the Plasma Bigscreen input handler to the CEC device";
-    unitConfig = {
-      BindsTo = "dev-cec0.device";
-      After = "dev-cec0.device";
-    };
     serviceConfig = {
       Type = "oneshot";
-      RemainAfterExit = "yes";
-      ExecStartPre = "-${pkill} -f plasma-bigscreen-inputhandler";
-      ExecStart = "-${machinectl} shell ${user}@ ${systemd-run} --user --unit=bigscreen-inputhandler --collect --setenv=QT_QPA_PLATFORM=offscreen ${inputhandler}";
+      ExecStart = "${pkgs.lib.getExe' pkgs.systemd "machinectl"} shell ${user}@ ${pkgs.lib.getExe' pkgs.systemd "systemctl"} --user restart bigscreen-inputhandler";
     };
   };
 
