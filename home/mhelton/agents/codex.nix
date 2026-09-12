@@ -14,18 +14,20 @@
       approval_policy = "on-request";
       approvals_reviewer = "auto_review";
       permissions."git-workspace".extends = ":workspace";
+      plugins = {
+        "flox@flox-skills".enabled = true;
+        "superpowers@superpowers-dev".enabled = true;
+      };
     };
   };
 
   home.file.".codex/config.toml".enable = false;
 
-  home.activation.seedCodexConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  # codex fails if it can't write config.toml, so just overwrite it every activation instead
+  home.activation.writeCodexConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     codexConfig="$HOME/.codex/config.toml"
-    if [ ! -e "$codexConfig" ]; then
-      install -Dm644 ${
-        (pkgs.formats.toml { }).generate "codex-config" config.programs.codex.settings
-      } "$codexConfig"
-    fi
+    run rm -f "$codexConfig"
+    run install -Dm644 ${config.home.file.".codex/config.toml".source} "$codexConfig"
   '';
 
 }

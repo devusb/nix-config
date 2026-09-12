@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -13,12 +12,6 @@ in
   programs.claude-code = {
     enable = true;
     package = pkgs.llm-agents.claude-code;
-
-    marketplaces = {
-      claude-plugins-official-flake = inputs.claude-plugins-official;
-      superpowers-dev = inputs.superpowers;
-      flox-skills = inputs.flox-skills;
-    };
 
     lspServers = {
       gopls = {

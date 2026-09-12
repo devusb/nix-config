@@ -1,7 +1,18 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
   codexEnabled = config.programs.codex.enable;
   claudeEnabled = config.programs.claude-code.enable;
+
+  marketplaces = {
+    claude-plugins-official-flake = inputs.claude-plugins-official;
+    superpowers-dev = inputs.superpowers;
+    flox-skills = inputs.flox-skills;
+  };
 
   context = ''
     ### Running commands
@@ -35,10 +46,10 @@ in
   ];
 
   programs.codex = lib.mkIf codexEnabled {
-    inherit context;
+    inherit context marketplaces;
   };
 
   programs.claude-code = lib.mkIf claudeEnabled {
-    inherit context;
+    inherit context marketplaces;
   };
 }
