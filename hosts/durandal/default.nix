@@ -33,6 +33,8 @@
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
     ktailctl
+    vacuum-tube
+
   ];
 
   # monitoring
