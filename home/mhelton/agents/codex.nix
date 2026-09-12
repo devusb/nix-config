@@ -17,6 +17,8 @@
       plugins = {
         "flox@flox-skills".enabled = true;
         "superpowers@superpowers-dev".enabled = true;
+        "frontend-design@claude-plugins-official".enabled = true;
+        "code-review@claude-plugins-official".enabled = true;
       };
     };
   };
