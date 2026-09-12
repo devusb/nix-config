@@ -54,8 +54,8 @@ in
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = "yes";
-
-      ExecStop = "${pkgs.lib.getExe' pkgs.systemd "machinectl"} shell ${user}@ ${pkgs.lib.getExe' pkgs.systemd "systemctl"} --user restart bigscreen-inputhandler";
+      ExecStart = "-${pkill} -f plasma-bigscreen-inputhandler";
+      ExecStop = "-${machinectl} shell ${user}@ ${systemd-run} --user --unit=bigscreen-inputhandler --collect --setenv=QT_QPA_PLATFORM=offscreen ${inputhandler}";
     };
     wantedBy = [ "sleep.target" ];
   };
