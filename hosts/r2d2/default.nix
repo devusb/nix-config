@@ -23,7 +23,6 @@
     ../common/_1password.nix
     ../common/docker.nix
     ../common/niri.nix
-    ../common/tether.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
