@@ -37,6 +37,9 @@ let
 
     ### Doing research
     - Do not make definitive statements without backing evidence.
+
+    ### Decisions
+    Record in a seperate file in docs every decision you make that isn't part of the design docs. For example, if you find that guidance offers a choice of two pathways and you choose one without prompting, make sure you write that out in the docs file with enough context for the user to be able to understand what was decided and why.
   '';
 in
 {
