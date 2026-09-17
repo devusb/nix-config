@@ -90,6 +90,10 @@
       sopsFile = ../../secrets/playstation.yaml;
       owner = config.users.users.mhelton.name;
     };
+    package =
+      (import inputs.sops-nix {
+        pkgs = pkgs.extend (final: prev: { buildGo125Module = prev.buildGoModule; });
+      }).sops-install-secrets;
   };
 
   environment.systemPackages = with pkgs; [
