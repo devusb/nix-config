@@ -52,11 +52,6 @@ let
             url = "https://patch-diff.githubusercontent.com/raw/Supreeeme/xwayland-satellite/pull/495.patch";
             hash = "sha256-XqxdSAiX7lPduZw4WtfCDyJbpHKEDcJgYwaUr3ZVa7w=";
           })
-          # fix for steam menu not staying open: https://github.com/Supreeeme/xwayland-satellite/pull/494
-          (prev.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/Supreeeme/xwayland-satellite/pull/494.patch";
-            hash = "sha256-efUsFsMCDp9Oj0lQJGc2yBDJzIahh7G9QZwlZ8hanJQ=";
-          })
         ];
       });
 
