@@ -39,6 +39,7 @@
   networking.hostName = "mhelton-fw13"; # Define your hostname.
   networking.networkmanager = {
     enable = true;
+    wifi.backend = "iwd";
   };
 
   hardware.bluetooth = {
@@ -65,6 +66,8 @@
   };
 
   hardware.graphics.enable = true;
+
+  security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
     sbctl
