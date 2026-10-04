@@ -66,6 +66,8 @@
 
   hardware.graphics.enable = true;
 
+  security.pam.services.login.fprintAuth = false;
+
   environment.systemPackages = with pkgs; [
     sbctl
     slack
