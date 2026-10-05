@@ -11,6 +11,7 @@ in
 {
   imports = [
     ./ghostty.nix
+    ./kitty.nix
   ]
   ++ lib.optionals withPlasma [
     ./plasma.nix
@@ -22,6 +23,8 @@ in
   home.packages =
     with pkgs;
     [
+      llm-agents.handy
+      dbeaver-bin
       xclip
       wl-clipboard
       virt-manager

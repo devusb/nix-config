@@ -1,7 +1,12 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./kitty.nix
+  ];
 
   home.packages = with pkgs; [
+    llm-agents.handy
+    dbeaver-bin
     tailscale
     gnused
     gnugrep
