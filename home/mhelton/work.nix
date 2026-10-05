@@ -27,7 +27,6 @@
     pg_activity
     diffr
     skopeo
-    dbeaver-bin
     (brev-cli.overrideAttrs {
       patches = [
         (fetchpatch {

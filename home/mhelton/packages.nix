@@ -7,7 +7,6 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
-    ./kitty.nix
     ./agents
   ];
 
@@ -55,7 +54,6 @@
     parallel
     dasel
     wolweb-cli
-    llm-agents.handy
     llm-agents.tuicr
   ];
 

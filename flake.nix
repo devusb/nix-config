@@ -379,6 +379,29 @@
             );
           };
 
+          homeConfigurations = {
+            work = withSystem "x86_64-linux" (
+              { pkgs, ... }:
+              home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = (builtins.attrValues self.homeModules) ++ [
+                  { nixpkgs.overlays = [ inputs.nix-packages.overlays.default ]; }
+                  ./home/mhelton
+                  ./home/mhelton/work.nix
+                  ./home/mhelton/linux.nix
+                  (
+                    { lib, pkgs, ... }:
+                    {
+                      home.username = lib.mkForce "morgan";
+                      nix.package = pkgs.nix;
+                    }
+                  )
+                ];
+              }
+            );
+          };
+
           darwinConfigurations = {
             mhelton-mbp14 = withSystem "aarch64-darwin" (
               { pkgs, ... }:
