@@ -13,6 +13,13 @@ let
     types
     ;
   cfg = config.programs.herdr;
+
+  herdr = lib.getExe cfg.package;
+  jq = lib.getExe pkgs.jq;
+
+  pluginManifests = builtins.toJSON (
+    lib.mapAttrsToList (_: plugin: "${plugin.package}/herdr-plugin.toml") cfg.plugins
+  );
 in
 {
   options.programs.herdr = {
@@ -30,9 +37,46 @@ in
         '';
       };
     };
+
+    plugins = mkOption {
+      type = types.attrsOf (
+        types.submodule {
+          options.package = mkOption {
+            type = types.either types.package types.path;
+            description = "Plugin directory containing a {file}`herdr-plugin.toml` manifest.";
+          };
+        }
+      );
+      default = { };
+      description = ''
+        Plugins registered with herdr on activation. Plugins linked from the nix
+        store that are no longer listed are unlinked when a herdr server is running.
+      '';
+    };
   };
 
   config = mkIf cfg.enable (mkMerge [
+    {
+      home.activation.herdrPlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        registered=$(${herdr} plugin list --json 2>/dev/null) || registered='{}'
+
+        ${jq} -r --arg store "${builtins.storeDir}/" --argjson desired ${lib.escapeShellArg pluginManifests} '
+          .result.plugins[]?
+          | select((.manifest_path // "") | startswith($store))
+          | select(.manifest_path as $p | $desired | index($p) | not)
+          | .plugin_id
+        ' <<<"$registered" | while read -r id; do
+          run ${herdr} plugin unlink "$id" >/dev/null 2>&1 || true
+        done
+
+        ${jq} -r --argjson desired ${lib.escapeShellArg pluginManifests} '
+          ($desired - [.result.plugins[]?.manifest_path])[]
+        ' <<<"$registered" | while read -r manifest; do
+          run ${herdr} plugin link "$manifest" >/dev/null
+        done
+      '';
+    }
+
     (mkIf cfg.claudeCodeHooks.enable {
       programs.claude-code.settings.hooks.SessionStart = [
         {
