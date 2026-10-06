@@ -395,6 +395,7 @@
                     {
                       home.username = lib.mkForce "morgan";
                       nix.package = pkgs.nix;
+                      programs.herdr.server.enable = true;
                     }
                   )
                 ];

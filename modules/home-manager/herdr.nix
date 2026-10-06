@@ -7,14 +7,29 @@
 let
   inherit (lib)
     mkEnableOption
+    mkOption
     mkIf
     mkMerge
+    types
     ;
   cfg = config.programs.herdr;
 in
 {
   options.programs.herdr = {
     claudeCodeHooks.enable = mkEnableOption "the herdr Claude Code session hook";
+
+    server = {
+      enable = mkEnableOption "a systemd user service running the herdr server";
+
+      tasksMax = mkOption {
+        type = types.either types.ints.positive (types.enum [ "infinity" ]);
+        default = "infinity";
+        description = ''
+          `TasksMax` for the herdr server service. The server exits and all panes
+          are lost when this limit is reached. The user slice limit still applies.
+        '';
+      };
+    };
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -31,6 +46,21 @@ in
           ];
         }
       ];
+    })
+
+    (mkIf cfg.server.enable {
+      systemd.user.services.herdr = {
+        Unit = {
+          Description = "herdr server";
+          X-SwitchMethod = "keep-old";
+        };
+        Service = {
+          ExecStart = "${lib.getExe cfg.package} server";
+          Restart = "on-failure";
+          TasksMax = cfg.server.tasksMax;
+        };
+        Install.WantedBy = [ "default.target" ];
+      };
     })
   ]);
 }
