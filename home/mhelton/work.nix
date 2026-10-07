@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -37,6 +38,20 @@
     })
   ];
   programs.keychain.keys = [ "id_ed25519" ];
+
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
+    pinentry.package = lib.mkIf pkgs.stdenv.hostPlatform.isLinux pkgs.pinentry-curses;
+  };
+
+  programs.password-store = {
+    enable = true;
+    settings.PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.password-store";
+  };
 
   programs.ssh = {
     enable = true;
