@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -7,6 +8,8 @@
   nixpkgs.overlays = [ inputs.nix-packages.overlays.default ];
 
   nix.package = pkgs.nix;
+
+  programs.keychain.enable = lib.mkForce false;
 
   programs.herdr.server.enable = true;
 
