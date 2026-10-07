@@ -46,6 +46,7 @@ in
   imports = [
     ./claude.nix
     ./codex.nix
+    ./herdr.nix
   ];
 
   programs.codex = lib.mkIf codexEnabled {
