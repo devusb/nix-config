@@ -4,6 +4,16 @@
   ...
 }:
 let
+  collie = pkgs.llm-agents.collie.overrideAttrs (old: {
+    postInstall = (old.postInstall or "") + ''
+      cp -r web/src $out/lib/collie/web/src
+      cp -r docs $out/lib/collie/docs
+      cp *.md $out/lib/collie/
+      makeWrapper ${lib.getExe pkgs.bun} $out/bin/collie \
+        --add-flags "run $out/lib/collie/cli/main.ts"
+    '';
+  });
+
   sessionFork = pkgs.stdenvNoCC.mkDerivation {
     pname = "herdr-session-fork";
     version = "0.1.0-unstable-2026-09-22";
@@ -60,4 +70,6 @@ in
       };
     };
   };
+
+  services.collie.package = collie;
 }
