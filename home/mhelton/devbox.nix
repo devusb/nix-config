@@ -11,6 +11,8 @@
 
   programs.keychain.enable = lib.mkForce false;
 
+  programs.claude-code.enableMcpIntegration = true;
+
   programs.herdr.server.enable = true;
 
   services.collie = {
