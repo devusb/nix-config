@@ -73,4 +73,9 @@ in
       ];
     };
   };
+
+  systemd.user.services.sunshine = lib.mkIf withNiri {
+    after = [ "dms.service" ];
+    serviceConfig.ExecStartPre = "${lib.getExe' pkgs.glib.bin "gdbus"} wait --session --timeout 30 org.kde.StatusNotifierWatcher";
+  };
 }
