@@ -30,6 +30,7 @@
   system.stateVersion = "21.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "amdgpu.vm_update_mode=3" ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.firewall.enable = false;
