@@ -50,7 +50,6 @@
 
     # colmena
     colmena.url = "github:zhaofengli/colmena";
-    colmena.inputs.flake-utils.follows = "utils";
 
     # nixvim
     nixvim.url = "github:nix-community/nixvim";
