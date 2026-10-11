@@ -225,12 +225,23 @@
                     darwinConfiguration.config.system.build.toplevel
                   )
                 );
+                homeConfigurationsPerSystem = {
+                  x86_64-linux = [
+                    "work"
+                  ];
+                };
+                homeConfigurations = lib.mapAttrs' (n: lib.nameValuePair "home-${n}") (
+                  lib.genAttrs (homeConfigurationsPerSystem.${system} or [ ]) (
+                    name: self.homeConfigurations.${name}.activationPackage
+                  )
+                );
               in
               {
                 nvim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
               }
               // nixosMachines
-              // darwinMachines;
+              // darwinMachines
+              // homeConfigurations;
 
             packages = {
               nvim = nixvim'.makeNixvimWithModule nixvimModule;
