@@ -4,28 +4,26 @@
   ...
 }:
 let
-  sessionFork = pkgs.stdenvNoCC.mkDerivation {
-    pname = "herdr-session-fork";
-    version = "0.1.0-unstable-2026-09-22";
+  forkr = pkgs.stdenvNoCC.mkDerivation {
+    pname = "herdr-forkr";
+    version = "0.1.0-unstable-2026-09-10";
     src = pkgs.fetchFromGitHub {
-      owner = "DanielGnzlzVll";
-      repo = "herdr-session-fork";
-      rev = "28c534565b3edc3b61cea51bb9790d5818eecd66";
-      hash = "sha256-YG/iLM7dpH2o+L/WGS31EReHvwYOQzifj9qXQ9rraTo=";
+      owner = "t4t5";
+      repo = "herdr-forkr";
+      rev = "1c1f6130589bf65456b6cdf398abfb5ddc1becad";
+      hash = "sha256-8HthBL9G22pLKfZYAHB5e/ISr+SPCojMq3lKyQ4NakI=";
     };
-    buildInputs = [ pkgs.bash ];
     installPhase = ''
       cp -r . $out
-      patchShebangs $out/scripts
       sed -i '2i export PATH=${
         lib.makeBinPath [
           pkgs.jq
           pkgs.coreutils
           pkgs.gnugrep
-          pkgs.gawk
+          pkgs.gnused
         ]
-      }:$PATH' $out/scripts/*.sh
-      substituteInPlace $out/herdr-plugin.toml --replace-fail '"bash"' '"${lib.getExe pkgs.bash}"'
+      }:$PATH' $out/forkr.sh
+      substituteInPlace $out/herdr-plugin.toml --replace-fail '"sh"' '"${pkgs.dash}/bin/dash"'
     '';
   };
 in
@@ -36,7 +34,7 @@ in
     claudeCodeHooks.enable = true;
 
     plugins = {
-      "danielgnzlzvll.session-fork".package = sessionFork;
+      forkr.package = forkr;
     };
 
     settings = {
@@ -45,16 +43,10 @@ in
       keys = {
         command = [
           {
-            key = "prefix+shift+v";
+            key = "prefix+shift+c";
             type = "plugin_action";
-            command = "danielgnzlzvll.session-fork.clone-vertical";
-            description = "fork session right";
-          }
-          {
-            key = "prefix+_";
-            type = "plugin_action";
-            command = "danielgnzlzvll.session-fork.clone-horizontal";
-            description = "fork session below";
+            command = "forkr.tab";
+            description = "fork session into new tab";
           }
         ];
       };
