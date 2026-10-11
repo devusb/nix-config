@@ -20,6 +20,7 @@ in
 
   services.collie = {
     enable = true;
+    package = pkgs.llm-agents.collie;
     settings = {
       access.trusted_user = "morgan@flox.dev";
       network = {
