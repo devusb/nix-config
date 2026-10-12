@@ -27,8 +27,8 @@
   };
   hardware.logitech.wireless = {
     enable = true;
-    enableGraphical = true;
   };
+  programs.solaar.enable = true;
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
