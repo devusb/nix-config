@@ -31,7 +31,6 @@ in
   programs.herdr = {
     enable = true;
     package = pkgs.llm-agents.herdr;
-    claudeCodeHooks.enable = true;
 
     plugins = {
       forkr.package = forkr;

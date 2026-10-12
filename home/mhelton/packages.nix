@@ -226,7 +226,6 @@
 
   programs.agent-deck = {
     enable = true;
-    package = pkgs.llm-agents.agent-deck;
     claudeCodeHooks.enable = true;
     settings = {
       default_tool = "claude";
