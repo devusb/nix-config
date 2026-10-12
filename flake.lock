@@ -815,17 +815,20 @@
       "inputs": {
         "deckbd": "deckbd",
         "flake-parts": "flake-parts_3",
+        "llm-agents": [
+          "llm-agents"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1791475964,
-        "narHash": "sha256-R4Kad4QMezkhbOlOFIRzqDwbt6S1naq+FsfTBcVZkt8=",
+        "lastModified": 1791774823,
+        "narHash": "sha256-uoGB0RMuYmSXgs6vhd2QTHsoEwxLLXArLDYLCPfKTiA=",
         "owner": "devusb",
         "repo": "nix-packages",
-        "rev": "cc53a7d6501b4029fb7361b65c39e192f75443ca",
+        "rev": "b357d4893693f37ae7628827749eb1270f6aebc5",
         "type": "github"
       },
       "original": {
