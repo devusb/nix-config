@@ -43,12 +43,12 @@
     includes = [
       ''"${config.home.homeDirectory}/.brev/ssh_config"''
     ];
-    matchBlocks = {
+    settings = {
       "*" = {
-        user = "morgan";
+        User = "morgan";
       };
       "github.com" = {
-        user = "git";
+        User = "git";
       };
     };
   };
