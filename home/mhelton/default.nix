@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
+    inputs.nix-packages.homeManagerModules.default
     ./packages.nix
     ./fish.nix
   ];

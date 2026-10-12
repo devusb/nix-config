@@ -47,6 +47,7 @@
     # nix-packages
     nix-packages.url = "github:devusb/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
+    nix-packages.inputs.llm-agents.follows = "llm-agents";
 
     # colmena
     colmena.url = "github:zhaofengli/colmena";
