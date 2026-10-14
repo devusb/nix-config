@@ -46,6 +46,16 @@ let
         ];
       });
 
+      # https://github.com/NixOS/nixpkgs/issues/573527
+      atuin = prev.atuin.overrideAttrs (old: {
+        checkFlags =
+          (old.checkFlags or [ ])
+          ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
+            "--skip=filtered_commands_leave_no_captured_output"
+            "--skip=bash_preexec"
+          ];
+      });
+
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
