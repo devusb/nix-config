@@ -56,6 +56,10 @@ let
           ];
       });
 
+      aws-sso-cli = prev.aws-sso-cli.overrideAttrs {
+        doCheck = !prev.stdenv.hostPlatform.isDarwin;
+      };
+
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
