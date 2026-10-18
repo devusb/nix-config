@@ -76,6 +76,11 @@ let
         }
       );
 
+      # https://github.com/NixOS/nixpkgs/pull/573479
+      khal = prev.khal.overrideAttrs {
+        sphinxBuilders = [ "html man" ];
+      };
+
       aws-sso-cli = prev.aws-sso-cli.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isDarwin;
       };
