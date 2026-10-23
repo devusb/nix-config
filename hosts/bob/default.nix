@@ -30,7 +30,6 @@
 
   boot.initrd.deckbd.enable = true;
   boot.kernelParams = [ "hid_steam.lizard_mode=0" ]; # lizard mode withholds gamepad input from deckbd
-  boot.initrd.systemd.enable = false; # disabled until deckbd is fixed to support it
 
   networking.hostName = "bob"; # Define your hostname.
   networking.networkmanager = {

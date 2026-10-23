@@ -823,11 +823,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1792286080,
-        "narHash": "sha256-k6/WTu4VAevjFi5cRkZ3OO8p/Hp6qnA6SrAvOg/akW0=",
+        "lastModified": 1792719392,
+        "narHash": "sha256-bNoInK5t1qo+Hg4UhSiOV2y6u0Y9ybPl/WvVjMl88xo=",
         "owner": "devusb",
         "repo": "nix-packages",
-        "rev": "6c8822cb14241c9bff432cc193a3c165ea27d061",
+        "rev": "b333f449a061439b131b13c50c4a369fdcf7ffc9",
         "type": "github"
       },
       "original": {
