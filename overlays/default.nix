@@ -56,6 +56,31 @@ let
           ];
       });
 
+      # https://github.com/NixOS/nixpkgs/issues/575192
+      linuxPackages_latest = prev.linuxPackages_latest.extend (
+        lpfinal: lpprev: {
+          kvmfr = lpprev.kvmfr.overrideAttrs (old: {
+            makeFlags = old.makeFlags ++ [
+              "INSTALL_MOD_PATH=${placeholder "out"}"
+              "INSTALL_MOD_DIR=kernel/drivers/misc"
+              "DEPMOD=true"
+            ];
+            installFlags = [
+              "-C"
+              "${lpprev.kernel.dev}/lib/modules/${lpprev.kernel.modDirVersion}/build"
+              "M=$(PWD)"
+            ];
+            installTargets = [ "modules_install" ];
+            installPhase = "";
+          });
+        }
+      );
+
+      # https://github.com/NixOS/nixpkgs/pull/573479
+      khal = prev.khal.overrideAttrs {
+        sphinxBuilders = [ "html man" ];
+      };
+
       aws-sso-cli = prev.aws-sso-cli.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isDarwin;
       };
