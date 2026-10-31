@@ -34,6 +34,16 @@ in
 
   services.collie = {
     enable = true;
+    package = pkgs.collie.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [
+        # fix for the page staying shifted up after the iOS keyboard closes with the wide sidebar open
+        (pkgs.fetchpatch {
+          url = "https://github.com/devusb/collie/commit/7410f0970309517d80549272190c9b24606c4450.patch";
+          includes = [ "web/src/components/wide-layout.tsx" ];
+          hash = "sha256-C+vsMu8yxnChqG6iMOiChmbOoRwoVUcq3ZxC62UqXRI=";
+        })
+      ];
+    });
     settings = {
       access.trusted_user = "morgan@flox.dev";
       network = {
