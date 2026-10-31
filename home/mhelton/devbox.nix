@@ -30,6 +30,7 @@ in
   programs.claude-code.enableMcpIntegration = true;
 
   programs.herdr.server.enable = true;
+  systemd.user.services.herdr.Service.KillMode = "mixed";
 
   services.collie = {
     enable = true;
