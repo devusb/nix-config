@@ -63,13 +63,15 @@
 
   services.avahi = {
     enable = true;
-    reflector = true;
     nssmdns4 = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      userServices = true;
-      workstation = true;
+    settings = {
+      reflector.enable-reflector = true;
+      publish = {
+        disable-publishing = false;
+        disable-user-service-publishing = false;
+        publish-addresses = true;
+        publish-workstation = true;
+      };
     };
   };
 
