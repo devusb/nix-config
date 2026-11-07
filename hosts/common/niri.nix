@@ -5,7 +5,7 @@
 {
   programs.niri.enable = true;
 
-  programs.dms-shell = {
+  programs.dux-shell = {
     enable = true;
   };
 
@@ -15,7 +15,7 @@
   systemd.user.services.niri.serviceConfig.UnsetEnvironment = "SHLVL";
   systemd.user.services.dms.serviceConfig.UnsetEnvironment = "SHLVL";
 
-  services.displayManager.dms-greeter = {
+  services.displayManager.dux-greeter = {
     enable = true;
     compositor.name = "niri";
     configHome = config.users.users.mhelton.home;
