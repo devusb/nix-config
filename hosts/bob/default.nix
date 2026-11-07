@@ -21,7 +21,6 @@
     ../common/steam.nix
     ../common/_1password.nix
     ../common/docker.nix
-    ../common/gog.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
