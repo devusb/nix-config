@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
+    wl-mirror
   ];
 
   fonts.fontconfig.defaultFonts = {

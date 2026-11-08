@@ -22,6 +22,26 @@ let
     ++ args;
   };
 
+  mirrorToggle = pkgs.writeShellApplication {
+    name = "niri-mirror-toggle";
+    runtimeInputs = with pkgs; [
+      jq
+      niri
+      procps
+      wl-mirror
+    ];
+    text = ''
+      if pkill -x wl-mirror; then
+        exit 0
+      fi
+      target=$(niri msg --json outputs | jq -r 'to_entries[] | select(.key != "eDP-1" and .value.logical != null) | .key' | head -n1)
+      if [ -z "$target" ]; then
+        exit 1
+      fi
+      exec wl-mirror --fullscreen-output "$target" eDP-1
+    '';
+  };
+
   workspaceBinds = lib.foldl' (
     acc: n:
     acc
@@ -277,6 +297,7 @@ in
           "cycleProfile"
         ];
       };
+      "Mod+Ctrl+P" = titled "Toggle Screen Mirroring" { spawn = [ (lib.getExe mirrorToggle) ]; };
       "Mod+Escape" = {
         _props.allow-inhibiting = false;
         toggle-keyboard-shortcuts-inhibit = { };
