@@ -31,7 +31,12 @@ in
 {
   programs.codex = {
     enable = true;
-    package = pkgs.llm-agents.codex;
+    package = pkgs.llm-agents.codex.override {
+      aws-lc = pkgs.aws-lc.override {
+        withOpenSSLShim = true;
+        symbolPrefix = null;
+      };
+    };
     enableMcpIntegration = true;
     marketplaces.superpowers-dev = lib.mkForce superpowersMarketplace;
     settings = {
