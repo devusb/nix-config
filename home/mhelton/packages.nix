@@ -55,6 +55,7 @@
     dasel
     wolweb-cli
     llm-agents.tuicr
+    qbittorrent
   ];
 
   programs.home-manager = {
