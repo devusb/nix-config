@@ -73,6 +73,8 @@
   environment.systemPackages = with pkgs; [
     sbctl
     slack
+    ifuse
+    libimobiledevice
   ];
 
   programs.obs-studio = {
